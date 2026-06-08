@@ -1,0 +1,23 @@
+#include "engine.hlsli"
+#include "slime.hlsli"
+#include "math.hlsli"
+
+cbuffer PlayerPos : register(b3)
+{
+    float3 player_pos;
+}
+
+cbuffer SlimeSpeed : register(b4)
+{
+    float slime_speed;
+}
+
+RWStructuredBuffer<SlimeData> slimes : register(u1);
+
+[numthreads(64, 1, 1)]
+void compute(uint3 globalID : SV_DispatchThreadID)
+{
+    uint index = globalID.x;
+    
+    slimes[index].velocity += normalize(player_pos - slimes[index].position) * slime_speed * deltatime;
+}
