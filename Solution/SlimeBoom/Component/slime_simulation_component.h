@@ -27,11 +27,11 @@ class SlimeSimulationComponent : public engine::Component
     engine::AssetPtr<engine::ComputeShaderComponent> m_slime_simulation_shader_;
     engine::AssetPtr<engine::MeshRenderer> m_slime_renderer_;
 
-    void SetCurrentSlimesCount(int count);
-
 public:
     void OnStart() override;
     void OnInspectorGui() override;
+    
+    void SetCurrentSlimesCount(int count);
 
     template <class Archive>
     void serialize(Archive& ar, const uint32_t version)
