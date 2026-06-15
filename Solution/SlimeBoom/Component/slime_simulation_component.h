@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "Components/component.h"
 #include "Components/compute_shader_component.h"
+#include "Components/mesh_renderer.h"
 #include "Rendering/CabotEngine/Graphics/ByteAddressBuffer.h"
 #include "Rendering/CabotEngine/Graphics/StructuredBuffer.h"
 
@@ -18,23 +19,37 @@ struct SlimeData
 
 class SlimeSimulationComponent : public engine::Component
 {
-    int m_num_slimes_ = 512;
+    static constexpr int kMaxSlimesCount = 1024;
+    int m_current_slime_count_ = 512;
     std::shared_ptr<engine::StructuredBuffer> m_slime_buffer_;
     std::shared_ptr<engine::ByteAddressBuffer> m_damage_buffer_;
-    std::shared_ptr<engine::ConstantBuffer> m_num_slime_buffer_;
-    
+    std::shared_ptr<engine::ConstantBuffer> m_slime_count_buffer_;
+    engine::AssetPtr<engine::ComputeShaderComponent> m_slime_simulation_shader_;
+    engine::AssetPtr<engine::MeshRenderer> m_slime_renderer_;
+
+    void SetCurrentSlimesCount(int count);
+
 public:
     void OnStart() override;
     void OnInspectorGui() override;
-    
+
     template <class Archive>
-    void serialize(Archive &ar, const uint32_t version)
+    void serialize(Archive& ar, const uint32_t version)
     {
         ar(
             cereal::base_class<Component>(this)
         );
+
+        if (version >= 2)
+        {
+            ar(
+                CEREAL_NVP(m_slime_simulation_shader_),
+                CEREAL_NVP(m_current_slime_count_),
+                CEREAL_NVP(m_slime_renderer_)
+            );
+        }
     }
 };
 }
 
-CEREAL_CLASS_VERSION(SlimeBoom::SlimeSimulationComponent, 1)
+CEREAL_CLASS_VERSION(SlimeBoom::SlimeSimulationComponent, 2)

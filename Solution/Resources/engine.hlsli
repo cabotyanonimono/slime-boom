@@ -43,5 +43,6 @@ StructuredBuffer<float4x4> LightViewProj : register(t1);
 Texture2DArray ShadowMaps : register (t2);
 SamplerState smp : register (s0);
 SamplerComparisonState shadowSampler : register (s1);
+SamplerState SmpClamp : register (s2);
 
 #endif

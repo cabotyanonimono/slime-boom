@@ -1,6 +1,7 @@
 #include "engine.hlsli"
 #include "slime.hlsli"
 #include "math.hlsli"
+#include "player_attack_data.hlsli"
 
 cbuffer PhysicsData : register(b3)
 {
@@ -10,7 +11,6 @@ cbuffer PhysicsData : register(b3)
     float slime_restitution;
     float slime_radius;
     float slime_speed;
-    float spawn_distance;
     float slime_max_speed;
 }
 
@@ -24,68 +24,88 @@ cbuffer SlimeCount : register(b5)
     int slime_count;
 }
 
+cbuffer AttackDataCount : register(b6)
+{
+    int attack_data_count;
+}
+
+StructuredBuffer<PlayerAttackData> player_attacks : register(t3);
+
 RWStructuredBuffer<SlimeData> slimes : register(u1);
 RWByteAddressBuffer damage : register(u2);
 
-void GenerateSlime(uint index)
+bool CheckCollisionToPlayer(float3 to_slime, PlayerAttackData attack_data)
 {
-    float angle = rand(float2(index, time)) * PI2;
-    
-    slimes[index].position.x = player_pos.x + spawn_distance * cos(angle);
-    slimes[index].position.y = player_pos.y;
-    slimes[index].position.z = player_pos.z + spawn_distance * sin(angle);
+    to_slime.y = 0.0f;
+    attack_data.angle.y = 0.0f;
 
-    slimes[index].rotation = float3(0, 0, 0);
-    slimes[index].scale = float3(1, 1, 1);
-    
-    slimes[index].velocity = float3(0, 0, 0);
-    slimes[index].angular_velocity = float3(0, 0, 0);
-    slimes[index].hp = 1;
+    attack_data.angle = normalize(attack_data.angle);
+
+    float dist = length(to_slime);
+    if (dist > attack_data.size)
+        return false;
+
+    if (dist <= 3.0f)
+        return true;
+
+    float3 dir_to_slime = to_slime / dist;
+    float cos_angle = dot(attack_data.angle, dir_to_slime);
+
+    float cos_limit = cos(attack_data.arc * 0.5f);
+
+    if (cos_angle >= cos_limit)
+        return true;
+
+    return false;
 }
 
 [numthreads(64, 1, 1)]
 void compute(uint3 globalID : SV_DispatchThreadID)
 {
-    uint index = globalID.x;
-    
-    if (slimes[index].hp <= 0)
-    {
-        GenerateSlime(index);
-        return;
-    }
-    
+    int index = globalID.x;
+
     slimes[index].velocity.y += gravity * deltatime;
-    
+
     float3 to_player = player_pos - slimes[index].position;
     slimes[index].velocity += normalize(to_player) * slime_speed * deltatime;
 
-    if (length(slimes[index].position - player_pos) <= slime_radius * 2.0f)
+    if (length(slimes[index].position - player_pos) <= slime_radius * 2.0f && slime_count > index)
     {
         slimes[index].hp = 0;
         damage.InterlockedAdd(0, 1);
         return;
     }
-    
+
+    float3 to_slime = -to_player;
+    for (int i = 0; i < attack_data_count; i++)
+    {
+        if (CheckCollisionToPlayer(to_slime, player_attacks[i]))
+        {
+            slimes[index].hp -= player_attacks[i].damage;
+            return;
+        }
+    }
+
     float3 pos_correction = float3(0, 0, 0);
     float3 vel_impulse = float3(0, 0, 0);
     float min_dist = slime_radius * 2.0f;
-    
+
     //slimeとのあたり判定
     for (int i = 0; i < slime_count; ++i)
     {
-        if (index == i) continue;
+        if (index == i || index > slime_count) continue;
 
         float3 to_me = slimes[index].position - slimes[i].position;
         float dist = length(to_me);
-        
+
         if (dist >= min_dist || dist <= 0.001f)
             continue;
 
         float penetration = min_dist - dist;
-        
+
         float3 push_dir = to_me / dist;
-        
-        push_dir.y += 0.3f; 
+
+        push_dir.y += 0.3f;
         push_dir = normalize(push_dir);
 
         pos_correction += push_dir * penetration * 0.3f;
@@ -103,7 +123,7 @@ void compute(uint3 globalID : SV_DispatchThreadID)
     slimes[index].position += pos_correction;
     slimes[index].velocity += vel_impulse;
 
-    slimes[index].velocity.xz *= 0.95f; 
+    slimes[index].velocity.xz *= 0.95f;
 
     float current_speed = length(slimes[index].velocity);
     if (current_speed > slime_max_speed)
@@ -116,6 +136,6 @@ void compute(uint3 globalID : SV_DispatchThreadID)
 
     next_pos = max(next_pos, wall_min);
     next_pos = min(next_pos, wall_max);
-    
+
     slimes[index].position = next_pos;
 }

@@ -6,38 +6,49 @@
 
 namespace SlimeBoom
 {
+void SlimeSimulationComponent::SetCurrentSlimesCount(const int count)
+{
+    m_current_slime_count_ = std::min(count, kMaxSlimesCount);
+
+    const auto group_count = (m_current_slime_count_ + 64 - 1) / 64;
+    if (m_slime_simulation_shader_ != nullptr)
+        m_slime_simulation_shader_->SetGroupCountX(group_count);
+
+    if (m_slime_count_buffer_ != nullptr)
+        m_slime_count_buffer_->UpdateBuffer(&m_current_slime_count_);
+
+    if (m_slime_renderer_ != nullptr)
+        m_slime_renderer_->instance_count = m_current_slime_count_;
+}
+
 void SlimeSimulationComponent::OnStart()
 {
-    if (m_slime_buffer_ == nullptr)
-    {
-        m_slime_buffer_ = std::make_shared<engine::StructuredBuffer>(sizeof(SlimeData), m_num_slimes_);
-        m_slime_buffer_->CreateBuffer();
+    m_slime_buffer_ = std::make_shared<engine::StructuredBuffer>(sizeof(SlimeData), kMaxSlimesCount);
+    m_slime_buffer_->CreateBuffer();
 
-        m_damage_buffer_ = std::make_shared<engine::ByteAddressBuffer>(1);
-        m_damage_buffer_->CreateBuffer();
+    m_damage_buffer_ = std::make_shared<engine::ByteAddressBuffer>(1);
+    m_damage_buffer_->CreateBuffer();
 
-        m_num_slime_buffer_ = std::make_shared<engine::ConstantBuffer>(sizeof(uint32_t));
-        m_num_slime_buffer_->CreateBuffer();
-        m_num_slime_buffer_->UpdateBuffer(&m_num_slimes_);
+    m_slime_count_buffer_ = std::make_shared<engine::ConstantBuffer>(sizeof(uint32_t));
+    m_slime_count_buffer_->CreateBuffer();
+    m_slime_count_buffer_->UpdateBuffer(&m_current_slime_count_);
 
-        engine::GpuResourceManager::SetGlobalBuffer("slimes", m_slime_buffer_);
-        engine::GpuResourceManager::SetGlobalBuffer("damage", m_damage_buffer_);
-        engine::GpuResourceManager::SetGlobalBuffer("SlimeCount", m_num_slime_buffer_);
-    }
+    engine::GpuResourceManager::SetGlobalBuffer("slimes", m_slime_buffer_);
+    engine::GpuResourceManager::SetGlobalBuffer("damage", m_damage_buffer_);
+    engine::GpuResourceManager::SetGlobalBuffer("SlimeCount", m_slime_count_buffer_);
 }
 
 void SlimeSimulationComponent::OnInspectorGui()
 {
-    if (engine::Gui::PropertyField("Num Slimes", m_num_slimes_))
-    {
-        m_num_slimes_ = static_cast<uint32_t>(m_num_slimes_);
-        
-        m_slime_buffer_ = std::make_shared<engine::StructuredBuffer>(sizeof(SlimeData), m_num_slimes_);
-        m_slime_buffer_->CreateBuffer();
-        engine::GpuResourceManager::SetGlobalBuffer("slimes", m_slime_buffer_);
+    engine::Gui::PropertyField("Slime Simulation Shader", m_slime_simulation_shader_);
 
-        m_num_slime_buffer_->UpdateBuffer(&m_num_slimes_);
+    if (engine::Gui::PropertyField("Slime Renderer", m_slime_renderer_))
+    {
+        m_slime_renderer_->instance_count = m_current_slime_count_;
     }
+    
+    if (engine::Gui::PropertyField("Current Slime Count", m_current_slime_count_))
+        SetCurrentSlimesCount(m_current_slime_count_);
 }
 }
 
