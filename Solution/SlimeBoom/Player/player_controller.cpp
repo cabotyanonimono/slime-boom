@@ -37,7 +37,7 @@ void PlayerController::OnUpdate()
 
     const auto transform = GameObject()->Transform();
 
-    const auto velocity = move_dir * m_player_->speed * engine::Time::GetDeltaTime();
+    const auto velocity = move_dir * m_player_->player_data->speed * engine::Time::GetDeltaTime();
     m_rigidbody_->AddForce(velocity);
 }
 }

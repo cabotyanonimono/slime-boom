@@ -1,22 +1,20 @@
 ﻿#pragma once
+#include "transition.h"
 
-namespace spring_bloom
-{
-class Condition;
 class State
 {
     friend class StateMachine;
-    std::map<std::shared_ptr<Condition>,std::shared_ptr<State>> m_states_;
+    std::unordered_map<std::shared_ptr<State>, Transition> m_transitions_;
 
-    void AddTransition(std::shared_ptr<Condition> condition, std::shared_ptr<State> state);
+    void AddTransition(const Transition &transition, const std::shared_ptr<State>& state);
     virtual void OnEnter();
     virtual void Update() = 0;
     virtual void FixedUpdate();
     virtual void OnExit();
+    
 protected:
     std::weak_ptr<StateMachine> m_state_machine_;
     
 public:
     virtual ~State() = default;
 };
-}

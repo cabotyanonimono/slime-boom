@@ -1,10 +1,7 @@
 ﻿#pragma once
-#include "condition.h"
 #include "parameter.h"
 #include "state.h"
 
-namespace spring_bloom
-{
 class StateMachine : public enable_shared_from_base<StateMachine>
 {
     std::unordered_map<std::string, Parameter> m_parameters_;
@@ -17,7 +14,8 @@ public:
     void ResetState();
     void SetCurrentState(const std::shared_ptr<State> &state);
     void SetDefaultState(const std::shared_ptr<State> &state);
-    void CreateTransition(const std::shared_ptr<State> &base_state, const std::shared_ptr<Condition> &condition, std::shared_ptr<State> next_state);
+    void CreateTransition(const std::shared_ptr<State> &base_state, const std::shared_ptr<ConditionBase> &condition, const std::shared_ptr<State>& next_state);
+    void CreateTransition(const std::shared_ptr<State> &base_state, const Transition &transition, std::shared_ptr<State> next_state);
     void Update();
     void FixedUpdate() const;
 
@@ -50,6 +48,10 @@ void StateMachine::SetParameter(const std::string& name, T value)
     {
         param.SetBool(value);
     }
+    else if constexpr (std::is_same_v<T, Vector3>)
+    {
+        
+    }
     else
     {
         static_assert(!std::is_same_v<T, T>, "Unsupported parameter type.");
@@ -67,16 +69,18 @@ T StateMachine::GetParameter(const std::string &name)
     }
     
     if constexpr (std::is_same_v<T, int>) {
-        return it->second.Int();
+        return it->second.GetInt();
     }
     else if constexpr (std::is_same_v<T, float>) {
-        return it->second.Float();
+        return it->second.GetFloat();
     }
     else if constexpr (std::is_same_v<T, bool>) {
-        return it->second.Bool();
+        return it->second.GetBool();
+    }
+    else if constexpr (std::is_same_v<T, Vector3>) {
+        return it->second.GetVector3();
     }
     else {
         throw std::runtime_error("Unsupported parameter type");
     }
-}
 }
