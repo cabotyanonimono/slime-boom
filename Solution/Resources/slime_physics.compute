@@ -32,7 +32,7 @@ cbuffer AttackDataCount : register(b6)
 StructuredBuffer<PlayerAttackData> player_attacks : register(t3);
 
 RWStructuredBuffer<SlimeData> slimes : register(u1);
-RWByteAddressBuffer damage : register(u2);
+RWByteAddressBuffer result : register(u2);
 
 bool CheckCollisionToPlayer(float3 to_slime, PlayerAttackData attack_data)
 {
@@ -72,7 +72,7 @@ void compute(uint3 globalID : SV_DispatchThreadID)
     if (length(slimes[index].position - player_pos) <= slime_radius * 2.0f && slime_count > index)
     {
         slimes[index].hp = 0;
-        damage.InterlockedAdd(0, 1);
+        result.InterlockedAdd(12, 1);
         return;
     }
 

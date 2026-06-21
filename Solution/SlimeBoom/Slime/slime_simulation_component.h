@@ -22,14 +22,14 @@ class SlimeSimulationComponent : public engine::Component
     static constexpr int kMaxSlimesCount = 1024;
     int m_current_slime_count_ = 512;
     std::shared_ptr<engine::StructuredBuffer> m_slime_buffer_;
-    std::shared_ptr<engine::ByteAddressBuffer> m_damage_buffer_;
     std::shared_ptr<engine::ConstantBuffer> m_slime_count_buffer_;
     engine::AssetPtr<engine::ComputeShaderComponent> m_slime_simulation_shader_;
     engine::AssetPtr<engine::MeshRenderer> m_slime_renderer_;
-
+    
 public:
     void OnStart() override;
     void OnInspectorGui() override;
+    void OnUpdate() override;
     
     void SetCurrentSlimesCount(int count);
 

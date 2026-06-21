@@ -2,6 +2,7 @@
 #include "slime_simulation_component.h"
 #include "Rendering/gpu_resource_manager.h"
 #include "../Utils/random.h"
+#include "Rendering/render_pipeline.h"
 #include "Rendering/CabotEngine/Graphics/ConstantBuffer.h"
 
 namespace SlimeBoom
@@ -26,15 +27,11 @@ void SlimeSimulationComponent::OnStart()
     m_slime_buffer_ = std::make_shared<engine::StructuredBuffer>(sizeof(SlimeData), kMaxSlimesCount);
     m_slime_buffer_->CreateBuffer();
 
-    m_damage_buffer_ = std::make_shared<engine::ByteAddressBuffer>(1);
-    m_damage_buffer_->CreateBuffer();
-
     m_slime_count_buffer_ = std::make_shared<engine::ConstantBuffer>(sizeof(uint32_t));
     m_slime_count_buffer_->CreateBuffer();
     m_slime_count_buffer_->UpdateBuffer(&m_current_slime_count_);
 
     engine::GpuResourceManager::SetGlobalBuffer("slimes", m_slime_buffer_);
-    engine::GpuResourceManager::SetGlobalBuffer("damage", m_damage_buffer_);
     engine::GpuResourceManager::SetGlobalBuffer("SlimeCount", m_slime_count_buffer_);
 }
 
@@ -49,6 +46,11 @@ void SlimeSimulationComponent::OnInspectorGui()
     
     if (engine::Gui::PropertyField("Current Slime Count", m_current_slime_count_))
         SetCurrentSlimesCount(m_current_slime_count_);
+}
+
+void SlimeSimulationComponent::OnUpdate()
+{
+    m_slime_count_buffer_->UpdateBuffer(&m_current_slime_count_);
 }
 }
 

@@ -16,11 +16,17 @@ struct PlayerData
         ar(
             CEREAL_NVP(hp),
             CEREAL_NVP(speed),
-            CEREAL_NVP(attack_speed),
             CEREAL_NVP(attack_speed)
         );
+
+        if (version >= 2)
+        {
+            ar(
+                CEREAL_NVP(attack_power)
+            );
+        }
     }
 };
 }
 
-CEREAL_CLASS_VERSION(SlimeBoom::PlayerData, 1)
+CEREAL_CLASS_VERSION(SlimeBoom::PlayerData, 2)

@@ -1,8 +1,11 @@
 ﻿#include "pch.h"
 #include "player_component.h"
+
+#include "engine_time.h"
 #include "gui.h"
 #include "input.h"
 #include "../StateMachine/comparison_condition.h"
+#include "ability/ability_data.h"
 #include "States/dash_state.h"
 #include "States/play_anim_state.h"
 
@@ -25,14 +28,17 @@ void PlayerComponent::UpdateParameter()
 
 void PlayerComponent::OnInspectorGui()
 {
+    engine::Gui::PropertyField("Rotation Transform", m_rotation_transform_);
+    engine::Gui::PropertyField("Camera Transform", m_camera_transform_);
+    engine::Gui::PropertyField("Animator", m_animator_);
+    engine::Gui::PropertyField("Compute Result", m_compute_result_);
+    engine::Gui::PropertyField("Player Data Presenter", m_player_data_presenter_);
+    engine::Gui::PropertyField("Player Sword Controller", m_player_sword_controller_);
+    
     engine::Gui::PropertyField("Hp", player_data->hp);
     engine::Gui::PropertyField("Speed", player_data->speed);
     engine::Gui::PropertyField("Attack Power", player_data->attack_power);
     engine::Gui::PropertyField("Attack Speed", player_data->attack_speed);
-    
-    engine::Gui::PropertyField("Rotation Transform", m_rotation_transform_);
-    engine::Gui::PropertyField("Camera Transform", m_camera_transform_);
-    engine::Gui::PropertyField("Animator", m_animator_);
 }
 
 void PlayerComponent::OnConstructed()
@@ -53,17 +59,21 @@ void PlayerComponent::OnStart()
     m_state_machine_->SetDefaultState(idle_state);
     m_state_machine_->CreateTransition(idle_state, dash_condition, dash_state);
     m_state_machine_->CreateTransition(dash_state, dash_to_idle, idle_state);
+
+    m_abilities_.Attach(std::make_shared<SlashAbility>(m_compute_result_, player_data, GameObject()->Transform(), m_player_data_presenter_, m_player_sword_controller_));
 }
 
 void PlayerComponent::OnUpdate()
 {
     UpdateParameter();
     m_state_machine_->Update();
+    m_abilities_.Update(engine::Time::GetDeltaTime());
 }
 
 void PlayerComponent::OnFixedUpdate()
 {
     m_state_machine_->FixedUpdate();
+    m_abilities_.FixedUpdate();
 }
 }
 

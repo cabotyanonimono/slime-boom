@@ -14,7 +14,7 @@ cbuffer SlimeCount : register(b3)
 }
 
 StructuredBuffer<SlimeData> slimes : register(t3);
-RWStructuredBuffer<float3> closest_slime : register(u1);
+RWByteAddressBuffer result : register(u1);
 
 groupshared float shared_min_dist[64];
 groupshared float3 shared_closest_pos[64];
@@ -33,7 +33,7 @@ void compute(uint3 globalID : SV_DispatchThreadID, uint groupIndex : SV_GroupInd
     else
     {
         shared_min_dist[groupIndex] = 9999999.0f;
-        shared_closest_pos[groupIndex] = float3(0.0f, 0.0f, 0.0f);
+        shared_closest_pos[groupIndex] = float3(1.0f, 1.0f, 1.0f);
     }
 
     GroupMemoryBarrierWithGroupSync();
@@ -45,7 +45,8 @@ void compute(uint3 globalID : SV_DispatchThreadID, uint groupIndex : SV_GroupInd
             if (shared_min_dist[groupIndex + stride] < shared_min_dist[groupIndex])
             {
                 shared_min_dist[groupIndex] = shared_min_dist[groupIndex + stride];
-                shared_closest_pos[groupIndex] = slimes[index].position;
+                
+                shared_closest_pos[groupIndex] = shared_closest_pos[groupIndex + stride];
             }
         }
 
@@ -54,6 +55,6 @@ void compute(uint3 globalID : SV_DispatchThreadID, uint groupIndex : SV_GroupInd
 
     if (groupIndex == 0)
     {
-        closest_slime[0] = shared_closest_pos[0];
+        result.Store3(0, asuint(shared_closest_pos[0]));
     }
 }
