@@ -60,20 +60,20 @@ void PlayerComponent::OnStart()
     m_state_machine_->CreateTransition(idle_state, dash_condition, dash_state);
     m_state_machine_->CreateTransition(dash_state, dash_to_idle, idle_state);
 
-    m_abilities_.Attach(std::make_shared<SlashAbility>(m_compute_result_, player_data, GameObject()->Transform(), m_player_data_presenter_, m_player_sword_controller_));
+    m_ability_processer_.Attach(std::make_shared<SlashAbility>(m_compute_result_, player_data, GameObject()->Transform(), m_player_data_presenter_, m_player_sword_controller_));
 }
 
 void PlayerComponent::OnUpdate()
 {
     UpdateParameter();
     m_state_machine_->Update();
-    m_abilities_.Update(engine::Time::GetDeltaTime());
+    m_ability_processer_.Update(engine::Time::GetDeltaTime());
 }
 
 void PlayerComponent::OnFixedUpdate()
 {
     m_state_machine_->FixedUpdate();
-    m_abilities_.FixedUpdate();
+    m_ability_processer_.FixedUpdate();
 }
 }
 

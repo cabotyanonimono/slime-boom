@@ -17,7 +17,7 @@ namespace SlimeBoom
 class PlayerComponent final : public engine::Component
 {
     std::shared_ptr<StateMachine> m_state_machine_;
-    AbilityProcesser m_abilities_;
+    AbilityProcesser m_ability_processer_;
 
     engine::AssetPtr<ComputeResult> m_compute_result_;
     engine::AssetPtr<PlayerDataPresenter> m_player_data_presenter_;
