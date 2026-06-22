@@ -9,6 +9,7 @@
 #include "SlimeBoom/Player/player_position_presenter.h"
 #include "SlimeBoom/Player/player_component.h"
 #include "SlimeBoom/compute_result.h"
+#include "SlimeBoom/Exp/exp_simulation_component.h"
 #include "SlimeBoom/Slime/slime_simulation_component.h"
 #include "SlimeBoom/Player/player_data_presenter.h"
 #include "SlimeBoom/Player/player_sword_controller.h"
@@ -35,5 +36,6 @@ void ComponentRegistry::RegisterComponents()
     ADD_COMPONENT(PlayerSwordController, "Player");
     ADD_COMPONENT(AbilityData, "Player");
     ADD_COMPONENT(ComputeResult, "ComputeShader");
+    ADD_COMPONENT(ExpSimulationComponent, "Exp");
 }
 }

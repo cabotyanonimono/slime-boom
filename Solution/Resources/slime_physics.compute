@@ -1,7 +1,10 @@
 #include "engine.hlsli"
+#include "exp.hlsli"
 #include "slime.hlsli"
 #include "math.hlsli"
 #include "player_attack_data.hlsli"
+
+#define MAX_EXP_NUM 1024
 
 cbuffer PhysicsData : register(b3)
 {
@@ -33,8 +36,10 @@ StructuredBuffer<PlayerAttackData> player_attacks : register(t3);
 
 RWStructuredBuffer<SlimeData> slimes : register(u1);
 RWByteAddressBuffer result : register(u2);
+RWStructuredBuffer<Exp> exps : register(u3);
+RWStructuredBuffer<int> exp_count : register(u4);
 
-bool CheckCollisionToPlayer(float3 to_slime, PlayerAttackData attack_data)
+bool CheckCollisionToPlayerAttack(float3 to_slime, PlayerAttackData attack_data)
 {
     to_slime.y = 0.0f;
     attack_data.angle.y = 0.0f;
@@ -79,10 +84,20 @@ void compute(uint3 globalID : SV_DispatchThreadID)
     float3 to_slime = -to_player;
     for (int i = 0; i < attack_data_count; i++)
     {
-        if (CheckCollisionToPlayer(to_slime, player_attacks[i]))
+        if (CheckCollisionToPlayerAttack(to_slime, player_attacks[i]))
         {
             slimes[index].hp -= player_attacks[i].damage;
-            return;
+            for (int j = 0; j < MAX_EXP_NUM; ++j)
+            {
+                uint original_value;
+                InterlockedCompareExchange(exps[j].is_active, 0, 1, original_value);
+
+                if (original_value == 0)
+                {
+                    exps[j].pos = slimes[index].position;
+                    break;
+                }
+            }
         }
     }
 

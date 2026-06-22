@@ -1,0 +1,30 @@
+#include "engine.hlsli"
+#include "exp.hlsli"
+#include "slime.hlsli"
+#include "math.hlsli"
+
+cbuffer PlayerPos : register(b3)
+{
+    float3 player_pos;
+}
+
+RWStructuredBuffer<Exp> exps : register(u1);
+RWByteAddressBuffer result : register(u2);
+RWStructuredBuffer<int> exp_count : register(u3);
+
+[numthreads(64, 1, 1)]
+void compute(uint3 globalID : SV_DispatchThreadID)
+{
+    uint index = globalID.x;
+    if (exps[index].is_active == true)
+    {
+        float3 to_player = player_pos - exps[index].pos;
+        exps[index].pos += to_player * deltatime;
+
+        if (length(to_player) < 1.0f)
+        {
+            exps[index].is_active = 0;
+            result.InterlockedAdd(16, 1);
+        }
+    }
+}
