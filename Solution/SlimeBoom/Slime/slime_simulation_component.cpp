@@ -12,9 +12,16 @@ void SlimeSimulationComponent::SetCurrentSlimesCount(const int count)
     m_current_slime_count_ = std::min(count, kMaxSlimesCount);
 
     const auto group_count = (m_current_slime_count_ + 64 - 1) / 64;
-    if (m_slime_simulation_shader_ != nullptr)
-        m_slime_simulation_shader_->SetGroupCountX(group_count);
 
+    if (m_slime_generator_compute_ != nullptr)
+        m_slime_generator_compute_->SetGroupCountX(group_count);
+    if (m_slime_physics_compute_ != nullptr)
+        m_slime_physics_compute_->SetGroupCountX(group_count);
+    if (m_closest_slime_compute_ != nullptr)
+        m_closest_slime_compute_->SetGroupCountX(group_count);
+    if (m_player_attack_compute_ != nullptr)
+        m_player_attack_compute_->SetGroupCountX(group_count);
+    
     if (m_slime_count_buffer_ != nullptr)
         m_slime_count_buffer_->UpdateBuffer(&m_current_slime_count_);
 
@@ -37,7 +44,10 @@ void SlimeSimulationComponent::OnStart()
 
 void SlimeSimulationComponent::OnInspectorGui()
 {
-    engine::Gui::PropertyField("Slime Simulation Shader", m_slime_simulation_shader_);
+    engine::Gui::PropertyField("Slime Generator", m_slime_generator_compute_);
+    engine::Gui::PropertyField("Slime Physics", m_slime_physics_compute_);
+    engine::Gui::PropertyField("Closest Slime", m_closest_slime_compute_);
+    engine::Gui::PropertyField("Player Attack", m_player_attack_compute_);
 
     if (engine::Gui::PropertyField("Slime Renderer", m_slime_renderer_))
     {

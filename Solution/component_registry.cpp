@@ -15,6 +15,7 @@
 #include "SlimeBoom/Player/player_sword_controller.h"
 #include "SlimeBoom/Player/slash_effect_component.h"
 #include "SlimeBoom/Player/ability/ability_data.h"
+#include "SlimeBoom/Wave/wave_controller.h"
 
 namespace SlimeBoom
 {
@@ -37,5 +38,6 @@ void ComponentRegistry::RegisterComponents()
     ADD_COMPONENT(AbilityData, "Player");
     ADD_COMPONENT(ComputeResult, "ComputeShader");
     ADD_COMPONENT(ExpSimulationComponent, "Exp");
+    ADD_COMPONENT(WaveController, "Slime");
 }
 }

@@ -4,8 +4,6 @@
 #include "math.hlsli"
 #include "player_attack_data.hlsli"
 
-#define MAX_EXP_NUM 1024
-
 cbuffer PhysicsData : register(b3)
 {
     float3 wall_min;
@@ -69,88 +67,72 @@ void compute(uint3 globalID : SV_DispatchThreadID)
 {
     int index = globalID.x;
 
-    slimes[index].velocity.y += gravity * deltatime;
-
-    float3 to_player = player_pos - slimes[index].position;
-    slimes[index].velocity += normalize(to_player) * slime_speed * deltatime;
-
-    if (length(slimes[index].position - player_pos) <= slime_radius * 2.0f && slime_count > index)
+    if (index < slime_count)
     {
-        slimes[index].hp = 0;
-        result.InterlockedAdd(12, 1);
-        return;
-    }
+        slimes[index].velocity.y += gravity * deltatime;
 
-    float3 to_slime = -to_player;
-    for (int i = 0; i < attack_data_count; i++)
-    {
-        if (CheckCollisionToPlayerAttack(to_slime, player_attacks[i]))
+        float3 to_player = player_pos - slimes[index].position;
+        slimes[index].velocity += normalize(to_player) * slime_speed * deltatime;
+
+        if (length(slimes[index].position - player_pos) <= slime_radius * 2.0f)
         {
-            slimes[index].hp -= player_attacks[i].damage;
-            for (int j = 0; j < MAX_EXP_NUM; ++j)
-            {
-                uint original_value;
-                InterlockedCompareExchange(exps[j].is_active, 0, 1, original_value);
+            slimes[index].hp = 0;
+            result.InterlockedAdd(12, 1);
+        }
+        else
+        {
+            float3 pos_correction = float3(0, 0, 0);
+            float3 vel_impulse = float3(0, 0, 0);
+            float min_dist = slime_radius * 2.0f;
 
-                if (original_value == 0)
+            //slimeとのあたり判定
+            for (int i = 0; i < slime_count; ++i)
+            {
+                if (index == i) continue;
+
+                float3 to_me = slimes[index].position - slimes[i].position;
+                float dist = length(to_me);
+
+                if (dist >= min_dist || dist <= 0.001f)
+                    continue;
+
+                float penetration = min_dist - dist;
+
+                float3 push_dir = to_me / dist;
+
+                push_dir.y += 0.3f;
+                push_dir = normalize(push_dir);
+
+                pos_correction += push_dir * penetration * 0.3f;
+
+                float3 relative_vel = slimes[index].velocity - slimes[i].velocity;
+                float vel_along_normal = dot(relative_vel, push_dir);
+
+                if (vel_along_normal < 0.0f)
                 {
-                    exps[j].pos = slimes[index].position;
-                    break;
+                    float bounce = -(1.0f + slime_restitution) * vel_along_normal;
+                    vel_impulse += push_dir * bounce * 0.5f;
                 }
             }
+
+            slimes[index].position += pos_correction;
+            slimes[index].velocity += vel_impulse;
+
+            slimes[index].velocity.xz *= 0.95f;
+
+            float current_speed = length(slimes[index].velocity);
+            if (current_speed > slime_max_speed)
+            {
+                slimes[index].velocity = normalize(slimes[index].velocity) * slime_max_speed;
+            }
+
+            //壁とのあたり判定
+            float3 next_pos = slimes[index].position + slimes[index].velocity * deltatime;
+
+            next_pos = max(next_pos, wall_min);
+            next_pos = min(next_pos, wall_max);
+
+            slimes[index].position = next_pos;
         }
     }
-
-    float3 pos_correction = float3(0, 0, 0);
-    float3 vel_impulse = float3(0, 0, 0);
-    float min_dist = slime_radius * 2.0f;
-
-    //slimeとのあたり判定
-    for (int i = 0; i < slime_count; ++i)
-    {
-        if (index == i || index > slime_count) continue;
-
-        float3 to_me = slimes[index].position - slimes[i].position;
-        float dist = length(to_me);
-
-        if (dist >= min_dist || dist <= 0.001f)
-            continue;
-
-        float penetration = min_dist - dist;
-
-        float3 push_dir = to_me / dist;
-
-        push_dir.y += 0.3f;
-        push_dir = normalize(push_dir);
-
-        pos_correction += push_dir * penetration * 0.3f;
-
-        float3 relative_vel = slimes[index].velocity - slimes[i].velocity;
-        float vel_along_normal = dot(relative_vel, push_dir);
-
-        if (vel_along_normal < 0.0f)
-        {
-            float bounce = -(1.0f + slime_restitution) * vel_along_normal;
-            vel_impulse += push_dir * bounce * 0.5f;
-        }
-    }
-
-    slimes[index].position += pos_correction;
-    slimes[index].velocity += vel_impulse;
-
-    slimes[index].velocity.xz *= 0.95f;
-
-    float current_speed = length(slimes[index].velocity);
-    if (current_speed > slime_max_speed)
-    {
-        slimes[index].velocity = normalize(slimes[index].velocity) * slime_max_speed;
-    }
-
-    //壁とのあたり判定
-    float3 next_pos = slimes[index].position + slimes[index].velocity * deltatime;
-
-    next_pos = max(next_pos, wall_min);
-    next_pos = min(next_pos, wall_max);
-
-    slimes[index].position = next_pos;
 }

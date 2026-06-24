@@ -1,0 +1,69 @@
+#include "engine.hlsli"
+#include "exp.hlsli"
+#include "slime.hlsli"
+#include "math.hlsli"
+#include "player_attack_data.hlsli"
+
+#define MAX_EXP_NUM 1024
+#define MAX_ATTACK_COUNT 10
+
+cbuffer PlayerPos : register(b2)
+{
+    float3 player_pos;
+}
+
+StructuredBuffer<PlayerAttackData> player_attacks : register(t3);
+
+RWStructuredBuffer<SlimeData> slimes : register(u1);
+RWStructuredBuffer<Exp> exps : register(u2);
+
+bool CheckCollisionToPlayerAttack(float3 to_slime, PlayerAttackData attack_data)
+{
+    to_slime.y = 0.0f;
+    attack_data.angle.y = 0.0f;
+
+    attack_data.angle = normalize(attack_data.angle);
+
+    float dist = length(to_slime);
+    if (dist > attack_data.size)
+        return false;
+
+    if (dist <= 3.0f)
+        return true;
+
+    float3 dir_to_slime = to_slime / dist;
+    float cos_angle = dot(attack_data.angle, dir_to_slime);
+
+    float cos_limit = cos(attack_data.arc * 0.5f);
+
+    if (cos_angle >= cos_limit)
+        return true;
+
+    return false;
+}
+
+[numthreads(64, 1, 1)]
+void compute(uint3 globalID : SV_DispatchThreadID)
+{
+    int index = globalID.x;
+
+    float3 to_slime = slimes[index].position - player_pos;
+    for (int i = 0; i < MAX_ATTACK_COUNT; ++i)
+    {
+        if (CheckCollisionToPlayerAttack(to_slime, player_attacks[i]))
+        {
+            slimes[index].hp = 0;                                                                                                                                                                  
+            for (int j = 0; j < MAX_EXP_NUM; ++j)
+            {
+                uint original_value;
+                InterlockedCompareExchange(exps[j].is_active, 0, 1, original_value);
+
+                if (original_value == 0)
+                {
+                    exps[j].pos = slimes[index].position;
+                    break;
+                }
+            }
+        }
+    }
+}

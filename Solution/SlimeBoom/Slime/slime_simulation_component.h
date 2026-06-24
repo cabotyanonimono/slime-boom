@@ -23,9 +23,12 @@ class SlimeSimulationComponent : public engine::Component
     int m_current_slime_count_ = 512;
     std::shared_ptr<engine::StructuredBuffer> m_slime_buffer_;
     std::shared_ptr<engine::ConstantBuffer> m_slime_count_buffer_;
-    engine::AssetPtr<engine::ComputeShaderComponent> m_slime_simulation_shader_;
+    engine::AssetPtr<engine::ComputeShaderComponent> m_slime_generator_compute_;
+    engine::AssetPtr<engine::ComputeShaderComponent> m_slime_physics_compute_;
+    engine::AssetPtr<engine::ComputeShaderComponent> m_closest_slime_compute_;
+    engine::AssetPtr<engine::ComputeShaderComponent> m_player_attack_compute_;
     engine::AssetPtr<engine::MeshRenderer> m_slime_renderer_;
-    
+
 public:
     void OnStart() override;
     void OnInspectorGui() override;
@@ -40,16 +43,17 @@ public:
             cereal::base_class<Component>(this)
         );
 
-        if (version >= 2)
+        if (version >= 3)
         {
             ar(
-                CEREAL_NVP(m_slime_simulation_shader_),
-                CEREAL_NVP(m_current_slime_count_),
-                CEREAL_NVP(m_slime_renderer_)
+                CEREAL_NVP(m_slime_generator_compute_),
+                CEREAL_NVP(m_slime_physics_compute_),
+                CEREAL_NVP(m_closest_slime_compute_),
+                CEREAL_NVP(m_player_attack_compute_)
             );
         }
     }
 };
 }
 
-CEREAL_CLASS_VERSION(SlimeBoom::SlimeSimulationComponent, 2)
+CEREAL_CLASS_VERSION(SlimeBoom::SlimeSimulationComponent, 3)

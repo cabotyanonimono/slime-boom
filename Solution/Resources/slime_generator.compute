@@ -24,7 +24,7 @@ void compute(uint3 globalID : SV_DispatchThreadID)
 {
     uint index = globalID.x;
 
-    if (slime_count > index && slimes[index].hp <= 0.0f)
+    if (index < slime_count && slimes[index].hp <= 0.0f)
     {
         float angle = rand(float2(index, time)) * PI2;
 
