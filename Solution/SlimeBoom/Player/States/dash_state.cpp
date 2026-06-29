@@ -48,11 +48,11 @@ void SlimeBoom::DashState::FixedUpdate()
     const auto dot = target_dir.Dot(current_dir);
     const auto angle_normalized = (dot + 1.0f) * 0.5f;
 
-    m_animator_->blend_weight = angle_normalized;
+    m_animator_->SetBlendWeight(angle_normalized);
     m_animator_->GetState(m_anim_name_)->speed = m_player_data_->speed;
 }
 
-SlimeBoom::DashState::DashState(std::string animation_name, const std::shared_ptr<PlayerData>& player_data,
+SlimeBoom::DashState::DashState(std::string animation_name, const std::shared_ptr<PlayerData> &player_data,
                                 const std::shared_ptr<Animator>& animator, const std::shared_ptr<engine::Transform>& camera_transform,
                                 const std::shared_ptr<engine::Transform>& rotation_transform)
     : m_anim_name_(std::move(animation_name)),

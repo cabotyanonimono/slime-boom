@@ -1,6 +1,6 @@
 ﻿#include "pch.h"
 #include "slash_ability.h"
-#include "ability_data.h"
+#include "ability_data/ability_data.h"
 
 namespace SlimeBoom
 {
@@ -10,7 +10,7 @@ void SlashAbility::UpdateCooldown(const float delta_time)
     engine::Logger::Log("X : %f, Y : %f, Z : %f", m_closest_slime_pos_.x, m_closest_slime_pos_.y, m_closest_slime_pos_.z);
     
     PlayerAttackData attack_data;
-    const auto slash_data = AbilityData::slash_ability_data;
+    const auto slash_data = AbilityData::GetSlashAbilityData();
     m_cooldown_ = slash_data.cooldown / m_player_data_->attack_speed;
     
     attack_data.arc = slash_data.arc;
@@ -26,7 +26,7 @@ SlashAbility::SlashAbility(const std::shared_ptr<ComputeResult>& compute_result,
                            const std::shared_ptr<engine::Transform>& player_transform,
                            const std::shared_ptr<PlayerDataPresenter>& player_data_presenter,
                            const std::shared_ptr<PlayerSwordController>& swc_controller)
-    : CooldownAbility(AbilityData::slash_ability_data.cooldown / player_data->attack_speed), m_compute_result_(compute_result), m_player_data_(player_data),
+    : CooldownAbility(AbilityData::GetSlashAbilityData().cooldown / player_data->attack_speed), m_compute_result_(compute_result), m_player_data_(player_data),
       m_player_transform_(player_transform), m_player_data_presenter_(player_data_presenter),
       m_sword_controller_(swc_controller)
 {

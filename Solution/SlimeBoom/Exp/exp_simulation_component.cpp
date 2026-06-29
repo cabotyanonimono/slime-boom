@@ -5,11 +5,6 @@
 #include "../compute_result.h"
 #include "Rendering/gpu_resource_manager.h"
 
-void SlimeBoom::ExpSimulationComponent::OnInspectorGui()
-{
-    engine::Gui::PropertyField("Compute Result", m_compute_result_);
-}
-
 void SlimeBoom::ExpSimulationComponent::OnStart()
 {
     m_exp_buffer_ = std::make_shared<engine::StructuredBuffer>(sizeof(ExpData), kMaxExpBufferSize);
@@ -22,9 +17,14 @@ void SlimeBoom::ExpSimulationComponent::OnStart()
     engine::GpuResourceManager::SetGlobalBuffer("exp_count", m_exp_count_buffer_);
 }
 
-void SlimeBoom::ExpSimulationComponent::OnUpdate()
+int SlimeBoom::ExpSimulationComponent::GetDeltaExpCount()
 {
-    engine::Logger::Log("Exp %d", *static_cast<int*>(m_compute_result_->GetValue("exp")));
+    return m_delta_exp_count_;
+}
+
+int SlimeBoom::ExpSimulationComponent::GetExpCount()
+{
+    return m_exp_count_;
 }
 
 CEREAL_REGISTER_TYPE(SlimeBoom::ExpSimulationComponent)

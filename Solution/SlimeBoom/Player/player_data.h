@@ -5,13 +5,16 @@ namespace SlimeBoom
 {
 struct PlayerData
 {
+    float max_hp;
     float hp;
     float speed;
     float attack_power;
     float attack_speed;
+    float exp;
+    uint32_t level;
 
     template <class Archive>
-    void serialize(Archive &ar, const uint32_t version)
+    void serialize(Archive& ar, const uint32_t version)
     {
         ar(
             CEREAL_NVP(hp),
@@ -25,8 +28,16 @@ struct PlayerData
                 CEREAL_NVP(attack_power)
             );
         }
+
+        if (version >= 3)
+        {
+            ar(
+                CEREAL_NVP(exp),
+                CEREAL_NVP(level)
+            );
+        }
     }
 };
 }
 
-CEREAL_CLASS_VERSION(SlimeBoom::PlayerData, 2)
+CEREAL_CLASS_VERSION(SlimeBoom::PlayerData, 3)

@@ -23,7 +23,7 @@ class DashState : public State
     void FixedUpdate() override;
 
 public:
-    DashState(std::string animation_name, const std::shared_ptr<PlayerData>& player_data,
+    DashState(std::string animation_name, const std::shared_ptr<PlayerData> &player_data,
               const std::shared_ptr<Animator>& animator, const std::shared_ptr<engine::Transform>& camera_transform,
               const std::shared_ptr<engine::Transform>& rotation_transform);
 };

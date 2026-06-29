@@ -30,7 +30,7 @@ void StateMachine::CreateTransition(const std::shared_ptr<State>& base_state,
     const std::shared_ptr<ConditionBase>& condition, const std::shared_ptr<State>& next_state)
 {
     Transition transition;
-    transition.conditions.emplace_back(condition);
+    transition.AddCondition(condition);
 
     CreateTransition(base_state, transition, next_state);
 }
@@ -45,10 +45,7 @@ void StateMachine::CreateTransition(const std::shared_ptr<State>& base_state, co
         return;
     }
 
-    for (const auto& condition : transition.conditions)
-    {
-        condition->m_state_machine_ = shared_from_this();
-    }
+    transition.SetStateMachine(shared_from_this());
     next_state->m_state_machine_ = shared_from_this();
     m_states_.emplace_back(next_state);
     base_state->AddTransition(std::move(transition), next_state);

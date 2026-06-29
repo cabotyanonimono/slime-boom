@@ -14,7 +14,7 @@ class ComputeResult : public engine::Component
     bool m_is_first_frame_ = true;
     std::shared_ptr<engine::ByteAddressBuffer> m_compute_result_buffer_;
     size_t m_listener_token_ = -1;
-    std::array<uint32_t, 5> m_result_ = {};
+    std::array<uint32_t, ComputeResultTypes::kOffset> m_result_ = {};
     
 public:
     void OnStart() override;

@@ -11,19 +11,22 @@ class ExpSimulationComponent : public engine::Component
 
     std::shared_ptr<engine::StructuredBuffer> m_exp_buffer_;
     std::shared_ptr<engine::StructuredBuffer> m_exp_count_buffer_;
-    engine::AssetPtr<ComputeResult> m_compute_result_;
+    
+
+    int m_exp_count_ = 0;
+    int m_delta_exp_count_ = 0;
 
 public:
-    void OnInspectorGui() override;
     void OnStart() override;
-    void OnUpdate() override;
+
+    int GetDeltaExpCount();
+    int GetExpCount();
 
     template <class Archive>
     void serialize(Archive& ar, const uint32_t version)
     {
         ar(
-            cereal::base_class<Component>(this),
-            CEREAL_NVP(m_compute_result_)
+            cereal::base_class<Component>(this)
         );
     }
 };
