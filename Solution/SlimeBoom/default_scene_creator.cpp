@@ -11,7 +11,6 @@ namespace SlimeBoom
 void DefaultSceneCreator::CreateDefaultScene()
 {
     engine::SceneManager::CreateScene("Default Scene");
-    auto go = engine::ModelImporter::LoadModelFromFBX("Slime/Slime.fbx");
 
     const auto camera = engine::Object::Instantiate<engine::GameObject>("Camera");
     camera->AddComponent<engine::CameraComponent>();

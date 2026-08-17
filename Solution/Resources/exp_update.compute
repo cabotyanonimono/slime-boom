@@ -8,6 +8,16 @@ cbuffer PlayerPos : register(b3)
     float3 player_pos;
 }
 
+cbuffer TimeReachPlayer : register(b4)
+{
+    float time_reach_player;
+}
+
+cbuffer AcquisitionRange : register(b5)
+{
+    float acquisition_range;
+}
+
 RWStructuredBuffer<Exp> exps : register(u1);
 RWByteAddressBuffer result : register(u2);
 RWStructuredBuffer<int> exp_count : register(u3);
@@ -19,10 +29,20 @@ void compute(uint3 globalID : SV_DispatchThreadID)
     if (exps[index].is_active == true)
     {
         float3 to_player = player_pos - exps[index].pos;
-        exps[index].pos += to_player * deltatime;
+
+        if(length(to_player) > acquisition_range)
+        {
+            exps[index].time = 0.0f;
+            return;
+        }
+
+        exps[index].time += deltatime;
+        float player_pos_ratio = exps[index].time / time_reach_player;
+        exps[index].pos = lerp(exps[index].pos, player_pos, player_pos_ratio);
 
         if (length(to_player) < 1.0f)
         {
+            exps[index].time = 0.0f;
             exps[index].is_active = 0;
             result.InterlockedAdd(16, 1);
         }

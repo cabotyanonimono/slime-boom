@@ -8,14 +8,16 @@ struct NameSizePair
 
 struct ComputeResultTypes
 {
-    static constexpr auto kSize = 4;
-    static constexpr auto kOffset = 5;
+    static constexpr auto kSize = 5;
+    static constexpr auto kOffset = 7;
     static constexpr std::array<NameSizePair, kSize> kResultTypeOffsets =
     {
         {
             {"closest_slime_pos", 3},
             {"taken_damage", 1},
-            {"exp", 1}
+            {"exp", 1},
+            {"eliminate_slime_count", 1},
+            {"deal_damage_count", 1}
         }
     };
 

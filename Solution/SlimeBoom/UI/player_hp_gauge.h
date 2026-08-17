@@ -3,12 +3,14 @@
 #include "ui_data_provider.h"
 #include "Asset/asset_ptr.h"
 #include "Components/component.h"
+#include "Components/text_renderer.h"
 
 namespace SlimeBoom
 {
 class PlayerHpGauge final : public engine::Component
 {
     engine::AssetPtr<Gauge> m_gauge_;
+    engine::AssetPtr<engine::TextRenderer> m_hp_text_;
     engine::AssetPtr<UiDataProvider> m_ui_data_provider_;
 
 public:
@@ -29,8 +31,15 @@ public:
                 CEREAL_NVP(m_ui_data_provider_)
             );
         }
+
+        if (version >= 3)
+        {
+            ar(
+                CEREAL_NVP(m_hp_text_)
+            );
+        }
     }
 };
 }
 
-CEREAL_CLASS_VERSION(SlimeBoom::PlayerHpGauge, 2)
+CEREAL_CLASS_VERSION(SlimeBoom::PlayerHpGauge, 3)

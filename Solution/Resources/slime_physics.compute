@@ -69,14 +69,16 @@ void compute(uint3 globalID : SV_DispatchThreadID)
 
     if (index < slime_count)
     {
-        slimes[index].velocity.y += gravity * deltatime;
+        slimes[index].damage_color_timer -= deltatime;
+        slimes[index].velocity.y += gravity;
 
         float3 to_player = player_pos - slimes[index].position;
-        slimes[index].velocity += normalize(to_player) * slime_speed * deltatime;
+
+        float speed = slimes[index].slime_type == SLIME_TYPE::SPEED ? slime_speed * 1.5f : slime_speed;
+        slimes[index].velocity += normalize(to_player) * speed;
 
         if (length(slimes[index].position - player_pos) <= slime_radius * 2.0f)
         {
-            slimes[index].hp = 0;
             result.InterlockedAdd(12, 1);
         }
         else
@@ -100,7 +102,7 @@ void compute(uint3 globalID : SV_DispatchThreadID)
 
                 float3 push_dir = to_me / dist;
 
-                push_dir.y += 0.3f;
+                push_dir.y += 0.4f;
                 push_dir = normalize(push_dir);
 
                 pos_correction += push_dir * penetration * 0.3f;

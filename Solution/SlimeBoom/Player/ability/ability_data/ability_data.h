@@ -1,34 +1,33 @@
 ﻿#pragma once
-#include "slash_ability_data.h"
-#include "Components/component.h"
 
 namespace SlimeBoom
 {
-class AbilityData : public engine::Component
+struct AbilityData : engine::Inspectable
 {
-    inline static SlashAbilityData m_slash_ability_data_;
+    float value;
+    float count;
+    float arc;
+    float size;
+    float duration;
+    float cooldown;
+    float knockback;
 
-public:
     void OnInspectorGui() override;
-
-    static SlashAbilityData GetSlashAbilityData();
-    static void SetSlashAbilityData(const SlashAbilityData& ability_data);
-
-    template <class Archive>
+    
+    template<typename Archive>
     void serialize(Archive& ar, const uint32_t version)
     {
         ar(
-            cereal::base_class<Component>(this)
+            CEREAL_NVP(value),
+            CEREAL_NVP(count),
+            CEREAL_NVP(arc),
+            CEREAL_NVP(size),
+            CEREAL_NVP(duration),
+            CEREAL_NVP(cooldown),
+            CEREAL_NVP(knockback)
         );
-
-        if (version >= 2)
-        {
-            ar(
-                CEREAL_NVP(m_slash_ability_data_)
-            );
-        }
     }
 };
 }
 
-CEREAL_CLASS_VERSION(SlimeBoom::AbilityData, 2)
+CEREAL_CLASS_VERSION(SlimeBoom::AbilityData, 1)

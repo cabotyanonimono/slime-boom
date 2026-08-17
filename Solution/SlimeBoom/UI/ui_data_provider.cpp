@@ -5,13 +5,14 @@ namespace SlimeBoom
 {
 void UiDataProvider::OnInspectorGui()
 {
-    engine::Gui::PropertyField("Player Component", m_player_component_);
+    engine::Gui::PropertyField("Player Data", m_player_data_);
     engine::Gui::PropertyField("Level Up Component", m_level_up_controller_);
+    engine::Gui::PropertyField("Card Controller", m_card_controller_);
 }
 
 const PlayerData& UiDataProvider::GetPlayerData() const
 {
-    return m_player_component_->GetPlayerData();
+    return m_player_data_->GetPlayerData();
 }
 
 int UiDataProvider::GetCurrentLevelExp() const
@@ -22,6 +23,11 @@ int UiDataProvider::GetCurrentLevelExp() const
 int UiDataProvider::GetRequiredExp() const
 {
     return m_level_up_controller_->GetRequiredExp();
+}
+
+std::array<std::shared_ptr<CardBase>, CardController::kCardCount> UiDataProvider::GetCards() const
+{
+    return m_card_controller_->GetCards();
 }
 }
 

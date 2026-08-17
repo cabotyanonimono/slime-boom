@@ -1,6 +1,10 @@
 ﻿#include "pch.h"
 #include "ability_processer.h"
 
+#include "engine_time.h"
+
+namespace SlimeBoom
+{
 void AbilityProcesser::Attach(const std::shared_ptr<IAbility>& ability)
 {
     ability->OnAttach();
@@ -13,17 +17,17 @@ void AbilityProcesser::Detach(const std::shared_ptr<IAbility>& ability)
     m_abilities_.erase(ability);
 }
 
-void AbilityProcesser::Update(const float delta_time) const
+void AbilityProcesser::OnUpdate()
 {
-    for (auto &ability : m_abilities_)
+    for (auto& ability : m_abilities_)
     {
-        ability->Update(delta_time);
+        ability->Update(engine::Time::GetDeltaTime());
     }
 }
 
-void AbilityProcesser::FixedUpdate() const
+void AbilityProcesser::OnFixedUpdate()
 {
-    for (auto &ability : m_abilities_)
+    for (auto& ability : m_abilities_)
     {
         ability->FixedUpdate();
     }
@@ -33,3 +37,6 @@ std::unordered_set<std::shared_ptr<IAbility>> AbilityProcesser::GetAbilities()
 {
     return m_abilities_;
 }
+}
+
+CEREAL_REGISTER_TYPE(SlimeBoom::AbilityProcesser)

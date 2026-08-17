@@ -18,6 +18,16 @@ void SlimeBoom::WaveController::OnInspectorGui()
             int num_slimes_int = m_wave_data_[i].num_slimes;
             if (engine::Gui::PropertyField("NumSlimes", num_slimes_int))
                 m_wave_data_[i].num_slimes = num_slimes_int;
+            
+            if (ImGui::CollapsingHeader("Spawn Rate"))
+            {
+                for (int j = 0; j < SlimeTypes::Count; ++j)
+                {
+                    ImGui::PushID(j);
+                    engine::Gui::PropertyField(SlimeTypes::ToString(j).c_str(), m_wave_data_[i].spawn_rates[j]);
+                    ImGui::PopID();
+                }
+            }
         }
         ImGui::PopID();
     }
@@ -31,6 +41,7 @@ void SlimeBoom::WaveController::OnInspectorGui()
 void SlimeBoom::WaveController::OnStart()
 {
     m_slime_simulation_component_->SetCurrentSlimesCount(m_wave_data_[m_current_wave_index_].num_slimes);
+    m_slime_simulation_component_->SetSpawnRate(m_wave_data_[m_current_wave_index_].spawn_rates);
 }
 
 void SlimeBoom::WaveController::OnUpdate()
@@ -45,11 +56,11 @@ void SlimeBoom::WaveController::OnUpdate()
         ++m_current_wave_index_;
         if (m_current_wave_index_ >= m_wave_data_.size())
         {
-            //TODO:ゲームクリア！の処理を入れましょう}
             return;
         }
 
         m_slime_simulation_component_->SetCurrentSlimesCount(m_wave_data_[m_current_wave_index_].num_slimes);
+        m_slime_simulation_component_->SetSpawnRate(m_wave_data_[m_current_wave_index_].spawn_rates);
     }
 }
 

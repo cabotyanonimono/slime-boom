@@ -10,13 +10,13 @@ class PlayerDamageDispatcher : public engine::Component
     engine::AssetPtr<ComputeResult> m_compute_result_;
     int m_current_damage_ = 0;
 
-    engine::Event<int> m_on_take_damage_;
+    engine::Event<float> m_on_take_damage_;
 
 public:
     void OnInspectorGui() override;
     void OnUpdate() override;
 
-    size_t AddOnTakeDamageListener(const std::function<void(int)>& callback);
+    size_t AddOnTakeDamageListener(const std::function<void(float)>& callback);
     void RemoveOnTakeDamageListener(size_t token);
 
     template <class Archive>

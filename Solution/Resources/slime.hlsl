@@ -3,6 +3,11 @@
 #include "slime.hlsli"
 #include "math.hlsli"
 
+cbuffer DamageColor : register(b5)
+{
+    float4 damage_color;
+}
+
 StructuredBuffer<SlimeData> slimes : register(t4);
 Texture2D MainTex : register (t5);
 
@@ -13,6 +18,7 @@ struct VSOutput
     float4 color : COLOR;
     float2 uv : TEXCOORD0;
     float3 worldpos : TEXCOORD1;
+    uint instance_id : Instance_ID;
 };
 
 VSOutput vrt(VSInput input, uint instance_id : SV_InstanceID)
@@ -24,8 +30,12 @@ VSOutput vrt(VSInput input, uint instance_id : SV_InstanceID)
 
     local_pos.xyz = mul(EulerToRotationMatrix(slimes[instance_id].rotation), local_pos.xyz);
 
+    if(slimes[instance_id].slime_type == SLIME_TYPE::TANK)
+    {
+        local_pos.xyz *= 1.5f;
+    }
     local_pos.xyz += slimes[instance_id].position;
-    
+
     float4 world_pos = mul(World, local_pos);
     float4 proj_pos = mul(Proj, mul(View, world_pos));
 
@@ -36,6 +46,7 @@ VSOutput vrt(VSInput input, uint instance_id : SV_InstanceID)
     output.color = input.color;
     output.uv = input.uv;
     output.worldpos = world_pos.xyz;
+    output.instance_id = instance_id;
     return output;
 }
 
@@ -53,33 +64,22 @@ float4 pix(VSOutput input) : SV_Target
     float4 viewPos = mul(View, float4(input.worldpos, 1.0));
     float depth = abs(viewPos.z);
 
-    int cascade_index = 0;
-    for (int i = 0; i < SHADOW_CASCADE_COUNT; ++i)
-    {
-        if (depth < cascade_slices[i])
-            cascade_index = 0;
-    }
+    brightness = CalcAllShadow(depth, normalize(input.normal), input.worldpos);
 
-    int current_shadowmap_count = 0;
-    int itr = current_shadowmap_count * SHADOW_CASCADE_COUNT + cascade_index;
-    for (int i = 0; i < light_count; ++i)
-    {
-        switch (Lights[i].type)
-        {
-        case 0:
-            brightness += CalcDirectionalShadow(Lights[i],N,input.worldpos,current_shadowmap_count);
-            current_shadowmap_count += 3;
-            break;
-        case 1:
-            brightness += CalcSpotShadow(Lights[i],N,input.worldpos,current_shadowmap_count);
-            current_shadowmap_count += 1;
-            break;
-        default:
-            break;
-        }
-    }
+    float4 main_color;
 
-    float4 main_color = MainTex.Sample(smp, input.uv);
+    if (slimes[input.instance_id].slime_type == SLIME_TYPE::NORMAL)
+        main_color = slimes[input.instance_id].damage_color_timer <= 0.0f
+                         ? MainTex.Sample(smp, input.uv)
+                         : damage_color;
+    else if(slimes[input.instance_id].slime_type == SLIME_TYPE::SPEED)
+        main_color = slimes[input.instance_id].damage_color_timer <= 0.0f
+                         ? float4(1.0f, 1.0f, 0.0f, 1.0f)
+                         : damage_color;
+    else if(slimes[input.instance_id].slime_type == SLIME_TYPE::TANK)
+        main_color = slimes[input.instance_id].damage_color_timer <= 0.0f
+                                 ? float4(0.5f, 0.0f, 0.5f, 1.0f)
+                                 : damage_color;
 
     return float4(main_color.rgb * brightness, main_color.a);
 }

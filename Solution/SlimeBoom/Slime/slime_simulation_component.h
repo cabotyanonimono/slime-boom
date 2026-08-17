@@ -1,4 +1,6 @@
 ﻿#pragma once
+#include "slime_take_damage_event_component.h"
+#include "slime_types.h"
 #include "Components/component.h"
 #include "Components/compute_shader_component.h"
 #include "Components/mesh_renderer.h"
@@ -15,6 +17,7 @@ struct SlimeData
     Vector3 velocity;
     Vector3 angular_velocity;
     uint32_t hp;
+    float damage_color_timer;
 };
 
 class SlimeSimulationComponent : public engine::Component
@@ -28,6 +31,7 @@ class SlimeSimulationComponent : public engine::Component
     engine::AssetPtr<engine::ComputeShaderComponent> m_closest_slime_compute_;
     engine::AssetPtr<engine::ComputeShaderComponent> m_player_attack_compute_;
     engine::AssetPtr<engine::MeshRenderer> m_slime_renderer_;
+    engine::AssetPtr<SlimeTakeDamageEventComponent> m_slime_take_damage_event_component_;
 
 public:
     void OnStart() override;
@@ -35,6 +39,7 @@ public:
     void OnUpdate() override;
     
     void SetCurrentSlimesCount(int count);
+    void SetSpawnRate(std::array<float, SlimeTypes::Count> rates) const;
 
     template <class Archive>
     void serialize(Archive& ar, const uint32_t version)
@@ -52,8 +57,22 @@ public:
                 CEREAL_NVP(m_player_attack_compute_)
             );
         }
+
+        if (version >= 4)
+        {
+            ar(
+                CEREAL_NVP(m_slime_renderer_)
+            );
+        }
+
+        if (version >= 5)
+        {
+            ar(
+                CEREAL_NVP(m_slime_take_damage_event_component_)
+            );
+        }
     }
 };
 }
 
-CEREAL_CLASS_VERSION(SlimeBoom::SlimeSimulationComponent, 3)
+CEREAL_CLASS_VERSION(SlimeBoom::SlimeSimulationComponent, 5)

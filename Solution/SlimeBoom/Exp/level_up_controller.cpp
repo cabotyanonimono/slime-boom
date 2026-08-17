@@ -15,6 +15,7 @@ void SlimeBoom::LevelUpController::OnInspectorGui()
     engine::Gui::PropertyField("Base Required Exp", m_base_required_exp_);
     engine::Gui::PropertyField("Required Exp Up Rate", m_required_exp_up_rate_);
     engine::Gui::PropertyField("Compute Result", m_compute_result_);
+    engine::Gui::PropertyField("Player Data", m_player_data_);
 }
 
 void SlimeBoom::LevelUpController::OnStart()
@@ -28,7 +29,7 @@ void SlimeBoom::LevelUpController::OnUpdate()
     const auto delta_exp = exp - m_current_exp_;
     
     m_current_exp_ = exp;
-    m_current_level_exp_ += delta_exp;
+    m_current_level_exp_ += delta_exp * m_player_data_->GetExpMultiplier();
 
     if (m_current_level_exp_ >= m_required_exp_)
     {

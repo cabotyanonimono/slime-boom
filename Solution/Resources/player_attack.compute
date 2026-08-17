@@ -12,10 +12,21 @@ cbuffer PlayerPos : register(b2)
     float3 player_pos;
 }
 
+cbuffer SlimeCount : register(b3)
+{
+    int slime_count;
+}
+
+cbuffer DamageColorTime : register(b4)
+{
+    float damage_color_time;
+}
+
 StructuredBuffer<PlayerAttackData> player_attacks : register(t3);
 
 RWStructuredBuffer<SlimeData> slimes : register(u1);
 RWStructuredBuffer<Exp> exps : register(u2);
+RWByteAddressBuffer result : register(u3);
 
 bool CheckCollisionToPlayerAttack(float3 to_slime, PlayerAttackData attack_data)
 {
@@ -47,21 +58,34 @@ void compute(uint3 globalID : SV_DispatchThreadID)
 {
     int index = globalID.x;
 
+    if (index >= slime_count)
+        return;
+    
     float3 to_slime = slimes[index].position - player_pos;
     for (int i = 0; i < MAX_ATTACK_COUNT; ++i)
     {
         if (CheckCollisionToPlayerAttack(to_slime, player_attacks[i]))
         {
-            slimes[index].hp = 0;                                                                                                                                                                  
-            for (int j = 0; j < MAX_EXP_NUM; ++j)
+            slimes[index].hp -= player_attacks[i].damage;
+            slimes[index].damage_color_timer = damage_color_time;
+			
+            float3 knockback =  float3(to_slime.x, 0.0f, to_slime.z) * player_attacks[i].power;
+            slimes[index].velocity += knockback;
+            result.InterlockedAdd(20, 1);
+            result.InterlockedAdd(24, 1);
+            
+            if (slimes[index].hp <= 0)
             {
-                uint original_value;
-                InterlockedCompareExchange(exps[j].is_active, 0, 1, original_value);
-
-                if (original_value == 0)
+                for (int j = 0; j < MAX_EXP_NUM; ++j)
                 {
-                    exps[j].pos = slimes[index].position;
-                    break;
+                    uint original_value;
+                    InterlockedCompareExchange(exps[j].is_active, 0, 1, original_value);
+
+                    if (original_value == 0)
+                    {
+                        exps[j].pos = float3(slimes[index].position.x, 0.0f, slimes[index].position.z);
+                        break;
+                    }
                 }
             }
         }

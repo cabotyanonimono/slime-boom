@@ -2,17 +2,19 @@
 #include "dash_state.h"
 #include "engine_time.h"
 #include "input.h"
+#include "../../Sound/sound_manager_component.h"
 #include "../../Utils/math_util.h"
 
 void SlimeBoom::DashState::OnEnter()
 {
+    SoundManagerComponent::Play(kSoundTypes::kPlayerWalk);
     auto current_anim_name = m_animator_->GetCurrentAnimName();
     if (current_anim_name != "")
     {
         m_animator_->BlendAnim(current_anim_name, m_anim_name_, 1.0f);
         return;
     }
-
+    
     m_animator_->PlayAnim(m_anim_name_);
 }
 
@@ -33,7 +35,7 @@ void SlimeBoom::DashState::FixedUpdate()
 {
     if (m_move_direction_.Length() == 0)
         return;
-
+    
     m_move_direction_.Normalize();
     auto target_dir = Vector3::Transform(m_move_direction_, m_camera_transform_->Rotation());
     target_dir.y = 0;
@@ -49,10 +51,15 @@ void SlimeBoom::DashState::FixedUpdate()
     const auto angle_normalized = (dot + 1.0f) * 0.5f;
 
     m_animator_->SetBlendWeight(angle_normalized);
-    m_animator_->GetState(m_anim_name_)->speed = m_player_data_->speed;
+    m_animator_->GetState(m_anim_name_)->speed = m_player_data_->GetSpeed();
 }
 
-SlimeBoom::DashState::DashState(std::string animation_name, const std::shared_ptr<PlayerData> &player_data,
+void SlimeBoom::DashState::OnExit()
+{
+    SoundManagerComponent::Stop(kSoundTypes::kPlayerWalk);
+}
+
+SlimeBoom::DashState::DashState(std::string animation_name, const std::shared_ptr<PlayerDataComponent> &player_data,
                                 const std::shared_ptr<Animator>& animator, const std::shared_ptr<engine::Transform>& camera_transform,
                                 const std::shared_ptr<engine::Transform>& rotation_transform)
     : m_anim_name_(std::move(animation_name)),

@@ -1,5 +1,7 @@
 ﻿#include "pch.h"
 #include "player_sword_controller.h"
+
+#include "engine.h"
 #include "engine_time.h"
 #include "gui.h"
 #include "Rendering/render_pipeline.h"
@@ -14,6 +16,10 @@ void PlayerSwordController::OnInspectorGui()
     engine::Gui::PropertyField("Angle", m_angle_);
     engine::Gui::PropertyField("Offset", m_offset_);
     engine::Gui::PropertyField("Duration", m_duration_);
+}
+
+void PlayerSwordController::OnStart()
+{
 }
 
 void PlayerSwordController::OnUpdate()
@@ -47,7 +53,8 @@ void PlayerSwordController::Play(const Vector3 attack_pos, const float offset)
     
     m_sword_transform_->SetLocalPosition(Vector3(0,0, m_offset_));
     m_sword_parent_transform_->SetPosition(m_player_transform_->Position());
-    
+
+    m_sword_transform_->GameObject()->SetActive(true);
     GameObject()->SetActive(true);
 }
 }

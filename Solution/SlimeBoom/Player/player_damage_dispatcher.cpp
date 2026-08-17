@@ -1,6 +1,8 @@
 ﻿#include "pch.h"
 #include "player_damage_dispatcher.h"
 
+#include "engine_time.h"
+
 void SlimeBoom::PlayerDamageDispatcher::OnInspectorGui()
 {
     engine::Gui::PropertyField("Compute Result", m_compute_result_);
@@ -9,13 +11,16 @@ void SlimeBoom::PlayerDamageDispatcher::OnInspectorGui()
 void SlimeBoom::PlayerDamageDispatcher::OnUpdate()
 {
     const auto damage = *static_cast<int*>(m_compute_result_->GetValue("taken_damage"));
-    const auto delta_damage = damage - m_current_damage_;
+    const auto delta_damage = static_cast<float>(damage - m_current_damage_) * engine::Time::GetDeltaTime();
     m_current_damage_ = damage;
 
+    if (engine::Time::Get()->TimeScale() <= 0.0f)
+        return;
+    
     m_on_take_damage_.Invoke(delta_damage);
 }
 
-size_t SlimeBoom::PlayerDamageDispatcher::AddOnTakeDamageListener(const std::function<void(int)>& callback)
+size_t SlimeBoom::PlayerDamageDispatcher::AddOnTakeDamageListener(const std::function<void(float)>& callback)
 {
     return m_on_take_damage_.AddListener(callback);
 }

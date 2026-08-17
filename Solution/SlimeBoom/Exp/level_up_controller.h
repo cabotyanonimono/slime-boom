@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "event.h"
 #include "../compute_result.h"
+#include "../Player/player_data_component.h"
 #include "Asset/asset_ptr.h"
 
 namespace SlimeBoom
@@ -8,6 +9,7 @@ namespace SlimeBoom
 class LevelUpController : public engine::Component
 {
     engine::AssetPtr<ComputeResult> m_compute_result_;
+    engine::AssetPtr<PlayerDataComponent> m_player_data_;
     int m_current_exp_ = 0;
     int m_current_level_exp_ = 0;
     int m_current_level_ = 0;
@@ -47,8 +49,30 @@ public:
                 CEREAL_NVP(m_compute_result_)
             );
         }
+
+        if (version >= 3)
+        {
+            ar(
+                CEREAL_NVP(m_current_level_exp_)
+            );
+        }
+
+        if (version >= 4)
+        {
+            ar(
+                CEREAL_NVP(m_player_data_)
+            );
+        }
+
+        if (version >= 5)
+        {
+            ar(
+                CEREAL_NVP(m_base_required_exp_),
+                CEREAL_NVP(m_required_exp_up_rate_)
+            );
+        }
     }
 };
 }
 
-CEREAL_CLASS_VERSION(SlimeBoom::LevelUpController, 2)
+CEREAL_CLASS_VERSION(SlimeBoom::LevelUpController, 5)

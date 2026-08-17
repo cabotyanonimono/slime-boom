@@ -58,31 +58,7 @@ float4 pix(VSOutput input) : SV_Target
     float4 viewPos = mul(View, float4(input.worldpos, 1.0));
     float depth = abs(viewPos.z);
 
-    int cascade_index = 0;
-    for (int i = 0; i < SHADOW_CASCADE_COUNT; ++i)
-    {
-        if (depth < cascade_slices[i])
-            cascade_index = 0;
-    }
-
-    int current_shadowmap_count = 0;
-    int itr = current_shadowmap_count * SHADOW_CASCADE_COUNT + cascade_index;
-    for (int i = 0; i < light_count; ++i)
-    {
-        switch (Lights[i].type)
-        {
-        case 0:
-            brightness += CalcDirectionalShadow(Lights[i],N,input.worldpos,current_shadowmap_count);
-            current_shadowmap_count += 3;
-            break;
-        case 1:
-            brightness += CalcSpotShadow(Lights[i],N,input.worldpos,current_shadowmap_count);
-            current_shadowmap_count += 1;
-            break;
-        default:
-            break;
-        }
-    }
+    brightness = CalcAllShadow(depth, normalize(input.normal), input.worldpos);
 
     float4 main_color = MainTex.Sample(smp, input.uv);
 

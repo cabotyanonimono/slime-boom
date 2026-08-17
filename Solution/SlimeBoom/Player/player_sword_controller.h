@@ -2,6 +2,7 @@
 #include "Asset/asset_ptr.h"
 #include "Components/component.h"
 #include "Components/transform.h"
+#include "Coroutine/task.h"
 #include "Rendering/CabotEngine/Graphics/StructuredBuffer.h"
 
 namespace SlimeBoom
@@ -19,9 +20,10 @@ class PlayerSwordController : public engine::Component
     engine::AssetPtr<engine::Transform> m_sword_transform_;
     engine::AssetPtr<engine::Transform> m_sword_parent_transform_;
     engine::AssetPtr<engine::Transform> m_player_transform_;
-
+    
 public:
     void OnInspectorGui() override;
+    void OnStart() override;
     void OnUpdate() override;
 
     void Play(Vector3 attack_pos, float offset);

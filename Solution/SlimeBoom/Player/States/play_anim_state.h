@@ -9,7 +9,8 @@ class PlayAnimState : public State
     std::shared_ptr<Animator> m_animator_;
     std::string m_anim_name_;
     float m_blend_speed_;
-    
+
+protected:
     void OnEnter() override;
     void Update() override;
     

@@ -10,7 +10,9 @@ struct PlayerData
     float speed;
     float attack_power;
     float attack_speed;
-    float exp;
+    float avoid_time;
+    float avoid_speed;
+    float exp_multiplier;
     uint32_t level;
 
     template <class Archive>
@@ -32,12 +34,26 @@ struct PlayerData
         if (version >= 3)
         {
             ar(
-                CEREAL_NVP(exp),
                 CEREAL_NVP(level)
+            );
+        }
+
+        if (version >= 4)
+        {
+            ar(
+                CEREAL_NVP(avoid_time),
+                CEREAL_NVP(avoid_speed)
+            );
+        }
+
+        if (version >= 5)
+        {
+            ar(
+                CEREAL_NVP(exp_multiplier)
             );
         }
     }
 };
 }
 
-CEREAL_CLASS_VERSION(SlimeBoom::PlayerData, 3)
+CEREAL_CLASS_VERSION(SlimeBoom::PlayerData, 5)

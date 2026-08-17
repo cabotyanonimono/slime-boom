@@ -14,7 +14,7 @@ void UIButton::OnAwake()
     m_button_state_ = kButtonState::kNormal;
     if (auto image = m_image_.CastedLock())
     {
-        auto texture_buffer_data = image->shared_material.CastedLock()->shared_material_block->GetTextureBufferData("Albedo");
+        auto texture_buffer_data = image->shared_material.CastedLock()->shared_material_block->GetTextureBufferData("_MainTex");
         texture_buffer_data->SetTexture(m_normal_texture_);
     }
 }
@@ -34,9 +34,14 @@ void UIButton::OnUpdate()
 
     UpdateMousePosition(engine::Input::MousePosition());
 
-    m_rect_ = m_image_.CastedLock()->GameObject()->GetComponent<engine::RectTransform>()->CalculateScreenRect();
+    m_rect_ = m_image_.CastedLock()->GameObject()->GetComponent<engine::Renderer2D>()->NormalizedRect();
     m_rect_.pos.y = -m_rect_.pos.y;
-    m_rect_.pos += Vector2(static_cast<float>(engine::Application::WindowWidth()), static_cast<float>(engine::Application::WindowHeight())) * 0.5f;
+
+    const auto screen_size = Vector2(static_cast<float>(engine::Application::WindowWidth()), static_cast<float>(engine::Application::WindowHeight()));
+    m_rect_.pos *= screen_size * 0.5f;
+    m_rect_.size *= screen_size;
+
+    m_rect_.pos += screen_size * 0.5f;
 }
 
 size_t UIButton::AddEventListener(const std::function<void()>& callback)
@@ -91,19 +96,19 @@ void UIButton::SetIsSelected(const bool selected)
     if (selected && m_button_state_ == kButtonState::kNormal)
     {
         m_button_state_ = kButtonState::kSelect;
-        auto texture_buffer_data = m_image_->shared_material.CastedLock()->shared_material_block->GetTextureBufferData("Albedo");
+        auto texture_buffer_data = m_image_->shared_material.CastedLock()->shared_material_block->GetTextureBufferData("_MainTex");
         texture_buffer_data->SetTexture(m_selected_texture_);
     }
     else if (!selected && m_button_state_ == kButtonState::kSelect)
     {
         m_button_state_ = kButtonState::kNormal;
-        auto texture_buffer_data = m_image_->shared_material.CastedLock()->shared_material_block->GetTextureBufferData("Albedo");
+        auto texture_buffer_data = m_image_->shared_material.CastedLock()->shared_material_block->GetTextureBufferData("_MainTex");
         texture_buffer_data->SetTexture(m_normal_texture_);
     }
     else if (!selected && m_button_state_ == kButtonState::kPress)
     {
         m_button_state_ = kButtonState::kNormal;
-        auto texture_buffer_data = m_image_->shared_material.CastedLock()->shared_material_block->GetTextureBufferData("Albedo");
+        auto texture_buffer_data = m_image_->shared_material.CastedLock()->shared_material_block->GetTextureBufferData("_MainTex");
         texture_buffer_data->SetTexture(m_normal_texture_);
     }
 }
@@ -113,13 +118,13 @@ void UIButton::SetPressed(const bool pressed)
     if (pressed && m_button_state_ == kButtonState::kSelect)
     {
         m_button_state_ = kButtonState::kPress;
-        auto texture_buffer_data = m_image_->shared_material.CastedLock()->shared_material_block->GetTextureBufferData("Albedo");
+        auto texture_buffer_data = m_image_->shared_material.CastedLock()->shared_material_block->GetTextureBufferData("_MainTex");
         texture_buffer_data->SetTexture(m_pressed_texture_);
     }
     else if (!pressed && m_button_state_ == kButtonState::kPress)
     {
         m_button_state_ = kButtonState::kSelect;
-        auto texture_buffer_data = m_image_->shared_material.CastedLock()->shared_material_block->GetTextureBufferData("Albedo");
+        auto texture_buffer_data = m_image_->shared_material.CastedLock()->shared_material_block->GetTextureBufferData("_MainTex");
         texture_buffer_data->SetTexture(m_selected_texture_);
         m_events_.Invoke();
     }
