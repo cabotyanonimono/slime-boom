@@ -29,6 +29,15 @@ void ComputeResult::OnUpdate()
     }
 }
 
+void ComputeResult::OnDestroy()
+{
+    if (m_listener_token_ != -1)
+    {
+        engine::RenderPipeline::Instance()->on_rendering.RemoveListener(m_listener_token_);
+        m_listener_token_ = -1;
+    }
+}
+
 void *ComputeResult::GetValue(const std::string& name)
 {
     return m_result_.data() + ComputeResultTypes::GetComputeResultOffset(name);

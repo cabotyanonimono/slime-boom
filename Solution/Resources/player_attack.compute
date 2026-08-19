@@ -71,11 +71,11 @@ void compute(uint3 globalID : SV_DispatchThreadID)
 			
             float3 knockback =  float3(to_slime.x, 0.0f, to_slime.z) * player_attacks[i].power;
             slimes[index].velocity += knockback;
-            result.InterlockedAdd(20, 1);
             result.InterlockedAdd(24, 1);
             
             if (slimes[index].hp <= 0)
             {
+                result.InterlockedAdd(20, 1);
                 for (int j = 0; j < MAX_EXP_NUM; ++j)
                 {
                     uint original_value;

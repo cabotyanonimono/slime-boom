@@ -9,7 +9,7 @@ class PlayerDamageDispatcher : public engine::Component
 {
     engine::AssetPtr<ComputeResult> m_compute_result_;
     int m_current_damage_ = 0;
-
+    float m_receive_damage_multiplier_ = 1.0f;
     engine::Event<float> m_on_take_damage_;
 
 public:
@@ -32,8 +32,15 @@ public:
                 CEREAL_NVP(m_compute_result_)
             );
         }
+
+        if (version >= 3)
+        {
+            ar(
+                CEREAL_NVP(m_receive_damage_multiplier_)
+            );
+        }
     }
 };
 }
 
-CEREAL_CLASS_VERSION(SlimeBoom::PlayerDamageDispatcher, 2)
+CEREAL_CLASS_VERSION(SlimeBoom::PlayerDamageDispatcher, 3)

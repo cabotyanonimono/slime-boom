@@ -6,17 +6,20 @@
 #include "../../Player/player_sword_controller.h"
 #include "../../Player/ability/ability_processer.h"
 #include "Components/component.h"
+#include "Components/effekseer_renderer.h"
 
 namespace SlimeBoom
 {
 class SlashAbilityCard : public CardBase
 {
+    float m_attack_delay_time_;
     engine::AssetPtr<ComputeResult> m_compute_result_;
     engine::AssetPtr<AbilityProcesser> m_ability_processer_;
     engine::AssetPtr<PlayerDataComponent> m_player_data_;
     engine::AssetPtr<PlayerDataPresenter> m_player_data_presenter_;
     engine::AssetPtr<PlayerSwordController> m_sword_controller_;
     engine::AssetPtr<engine::Transform> m_player_transform_;
+    engine::AssetPtr<engine::EffekseerRenderer> m_effekseer_renderer_;
 
 public:
     void OnInspectorGui() override;
@@ -35,8 +38,22 @@ public:
             CEREAL_NVP(m_compute_result_),
             CEREAL_NVP(m_player_transform_)
         );
+
+        if (version >= 2)
+        {
+            ar(
+                CEREAL_NVP(m_effekseer_renderer_)
+            );
+        }
+
+        if (version >= 3)
+        {
+            ar(
+                CEREAL_NVP(m_attack_delay_time_)
+            );
+        }
     }
 };
 }
 
-CEREAL_CLASS_VERSION(SlimeBoom::SlashAbilityCard, 1)
+CEREAL_CLASS_VERSION(SlimeBoom::SlashAbilityCard, 3)

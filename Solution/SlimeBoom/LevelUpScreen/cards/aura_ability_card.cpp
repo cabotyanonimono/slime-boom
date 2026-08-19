@@ -13,11 +13,12 @@ void AuraAbilityCard::OnInspectorGui()
     engine::Gui::PropertyField("Player Data", m_player_data_);
     engine::Gui::PropertyField("Player Data Presenter", m_player_data_presenter_);
     engine::Gui::PropertyField("Aura Renderer", m_aura_renderer_);
+    engine::Gui::PropertyField("Effekseer Renderer", m_effekseer_renderer_);
 }
 
 void AuraAbilityCard::OnSelect()
 {
-    const auto aura_ability = std::make_shared<AuraAbility>(m_player_data_, m_aura_renderer_, m_player_data_presenter_);
+    const auto aura_ability = std::make_shared<AuraAbility>(m_player_data_, m_aura_renderer_, m_player_data_presenter_, m_effekseer_renderer_);
     m_ability_processer_->Attach(aura_ability);
 }
 

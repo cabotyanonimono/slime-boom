@@ -19,6 +19,7 @@ class ComputeResult : public engine::Component
 public:
     void OnStart() override;
     void OnUpdate() override;
+    void OnDestroy() override;
 
     void *GetValue(const std::string& name);
     

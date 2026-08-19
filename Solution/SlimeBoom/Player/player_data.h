@@ -52,8 +52,15 @@ struct PlayerData
                 CEREAL_NVP(exp_multiplier)
             );
         }
+
+        if (version >= 6)
+        {
+            ar(
+                CEREAL_NVP(max_hp)
+            );
+        }
     }
 };
 }
 
-CEREAL_CLASS_VERSION(SlimeBoom::PlayerData, 5)
+CEREAL_CLASS_VERSION(SlimeBoom::PlayerData, 6)

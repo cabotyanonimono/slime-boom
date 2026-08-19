@@ -119,6 +119,7 @@ void PlayerComponent::OnStart()
 
 void PlayerComponent::OnUpdate()
 {
+    
     UpdateParameter();
     m_state_machine_->Update();
 }

@@ -8,19 +8,34 @@ namespace SlimeBoom
 {
 engine::Task AvoidEffect::FovEffect()
 {
+    if (this == nullptr)
+        co_return;
+    
     float timer = 0.0f;
     while (timer <= m_in_time_)
     {
+        if (this == nullptr)
+            co_return;
+        
         timer += engine::Time::GetDeltaTime();
         m_camera_component_->property.field_of_view = engine::Mathf::Lerp(m_base_fov_, m_avoid_fov_, timer / m_in_time_);
         co_await engine::WaitForNextFrame();
     }
 
+    if (this->IsDestroying())
+        co_return;
+    
     co_await engine::WaitForSeconds(m_player_data_->GetPlayerData().avoid_time);
+
+    if (this == nullptr)
+        co_return;
     
     timer = 0.0f;
     while (timer <= m_out_time_)
     {
+        if (this == nullptr)
+            co_return;
+        
         timer += engine::Time::GetDeltaTime();
         m_camera_component_->property.field_of_view = engine::Mathf::Lerp(m_avoid_fov_, m_base_fov_, timer / m_out_time_);
         co_await engine::WaitForNextFrame();

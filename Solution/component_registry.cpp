@@ -91,5 +91,6 @@ void ComponentRegistry::RegisterComponents()
     ADD_COMPONENT(BushGenerator, "Map");
     ADD_COMPONENT(LevelText, "UI");
     ADD_COMPONENT(PlayerStatusUi, "UI");
+    ADD_COMPONENT(SceneTransitionExecutor, "Scene");
 }
 }

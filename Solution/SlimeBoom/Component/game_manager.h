@@ -20,6 +20,7 @@ class GameManager : public engine::Component
 public:
     void OnInspectorGui() override;
     void OnUpdate() override;
+    void OnDestroy() override;
 
     bool IsGameClear() const;
     bool IsGameOver() const;

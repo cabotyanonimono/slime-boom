@@ -54,7 +54,7 @@ void PlayerSwordController::Play(const Vector3 attack_pos, const float offset)
     m_sword_transform_->SetLocalPosition(Vector3(0,0, m_offset_));
     m_sword_parent_transform_->SetPosition(m_player_transform_->Position());
 
-    m_sword_transform_->GameObject()->SetActive(true);
+    //m_sword_transform_->GameObject()->SetActive(true);
     GameObject()->SetActive(true);
 }
 }

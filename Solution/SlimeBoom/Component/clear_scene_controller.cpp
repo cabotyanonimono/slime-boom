@@ -2,11 +2,13 @@
 #include "clear_scene_controller.h"
 
 #include "engine.h"
+#include "input.h"
 
 namespace SlimeBoom
 {
 engine::Task ClearSceneController::ShowClearSceneBackground() const
 {
+    m_background_->GameObject()->SetActive(true);
     float alpha = 0.0f;
     auto buff_data = m_background_->shared_material->shared_material_block->GetConstantBufferData("Alpha");
     while (alpha < 1.0f)
@@ -64,6 +66,16 @@ void ClearSceneController::OnInspectorGui()
     engine::Gui::PropertyField("Game Over Text", m_game_over_text_);
     engine::Gui::PropertyField("Clear Scene", m_clear_text_);
     engine::Gui::PropertyField("Text Ui", m_text_ui_);
+    engine::Gui::PropertyField("Restart Scene Controller", m_restart_scene_transition_controller_);
+    engine::Gui::PropertyField("Quit Scene Controller", m_quit_scene_transition_controller_);
+    engine::Gui::PropertyField("Restart Button", m_restart_button_);
+    engine::Gui::PropertyField("Quit Button", m_quit_button_);
+}
+
+void ClearSceneController::OnStart()
+{
+    m_restart_button_->AddEventListener([this](){m_restart_scene_transition_controller_->Execute();});
+    m_quit_button_->AddEventListener([this](){m_quit_scene_transition_controller_->Execute();});
 }
 
 void ClearSceneController::OnEnabled()

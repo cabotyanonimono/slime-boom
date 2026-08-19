@@ -1,5 +1,8 @@
 ﻿#pragma once
 #include "clear_scene_data.h"
+#include "scene_transition_controller.h"
+#include "scene_transition_executor.h"
+#include "../UI/ui_button.h"
 #include "Asset/asset_ptr.h"
 #include "Components/component.h"
 #include "Components/image.h"
@@ -18,6 +21,10 @@ class ClearSceneController : public engine::Component
     engine::AssetPtr<engine::TextRenderer> m_eliminated_slime_count_;
     engine::AssetPtr<engine::TextRenderer> m_level_;
     engine::AssetPtr<engine::GameObject> m_text_ui_;
+    engine::AssetPtr<SceneTransitionController> m_restart_scene_transition_controller_;
+    engine::AssetPtr<SceneTransitionController> m_quit_scene_transition_controller_;
+    engine::AssetPtr<ui::UIButton> m_restart_button_;
+    engine::AssetPtr<ui::UIButton> m_quit_button_;
 
     engine::Task ShowClearSceneBackground() const;
     engine::Task ScoreBoardScaleChangeMotion() const;
@@ -25,6 +32,7 @@ class ClearSceneController : public engine::Component
 
 public:
     void OnInspectorGui() override;
+    void OnStart() override;
     void OnEnabled() override;
     void SetClearSceneData(const ClearSceneData& clear_scene_data) const;
 
@@ -33,6 +41,7 @@ public:
     {
         ar(
             cereal::base_class<Component>(this),
+            
             CEREAL_NVP(m_eliminated_slime_count_),
             CEREAL_NVP(m_level_)
         );
@@ -65,8 +74,18 @@ public:
                 CEREAL_NVP(m_text_ui_)
             );
         }
+
+        if (version >= 7)
+        {
+            ar(
+                CEREAL_NVP(m_restart_scene_transition_controller_),
+                CEREAL_NVP(m_quit_scene_transition_controller_),
+                CEREAL_NVP(m_restart_button_),
+                CEREAL_NVP(m_quit_button_)
+            );
+        }
     }
 };
 }
 
-CEREAL_CLASS_VERSION(SlimeBoom::ClearSceneController, 6)
+CEREAL_CLASS_VERSION(SlimeBoom::ClearSceneController, 7)

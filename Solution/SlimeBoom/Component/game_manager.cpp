@@ -48,6 +48,11 @@ void GameManager::OnUpdate()
         GameEnd();
 }
 
+void GameManager::OnDestroy()
+{
+    engine::Time::Get()->TimeScale(1.0f);
+}
+
 float GameManager::TimeSinceGameStartSec() const
 {
     return m_time_since_game_start_sec_;
