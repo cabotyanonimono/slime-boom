@@ -34,7 +34,7 @@ class UIButton : public engine::Component
     void UpdateMousePosition(Vector2 pos);
 
 public:
-    void OnAwake() override;
+    void OnStart() override;
     void OnInspectorGui() override;
     void OnUpdate() override;
 

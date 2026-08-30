@@ -1,11 +1,23 @@
 #include "Light.hlsli"
 #include "engine.hlsli"
 #include "slime.hlsli"
+
+#include "dithering.hlsli"
 #include "math.hlsli"
 
 cbuffer DamageColor : register(b5)
 {
     float4 damage_color;
+}
+
+cbuffer PlayerPos : register(b6)
+{
+    float3 player_pos;
+}
+
+cbuffer DitheringRadius : register(b7)
+{
+    float dithering_radius;
 }
 
 StructuredBuffer<SlimeData> slimes : register(t4);
@@ -52,6 +64,8 @@ VSOutput vrt(VSInput input, uint instance_id : SV_InstanceID)
 
 float4 pix(VSOutput input) : SV_Target
 {
+    Dithering(input.svpos.xy, input.worldpos, camera_pos, player_pos, dithering_radius);
+    
     float3 N = normalize(input.normal);
     float3 brightness = float3(0, 0, 0);
     if (light_count == 0)
@@ -74,7 +88,7 @@ float4 pix(VSOutput input) : SV_Target
                          : damage_color;
     else if(slimes[input.instance_id].slime_type == SLIME_TYPE::SPEED)
         main_color = slimes[input.instance_id].damage_color_timer <= 0.0f
-                         ? float4(1.0f, 1.0f, 0.0f, 1.0f)
+                         ? float4(1.0f, 1.0f, 1.0f, 1.0f)
                          : damage_color;
     else if(slimes[input.instance_id].slime_type == SLIME_TYPE::TANK)
         main_color = slimes[input.instance_id].damage_color_timer <= 0.0f

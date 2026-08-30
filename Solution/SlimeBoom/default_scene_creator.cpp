@@ -1,5 +1,7 @@
 #include "pch.h"
 #include "default_scene_creator.h"
+
+#include "engine.h"
 #include "scene_manager.h"
 #include "Asset/Importer/fbx_importer.h"
 #include "Audio/audio_listener_component.h"
@@ -8,14 +10,18 @@
 
 namespace SlimeBoom
 {
+engine::Task DefaultSceneCreator::DelayLoadSceneTask()
+{
+    co_await engine::WaitForFrames(100);
+
+    std::ifstream ifs("Resources/Scenes/Title/title.scene");
+    std::stringstream ss;
+    ss << ifs.rdbuf();
+    engine::SceneManager::DeserializeScene(ss.str());
+}
+
 void DefaultSceneCreator::CreateDefaultScene()
 {
-    engine::SceneManager::CreateScene("Default Scene");
-
-    const auto camera = engine::Object::Instantiate<engine::GameObject>("Camera");
-    camera->AddComponent<engine::CameraComponent>();
-    camera->AddComponent<engine::AudioListenerComponent>();
-
-    camera->Transform()->SetLocalPosition({0.0f, 0.85f, 1.5f});
+    engine::Engine::coroutine.Start(DelayLoadSceneTask());
 }
 }

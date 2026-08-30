@@ -14,8 +14,23 @@ void CardController::GenerateRandomCards()
     
     for (auto &card : m_cards_)
     {
-        card = GetSelectableCard();
+        card = GetOriginalCard(m_cards_, card);
     }
+}
+
+std::shared_ptr<CardBase> CardController::GetOriginalCard(std::array<std::shared_ptr<CardBase>, kCardCount> cards,
+    std::shared_ptr<CardBase> card)
+{
+    card = GetSelectableCard();
+    for (auto other_card : cards)
+    {
+        if (other_card == card)
+        {
+            card = GetOriginalCard(cards, other_card);
+        }
+    }
+
+    return card;
 }
 
 std::shared_ptr<CardBase> CardController::GetSelectableCard()

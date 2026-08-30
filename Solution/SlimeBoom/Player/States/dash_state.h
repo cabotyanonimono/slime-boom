@@ -9,7 +9,7 @@ namespace SlimeBoom
 {
 class DashState : public State
 {
-    static constexpr float kRotationSpeed = 15.0f;
+    static constexpr float kRotationSpeed = 30.0f;
 
     std::string m_anim_name_;
     std::shared_ptr<PlayerDataComponent> m_player_data_;

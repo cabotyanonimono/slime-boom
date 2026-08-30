@@ -15,6 +15,7 @@ void SlimeBoom::PlayerDataPresenter::OnInspectorGui()
 {
     engine::Gui::PropertyField("Player Attack Shader", m_player_attack_shader_);
     engine::Gui::PropertyField("Player Transform", m_player_transform_);
+    engine::Gui::PropertyField("Position Y Offset", m_position_y_offset_);
     if (engine::Gui::PropertyField("Max AttackData Count", m_max_attack_data_count_))
     {
         m_attack_data_buffer_ = std::make_shared<engine::StructuredBuffer>(
@@ -41,7 +42,7 @@ void SlimeBoom::PlayerDataPresenter::OnStart()
 
 void SlimeBoom::PlayerDataPresenter::OnUpdate()
 {
-    engine::GpuResourceManager::SetGlobalVector("PlayerPos", m_player_transform_->Position());
+    engine::GpuResourceManager::SetGlobalVector("PlayerPos", m_player_transform_->Position() + Vector3(0.0f, m_position_y_offset_, 0.0f));
 
     if (m_lisner_token_ != -1)
     {

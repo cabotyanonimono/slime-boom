@@ -22,7 +22,7 @@ struct SlimeData
 
 class SlimeSimulationComponent : public engine::Component
 {
-    static constexpr int kMaxSlimesCount = 1024;
+    static constexpr int kMaxSlimesCount = 8096;
     int m_current_slime_count_ = 512;
     std::shared_ptr<engine::StructuredBuffer> m_slime_buffer_;
     std::shared_ptr<engine::ConstantBuffer> m_slime_count_buffer_;
@@ -37,7 +37,8 @@ public:
     void OnStart() override;
     void OnInspectorGui() override;
     void OnUpdate() override;
-    
+
+    int GetCurrentSlimesCount() const;
     void SetCurrentSlimesCount(int count);
     void SetSpawnRate(std::array<float, SlimeTypes::Count> rates) const;
 

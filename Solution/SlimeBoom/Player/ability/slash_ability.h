@@ -8,7 +8,7 @@
 #include "../../compute_result.h"
 #include "Components/effekseer_renderer.h"
 #include "Components/transform.h"
-#include "ThirdParty/Effekseer/include/EffekseerRendererDX11/EffekseerRendererDX11.h"
+#include "ThirdParty/Effekseer/include/EffekseerRendererDX11.h"
 
 namespace SlimeBoom
 {
@@ -23,8 +23,8 @@ class SlashAbility : public CooldownAbility
     std::shared_ptr<PlayerDataComponent> m_player_data_;
     std::shared_ptr<engine::EffekseerRenderer> m_effekseer_renderer_;
 
-    engine::Task DelaySetAttackDataTask(const PlayerAttackData *attack_data);
-    void UpdateCooldown(float delta_time) override;
+    engine::Task DelaySetAttackDataTask();
+    void Execute(float delta_time) override;
 
 public:
     SlashAbility(const std::shared_ptr<ComputeResult>& compute_result,

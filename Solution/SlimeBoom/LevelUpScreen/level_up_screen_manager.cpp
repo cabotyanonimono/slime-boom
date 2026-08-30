@@ -5,6 +5,7 @@
 
 void SlimeBoom::LevelUpScreenManager::ScreenStart() const
 {
+    engine::Input::SetMouseMode(engine::kMouseMode::kNormal);
     m_card_controller_->GenerateRandomCards();
     engine::Time::Get()->TimeScale(0.0f);
     m_level_up_ui_object_->SetActive(true);
@@ -12,6 +13,7 @@ void SlimeBoom::LevelUpScreenManager::ScreenStart() const
 
 void SlimeBoom::LevelUpScreenManager::ScreenEnd() const
 {
+    engine::Input::SetMouseMode(engine::kMouseMode::kLocked);
     engine::Time::Get()->TimeScale(1.0f);
     m_level_up_ui_object_->SetActive(false);
 }

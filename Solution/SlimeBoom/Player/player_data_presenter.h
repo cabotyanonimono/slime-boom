@@ -12,6 +12,7 @@ class PlayerDataPresenter : public engine::Component
     engine::AssetPtr<engine::Transform> m_player_transform_;
     
     int m_max_attack_data_count_ = 1;
+    float m_position_y_offset_ = 0.0f;
     size_t m_lisner_token_ = -1;
     std::vector<PlayerAttackData> m_attack_data_;
     std::shared_ptr<engine::StructuredBuffer> m_attack_data_buffer_;
@@ -41,8 +42,13 @@ public:
         {
             ar(CEREAL_NVP(m_player_attack_shader_));
         }
+
+        if (version >= 4)
+        {
+            ar(CEREAL_NVP(m_position_y_offset_));
+        }
     }
 };
 }
 
-CEREAL_CLASS_VERSION(SlimeBoom::PlayerDataPresenter, 3)
+CEREAL_CLASS_VERSION(SlimeBoom::PlayerDataPresenter, 4)

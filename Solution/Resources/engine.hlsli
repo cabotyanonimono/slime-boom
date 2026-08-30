@@ -36,6 +36,8 @@ cbuffer SceneData : register(b2)
     float2 shadow_map_size;
     float time;
     float deltatime;
+    float3 camera_pos;
+    float3 camera_dir;
 }
 
 StructuredBuffer<float4x4> BoneMatrices : register (t0);

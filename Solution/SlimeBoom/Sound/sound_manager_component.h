@@ -20,11 +20,17 @@ public:
     void serialize(Archive& ar, const uint32_t version)
     {
         ar(
-            cereal::base_class<Component>(this),
-            CEREAL_NVP(m_sounds_)
-        );
+                cereal::base_class<Component>(this)
+            );
+        if (version >= 2)
+        {
+            ar(
+                cereal::base_class<Component>(this),
+                CEREAL_NVP(m_sounds_)
+            );
+        }
     }
 };
 }
 
-CEREAL_CLASS_VERSION(SlimeBoom::SoundManagerComponent, 1)
+CEREAL_CLASS_VERSION(SlimeBoom::SoundManagerComponent, 2)

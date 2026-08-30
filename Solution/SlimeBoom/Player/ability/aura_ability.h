@@ -14,7 +14,7 @@ class AuraAbility : public CooldownAbility
     std::shared_ptr<engine::GameObject> m_aura_renderer_;
     std::shared_ptr<engine::EffekseerRenderer> m_effekseer_renderer_;
     
-    void UpdateCooldown(float delta_time) override;
+    void Execute(float delta_time) override;
 
 public:
     AuraAbility( const std::shared_ptr<PlayerDataComponent>& player_data,

@@ -1,0 +1,19 @@
+#include "engine.hlsli"
+#include "exp.hlsli"
+#include "slime.hlsli"
+#include "math.hlsli"
+#include "player_attack_data.hlsli"
+
+Texture2D<float4> depth_texture : register(t3);
+Texture2D<float4> source_texture : register(t4);
+
+RWTexture2D<float4> result_texture : register(u0);
+
+[numthreads(64, 1, 1)]
+void compute(uint3 globalID : SV_DispatchThreadID)
+{
+    float4 depth = depth_texture.Sample(smp, float2(globalID.x, globalID.y));
+    float4 color = source_texture.Sample(smp, float2(globalID.x, globalID.y));
+
+    result_texture[globalID.x][globalID.y] = color * depth;
+}

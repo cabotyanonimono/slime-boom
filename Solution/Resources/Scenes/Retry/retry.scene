@@ -1,0 +1,293 @@
+{
+    "value0": {
+        "polymorphic_id": 1073741824,
+        "ptr_wrapper": {
+            "id": 2147483649,
+            "data": {
+                "cereal_class_version": 1,
+                "value0": {
+                    "cereal_class_version": 1,
+                    "m_guid_": "3b0dd77d-df76-4cc7-8e67-20d5188d94ba",
+                    "m_name_": "Default Scene"
+                },
+                "m_root_game_objects_": [
+                    {
+                        "polymorphic_id": 1073741824,
+                        "ptr_wrapper": {
+                            "id": 2147483650,
+                            "data": {
+                                "value0": {
+                                    "m_guid_": "18a853ae-9c3f-4424-b9d7-06cfc76d0c8d",
+                                    "m_name_": "Camera"
+                                },
+                                "m_is_active_self_": true,
+                                "m_components_": [
+                                    {
+                                        "polymorphic_id": 2147483649,
+                                        "polymorphic_name": "engine::Transform",
+                                        "ptr_wrapper": {
+                                            "id": 2147483651,
+                                            "data": {
+                                                "cereal_class_version": 1,
+                                                "value0": {
+                                                    "cereal_class_version": 1,
+                                                    "value0": {
+                                                        "m_guid_": "2cde1063-bf5c-4b19-97be-13c0fddd98ef",
+                                                        "m_name_": "Transform"
+                                                    },
+                                                    "value1": {
+                                                        "locked_ptr": {
+                                                            "polymorphic_id": 1073741824,
+                                                            "ptr_wrapper": {
+                                                                "id": 2
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "m_local_position_": {
+                                                    "v.x": 0.0,
+                                                    "v.y": 0.8500000238418579,
+                                                    "v.z": 1.5
+                                                },
+                                                "m_local_rotation_": {
+                                                    "v.x": 0.0,
+                                                    "v.y": 0.0,
+                                                    "v.z": 0.0,
+                                                    "v.w": 1.0
+                                                },
+                                                "m_local_scale_": {
+                                                    "v.x": 1.0,
+                                                    "v.y": 1.0,
+                                                    "v.z": 1.0
+                                                },
+                                                "m_parent_": {
+                                                    "locked_ptr": {
+                                                        "polymorphic_id": 0
+                                                    }
+                                                },
+                                                "m_children_": []
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "polymorphic_id": 2147483650,
+                                        "polymorphic_name": "engine::CameraComponent",
+                                        "ptr_wrapper": {
+                                            "id": 2147483652,
+                                            "data": {
+                                                "cereal_class_version": 2,
+                                                "value0": {
+                                                    "value0": {
+                                                        "m_guid_": "be32372c-8ede-4e14-a26e-a5dc496643a4",
+                                                        "m_name_": "CameraComponent"
+                                                    },
+                                                    "value1": {
+                                                        "locked_ptr": {
+                                                            "polymorphic_id": 1073741824,
+                                                            "ptr_wrapper": {
+                                                                "id": 2
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "property": {
+                                                    "cereal_class_version": 1,
+                                                    "view_mode": 0,
+                                                    "field_of_view": 70.0,
+                                                    "near_plane": 0.10000000149011612,
+                                                    "far_plane": 1000.0,
+                                                    "ortho_size": 50.0,
+                                                    "aspect_ratio": 1.7777777910232545,
+                                                    "background_color": {
+                                                        "value0": 0.10196079313755036,
+                                                        "value1": 0.10196079313755036,
+                                                        "value2": 1.0,
+                                                        "value3": 0.10196079313755036
+                                                    }
+                                                },
+                                                "m_render_texture_": {
+                                                    "value0": {
+                                                        "cereal_class_version": 1,
+                                                        "m_guid_": "00000000-0000-0000-0000-000000000000",
+                                                        "m_type_": 0,
+                                                        "m_stored_reference_": {
+                                                            "polymorphic_id": 0
+                                                        }
+                                                    }
+                                                },
+                                                "m_depth_texture_": {
+                                                    "value0": {
+                                                        "m_guid_": "00000000-0000-0000-0000-000000000000",
+                                                        "m_type_": 0,
+                                                        "m_stored_reference_": {
+                                                            "polymorphic_id": 0
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "polymorphic_id": 2147483651,
+                                        "polymorphic_name": "engine::AudioListenerComponent",
+                                        "ptr_wrapper": {
+                                            "id": 2147483653,
+                                            "data": {
+                                                "cereal_class_version": 1,
+                                                "value0": {
+                                                    "value0": {
+                                                        "m_guid_": "761efc5b-f9a7-4df1-9775-22b809013cf5",
+                                                        "m_name_": "AudioListenerComponent"
+                                                    },
+                                                    "value1": {
+                                                        "locked_ptr": {
+                                                            "polymorphic_id": 1073741824,
+                                                            "ptr_wrapper": {
+                                                                "id": 2
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "polymorphic_id": 1073741824,
+                        "ptr_wrapper": {
+                            "id": 2147483654,
+                            "data": {
+                                "value0": {
+                                    "m_guid_": "a2558c2a-df4e-4cca-8b23-22d0cea0314f",
+                                    "m_name_": "Empty GameObject (1)"
+                                },
+                                "m_is_active_self_": true,
+                                "m_components_": [
+                                    {
+                                        "polymorphic_id": 1,
+                                        "ptr_wrapper": {
+                                            "id": 2147483655,
+                                            "data": {
+                                                "value0": {
+                                                    "value0": {
+                                                        "m_guid_": "445ca36f-d9c7-4e03-b262-e1f5cced4eba",
+                                                        "m_name_": "Transform"
+                                                    },
+                                                    "value1": {
+                                                        "locked_ptr": {
+                                                            "polymorphic_id": 1073741824,
+                                                            "ptr_wrapper": {
+                                                                "id": 6
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "m_local_position_": {
+                                                    "v.x": 0.0,
+                                                    "v.y": 0.0,
+                                                    "v.z": 0.0
+                                                },
+                                                "m_local_rotation_": {
+                                                    "v.x": 0.0,
+                                                    "v.y": 0.0,
+                                                    "v.z": 0.0,
+                                                    "v.w": 1.0
+                                                },
+                                                "m_local_scale_": {
+                                                    "v.x": 1.0,
+                                                    "v.y": 1.0,
+                                                    "v.z": 1.0
+                                                },
+                                                "m_parent_": {
+                                                    "locked_ptr": {
+                                                        "polymorphic_id": 0
+                                                    }
+                                                },
+                                                "m_children_": []
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "polymorphic_id": 2147483652,
+                                        "polymorphic_name": "SlimeBoom::SceneTransitionController",
+                                        "ptr_wrapper": {
+                                            "id": 2147483656,
+                                            "data": {
+                                                "cereal_class_version": 1,
+                                                "value0": {
+                                                    "value0": {
+                                                        "m_guid_": "26f4bb2d-6d8b-4c47-b290-f6ccdb58db69",
+                                                        "m_name_": "SceneTransitionController"
+                                                    },
+                                                    "value1": {
+                                                        "locked_ptr": {
+                                                            "polymorphic_id": 1073741824,
+                                                            "ptr_wrapper": {
+                                                                "id": 6
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "m_scene_path_": "Resources/Scenes/Game/game.scene"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "polymorphic_id": 2147483653,
+                                        "polymorphic_name": "SlimeBoom::SceneTransitionExecutor",
+                                        "ptr_wrapper": {
+                                            "id": 2147483657,
+                                            "data": {
+                                                "cereal_class_version": 1,
+                                                "value0": {
+                                                    "value0": {
+                                                        "m_guid_": "c87685ff-db2b-4285-a41e-ccf631f17a27",
+                                                        "m_name_": "SceneTransitionExecutor"
+                                                    },
+                                                    "value1": {
+                                                        "locked_ptr": {
+                                                            "polymorphic_id": 1073741824,
+                                                            "ptr_wrapper": {
+                                                                "id": 6
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "m_scene_transition_controller_": {
+                                                    "value0": {
+                                                        "m_guid_": "26f4bb2d-6d8b-4c47-b290-f6ccdb58db69",
+                                                        "m_type_": 2,
+                                                        "m_stored_reference_": {
+                                                            "polymorphic_id": 0
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "m_all_game_objects_": [
+                    {
+                        "polymorphic_id": 1073741824,
+                        "ptr_wrapper": {
+                            "id": 2
+                        }
+                    },
+                    {
+                        "polymorphic_id": 1073741824,
+                        "ptr_wrapper": {
+                            "id": 6
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

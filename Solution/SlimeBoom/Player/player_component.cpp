@@ -4,6 +4,7 @@
 #include "gui.h"
 #include "input.h"
 #include "../StateMachine/comparison_condition.h"
+#include "../Utils/random.h"
 #include "ability/aura_ability.h"
 #include "ability/slash_ability.h"
 #include "States/avoid_state.h"
@@ -62,8 +63,16 @@ void PlayerComponent::TakeDamage(const float damage)
     if (m_is_immune_)
         return;
 
+    auto random = Random(0, 100);
+    if (random < m_player_data_->GetAvoidPercent())
+        return;
+    
     auto current_hp = m_player_data_->GetHp();
      current_hp -= damage;
+
+    if (current_hp <= 0.0f)
+        current_hp = 0.0f;
+    
     m_player_data_->SetHp(current_hp);
 
     if (IsDead())
@@ -84,10 +93,12 @@ void PlayerComponent::OnInspectorGui()
     engine::Gui::PropertyField("Aura Renderer", m_aura_renderer_);
     engine::Gui::PropertyField("Player Transform", m_player_transform_);
     engine::Gui::PropertyField("Avoid Cooldown", m_avoid_cooldown_);
+    engine::Gui::PropertyField("Dead Delay Time", m_dead_delay_time_);
 }
 
 void PlayerComponent::OnStart()
 {
+    m_dead_delay_timer_ = m_dead_delay_time_;
     m_state_machine_ = std::make_shared<StateMachine>();
 
     const auto idle_state = std::make_shared<PlayAnimState>(m_animator_, "Idle", kIdleBlendSpeed);
@@ -119,6 +130,10 @@ void PlayerComponent::OnStart()
 
 void PlayerComponent::OnUpdate()
 {
+    if (IsDead())
+    {
+        m_dead_delay_timer_ -= engine::Time::GetDeltaTime();
+    }
     
     UpdateParameter();
     m_state_machine_->Update();
@@ -127,6 +142,11 @@ void PlayerComponent::OnUpdate()
 void PlayerComponent::OnFixedUpdate()
 {
     m_state_machine_->FixedUpdate();
+}
+
+bool PlayerComponent::IsDeadEffectEnd()
+{
+    return m_dead_delay_timer_ <= 0.0f;
 }
 
 size_t PlayerComponent::AddOnAvoidEvent(const std::function<void()>& callback)
@@ -147,6 +167,16 @@ size_t PlayerComponent::AddOnDeadEvent(const std::function<void()>& callback)
 void PlayerComponent::RemoveOnDeadEvent(const size_t token)
 {
     m_on_dead_.RemoveListener(token);
+}
+
+float PlayerComponent::GetAvoidCooldown() const
+{
+    return m_avoid_cooldown_;
+}
+
+float PlayerComponent::GetAvoidTimer() const
+{
+    return m_avoid_cooldown_timer_;
 }
 }
 

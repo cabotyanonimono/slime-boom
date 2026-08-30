@@ -10,9 +10,12 @@ struct PlayerData
     float speed;
     float attack_power;
     float attack_speed;
+    float attack_range;
+    uint32_t attack_num;
     float avoid_time;
     float avoid_speed;
     float exp_multiplier;
+    float avoid_percent;
     uint32_t level;
 
     template <class Archive>
@@ -59,8 +62,17 @@ struct PlayerData
                 CEREAL_NVP(max_hp)
             );
         }
+
+        if (version >= 7)
+        {
+            ar(
+                CEREAL_NVP(attack_range),
+                CEREAL_NVP(attack_num),
+                CEREAL_NVP(avoid_percent)
+            );
+        }
     }
 };
 }
 
-CEREAL_CLASS_VERSION(SlimeBoom::PlayerData, 6)
+CEREAL_CLASS_VERSION(SlimeBoom::PlayerData, 7)

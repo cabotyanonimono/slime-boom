@@ -24,6 +24,7 @@ public:
     void OnStart() override;
 
     void GenerateRandomCards();
+    std::shared_ptr<CardBase> GetOriginalCard(std::array<std::shared_ptr<CardBase>, kCardCount> cards, std::shared_ptr<CardBase> card);
     std::shared_ptr<CardBase> GetSelectableCard();
 
     std::array<std::shared_ptr<CardBase>, kCardCount> GetCards();

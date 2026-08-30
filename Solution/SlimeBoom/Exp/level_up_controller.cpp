@@ -1,6 +1,8 @@
 ﻿#include "pch.h"
 #include "level_up_controller.h"
 
+#include "input.h"
+
 int SlimeBoom::LevelUpController::CalcRequiredExp()
 {
     return m_base_required_exp_ + static_cast<int>(static_cast<float>(m_required_exp_) * m_required_exp_up_rate_);
@@ -34,6 +36,7 @@ void SlimeBoom::LevelUpController::OnUpdate()
     if (m_current_level_exp_ >= m_required_exp_)
     {
         ++m_current_level_;
+        engine::Input::SetMouseMode(engine::kMouseMode::kNormal);
         m_on_level_up_.Invoke(m_current_level_);
         m_current_level_exp_ -= m_required_exp_;
         

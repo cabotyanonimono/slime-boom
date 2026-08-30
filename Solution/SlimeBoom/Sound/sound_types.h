@@ -7,6 +7,7 @@ enum class kSoundTypes
     kAbilitySlash,
     kAbilityAura,
     kSlimeTakeDamage,
+    kSlimeEliminate,
 
     kSoundTypesCount
 };
@@ -21,6 +22,7 @@ inline const char* ToString(const kSoundTypes e)
     case kSoundTypes::kAbilityAura: return "kAbilityAura";
     case kSoundTypes::kSlimeTakeDamage: return "kSlimeTakeDamage";
     case kSoundTypes::kSoundTypesCount: return "kSoundTypesCount";
+    case kSoundTypes::kSlimeEliminate: return "kSlimeEliminate";
     default: return "unknown";
     }
 }

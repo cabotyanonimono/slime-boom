@@ -85,5 +85,6 @@ float4 pix(VSOutput input) : SV_TARGET
     float depth = abs(viewPos.z);
 
     brightness = CalcAllShadow(depth, normalize(input.normal), input.worldpos);
+
     return float4(color.rgb * brightness, color.a);
 }

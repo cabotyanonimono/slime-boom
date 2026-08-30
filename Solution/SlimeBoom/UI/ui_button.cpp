@@ -9,7 +9,7 @@
 
 namespace ui
 {
-void UIButton::OnAwake()
+void UIButton::OnStart()
 {
     m_button_state_ = kButtonState::kNormal;
     if (auto image = m_image_.CastedLock())

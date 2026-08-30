@@ -1,0 +1,1008 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{90F517A4-5B9B-4B0A-ADD2-04A446D8984A}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>Solution</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(ProjectDir)External\GenericEngine\ThirdParty\EffekseerDebug\include;$(ProjectDir)External\GenericEngine\ThirdParty\EffekseerDebug\include\Effekseer;$(ProjectDir)External\GenericEngine;$(ProjectDir)vcpkg_installed\x64-windows\include;$(ProjectDir)vcpkg_installed\x64-windows\include\bullet;$(ProjectDir)External\GenericEngine\Engine;</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>$(ProjectDir)External\GenericEngine\ThirdParty\EffekseerDebug\lib\*.lib;$(ProjectDir)vcpkg\installed\x64-windows\debug\lib\*.lib;</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)External\GenericEngine\ThirdParty\dxlib_h;$(ProjectDir)External\GenericEngine;$(ProjectDir)External\GenericEngine\Engine              </AdditionalLibraryDirectories>
+      <DelayLoadDLLs>assimp-vc143-mt.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
+      <PerUserRedirection>true</PerUserRedirection>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Full</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(ProjectDir)External\GenericEngine\ThirdParty\Effekseer\include;$(ProjectDir)External\GenericEngine;$(ProjectDir)vcpkg_installed\x64-windows\include;$(ProjectDir)vcpkg_installed\x64-windows\include\bullet;$(ProjectDir)External\GenericEngine\Engine;</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalOptions>/FS</AdditionalOptions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(ProjectDir)External\GenericEngine\ThirdParty\dxlib_h;$(ProjectDir)External\GenericEngine;$(ProjectDir)External\GenericEngine\Engine</AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(ProjectDir)External\GenericEngine\ThirdParty\Effekseer\lib\*.lib;$(ProjectDir)vcpkg\installed\x64-windows\lib\*.lib;</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="component_registry.cpp" />
+    <ClCompile Include="External\GenericEngine\application.cpp" />
+    <ClCompile Include="External\GenericEngine\bootstrap.cpp" />
+    <ClCompile Include="External\GenericEngine\Editor\asset_browser.cpp" />
+    <ClCompile Include="External\GenericEngine\Editor\audio_window.cpp" />
+    <ClCompile Include="External\GenericEngine\Editor\ContextMenu\AssetHierarchy\asset_hierarchy_context_menu.cpp" />
+    <ClCompile Include="External\GenericEngine\Editor\ContextMenu\Common\add_component_menu.cpp" />
+    <ClCompile Include="External\GenericEngine\Editor\ContextMenu\Component\component_context_menu.cpp" />
+    <ClCompile Include="External\GenericEngine\Editor\ContextMenu\context_menu.cpp" />
+    <ClCompile Include="External\GenericEngine\Editor\ContextMenu\GameObject\game_object_context_menu.cpp" />
+    <ClCompile Include="External\GenericEngine\Editor\ContextMenu\GameObject\game_object_create_menu.cpp" />
+    <ClCompile Include="External\GenericEngine\Editor\ContextMenu\Scene\scene_context_menu.cpp" />
+    <ClCompile Include="External\GenericEngine\Editor\default_editor_menus.cpp" />
+    <ClCompile Include="External\GenericEngine\Editor\editor.cpp" />
+    <ClCompile Include="External\GenericEngine\Editor\editor_gizmos.cpp" />
+    <ClCompile Include="External\GenericEngine\Editor\editor_menu.cpp" />
+    <ClCompile Include="External\GenericEngine\Editor\editor_prefs.cpp" />
+    <ClCompile Include="External\GenericEngine\Editor\editor_window.cpp" />
+    <ClCompile Include="External\GenericEngine\Editor\hierarchy.cpp" />
+    <ClCompile Include="External\GenericEngine\Editor\imgui_demo_window.cpp" />
+    <ClCompile Include="External\GenericEngine\Editor\inspector.cpp" />
+    <ClCompile Include="External\GenericEngine\Editor\object_list_window.cpp" />
+    <ClCompile Include="External\GenericEngine\Editor\profiler.cpp" />
+    <ClCompile Include="External\GenericEngine\Editor\tool_window.cpp" />
+    <ClCompile Include="External\GenericEngine\Editor\update_man_debugger.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Animation\animation_clip.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Animation\animation_component.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Animation\animation_state.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Asset\asset_database.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Asset\asset_descriptor.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Asset\asset_hierarchy.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Asset\asset_ptr.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Asset\dummy_asset.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Asset\effekseer_effect.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Asset\fbx_meta.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Asset\Importer\asset_importer.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Asset\Importer\audio_clip_importer.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Asset\Importer\compute_shader_importer.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Asset\Importer\effekseer_effect_importer.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Asset\Importer\fbx_importer.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Asset\Importer\font_importer.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Asset\Importer\import_log.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Asset\Importer\material_importer.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Asset\Importer\render_texture_importer.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Asset\Importer\shader_importer.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Asset\Importer\texture_2d_importer.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Asset\Importer\texture_cube_importer.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Asset\Importer\txt_importer.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Asset\persistent_data_store.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Asset\text_asset.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\assimp_util.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Audio\audio.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Audio\audio_clip.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Audio\audio_listener_component.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Audio\audio_source_component.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Components\billboard_renderer.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Components\camera_component.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Components\canvas.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Components\Cinema\cinema_brain_component.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Components\Cinema\cinema_camera_component.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Components\Cinema\cinema_camera_transitioner.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Components\component.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Components\component_event_tester.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Components\compute_shader_component.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Components\controller.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Components\coroutine_test.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Components\directional_light.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Components\effekseer_renderer.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Components\frame_meta_data.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Components\global_resource_tester_component.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Components\image.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Components\light.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Components\mesh_renderer.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Components\procedural_renderer.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Components\rect_transform.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Components\renderer.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Components\renderer_2d.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Components\rotator_component.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Components\skinned_mesh_renderer.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Components\spot_light.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Components\text_asset_ref_test_component.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Components\text_renderer.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Components\transform.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\component_factory.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Coroutine\coroutine_manager.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Coroutine\task.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Coroutine\wait_for_frames.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Coroutine\wait_for_next_frame.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Coroutine\wait_for_seconds.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Coroutine\wait_for_task.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Coroutine\yield_base.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\default_scene_generator.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\depth_texture_buffer.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\do.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\effekseer_util.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\engine.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\engine_profiler.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\engine_time.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\engine_util.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\event.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\game_object.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\gui.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\input.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Math\rect.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Math\trs.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\object.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\object_pool.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\object_util.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Physics\box_collider.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Physics\bullet_debug_drawer.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Physics\capsule_collider.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Physics\collider.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Physics\collision.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Physics\compound_shape.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Physics\contact_point.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Physics\mesh_collider.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Physics\physics.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Physics\plane_collider.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Physics\rigidbody_component.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Physics\rigidbody_tester_component.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Physics\sphere_collider.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\bone_weight.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\buffer_base.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\buffer_data_base.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\byte_address_buffer_data.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\CabotEngine\Graphics\ByteAddressBuffer.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\CabotEngine\Graphics\ComputePipelineState.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\CabotEngine\Graphics\ConstantBuffer.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\CabotEngine\Graphics\DescriptorHeap.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\CabotEngine\Graphics\DirectXResourceFactory.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\CabotEngine\Graphics\IndexBuffer.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\CabotEngine\Graphics\PipelineState.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\CabotEngine\Graphics\PSOManager.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\CabotEngine\Graphics\RenderEngine.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\CabotEngine\Graphics\RootSignature.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\CabotEngine\Graphics\StructuredBuffer.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\CabotEngine\Graphics\Texture2D.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\CabotEngine\Graphics\Texture2DArray.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\CabotEngine\Graphics\TextureCube.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\CabotEngine\Graphics\VertexBuffer.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\camera.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\compute_command.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\compute_shader.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\constant_buffer_data.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\depth_texture.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\Effect\effekseer_controller.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\font_data.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\gizmos.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\gpu_resource_group.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\gpu_resource_manager.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\lighting.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\light_data.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\material.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\material_block.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\mesh.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\model_importer.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\primitives.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\rendering_settings_component.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\render_command.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\render_pipeline.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\render_texture.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\render_texture_buffer.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\scene_data.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\shader.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\shader_parameter.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\shader_resource.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\shader_settings.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\shader_type.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\skybox.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\structured_buffer_data.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\sub_mesh.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\texture_buffer.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\texture_buffer_data.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\texture_collection.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\uav_texture_buffer_data.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\vertex.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\view_projection.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\scene.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\scene_manager.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\serializer.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\update_manager.cpp" />
+    <ClCompile Include="External\GenericEngine\pch.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="SlimeBoom\box.cpp" />
+    <ClCompile Include="SlimeBoom\Component\animator.cpp" />
+    <ClCompile Include="SlimeBoom\Component\bush_generator.cpp" />
+    <ClCompile Include="SlimeBoom\Component\camera_controller.cpp" />
+    <ClCompile Include="SlimeBoom\Component\clear_scene_controller.cpp" />
+    <ClCompile Include="SlimeBoom\Component\clear_scene_data.cpp" />
+    <ClCompile Include="SlimeBoom\Component\delay_follower.cpp" />
+    <ClCompile Include="SlimeBoom\Component\game_manager.cpp" />
+    <ClCompile Include="SlimeBoom\Component\map_size_component.cpp" />
+    <ClCompile Include="SlimeBoom\Component\mesh_renderer_generator_test.cpp" />
+    <ClCompile Include="SlimeBoom\Component\object_disabler.cpp" />
+    <ClCompile Include="SlimeBoom\Component\root_motion_controller.cpp" />
+    <ClCompile Include="SlimeBoom\Component\scene_changer.cpp" />
+    <ClCompile Include="SlimeBoom\Component\scene_transition_controller.cpp" />
+    <ClCompile Include="SlimeBoom\Component\scene_transition_executor.cpp" />
+    <ClCompile Include="SlimeBoom\Component\title_scene_controller.cpp" />
+    <ClCompile Include="SlimeBoom\compute_result.cpp" />
+    <ClCompile Include="SlimeBoom\compute_result_types.cpp" />
+    <ClCompile Include="SlimeBoom\default_scene_creator.cpp" />
+    <ClCompile Include="SlimeBoom\Exp\exp_data.cpp" />
+    <ClCompile Include="SlimeBoom\Exp\exp_simulation_component.cpp" />
+    <ClCompile Include="SlimeBoom\Exp\level_up_controller.cpp" />
+    <ClCompile Include="SlimeBoom\LevelUpScreen\cards\acquisition_range_card.cpp" />
+    <ClCompile Include="SlimeBoom\LevelUpScreen\cards\attack_num_card.cpp" />
+    <ClCompile Include="SlimeBoom\LevelUpScreen\cards\attack_power_card.cpp" />
+    <ClCompile Include="SlimeBoom\LevelUpScreen\cards\attack_range.cpp" />
+    <ClCompile Include="SlimeBoom\LevelUpScreen\cards\attack_speed_card.cpp" />
+    <ClCompile Include="SlimeBoom\LevelUpScreen\cards\avoid_percent_card.cpp" />
+    <ClCompile Include="SlimeBoom\LevelUpScreen\cards\exp_multiplier_card.cpp" />
+    <ClCompile Include="SlimeBoom\LevelUpScreen\cards\slash_ability_card.cpp" />
+    <ClCompile Include="SlimeBoom\LevelUpScreen\cards\aura_ability_card.cpp" />
+    <ClCompile Include="SlimeBoom\LevelUpScreen\cards\card_base.cpp" />
+    <ClCompile Include="SlimeBoom\LevelUpScreen\cards\max_hp_card.cpp" />
+    <ClCompile Include="SlimeBoom\LevelUpScreen\cards\speed_card.cpp" />
+    <ClCompile Include="SlimeBoom\LevelUpScreen\card_controller.cpp" />
+    <ClCompile Include="SlimeBoom\LevelUpScreen\card_data.cpp" />
+    <ClCompile Include="SlimeBoom\LevelUpScreen\card_pool.cpp" />
+    <ClCompile Include="SlimeBoom\LevelUpScreen\card_type.cpp" />
+    <ClCompile Include="SlimeBoom\LevelUpScreen\level_up_screen_manager.cpp" />
+    <ClCompile Include="SlimeBoom\Player\ability\ability_data\ability_data.cpp" />
+    <ClCompile Include="SlimeBoom\Player\ability\ability_data\ability_data_store.cpp" />
+    <ClCompile Include="SlimeBoom\Player\ability\ability_data\ability_types.cpp" />
+    <ClCompile Include="SlimeBoom\Player\ability\ability_data\aura_ability_data.cpp" />
+    <ClCompile Include="SlimeBoom\Player\ability\ability_data\slash_ability_data.cpp" />
+    <ClCompile Include="SlimeBoom\Player\ability\ability_processer.cpp" />
+    <ClCompile Include="SlimeBoom\Player\ability\aura_ability.cpp">
+      <AssemblerOutput>NoListing</AssemblerOutput>
+      <AssemblerListingLocation>SlimeBoom\x64\Release\</AssemblerListingLocation>
+      <UndefineAllPreprocessorDefinitions>false</UndefineAllPreprocessorDefinitions>
+      <BrowseInformation>false</BrowseInformation>
+      <BrowseInformationFile>SlimeBoom\x64\Release\</BrowseInformationFile>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <CompileAs>Default</CompileAs>
+      <UseDynamicDebugging>false</UseDynamicDebugging>
+      <ConformanceMode>true</ConformanceMode>
+      <DiagnosticsFormat>Column</DiagnosticsFormat>
+      <DisableLanguageExtensions>false</DisableLanguageExtensions>
+      <ErrorReporting>Prompt</ErrorReporting>
+      <ExpandAttributedSource>false</ExpandAttributedSource>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <EnableASAN>false</EnableASAN>
+      <EnableFuzzer>false</EnableFuzzer>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <EnableVectorLength>NotSet</EnableVectorLength>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <GenerateModuleDependencies>false</GenerateModuleDependencies>
+      <GenerateSourceDependencies>false</GenerateSourceDependencies>
+      <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard_C>Default</LanguageStandard_C>
+      <MinimalRebuild>false</MinimalRebuild>
+      <ModuleDependenciesFile>SlimeBoom\x64\Release\</ModuleDependenciesFile>
+      <ModuleOutputFile>SlimeBoom\x64\Release\</ModuleOutputFile>
+      <OmitDefaultLibName>false</OmitDefaultLibName>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <Optimization>Full</Optimization>
+      <ObjectFileName>SlimeBoom\x64\Release\</ObjectFileName>
+      <CallingConvention>Cdecl</CallingConvention>
+      <ProgramDataBaseFileName>SlimeBoom\x64\Release\vc143.pdb</ProgramDataBaseFileName>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>SlimeBoom\x64\Release\SlimeBoom.pch</PrecompiledHeaderOutputFile>
+      <PreprocessToFile>false</PreprocessToFile>
+      <PreprocessKeepComments>false</PreprocessKeepComments>
+      <PreprocessSuppressLineNumbers>false</PreprocessSuppressLineNumbers>
+      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+      <ShowIncludes>false</ShowIncludes>
+      <SourceDependenciesFile>SlimeBoom\x64\Release\</SourceDependenciesFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <SmallerTypeCheck>false</SmallerTypeCheck>
+      <SpectreMitigation>false</SpectreMitigation>
+      <StructMemberAlignment>Default</StructMemberAlignment>
+      <SupportJustMyCode>false</SupportJustMyCode>
+      <TrackerLogDirectory>SlimeBoom\x64\Release\SlimeBoom.tlog\</TrackerLogDirectory>
+      <TranslateIncludes>false</TranslateIncludes>
+      <MinimalRebuildFromTracking>true</MinimalRebuildFromTracking>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <UseFullPaths>true</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <XMLDocumentationFileName>SlimeBoom\x64\Release\</XMLDocumentationFileName>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <IntelJCCErratum>false</IntelJCCErratum>
+      <BuildStlModules>false</BuildStlModules>
+      <TreatAngleIncludeAsExternal>false</TreatAngleIncludeAsExternal>
+      <ExternalWarningLevel>InheritWarningLevel</ExternalWarningLevel>
+      <TreatExternalTemplatesAsInternal>true</TreatExternalTemplatesAsInternal>
+      <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;_MBCS;</PreprocessorDefinitions>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>C:\cabotya\Projects\slime-boom\Solution\External\GenericEngine\ThirdParty\Effekseer\include;C:\cabotya\Projects\slime-boom\Solution\External\GenericEngine;C:\cabotya\Projects\slime-boom\Solution\vcpkg_installed\x64-windows\include;C:\cabotya\Projects\slime-boom\Solution\vcpkg_installed\x64-windows\include\bullet;C:\cabotya\Projects\slime-boom\Solution\External\GenericEngine\Engine;</AdditionalIncludeDirectories>
+      <AdditionalOptions>/FS</AdditionalOptions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <LinkCompiled>true</LinkCompiled>
+    </ClCompile>
+    <ClCompile Include="SlimeBoom\Player\ability\cooldown_ability.cpp" />
+    <ClCompile Include="SlimeBoom\Player\ability\iability.cpp" />
+    <ClCompile Include="SlimeBoom\Player\ability\slash_ability.cpp" />
+    <ClCompile Include="SlimeBoom\Player\avoid_effect.cpp" />
+    <ClCompile Include="SlimeBoom\Player\player_attack_data.cpp" />
+    <ClCompile Include="SlimeBoom\Player\player_aura_controller.cpp" />
+    <ClCompile Include="SlimeBoom\Player\player_component.cpp" />
+    <ClCompile Include="SlimeBoom\Player\player_damage_dispatcher.cpp" />
+    <ClCompile Include="SlimeBoom\Player\player_data.cpp" />
+    <ClCompile Include="SlimeBoom\Player\player_data_component.cpp" />
+    <ClCompile Include="SlimeBoom\Player\player_data_presenter.cpp" />
+    <ClCompile Include="SlimeBoom\Player\player_position_presenter.cpp" />
+    <ClCompile Include="SlimeBoom\Player\player_sword_controller.cpp">
+      <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <ClCompile Include="SlimeBoom\Player\slash_effect_component.cpp" />
+    <ClCompile Include="SlimeBoom\Player\States\avoid_state.cpp" />
+    <ClCompile Include="SlimeBoom\Player\States\dash_state.cpp" />
+    <ClCompile Include="SlimeBoom\Player\States\play_anim_state.cpp" />
+    <ClCompile Include="SlimeBoom\Slime\slime_eliminate_checker.cpp">
+      <AssemblerOutput>NoListing</AssemblerOutput>
+      <AssemblerListingLocation>SlimeBoom\x64\Release\</AssemblerListingLocation>
+      <UndefineAllPreprocessorDefinitions>false</UndefineAllPreprocessorDefinitions>
+      <BrowseInformation>false</BrowseInformation>
+      <BrowseInformationFile>SlimeBoom\x64\Release\</BrowseInformationFile>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <CompileAs>Default</CompileAs>
+      <UseDynamicDebugging>false</UseDynamicDebugging>
+      <ConformanceMode>true</ConformanceMode>
+      <DiagnosticsFormat>Column</DiagnosticsFormat>
+      <DisableLanguageExtensions>false</DisableLanguageExtensions>
+      <ErrorReporting>Prompt</ErrorReporting>
+      <ExpandAttributedSource>false</ExpandAttributedSource>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <EnableASAN>false</EnableASAN>
+      <EnableFuzzer>false</EnableFuzzer>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <EnableVectorLength>NotSet</EnableVectorLength>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <GenerateModuleDependencies>false</GenerateModuleDependencies>
+      <GenerateSourceDependencies>false</GenerateSourceDependencies>
+      <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard_C>Default</LanguageStandard_C>
+      <MinimalRebuild>false</MinimalRebuild>
+      <ModuleDependenciesFile>SlimeBoom\x64\Release\</ModuleDependenciesFile>
+      <ModuleOutputFile>SlimeBoom\x64\Release\</ModuleOutputFile>
+      <OmitDefaultLibName>false</OmitDefaultLibName>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <Optimization>Full</Optimization>
+      <ObjectFileName>SlimeBoom\x64\Release\</ObjectFileName>
+      <CallingConvention>Cdecl</CallingConvention>
+      <ProgramDataBaseFileName>SlimeBoom\x64\Release\vc143.pdb</ProgramDataBaseFileName>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>SlimeBoom\x64\Release\SlimeBoom.pch</PrecompiledHeaderOutputFile>
+      <PreprocessToFile>false</PreprocessToFile>
+      <PreprocessKeepComments>false</PreprocessKeepComments>
+      <PreprocessSuppressLineNumbers>false</PreprocessSuppressLineNumbers>
+      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+      <ShowIncludes>false</ShowIncludes>
+      <SourceDependenciesFile>SlimeBoom\x64\Release\</SourceDependenciesFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <SmallerTypeCheck>false</SmallerTypeCheck>
+      <SpectreMitigation>false</SpectreMitigation>
+      <StructMemberAlignment>Default</StructMemberAlignment>
+      <SupportJustMyCode>false</SupportJustMyCode>
+      <TrackerLogDirectory>SlimeBoom\x64\Release\SlimeBoom.tlog\</TrackerLogDirectory>
+      <TranslateIncludes>false</TranslateIncludes>
+      <MinimalRebuildFromTracking>true</MinimalRebuildFromTracking>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <UseFullPaths>true</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <XMLDocumentationFileName>SlimeBoom\x64\Release\</XMLDocumentationFileName>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <IntelJCCErratum>false</IntelJCCErratum>
+      <BuildStlModules>false</BuildStlModules>
+      <TreatAngleIncludeAsExternal>false</TreatAngleIncludeAsExternal>
+      <ExternalWarningLevel>InheritWarningLevel</ExternalWarningLevel>
+      <TreatExternalTemplatesAsInternal>true</TreatExternalTemplatesAsInternal>
+      <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;_MBCS;</PreprocessorDefinitions>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>C:\cabotya\Projects\slime-boom\Solution\External\GenericEngine\ThirdParty\Effekseer\include;C:\cabotya\Projects\slime-boom\Solution\External\GenericEngine;C:\cabotya\Projects\slime-boom\Solution\vcpkg_installed\x64-windows\include;C:\cabotya\Projects\slime-boom\Solution\vcpkg_installed\x64-windows\include\bullet;C:\cabotya\Projects\slime-boom\Solution\External\GenericEngine\Engine;</AdditionalIncludeDirectories>
+      <AdditionalOptions>/FS</AdditionalOptions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <LinkCompiled>true</LinkCompiled>
+    </ClCompile>
+    <ClCompile Include="SlimeBoom\Slime\slime_eliminate_se.cpp" />
+    <ClCompile Include="SlimeBoom\Slime\slime_simulation_component.cpp" />
+    <ClCompile Include="SlimeBoom\Slime\slime_take_damage_event_component.cpp" />
+    <ClCompile Include="SlimeBoom\Slime\slime_types.cpp" />
+    <ClCompile Include="SlimeBoom\Sound\sound_manager_component.cpp" />
+    <ClCompile Include="SlimeBoom\Sound\sound_types.cpp" />
+    <ClCompile Include="SlimeBoom\StateMachine\comparison_condition.cpp" />
+    <ClCompile Include="SlimeBoom\StateMachine\condition_base.cpp" />
+    <ClCompile Include="SlimeBoom\StateMachine\parameter.cpp" />
+    <ClCompile Include="SlimeBoom\StateMachine\state.cpp" />
+    <ClCompile Include="SlimeBoom\StateMachine\state_machine.cpp" />
+    <ClCompile Include="SlimeBoom\StateMachine\transition.cpp" />
+    <ClCompile Include="SlimeBoom\UI\avoid_cooldown_gauge.cpp" />
+    <ClCompile Include="SlimeBoom\UI\direction.cpp" />
+    <ClCompile Include="SlimeBoom\UI\exp_gauge.cpp" />
+    <ClCompile Include="SlimeBoom\UI\gauge.cpp" />
+    <ClCompile Include="SlimeBoom\UI\level_text.cpp" />
+    <ClCompile Include="SlimeBoom\UI\level_up_card.cpp" />
+    <ClCompile Include="SlimeBoom\UI\level_up_card_controller.cpp" />
+    <ClCompile Include="SlimeBoom\UI\player_hp_gauge.cpp" />
+    <ClCompile Include="SlimeBoom\UI\player_status.cpp" />
+    <ClCompile Include="SlimeBoom\UI\survival_timer.cpp" />
+    <ClCompile Include="SlimeBoom\UI\ui_button.cpp" />
+    <ClCompile Include="SlimeBoom\UI\ui_data_provider.cpp" />
+    <ClCompile Include="SlimeBoom\UI\ui_hover_scale_effect.cpp" />
+    <ClCompile Include="SlimeBoom\UI\ui_navigator.cpp" />
+    <ClCompile Include="SlimeBoom\Utils\math_util.cpp" />
+    <ClCompile Include="SlimeBoom\Utils\random.cpp" />
+    <ClCompile Include="SlimeBoom\Wave\wave_controller.cpp" />
+    <ClCompile Include="SlimeBoom\Wave\wave_data.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="External\GenericEngine\.git" />
+    <Content Include="External\GenericEngine\.gitignore" />
+    <Content Include="External\GenericEngine\.gitmodules" />
+    <Content Include="External\GenericEngine\.idea\.gitignore" />
+    <Content Include="External\GenericEngine\.idea\.idea.GenericEngine\.idea\discord.xml" />
+    <Content Include="External\GenericEngine\.idea\.idea.GenericEngine\.idea\encodings.xml" />
+    <Content Include="External\GenericEngine\.idea\.idea.GenericEngine\.idea\indexLayout.xml" />
+    <Content Include="External\GenericEngine\.idea\.idea.GenericEngine\.idea\projectSettingsUpdater.xml" />
+    <Content Include="External\GenericEngine\.idea\.idea.GenericEngine\.idea\vcs.xml" />
+    <Content Include="External\GenericEngine\.idea\editor.xml" />
+    <Content Include="External\GenericEngine\.idea\vcs.xml" />
+    <Content Include="External\GenericEngine\GenericEngine.sln" />
+    <Content Include="External\GenericEngine\GenericEngine.sln.DotSettings" />
+    <Content Include="External\GenericEngine\GenericEngine.vcxproj" />
+    <Content Include="External\GenericEngine\GenericEngine.vcxproj.filters" />
+    <Content Include="External\GenericEngine\Project.vcxproj.filters" />
+    <Content Include="External\GenericEngine\README.md" />
+    <Content Include="External\GenericEngine\THIRD-PARTY-LICENSES" />
+    <Content Include="External\GenericEngine\ThirdParty\Effekseer\lib\a\Effekseerd.lib" />
+    <Content Include="External\GenericEngine\ThirdParty\Effekseer\lib\a\EffekseerRendererDX11d.lib" />
+    <Content Include="External\GenericEngine\ThirdParty\Effekseer\lib\a\EffekseerRendererDX12d.lib" />
+    <Content Include="External\GenericEngine\ThirdParty\Effekseer\lib\a\EffekseerRendererDX9d.lib" />
+    <Content Include="External\GenericEngine\ThirdParty\Effekseer\lib\a\EffekseerRendererGLd.lib" />
+    <Content Include="External\GenericEngine\ThirdParty\Effekseer\lib\a\EffekseerSoundDSoundd.lib" />
+    <Content Include="External\GenericEngine\ThirdParty\Effekseer\lib\a\EffekseerSoundXAudio2d.lib" />
+    <Content Include="External\GenericEngine\ThirdParty\Effekseer\lib\a\glfw3d.lib" />
+    <Content Include="External\GenericEngine\ThirdParty\Effekseer\lib\a\LLGId.lib" />
+    <Content Include="External\GenericEngine\ThirdParty\Effekseer\lib\cmake\Effekseer-config-debug.cmake" />
+    <Content Include="External\GenericEngine\ThirdParty\Effekseer\lib\cmake\Effekseer-config.cmake" />
+    <Content Include="External\GenericEngine\ThirdParty\Effekseer\lib\cmake\EffekseerRendererDX11-config-debug.cmake" />
+    <Content Include="External\GenericEngine\ThirdParty\Effekseer\lib\cmake\EffekseerRendererDX11-config.cmake" />
+    <Content Include="External\GenericEngine\ThirdParty\Effekseer\lib\cmake\EffekseerRendererDX12-config-debug.cmake" />
+    <Content Include="External\GenericEngine\ThirdParty\Effekseer\lib\cmake\EffekseerRendererDX12-config.cmake" />
+    <Content Include="External\GenericEngine\ThirdParty\Effekseer\lib\cmake\EffekseerRendererDX9-config-debug.cmake" />
+    <Content Include="External\GenericEngine\ThirdParty\Effekseer\lib\cmake\EffekseerRendererDX9-config.cmake" />
+    <Content Include="External\GenericEngine\ThirdParty\Effekseer\lib\cmake\EffekseerRendererGL-config-debug.cmake" />
+    <Content Include="External\GenericEngine\ThirdParty\Effekseer\lib\cmake\EffekseerRendererGL-config.cmake" />
+    <Content Include="External\GenericEngine\ThirdParty\Effekseer\lib\cmake\glfw3\glfw3Config.cmake" />
+    <Content Include="External\GenericEngine\ThirdParty\Effekseer\lib\cmake\glfw3\glfw3ConfigVersion.cmake" />
+    <Content Include="External\GenericEngine\ThirdParty\Effekseer\lib\cmake\glfw3\glfw3Targets-debug.cmake" />
+    <Content Include="External\GenericEngine\ThirdParty\Effekseer\lib\cmake\glfw3\glfw3Targets.cmake" />
+    <Content Include="External\GenericEngine\ThirdParty\Effekseer\lib\cmake\LLGI-config-debug.cmake" />
+    <Content Include="External\GenericEngine\ThirdParty\Effekseer\lib\cmake\LLGI-config.cmake" />
+    <Content Include="External\GenericEngine\ThirdParty\Effekseer\lib\Effekseer.lib" />
+    <Content Include="External\GenericEngine\ThirdParty\Effekseer\lib\EffekseerRendererDX11.lib" />
+    <Content Include="External\GenericEngine\ThirdParty\Effekseer\lib\EffekseerRendererDX12.lib" />
+    <Content Include="External\GenericEngine\ThirdParty\Effekseer\lib\EffekseerRendererDX9.lib" />
+    <Content Include="External\GenericEngine\ThirdParty\Effekseer\lib\EffekseerRendererGL.lib" />
+    <Content Include="External\GenericEngine\ThirdParty\Effekseer\lib\EffekseerSoundDSound.lib" />
+    <Content Include="External\GenericEngine\ThirdParty\Effekseer\lib\EffekseerSoundXAudio2.lib" />
+    <Content Include="External\GenericEngine\ThirdParty\Effekseer\lib\LLGI.lib" />
+    <Content Include="External\GenericEngine\ThirdParty\Effekseer\lib\pkgconfig\glfw3.pc" />
+    <Content Include="External\GenericEngine\vcpkg-configuration.json" />
+    <Content Include="External\GenericEngine\vcpkg.json" />
+    <Content Include="Resources\task.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="component_registry.h" />
+    <ClInclude Include="External\GenericEngine\application.h" />
+    <ClInclude Include="External\GenericEngine\bootstrap.h" />
+    <ClInclude Include="External\GenericEngine\Editor\asset_browser.h" />
+    <ClInclude Include="External\GenericEngine\Editor\audio_window.h" />
+    <ClInclude Include="External\GenericEngine\Editor\ContextMenu\AssetHierarchy\asset_hierarchy_context_menu.h" />
+    <ClInclude Include="External\GenericEngine\Editor\ContextMenu\Common\add_component_menu.h" />
+    <ClInclude Include="External\GenericEngine\Editor\ContextMenu\Component\component_context_menu.h" />
+    <ClInclude Include="External\GenericEngine\Editor\ContextMenu\context_menu.h" />
+    <ClInclude Include="External\GenericEngine\Editor\ContextMenu\GameObject\game_object_context_menu.h" />
+    <ClInclude Include="External\GenericEngine\Editor\ContextMenu\GameObject\game_object_create_menu.h" />
+    <ClInclude Include="External\GenericEngine\Editor\ContextMenu\Scene\scene_context_menu.h" />
+    <ClInclude Include="External\GenericEngine\Editor\default_editor_menus.h" />
+    <ClInclude Include="External\GenericEngine\Editor\editor.h" />
+    <ClInclude Include="External\GenericEngine\Editor\editor_gizmos.h" />
+    <ClInclude Include="External\GenericEngine\Editor\editor_menu.h" />
+    <ClInclude Include="External\GenericEngine\Editor\editor_prefs.h" />
+    <ClInclude Include="External\GenericEngine\Editor\editor_window.h" />
+    <ClInclude Include="External\GenericEngine\Editor\hierarchy.h" />
+    <ClInclude Include="External\GenericEngine\Editor\imgui_demo_window.h" />
+    <ClInclude Include="External\GenericEngine\Editor\inspector.h" />
+    <ClInclude Include="External\GenericEngine\Editor\object_list_window.h" />
+    <ClInclude Include="External\GenericEngine\Editor\profiler.h" />
+    <ClInclude Include="External\GenericEngine\Editor\tool_window.h" />
+    <ClInclude Include="External\GenericEngine\Editor\update_man_debugger.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Animation\animation_clip.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Animation\animation_component.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Animation\animation_state.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Asset\asset_database.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Asset\asset_descriptor.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Asset\asset_hierarchy.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Asset\asset_ptr.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Asset\dummy_asset.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Asset\effekseer_effect.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Asset\fbx_meta.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Asset\Importer\asset_importer.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Asset\Importer\audio_clip_importer.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Asset\Importer\compute_shader_importer.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Asset\Importer\effekseer_effect_importer.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Asset\Importer\fbx_importer.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Asset\Importer\font_importer.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Asset\Importer\import_log.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Asset\Importer\material_importer.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Asset\Importer\render_texture_importer.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Asset\Importer\shader_importer.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Asset\Importer\texture_2d_importer.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Asset\Importer\texture_cube_importer.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Asset\Importer\txt_importer.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Asset\persistent_data_store.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Asset\text_asset.h" />
+    <ClInclude Include="External\GenericEngine\Engine\assimp_util.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Audio\audio.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Audio\audio_clip.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Audio\audio_listener_component.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Audio\audio_source_component.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Components\billboard_renderer.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Components\camera_component.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Components\canvas.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Components\Cinema\cinema_brain_component.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Components\Cinema\cinema_camera_component.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Components\Cinema\cinema_camera_transitioner.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Components\component.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Components\component_event_tester.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Components\compute_shader_component.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Components\controller.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Components\coroutine_test.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Components\directional_light.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Components\effekseer_renderer.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Components\frame_meta_data.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Components\global_resource_tester_component.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Components\image.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Components\light.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Components\mesh_renderer.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Components\procedural_renderer.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Components\rect_transform.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Components\renderer.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Components\renderer_2d.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Components\rotator_component.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Components\skinned_mesh_renderer.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Components\spot_light.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Components\text_asset_ref_test_component.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Components\text_renderer.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Components\transform.h" />
+    <ClInclude Include="External\GenericEngine\Engine\component_factory.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Coroutine\coroutine_manager.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Coroutine\task.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Coroutine\wait_for_frames.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Coroutine\wait_for_next_frame.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Coroutine\wait_for_seconds.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Coroutine\wait_for_task.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Coroutine\yield_base.h" />
+    <ClInclude Include="External\GenericEngine\Engine\default_scene_generator.h" />
+    <ClInclude Include="External\GenericEngine\Engine\depth_texture_buffer.h" />
+    <ClInclude Include="External\GenericEngine\Engine\do.h" />
+    <ClInclude Include="External\GenericEngine\Engine\effekseer_util.h" />
+    <ClInclude Include="External\GenericEngine\Engine\enable_shared_from_base.h" />
+    <ClInclude Include="External\GenericEngine\Engine\engine.h" />
+    <ClInclude Include="External\GenericEngine\Engine\engine_profiler.h" />
+    <ClInclude Include="External\GenericEngine\Engine\engine_time.h" />
+    <ClInclude Include="External\GenericEngine\Engine\engine_traits.h" />
+    <ClInclude Include="External\GenericEngine\Engine\engine_util.h" />
+    <ClInclude Include="External\GenericEngine\Engine\event.h" />
+    <ClInclude Include="External\GenericEngine\Engine\event_receivers.h" />
+    <ClInclude Include="External\GenericEngine\Engine\game_object.h" />
+    <ClInclude Include="External\GenericEngine\Engine\gui.h" />
+    <ClInclude Include="External\GenericEngine\Engine\guid_serializer.h" />
+    <ClInclude Include="External\GenericEngine\Engine\input.h" />
+    <ClInclude Include="External\GenericEngine\Engine\inspectable.h" />
+    <ClInclude Include="External\GenericEngine\Engine\logger.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Math\mathf.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Math\math_serializer.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Math\rect.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Math\trs.h" />
+    <ClInclude Include="External\GenericEngine\Engine\object.h" />
+    <ClInclude Include="External\GenericEngine\Engine\object_pool.h" />
+    <ClInclude Include="External\GenericEngine\Engine\object_util.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Physics\box_collider.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Physics\bullet_debug_drawer.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Physics\capsule_collider.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Physics\collider.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Physics\collision.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Physics\compound_shape.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Physics\contact_point.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Physics\mesh_collider.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Physics\physics.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Physics\plane_collider.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Physics\rigidbody_component.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Physics\rigidbody_tester_component.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Physics\sphere_collider.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\bone_weight.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\buffer_base.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\buffer_data_base.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\byte_address_buffer_data.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\CabotEngine\Graphics\ByteAddressBuffer.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\CabotEngine\Graphics\ComPtr.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\CabotEngine\Graphics\ComputePipelineState.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\CabotEngine\Graphics\ConstantBuffer.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\CabotEngine\Graphics\DescriptorHeap.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\CabotEngine\Graphics\DirectXResourceFactory.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\CabotEngine\Graphics\IndexBuffer.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\CabotEngine\Graphics\PipelineState.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\CabotEngine\Graphics\PSOManager.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\CabotEngine\Graphics\RenderEngine.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\CabotEngine\Graphics\RootSignature.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\CabotEngine\Graphics\StructuredBuffer.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\CabotEngine\Graphics\Texture2D.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\CabotEngine\Graphics\Texture2DArray.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\CabotEngine\Graphics\TextureCube.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\CabotEngine\Graphics\VertexBuffer.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\camera.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\compute_command.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\compute_shader.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\constant_buffer_data.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\depth_texture.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\Effect\effekseer_controller.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\font_data.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\gizmos.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\gpu_resource_group.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\gpu_resource_manager.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\lighting.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\light_data.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\material.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\material_block.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\mesh.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\model_importer.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\primitives.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\rendering_constants.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\rendering_settings_component.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\render_command.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\render_pipeline.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\render_texture.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\render_texture_buffer.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\scene_data.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\shader.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\shader_parameter.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\shader_resource.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\shader_settings.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\shader_type.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\skybox.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\structured_buffer_data.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\sub_mesh.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\texture_buffer.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\texture_buffer_data.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\texture_collection.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\uav_texture_buffer_data.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\vertex.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\view_projection.h" />
+    <ClInclude Include="External\GenericEngine\Engine\scene.h" />
+    <ClInclude Include="External\GenericEngine\Engine\scene_manager.h" />
+    <ClInclude Include="External\GenericEngine\Engine\serializer.h" />
+    <ClInclude Include="External\GenericEngine\Engine\str_util.h" />
+    <ClInclude Include="External\GenericEngine\Engine\update_manager.h" />
+    <ClInclude Include="External\GenericEngine\pch.h" />
+    <ClInclude Include="External\GenericEngine\ThirdParty\Effekseer\include\EffekseerRendererDX11\EffekseerRendererDX11.h" />
+    <ClInclude Include="External\GenericEngine\ThirdParty\Effekseer\include\EffekseerRendererDX12\ad_model_distortion_ps.h" />
+    <ClInclude Include="External\GenericEngine\ThirdParty\Effekseer\include\EffekseerRendererDX12\ad_model_distortion_vs.h" />
+    <ClInclude Include="External\GenericEngine\ThirdParty\Effekseer\include\EffekseerRendererDX12\ad_model_lit_ps.h" />
+    <ClInclude Include="External\GenericEngine\ThirdParty\Effekseer\include\EffekseerRendererDX12\ad_model_lit_vs.h" />
+    <ClInclude Include="External\GenericEngine\ThirdParty\Effekseer\include\EffekseerRendererDX12\ad_model_unlit_ps.h" />
+    <ClInclude Include="External\GenericEngine\ThirdParty\Effekseer\include\EffekseerRendererDX12\ad_model_unlit_vs.h" />
+    <ClInclude Include="External\GenericEngine\ThirdParty\Effekseer\include\EffekseerRendererDX12\ad_sprite_distortion_vs.h" />
+    <ClInclude Include="External\GenericEngine\ThirdParty\Effekseer\include\EffekseerRendererDX12\ad_sprite_lit_vs.h" />
+    <ClInclude Include="External\GenericEngine\ThirdParty\Effekseer\include\EffekseerRendererDX12\ad_sprite_unlit_vs.h" />
+    <ClInclude Include="External\GenericEngine\ThirdParty\Effekseer\include\EffekseerRendererDX12\EffekseerMaterialCompilerDX12.h" />
+    <ClInclude Include="External\GenericEngine\ThirdParty\Effekseer\include\EffekseerRendererDX12\EffekseerRendererDX12.Base.h" />
+    <ClInclude Include="External\GenericEngine\ThirdParty\Effekseer\include\EffekseerRendererDX12\EffekseerRendererDX12.Base.Pre.h" />
+    <ClInclude Include="External\GenericEngine\ThirdParty\Effekseer\include\EffekseerRendererDX12\EffekseerRendererDX12.h" />
+    <ClInclude Include="External\GenericEngine\ThirdParty\Effekseer\include\EffekseerRendererDX12\EffekseerRendererDX12.Renderer.h" />
+    <ClInclude Include="External\GenericEngine\ThirdParty\Effekseer\include\EffekseerRendererDX12\model_distortion_ps.h" />
+    <ClInclude Include="External\GenericEngine\ThirdParty\Effekseer\include\EffekseerRendererDX12\model_distortion_vs.h" />
+    <ClInclude Include="External\GenericEngine\ThirdParty\Effekseer\include\EffekseerRendererDX12\model_lit_ps.h" />
+    <ClInclude Include="External\GenericEngine\ThirdParty\Effekseer\include\EffekseerRendererDX12\model_lit_vs.h" />
+    <ClInclude Include="External\GenericEngine\ThirdParty\Effekseer\include\EffekseerRendererDX12\model_unlit_ps.h" />
+    <ClInclude Include="External\GenericEngine\ThirdParty\Effekseer\include\EffekseerRendererDX12\model_unlit_vs.h" />
+    <ClInclude Include="External\GenericEngine\ThirdParty\Effekseer\include\EffekseerRendererDX12\sprite_distortion_vs.h" />
+    <ClInclude Include="External\GenericEngine\ThirdParty\Effekseer\include\EffekseerRendererDX12\sprite_lit_vs.h" />
+    <ClInclude Include="External\GenericEngine\ThirdParty\Effekseer\include\EffekseerRendererDX12\sprite_unlit_vs.h" />
+    <ClInclude Include="External\GenericEngine\ThirdParty\Effekseer\include\EffekseerRendererDX9\EffekseerRendererDX9.h" />
+    <ClInclude Include="External\GenericEngine\ThirdParty\Effekseer\include\EffekseerRendererGL\EffekseerRendererGL.h" />
+    <ClInclude Include="External\GenericEngine\ThirdParty\Effekseer\include\Effekseer\Effekseer.h" />
+    <ClInclude Include="External\GenericEngine\ThirdParty\Effekseer\include\Effekseer\Effekseer.Modules.h" />
+    <ClInclude Include="External\GenericEngine\ThirdParty\Effekseer\include\Effekseer\Effekseer.SIMD.h" />
+    <ClInclude Include="External\GenericEngine\ThirdParty\Effekseer\include\GLFW\glfw3.h" />
+    <ClInclude Include="External\GenericEngine\ThirdParty\Effekseer\include\GLFW\glfw3native.h" />
+    <ClInclude Include="External\GenericEngine\ThirdParty\Effekseer\include\LLGI\LLGI.Base.h" />
+    <ClInclude Include="External\GenericEngine\ThirdParty\Effekseer\include\LLGI\LLGI.Buffer.h" />
+    <ClInclude Include="External\GenericEngine\ThirdParty\Effekseer\include\LLGI\LLGI.CommandList.h" />
+    <ClInclude Include="External\GenericEngine\ThirdParty\Effekseer\include\LLGI\LLGI.Compiler.h" />
+    <ClInclude Include="External\GenericEngine\ThirdParty\Effekseer\include\LLGI\LLGI.Graphics.h" />
+    <ClInclude Include="External\GenericEngine\ThirdParty\Effekseer\include\LLGI\LLGI.PipelineState.h" />
+    <ClInclude Include="External\GenericEngine\ThirdParty\Effekseer\include\LLGI\LLGI.Platform.h" />
+    <ClInclude Include="External\GenericEngine\ThirdParty\Effekseer\include\LLGI\LLGI.Shader.h" />
+    <ClInclude Include="External\GenericEngine\ThirdParty\Effekseer\include\LLGI\LLGI.Texture.h" />
+    <ClInclude Include="Resources\Light.hlsli" />
+    <ClInclude Include="Resources\slime.hlsli" />
+    <ClInclude Include="Resources\dithering.hlsli" />
+    <ClInclude Include="SlimeBoom\box.h" />
+    <ClInclude Include="SlimeBoom\Component\animator.h" />
+    <ClInclude Include="SlimeBoom\Component\bush_generator.h" />
+    <ClInclude Include="SlimeBoom\Component\camera_controller.h" />
+    <ClInclude Include="SlimeBoom\Component\clear_scene_controller.h" />
+    <ClInclude Include="SlimeBoom\Component\clear_scene_data.h" />
+    <ClInclude Include="SlimeBoom\Component\delay_follower.h" />
+    <ClInclude Include="SlimeBoom\Component\game_manager.h" />
+    <ClInclude Include="SlimeBoom\Component\map_size_component.h" />
+    <ClInclude Include="SlimeBoom\Component\mesh_renderer_generator_test.h" />
+    <ClInclude Include="SlimeBoom\Component\object_disabler.h" />
+    <ClInclude Include="SlimeBoom\Component\root_motion_controller.h" />
+    <ClInclude Include="SlimeBoom\Component\scene_changer.h" />
+    <ClInclude Include="SlimeBoom\Component\scene_transition_controller.h" />
+    <ClInclude Include="SlimeBoom\Component\scene_transition_executor.h" />
+    <ClInclude Include="SlimeBoom\Component\title_scene_controller.h" />
+    <ClInclude Include="SlimeBoom\compute_result.h" />
+    <ClInclude Include="SlimeBoom\compute_result_types.h" />
+    <ClInclude Include="SlimeBoom\default_scene_creator.h" />
+    <ClInclude Include="SlimeBoom\Exp\exp_data.h" />
+    <ClInclude Include="SlimeBoom\Exp\exp_simulation_component.h" />
+    <ClInclude Include="SlimeBoom\Exp\level_up_controller.h" />
+    <ClInclude Include="SlimeBoom\LevelUpScreen\cards\acquisition_range_card.h" />
+    <ClInclude Include="SlimeBoom\LevelUpScreen\cards\attack_num_card.h" />
+    <ClInclude Include="SlimeBoom\LevelUpScreen\cards\attack_power_card.h" />
+    <ClInclude Include="SlimeBoom\LevelUpScreen\cards\attack_range_card.h" />
+    <ClInclude Include="SlimeBoom\LevelUpScreen\cards\attack_speed_card.h" />
+    <ClInclude Include="SlimeBoom\LevelUpScreen\cards\avoid_percent_card.h" />
+    <ClInclude Include="SlimeBoom\LevelUpScreen\cards\exp_multiplier_card.h" />
+    <ClInclude Include="SlimeBoom\LevelUpScreen\cards\slash_ability_card.h" />
+    <ClInclude Include="SlimeBoom\LevelUpScreen\cards\aura_ability_card.h" />
+    <ClInclude Include="SlimeBoom\LevelUpScreen\cards\card_base.h" />
+    <ClInclude Include="SlimeBoom\LevelUpScreen\cards\max_hp_card.h" />
+    <ClInclude Include="SlimeBoom\LevelUpScreen\cards\speed_card.h" />
+    <ClInclude Include="SlimeBoom\LevelUpScreen\card_controller.h" />
+    <ClInclude Include="SlimeBoom\LevelUpScreen\card_data.h" />
+    <ClInclude Include="SlimeBoom\LevelUpScreen\card_pool.h" />
+    <ClInclude Include="SlimeBoom\LevelUpScreen\card_type.h" />
+    <ClInclude Include="SlimeBoom\LevelUpScreen\level_up_screen_manager.h" />
+    <ClInclude Include="SlimeBoom\Player\ability\ability_data\ability_data.h" />
+    <ClInclude Include="SlimeBoom\Player\ability\ability_data\ability_data_store.h" />
+    <ClInclude Include="SlimeBoom\Player\ability\ability_data\ability_types.h" />
+    <ClInclude Include="SlimeBoom\Player\ability\ability_data\aura_ability_data.h" />
+    <ClInclude Include="SlimeBoom\Player\ability\ability_data\slash_ability_data.h" />
+    <ClInclude Include="SlimeBoom\Player\ability\ability_processer.h" />
+    <ClInclude Include="SlimeBoom\Player\ability\aura_ability.h" />
+    <ClInclude Include="SlimeBoom\Player\ability\cooldown_ability.h" />
+    <ClInclude Include="SlimeBoom\Player\ability\iability.h" />
+    <ClInclude Include="SlimeBoom\Player\ability\slash_ability.h" />
+    <ClInclude Include="SlimeBoom\Player\avoid_effect.h" />
+    <ClInclude Include="SlimeBoom\Player\player_aura_controller.h" />
+    <ClInclude Include="SlimeBoom\Player\player_component.h" />
+    <ClInclude Include="SlimeBoom\Player\player_damage_dispatcher.h" />
+    <ClInclude Include="SlimeBoom\Player\player_data.h" />
+    <ClInclude Include="SlimeBoom\Player\player_data_component.h" />
+    <ClInclude Include="SlimeBoom\Player\player_data_presenter.h" />
+    <ClInclude Include="SlimeBoom\Player\player_attack_data.h" />
+    <ClInclude Include="SlimeBoom\Player\player_position_presenter.h" />
+    <ClInclude Include="SlimeBoom\Player\player_sword_controller.h" />
+    <ClInclude Include="SlimeBoom\Player\slash_effect_component.h" />
+    <ClInclude Include="SlimeBoom\Player\States\avoid_state.h" />
+    <ClInclude Include="SlimeBoom\Player\States\dash_state.h" />
+    <ClInclude Include="SlimeBoom\Player\States\play_anim_state.h" />
+    <ClInclude Include="SlimeBoom\Slime\slime_eliminate_checker.h" />
+    <ClInclude Include="SlimeBoom\Slime\slime_eliminate_se.h" />
+    <ClInclude Include="SlimeBoom\Slime\slime_simulation_component.h" />
+    <ClInclude Include="SlimeBoom\Slime\slime_take_damage_event_component.h" />
+    <ClInclude Include="SlimeBoom\Slime\slime_types.h" />
+    <ClInclude Include="SlimeBoom\Sound\sound_manager_component.h" />
+    <ClInclude Include="SlimeBoom\Sound\sound_types.h" />
+    <ClInclude Include="SlimeBoom\StateMachine\comparison_condition.h" />
+    <ClInclude Include="SlimeBoom\StateMachine\condition_base.h" />
+    <ClInclude Include="SlimeBoom\StateMachine\parameter.h" />
+    <ClInclude Include="SlimeBoom\StateMachine\state.h" />
+    <ClInclude Include="SlimeBoom\StateMachine\state_machine.h" />
+    <ClInclude Include="SlimeBoom\StateMachine\transition.h" />
+    <ClInclude Include="SlimeBoom\UI\avoid_cooldown_gauge.h" />
+    <ClInclude Include="SlimeBoom\UI\direction.h" />
+    <ClInclude Include="SlimeBoom\UI\exp_gauge.h" />
+    <ClInclude Include="SlimeBoom\UI\gauge.h" />
+    <ClInclude Include="SlimeBoom\UI\level_text.h" />
+    <ClInclude Include="SlimeBoom\UI\level_up_card.h" />
+    <ClInclude Include="SlimeBoom\UI\level_up_card_controller.h" />
+    <ClInclude Include="SlimeBoom\UI\player_hp_gauge.h" />
+    <ClInclude Include="SlimeBoom\UI\player_status_ui.h" />
+    <ClInclude Include="SlimeBoom\UI\survival_timer.h" />
+    <ClInclude Include="SlimeBoom\UI\ui_button.h" />
+    <ClInclude Include="SlimeBoom\UI\ui_data_provider.h" />
+    <ClInclude Include="SlimeBoom\UI\ui_hover_scale_effect.h" />
+    <ClInclude Include="SlimeBoom\UI\ui_navigator.h" />
+    <ClInclude Include="SlimeBoom\Utils\math_util.h" />
+    <ClInclude Include="SlimeBoom\Utils\random.h" />
+    <ClInclude Include="SlimeBoom\Wave\wave_controller.h" />
+    <ClInclude Include="SlimeBoom\Wave\wave_data.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <PropertyGroup Label="Vcpkg">
+    <VcpkgEnableManifest>true</VcpkgEnableManifest>
+  </PropertyGroup>
+  <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <VcpkgInstalledDir>
+    </VcpkgInstalledDir>
+  </PropertyGroup>
+</Project>

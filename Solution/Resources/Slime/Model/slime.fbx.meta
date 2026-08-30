@@ -1,0 +1,17 @@
+{
+    "data": {},
+    "guid": "9e206d40-7269-499f-8704-8711aca8bdb4",
+    "type": ".fbx",
+    "objects": [
+        {
+            "guid": "f0e5ef84-031d-4a82-a830-d1af24161fee",
+            "name": "DefaultMaterial",
+            "type_hint": "class engine::Material"
+        },
+        {
+            "guid": "1c9a8b0b-2457-4317-bee9-33ed586e13a9",
+            "name": "Sphere",
+            "type_hint": "class engine::Mesh"
+        }
+    ]
+}

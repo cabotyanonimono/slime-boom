@@ -15,7 +15,7 @@ class BushGenerator : public engine::Component
     engine::AssetPtr<engine::Transform> m_player_transform_;
 
     void UpdateBushPositions();
-    void UploadBushPositions() const;
+    void UploadBushPositions();
     
 public:
     void OnInspectorGui() override;

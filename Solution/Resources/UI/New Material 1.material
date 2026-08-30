@@ -1,0 +1,244 @@
+{
+    "value0": {
+        "polymorphic_id": 1073741824,
+        "ptr_wrapper": {
+            "id": 2147483649,
+            "data": {
+                "cereal_class_version": 3,
+                "value0": {
+                    "cereal_class_version": 1,
+                    "m_guid_": "da783d8a-c97f-4342-9208-f63c02a3a8f4",
+                    "m_name_": "New Material 1.material"
+                },
+                "shared_material_block": {
+                    "polymorphic_id": 1073741824,
+                    "ptr_wrapper": {
+                        "id": 2147483650,
+                        "data": {
+                            "cereal_class_version": 2,
+                            "value0": {
+                                "m_guid_": "877e6c13-af6f-434c-9abf-45c1bfc5fa93",
+                                "m_name_": "Material Block of New Material"
+                            },
+                            "m_buffer_data_": [
+                                {
+                                    "key": "Lights",
+                                    "value": {
+                                        "polymorphic_id": 2147483649,
+                                        "polymorphic_name": "engine::StructuredBufferData",
+                                        "ptr_wrapper": {
+                                            "id": 2147483651,
+                                            "data": {
+                                                "cereal_class_version": 1,
+                                                "value0": {
+                                                    "cereal_class_version": 1,
+                                                    "parameter": {
+                                                        "cereal_class_version": 1,
+                                                        "index": 3,
+                                                        "name": "Lights",
+                                                        "display_name": "Lights",
+                                                        "is_unordered_access": false,
+                                                        "total_size": 0,
+                                                        "variables": []
+                                                    },
+                                                    "upload_type": -842150451
+                                                },
+                                                "m_stride_": 4,
+                                                "m_count_": 1,
+                                                "m_data_": []
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    "key": "_MainTex",
+                                    "value": {
+                                        "polymorphic_id": 2147483650,
+                                        "polymorphic_name": "engine::TextureBufferData",
+                                        "ptr_wrapper": {
+                                            "id": 2147483652,
+                                            "data": {
+                                                "cereal_class_version": 1,
+                                                "value0": {
+                                                    "parameter": {
+                                                        "index": 4,
+                                                        "name": "_MainTex",
+                                                        "display_name": "_MainTex",
+                                                        "is_unordered_access": false,
+                                                        "total_size": 0,
+                                                        "variables": []
+                                                    },
+                                                    "upload_type": -842150451
+                                                },
+                                                "m_texture_": {
+                                                    "value0": {
+                                                        "cereal_class_version": 1,
+                                                        "m_guid_": "00000000-0000-0000-0000-000000000000",
+                                                        "m_type_": 0,
+                                                        "m_stored_reference_": {
+                                                            "polymorphic_id": 0
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    "key": "SceneData",
+                                    "value": {
+                                        "polymorphic_id": 2147483651,
+                                        "polymorphic_name": "engine::ConstantBufferData",
+                                        "ptr_wrapper": {
+                                            "id": 2147483653,
+                                            "data": {
+                                                "cereal_class_version": 1,
+                                                "value0": {
+                                                    "parameter": {
+                                                        "index": 2,
+                                                        "name": "SceneData",
+                                                        "display_name": "SceneData",
+                                                        "is_unordered_access": false,
+                                                        "total_size": 32,
+                                                        "variables": [
+                                                            {
+                                                                "cereal_class_version": 0,
+                                                                "name": "screen_size",
+                                                                "data_type": 2
+                                                            },
+                                                            {
+                                                                "name": "shadow_map_size",
+                                                                "data_type": 2
+                                                            },
+                                                            {
+                                                                "name": "time",
+                                                                "data_type": 1
+                                                            },
+                                                            {
+                                                                "name": "deltatime",
+                                                                "data_type": 1
+                                                            }
+                                                        ]
+                                                    },
+                                                    "upload_type": -842150451
+                                                },
+                                                "m_data_type_offset_pairs_": [
+                                                    {
+                                                        "key": "screen_size",
+                                                        "value": {
+                                                            "first": 2,
+                                                            "second": 0
+                                                        }
+                                                    },
+                                                    {
+                                                        "key": "shadow_map_size",
+                                                        "value": {
+                                                            "first": 2,
+                                                            "second": 8
+                                                        }
+                                                    },
+                                                    {
+                                                        "key": "deltatime",
+                                                        "value": {
+                                                            "first": 1,
+                                                            "second": 20
+                                                        }
+                                                    },
+                                                    {
+                                                        "key": "time",
+                                                        "value": {
+                                                            "first": 1,
+                                                            "second": 16
+                                                        }
+                                                    }
+                                                ],
+                                                "m_data_": [
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0
+                                                ]
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    "key": "LightCount",
+                                    "value": {
+                                        "polymorphic_id": 3,
+                                        "ptr_wrapper": {
+                                            "id": 2147483654,
+                                            "data": {
+                                                "value0": {
+                                                    "parameter": {
+                                                        "index": 3,
+                                                        "name": "LightCount",
+                                                        "display_name": "LightCount",
+                                                        "is_unordered_access": false,
+                                                        "total_size": 16,
+                                                        "variables": [
+                                                            {
+                                                                "name": "light_count",
+                                                                "data_type": 0
+                                                            }
+                                                        ]
+                                                    },
+                                                    "upload_type": -842150451
+                                                },
+                                                "m_data_type_offset_pairs_": [
+                                                    {
+                                                        "key": "light_count",
+                                                        "value": {
+                                                            "first": 0,
+                                                            "second": 0
+                                                        }
+                                                    }
+                                                ],
+                                                "m_data_": [
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                "render_queue": 5000,
+                "m_shader_": {
+                    "value0": {
+                        "m_guid_": "80c8ea2d-64d0-40b4-b8cd-8ef30bdfee5b",
+                        "m_type_": 2,
+                        "m_stored_reference_": {
+                            "polymorphic_id": 0
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

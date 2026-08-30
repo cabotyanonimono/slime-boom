@@ -1,0 +1,206 @@
+{
+    "value0": {
+        "polymorphic_id": 1073741824,
+        "ptr_wrapper": {
+            "id": 2147483649,
+            "data": {
+                "cereal_class_version": 3,
+                "value0": {
+                    "cereal_class_version": 1,
+                    "m_guid_": "2254682c-c7d5-47e9-a384-bad41f83338b",
+                    "m_name_": "New Material 9.material"
+                },
+                "shared_material_block": {
+                    "polymorphic_id": 1073741824,
+                    "ptr_wrapper": {
+                        "id": 2147483650,
+                        "data": {
+                            "cereal_class_version": 2,
+                            "value0": {
+                                "m_guid_": "bf7e8f52-abf4-4b4b-8d93-0dd121aff36b",
+                                "m_name_": "Material Block of New Material 9.material"
+                            },
+                            "m_buffer_data_": [
+                                {
+                                    "key": "tex",
+                                    "value": {
+                                        "polymorphic_id": 2147483649,
+                                        "polymorphic_name": "engine::TextureBufferData",
+                                        "ptr_wrapper": {
+                                            "id": 2147483651,
+                                            "data": {
+                                                "cereal_class_version": 1,
+                                                "value0": {
+                                                    "cereal_class_version": 1,
+                                                    "parameter": {
+                                                        "cereal_class_version": 1,
+                                                        "index": 3,
+                                                        "name": "tex",
+                                                        "display_name": "tex",
+                                                        "is_unordered_access": false,
+                                                        "total_size": 0,
+                                                        "variables": []
+                                                    },
+                                                    "upload_type": 0
+                                                },
+                                                "m_texture_": {
+                                                    "value0": {
+                                                        "cereal_class_version": 1,
+                                                        "m_guid_": "25365682-aa61-458d-82b8-f477109ba31d",
+                                                        "m_type_": 2,
+                                                        "m_stored_reference_": {
+                                                            "polymorphic_id": 0
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    "key": "Ratio",
+                                    "value": {
+                                        "polymorphic_id": 2147483650,
+                                        "polymorphic_name": "engine::ConstantBufferData",
+                                        "ptr_wrapper": {
+                                            "id": 2147483652,
+                                            "data": {
+                                                "cereal_class_version": 1,
+                                                "value0": {
+                                                    "parameter": {
+                                                        "index": 2,
+                                                        "name": "Ratio",
+                                                        "display_name": "Ratio",
+                                                        "is_unordered_access": false,
+                                                        "total_size": 16,
+                                                        "variables": [
+                                                            {
+                                                                "cereal_class_version": 0,
+                                                                "name": "ratio",
+                                                                "data_type": 1
+                                                            }
+                                                        ]
+                                                    },
+                                                    "upload_type": 0
+                                                },
+                                                "m_data_type_offset_pairs_": [
+                                                    {
+                                                        "key": "ratio",
+                                                        "value": {
+                                                            "first": 1,
+                                                            "second": 0
+                                                        }
+                                                    }
+                                                ],
+                                                "m_data_": [
+                                                    0,
+                                                    0,
+                                                    128,
+                                                    63
+                                                ]
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    "key": "Rotation",
+                                    "value": {
+                                        "polymorphic_id": 2,
+                                        "ptr_wrapper": {
+                                            "id": 2147483653,
+                                            "data": {
+                                                "value0": {
+                                                    "parameter": {
+                                                        "index": 3,
+                                                        "name": "Rotation",
+                                                        "display_name": "Rotation",
+                                                        "is_unordered_access": false,
+                                                        "total_size": 16,
+                                                        "variables": [
+                                                            {
+                                                                "name": "rotation",
+                                                                "data_type": 1
+                                                            }
+                                                        ]
+                                                    },
+                                                    "upload_type": 0
+                                                },
+                                                "m_data_type_offset_pairs_": [
+                                                    {
+                                                        "key": "rotation",
+                                                        "value": {
+                                                            "first": 1,
+                                                            "second": 0
+                                                        }
+                                                    }
+                                                ],
+                                                "m_data_": [
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0
+                                                ]
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    "key": "Alpha",
+                                    "value": {
+                                        "polymorphic_id": 2,
+                                        "ptr_wrapper": {
+                                            "id": 2147483654,
+                                            "data": {
+                                                "value0": {
+                                                    "parameter": {
+                                                        "index": 4,
+                                                        "name": "Alpha",
+                                                        "display_name": "Alpha",
+                                                        "is_unordered_access": false,
+                                                        "total_size": 16,
+                                                        "variables": [
+                                                            {
+                                                                "name": "alpha",
+                                                                "data_type": 1
+                                                            }
+                                                        ]
+                                                    },
+                                                    "upload_type": 0
+                                                },
+                                                "m_data_type_offset_pairs_": [
+                                                    {
+                                                        "key": "alpha",
+                                                        "value": {
+                                                            "first": 1,
+                                                            "second": 0
+                                                        }
+                                                    }
+                                                ],
+                                                "m_data_": [
+                                                    0,
+                                                    0,
+                                                    128,
+                                                    63
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                "render_queue": 5000,
+                "m_shader_": {
+                    "value0": {
+                        "m_guid_": "c5d0eb65-f6ea-40bc-b104-49ac7b22bd85",
+                        "m_type_": 2,
+                        "m_stored_reference_": {
+                            "polymorphic_id": 0
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

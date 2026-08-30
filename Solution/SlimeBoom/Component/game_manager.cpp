@@ -12,7 +12,7 @@ bool GameManager::IsGameClear() const
 
 bool GameManager::IsGameOver() const
 {
-    return m_player_->IsDead();
+    return m_player_->IsDeadEffectEnd();
 }
 
 bool GameManager::IsGameEnd() const
@@ -22,6 +22,7 @@ bool GameManager::IsGameEnd() const
 
 void GameManager::GameEnd() const
 {
+    engine::Input::SetMouseMode(engine::kMouseMode::kNormal);
     ClearSceneData clear_scene_data;
     clear_scene_data.eliminate_count = *static_cast<int*>(m_compute_result_->GetValue("eliminate_slime_count"));
     clear_scene_data.player_data = m_player_data_->GetPlayerData();
@@ -38,6 +39,11 @@ void GameManager::OnInspectorGui()
     engine::Gui::PropertyField("Player", m_player_);
     engine::Gui::PropertyField("Clear Time", m_clear_time_);
     engine::Gui::PropertyField("Player Data", m_player_data_);
+}
+
+void GameManager::OnStart()
+{
+    engine::Input::SetMouseMode(engine::kMouseMode::kLocked);
 }
 
 void GameManager::OnUpdate()

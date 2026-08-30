@@ -20,6 +20,9 @@ public:
     void SetAvoidSpeed(float avoid_speed);
     void SetExpMultiplier(float exp_multiplier);
     void SetLevel(uint32_t level);
+    void SetAttackRange(float attack_range);
+    void SetAttackNum(uint32_t attack_num);
+    void SetAvoidPercent(float avoid_percent);
 
     [[nodiscard]] float GetMaxHp() const;
     [[nodiscard]] float GetHp() const;
@@ -29,7 +32,11 @@ public:
     [[nodiscard]] float GetAvoidTime() const;
     [[nodiscard]] float GetAvoidSpeed() const;
     [[nodiscard]] float GetExpMultiplier() const;
+    [[nodiscard]] float GetAttackRange() const;
+    [[nodiscard]] uint32_t GetAttackNum() const;
+    [[nodiscard]] float GetAvoidPercent() const;
     [[nodiscard]] uint32_t GetLevel() const;
+    
     [[nodiscard]] const PlayerData &GetPlayerData() const;
 
     template <class Archive>

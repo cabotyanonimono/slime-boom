@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include "card_base.h"
-#include "Effekseer.h"
+#include <Effekseer.h>
 #include "../../Player/player_component.h"
 #include "../../Player/ability/ability_processer.h"
 #include "Components/effekseer_renderer.h"

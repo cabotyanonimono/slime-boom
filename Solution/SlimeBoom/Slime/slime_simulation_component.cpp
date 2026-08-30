@@ -78,6 +78,11 @@ void SlimeSimulationComponent::OnUpdate()
 {
     m_slime_count_buffer_->UpdateBuffer(&m_current_slime_count_);
 }
+
+int SlimeSimulationComponent::GetCurrentSlimesCount() const
+{
+    return m_current_slime_count_;
+}
 }
 
 CEREAL_REGISTER_TYPE(SlimeBoom::SlimeSimulationComponent)

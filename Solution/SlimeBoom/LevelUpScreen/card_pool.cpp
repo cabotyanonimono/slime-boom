@@ -1,9 +1,13 @@
 ﻿#include "pch.h"
 #include "card_pool.h"
 
+#include "cards/acquisition_range_card.h"
+#include "cards/attack_num_card.h"
 #include "cards/attack_power_card.h"
+#include "cards/attack_range_card.h"
 #include "cards/attack_speed_card.h"
 #include "cards/aura_ability_card.h"
+#include "cards/avoid_percent_card.h"
 #include "cards/exp_multiplier_card.h"
 #include "cards/max_hp_card.h"
 #include "cards/slash_ability_card.h"
@@ -20,6 +24,10 @@ void CardPool::RegisterCards()
     RegisterCard<AttackPowerCard>(kCardType_AttackPower);
     RegisterCard<AttackSpeedCard>(kCardType_AttackSpeed);
     RegisterCard<ExpMultiplierCard>(kCardType_ExpMultiplier);
+    RegisterCard<AttackRangeCard>(kCardType_AttackRange);
+    RegisterCard<AttackNumCard>(kCardType_AttackNum);
+    RegisterCard<AvoidPercentCard>(kCardType_AvoidPercent);
+    RegisterCard<AcquisitionRangeCard>(kCardType_AcquisitionRange);
 }
 
 void CardPool::OnInspectorGui()
@@ -50,3 +58,4 @@ std::shared_ptr<CardBase> CardPool::GetCard(const kCardType type)
 }
 
 CEREAL_REGISTER_TYPE(SlimeBoom::CardPool)
+

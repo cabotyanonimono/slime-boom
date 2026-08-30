@@ -19,6 +19,7 @@ class GameManager : public engine::Component
 
 public:
     void OnInspectorGui() override;
+    void OnStart() override;
     void OnUpdate() override;
     void OnDestroy() override;
 

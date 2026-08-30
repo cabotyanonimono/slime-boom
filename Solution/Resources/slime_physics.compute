@@ -66,18 +66,19 @@ bool CheckCollisionToPlayerAttack(float3 to_slime, PlayerAttackData attack_data)
 void compute(uint3 globalID : SV_DispatchThreadID)
 {
     int index = globalID.x;
+    float3 y_zero_player_pos = float3(player_pos.x, 0.0f, player_pos.z);
 
     if (index < slime_count)
     {
         slimes[index].damage_color_timer -= deltatime;
         slimes[index].velocity.y += gravity;
 
-        float3 to_player = player_pos - slimes[index].position;
+        float3 to_player = y_zero_player_pos - slimes[index].position;
 
         float speed = slimes[index].slime_type == SLIME_TYPE::SPEED ? slime_speed * 1.5f : slime_speed;
         slimes[index].velocity += normalize(to_player) * speed;
 
-        if (length(slimes[index].position - player_pos) <= slime_radius * 2.0f)
+        if (length(slimes[index].position - y_zero_player_pos) <= slime_radius * 2.0f)
         {
             result.InterlockedAdd(12, 1);
         }

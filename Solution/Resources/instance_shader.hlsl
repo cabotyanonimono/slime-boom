@@ -21,7 +21,7 @@ VSOutput vrt(VSInput input, uint instance_id : SV_InstanceID)
     float3 local_normal = input.normal;
     
     float4 world_pos = mul(World, local_pos);
-    world_pos.xyz += positions[instance_id];;
+    world_pos.xyz += positions[instance_id];
     float4 proj_pos = mul(Proj, mul(View, world_pos));
 
     float3 world_normal = mul((float3x3)World, local_normal);

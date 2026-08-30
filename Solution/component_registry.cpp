@@ -25,8 +25,11 @@
 #include "SlimeBoom/Player/player_sword_controller.h"
 #include "SlimeBoom/Player/slash_effect_component.h"
 #include "SlimeBoom/Player/ability/ability_data/ability_data_store.h"
+#include "SlimeBoom/Slime/slime_eliminate_checker.h"
+#include "SlimeBoom/Slime/slime_eliminate_se.h"
 #include "SlimeBoom/Slime/slime_take_damage_event_component.h"
 #include "SlimeBoom/Sound/sound_manager_component.h"
+#include "SlimeBoom/UI/avoid_cooldown_gauge.h"
 #include "SlimeBoom/UI/exp_gauge.h"
 #include "SlimeBoom/UI/gauge.h"
 #include "SlimeBoom/UI/level_text.h"
@@ -92,5 +95,9 @@ void ComponentRegistry::RegisterComponents()
     ADD_COMPONENT(LevelText, "UI");
     ADD_COMPONENT(PlayerStatusUi, "UI");
     ADD_COMPONENT(SceneTransitionExecutor, "Scene");
+    ADD_COMPONENT(MapSizeComponent, "Map");
+    ADD_COMPONENT(AvoidCooldownGauge, "UI");
+    ADD_COMPONENT(SlimeEliminateChecker, "Slime");
+    ADD_COMPONENT(SlimeEliminateSe, "Slime");
 }
 }

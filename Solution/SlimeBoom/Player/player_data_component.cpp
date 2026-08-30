@@ -33,6 +33,15 @@ void PlayerDataComponent::OnInspectorGui()
 
     if (engine::Gui::PropertyField("Exp Multiplier", m_player_data_.exp_multiplier))
         SetExpMultiplier(m_player_data_.exp_multiplier);
+
+    if (engine::Gui::PropertyField("Attack Range", m_player_data_.attack_range))
+        SetAttackRange(m_player_data_.attack_range);
+
+    if (engine::Gui::PropertyField("Attack Num", m_player_data_.attack_num))
+        SetAttackNum(m_player_data_.attack_num);
+
+    if (engine::Gui::PropertyField("Avoid Percent", m_player_data_.avoid_percent))
+        SetAvoidPercent(m_player_data_.avoid_percent);
 }
 
 void PlayerDataComponent::SetMaxHp(const float max_hp)
@@ -80,6 +89,21 @@ void PlayerDataComponent::SetLevel(const uint32_t level)
     m_player_data_.level = level;
 }
 
+void PlayerDataComponent::SetAttackRange(const float attack_range)
+{
+    m_player_data_.attack_range = attack_range;
+}
+
+void PlayerDataComponent::SetAttackNum(const uint32_t attack_num)
+{
+    m_player_data_.attack_num = attack_num;
+}
+
+void PlayerDataComponent::SetAvoidPercent(const float avoid_percent)
+{
+    m_player_data_.avoid_percent = avoid_percent;
+}
+
 float PlayerDataComponent::GetMaxHp() const
 {
     return m_player_data_.max_hp;
@@ -118,6 +142,21 @@ float PlayerDataComponent::GetAvoidSpeed() const
 float PlayerDataComponent::GetExpMultiplier() const
 {
     return m_player_data_.exp_multiplier;
+}
+
+float PlayerDataComponent::GetAttackRange() const
+{
+    return m_player_data_.attack_range;
+}
+
+uint32_t PlayerDataComponent::GetAttackNum() const
+{
+    return m_player_data_.attack_num;
+}
+
+float PlayerDataComponent::GetAvoidPercent() const
+{
+    return m_player_data_.avoid_percent;
 }
 
 uint32_t PlayerDataComponent::GetLevel() const

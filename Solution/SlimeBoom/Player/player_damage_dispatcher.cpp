@@ -12,7 +12,7 @@ void SlimeBoom::PlayerDamageDispatcher::OnInspectorGui()
 void SlimeBoom::PlayerDamageDispatcher::OnUpdate()
 {
     const auto damage = *static_cast<int*>(m_compute_result_->GetValue("taken_damage"));
-    const auto delta_damage = static_cast<float>(damage - m_current_damage_) * engine::Time::GetDeltaTime() * m_receive_damage_multiplier_;
+    const auto delta_damage = static_cast<float>(damage - m_current_damage_) * engine::Time::GetDeltaTime() * m_receive_damage_multiplier_ * 0.5f;
     m_current_damage_ = damage;
 
     if (engine::Time::Get()->TimeScale() <= 0.0f)

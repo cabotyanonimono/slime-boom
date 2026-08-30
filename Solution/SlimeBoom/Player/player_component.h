@@ -28,6 +28,8 @@ class PlayerComponent final : public engine::Component
     float m_avoid_cooldown_ = 0.0f;
     float m_avoid_cooldown_timer_ = 0.0f;
     float m_avoid_timer_ = 0.0f;
+    float m_dead_delay_timer_ = 0.0f;
+    float m_dead_delay_time_ = 0.0f;
     engine::AssetPtr<ComputeResult> m_compute_result_;
     engine::AssetPtr<PlayerDataPresenter> m_player_data_presenter_;
     engine::AssetPtr<PlayerSwordController> m_player_sword_controller_;
@@ -53,11 +55,15 @@ public:
     void OnUpdate() override;
     void OnFixedUpdate() override;
 
+    bool IsDeadEffectEnd();
     bool IsDead() const;
     size_t AddOnAvoidEvent(const std::function<void()>& callback);
     void RemoveOnAvoidEvent(size_t token);
     size_t AddOnDeadEvent(const std::function<void()>& callback);
     void RemoveOnDeadEvent(size_t token);
+
+    float GetAvoidCooldown() const;
+    float GetAvoidTimer() const;
 
     template <class Archive>
     void serialize(Archive& ar, const uint32_t version)
@@ -131,8 +137,15 @@ public:
                 CEREAL_NVP(m_level_up_controller_)
             );
         }
+
+        if (version >= 13)
+        {
+            ar(
+                CEREAL_NVP(m_dead_delay_time_)
+            );
+        }
     }
 };
 }
 
-CEREAL_CLASS_VERSION(SlimeBoom::PlayerComponent, 12)
+CEREAL_CLASS_VERSION(SlimeBoom::PlayerComponent, 13)
