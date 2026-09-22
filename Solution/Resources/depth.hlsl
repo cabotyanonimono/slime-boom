@@ -34,10 +34,11 @@ struct VSInput
 
 struct VSOutput
 {
-    float3 world_pos : WORLDPOS;
+    float4 pos : SV_POSITION;
+    uint instance_id : SV_InstanceID;
 };
 
-VSOutput vrt(VSInput input)
+VSOutput vrt(VSInput input, uint instance_id : SV_InstanceID)
 {
     VSOutput output = (VSOutput)0;
 
@@ -60,7 +61,8 @@ VSOutput vrt(VSInput input)
 
     float4 worldPos = mul(World, localPos);
 
-    output.world_pos = worldPos.xyz;
+    output.pos = mul(LightViewProj[instance_id], worldPos);
+    output.instance_id = instance_id;
 
     return output;
 }
@@ -68,38 +70,18 @@ VSOutput vrt(VSInput input)
 struct GSOutput
 {
     float4 pos : SV_POSITION;
-    float2 near_far : NEARFAR;
     uint RTIndex : SV_RenderTargetArrayIndex;
 };
 
-float LinearizeDepth(float depth, float nearZ, float farZ)
-{
-    return (nearZ * farZ) / (farZ - depth * (farZ - nearZ));
-}
-
-float pix(GSOutput input) : SV_TARGET
-{
-    float linearDepth = LinearizeDepth(input.pos.w, input.near_far.x, input.near_far.y);
-    
-    return linearDepth / input.near_far.y;
-}
-
-#define MAX_SHADOWMAP_COUNT 10
-
-[maxvertexcount(3 * MAX_SHADOWMAP_COUNT)]
+[maxvertexcount(3)]
 void geo(triangle VSOutput input[3], inout TriangleStream<GSOutput> tri_stream)
 {
-    for (int i = 0; i < MAX_SHADOWMAP_COUNT; ++i)
+    for (uint j = 0; j < 3; ++j)
     {
-        float4x4 viewproj = LightViewProj[i];
-        for (uint j = 0; j < 3; j++)
-        {
-            GSOutput element;
-            element.pos = mul(viewproj, float4(input[j].world_pos, 1));
-            element.near_far = float2(0.1f, 10.0f);
-            element.RTIndex = i;
-            tri_stream.Append(element);
-        }
-        tri_stream.RestartStrip();
+        GSOutput element;
+        element.pos = input[j].pos;
+        element.RTIndex = input[j].instance_id;
+        tri_stream.Append(element);
     }
+    tri_stream.RestartStrip();
 }

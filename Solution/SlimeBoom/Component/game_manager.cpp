@@ -2,6 +2,7 @@
 #include "game_manager.h"
 
 #include "engine_time.h"
+#include "gui.h"
 
 namespace SlimeBoom
 {

@@ -1,6 +1,8 @@
 ﻿#include "pch.h"
 #include "level_text.h"
 
+#include "gui.h"
+
 namespace SlimeBoom
 {
 void LevelText::OnInspectorGui()

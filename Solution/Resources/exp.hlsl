@@ -4,6 +4,8 @@
 #include "math.hlsli"
 #include "exp.hlsli"
 
+#include "cabo_pbr.hlsli"
+
 Texture2D MainTex : register (t4);
 StructuredBuffer<Exp> exps : register(t5);
 
@@ -46,7 +48,7 @@ VSOutput vrt(VSInput input, uint instance_id : SV_InstanceID)
 
 float4 pix(VSOutput input) : SV_Target
 {
-    float3 N = normalize(input.normal);
+    float3 normal = normalize(input.normal);
     float3 brightness = float3(0, 0, 0);
     if (light_count == 0)
     {
@@ -58,9 +60,20 @@ float4 pix(VSOutput input) : SV_Target
     float4 viewPos = mul(View, float4(input.worldpos, 1.0));
     float depth = abs(viewPos.z);
 
-    brightness = CalcAllShadow(depth, normalize(input.normal), input.worldpos);
+    brightness = CalcAllShadow(depth, normal, input.worldpos);
 
-    float4 main_color = MainTex.Sample(smp, input.uv);
+    float4 albedo_color = MainTex.Sample(smp, input.uv);
 
-    return float4(main_color.rgb * brightness, main_color.a);
+    float3 lighting_color;
+    for (int i = 0; i < light_count; ++i)
+    {
+        float3 light_dir;
+        if (Lights[i].type == 0)
+            light_dir = normalize(-Lights[i].direction);
+        else
+            light_dir = normalize(Lights[i].pos - input.worldpos);
+        lighting_color = CalcLighting(albedo_color.rgb, 0.0f, 0.0f, normal, light_dir, camera_dir);
+    }
+
+    return float4(lighting_color.rgb * brightness, albedo_color.a);
 }

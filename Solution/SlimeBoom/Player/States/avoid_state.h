@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include "event.h"
 #include "../player_data_component.h"
 #include "../../Component/animator.h"
 #include "../../StateMachine/state.h"

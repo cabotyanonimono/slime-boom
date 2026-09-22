@@ -1,0 +1,40 @@
+#include "engine.hlsli"
+Texture2D input_lower_texture : register(t3);
+Texture2D input_same_texture : register(t4);
+RWTexture2D<float4> output_texture : register(u1);
+
+cbuffer Params : register(b2)
+{
+    float2 output_texture_size;
+    float radius;
+}
+
+[numthreads(16, 16, 1)]
+void compute(uint3 globalID : SV_DispatchThreadID)
+{
+    uint2 pos = globalID.xy;
+
+    if (pos.x >= output_texture_size.x || pos.y >= output_texture_size.y)
+        return;
+	
+    float2 texel_size = 1.0f / output_texture_size;
+    float2 uv = (float2(pos) + 0.5f) * texel_size;
+    float2 d = uv * radius;
+    
+    float4 sum = 0;
+    sum += input_lower_texture.SampleLevel(SmpClamp, uv + float2(-d.x, -d.y), 0) * 1.0f;
+    sum += input_lower_texture.SampleLevel(SmpClamp, uv + float2(d.x, -d.y), 0) * 1.0f;
+    sum += input_lower_texture.SampleLevel(SmpClamp, uv + float2(-d.x, d.y), 0) * 1.0f;
+    sum += input_lower_texture.SampleLevel(SmpClamp, uv + float2(d.x, d.y), 0) * 1.0f;
+
+    sum += input_lower_texture.SampleLevel(SmpClamp, uv + float2(-d.x * 2.0f, 0.0f), 0) * 2.0f;
+    sum += input_lower_texture.SampleLevel(SmpClamp, uv + float2(d.x * 2.0f, 0.0f), 0) * 2.0f;
+    sum += input_lower_texture.SampleLevel(SmpClamp, uv + float2(0.0f, -d.y * 2.0f), 0) * 2.0f;
+    sum += input_lower_texture.SampleLevel(SmpClamp, uv + float2(0.0f, d.y * 2.0f), 0) * 2.0f;
+
+    float4 up_sample_color = sum / 12.0f;
+
+    float4 combined_color = up_sample_color + input_same_texture[pos];
+
+    output_texture[pos] = combined_color;
+}

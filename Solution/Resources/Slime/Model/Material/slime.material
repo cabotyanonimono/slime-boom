@@ -17,7 +17,7 @@
                         "data": {
                             "cereal_class_version": 2,
                             "value0": {
-                                "m_guid_": "78f881aa-b51f-40bc-8a18-6de0c40a5ef8",
+                                "m_guid_": "3f6550a6-f939-47ef-8a67-aee91f3335a8",
                                 "m_name_": "Material Block of slime.material"
                             },
                             "m_buffer_data_": [
@@ -51,71 +51,12 @@
                                     }
                                 },
                                 {
-                                    "key": "Lights",
-                                    "value": {
-                                        "polymorphic_id": 1,
-                                        "ptr_wrapper": {
-                                            "id": 2147483652,
-                                            "data": {
-                                                "value0": {
-                                                    "parameter": {
-                                                        "index": 3,
-                                                        "name": "Lights",
-                                                        "display_name": "Lights",
-                                                        "is_unordered_access": false,
-                                                        "total_size": 0,
-                                                        "variables": []
-                                                    },
-                                                    "upload_type": 0
-                                                },
-                                                "m_stride_": 4,
-                                                "m_count_": 1,
-                                                "m_data_": []
-                                            }
-                                        }
-                                    }
-                                },
-                                {
-                                    "key": "MainTex",
-                                    "value": {
-                                        "polymorphic_id": 2147483650,
-                                        "polymorphic_name": "engine::TextureBufferData",
-                                        "ptr_wrapper": {
-                                            "id": 2147483653,
-                                            "data": {
-                                                "cereal_class_version": 1,
-                                                "value0": {
-                                                    "parameter": {
-                                                        "index": 5,
-                                                        "name": "MainTex",
-                                                        "display_name": "MainTex",
-                                                        "is_unordered_access": false,
-                                                        "total_size": 0,
-                                                        "variables": []
-                                                    },
-                                                    "upload_type": 0
-                                                },
-                                                "m_texture_": {
-                                                    "value0": {
-                                                        "cereal_class_version": 1,
-                                                        "m_guid_": "5ea0eacb-a013-4e21-97e9-fe9b4e73eeac",
-                                                        "m_type_": 2,
-                                                        "m_stored_reference_": {
-                                                            "polymorphic_id": 0
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                {
                                     "key": "SceneData",
                                     "value": {
-                                        "polymorphic_id": 2147483651,
+                                        "polymorphic_id": 2147483650,
                                         "polymorphic_name": "engine::ConstantBufferData",
                                         "ptr_wrapper": {
-                                            "id": 2147483654,
+                                            "id": 2147483652,
                                             "data": {
                                                 "cereal_class_version": 1,
                                                 "value0": {
@@ -266,9 +207,68 @@
                                     }
                                 },
                                 {
+                                    "key": "Lights",
+                                    "value": {
+                                        "polymorphic_id": 1,
+                                        "ptr_wrapper": {
+                                            "id": 2147483653,
+                                            "data": {
+                                                "value0": {
+                                                    "parameter": {
+                                                        "index": 3,
+                                                        "name": "Lights",
+                                                        "display_name": "Lights",
+                                                        "is_unordered_access": false,
+                                                        "total_size": 0,
+                                                        "variables": []
+                                                    },
+                                                    "upload_type": 0
+                                                },
+                                                "m_stride_": 4,
+                                                "m_count_": 1,
+                                                "m_data_": []
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    "key": "MainTex",
+                                    "value": {
+                                        "polymorphic_id": 2147483651,
+                                        "polymorphic_name": "engine::TextureBufferData",
+                                        "ptr_wrapper": {
+                                            "id": 2147483654,
+                                            "data": {
+                                                "cereal_class_version": 1,
+                                                "value0": {
+                                                    "parameter": {
+                                                        "index": 5,
+                                                        "name": "MainTex",
+                                                        "display_name": "MainTex",
+                                                        "is_unordered_access": false,
+                                                        "total_size": 0,
+                                                        "variables": []
+                                                    },
+                                                    "upload_type": 0
+                                                },
+                                                "m_texture_": {
+                                                    "value0": {
+                                                        "cereal_class_version": 1,
+                                                        "m_guid_": "5ea0eacb-a013-4e21-97e9-fe9b4e73eeac",
+                                                        "m_type_": 2,
+                                                        "m_stored_reference_": {
+                                                            "polymorphic_id": 0
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                {
                                     "key": "ShadowCascadeSlices",
                                     "value": {
-                                        "polymorphic_id": 3,
+                                        "polymorphic_id": 2,
                                         "ptr_wrapper": {
                                             "id": 2147483655,
                                             "data": {
@@ -322,7 +322,7 @@
                                 {
                                     "key": "PlayerPos",
                                     "value": {
-                                        "polymorphic_id": 3,
+                                        "polymorphic_id": 2,
                                         "ptr_wrapper": {
                                             "id": 2147483656,
                                             "data": {
@@ -340,7 +340,7 @@
                                                             }
                                                         ]
                                                     },
-                                                    "upload_type": 1248008832
+                                                    "upload_type": 0
                                                 },
                                                 "m_data_type_offset_pairs_": [
                                                     {
@@ -372,7 +372,7 @@
                                 {
                                     "key": "LightCount",
                                     "value": {
-                                        "polymorphic_id": 3,
+                                        "polymorphic_id": 2,
                                         "ptr_wrapper": {
                                             "id": 2147483657,
                                             "data": {
@@ -390,7 +390,7 @@
                                                             }
                                                         ]
                                                     },
-                                                    "upload_type": -1922130976
+                                                    "upload_type": 0
                                                 },
                                                 "m_data_type_offset_pairs_": [
                                                     {
@@ -414,7 +414,7 @@
                                 {
                                     "key": "DamageColor",
                                     "value": {
-                                        "polymorphic_id": 3,
+                                        "polymorphic_id": 2,
                                         "ptr_wrapper": {
                                             "id": 2147483658,
                                             "data": {
@@ -432,7 +432,7 @@
                                                             }
                                                         ]
                                                     },
-                                                    "upload_type": -1922130976
+                                                    "upload_type": 0
                                                 },
                                                 "m_data_type_offset_pairs_": [
                                                     {
@@ -444,9 +444,9 @@
                                                     }
                                                 ],
                                                 "m_data_": [
-                                                    0,
-                                                    0,
-                                                    128,
+                                                    24,
+                                                    252,
+                                                    85,
                                                     63,
                                                     0,
                                                     0,
@@ -468,7 +468,7 @@
                                 {
                                     "key": "DitheringRadius",
                                     "value": {
-                                        "polymorphic_id": 3,
+                                        "polymorphic_id": 2,
                                         "ptr_wrapper": {
                                             "id": 2147483659,
                                             "data": {
@@ -486,7 +486,7 @@
                                                             }
                                                         ]
                                                     },
-                                                    "upload_type": -1922130976
+                                                    "upload_type": 0
                                                 },
                                                 "m_data_type_offset_pairs_": [
                                                     {

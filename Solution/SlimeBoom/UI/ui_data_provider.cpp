@@ -1,6 +1,8 @@
 ﻿#include "pch.h"
 #include "ui_data_provider.h"
 
+#include "gui.h"
+
 namespace SlimeBoom
 {
 void UiDataProvider::OnInspectorGui()

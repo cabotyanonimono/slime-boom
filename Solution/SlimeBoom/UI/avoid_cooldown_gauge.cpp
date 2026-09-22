@@ -1,6 +1,8 @@
 ﻿#include "pch.h"
 #include "avoid_cooldown_gauge.h"
 
+#include "gui.h"
+
 void SlimeBoom::AvoidCooldownGauge::OnInspectorGui()
 {
     engine::Gui::PropertyField("Gauge", m_gauge_);

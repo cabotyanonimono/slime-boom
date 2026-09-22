@@ -2,6 +2,7 @@
 #include "avoid_effect.h"
 
 #include "engine.h"
+#include "gui.h"
 #include "Coroutine/coroutine_manager.h"
 
 namespace SlimeBoom

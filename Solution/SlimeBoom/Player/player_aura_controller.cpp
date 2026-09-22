@@ -2,6 +2,7 @@
 #include "player_aura_controller.h"
 
 #include "engine_time.h"
+#include "gui.h"
 
 namespace SlimeBoom
 {

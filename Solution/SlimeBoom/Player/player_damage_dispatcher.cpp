@@ -2,6 +2,7 @@
 #include "player_damage_dispatcher.h"
 
 #include "engine_time.h"
+#include "gui.h"
 
 void SlimeBoom::PlayerDamageDispatcher::OnInspectorGui()
 {

@@ -22,10 +22,10 @@
                             },
                             "m_buffer_data_": [
                                 {
-                                    "key": "Lights",
+                                    "key": "_MainTex",
                                     "value": {
                                         "polymorphic_id": 2147483649,
-                                        "polymorphic_name": "engine::StructuredBufferData",
+                                        "polymorphic_name": "engine::TextureBufferData",
                                         "ptr_wrapper": {
                                             "id": 2147483651,
                                             "data": {
@@ -34,33 +34,6 @@
                                                     "cereal_class_version": 1,
                                                     "parameter": {
                                                         "cereal_class_version": 1,
-                                                        "index": 3,
-                                                        "name": "Lights",
-                                                        "display_name": "Lights",
-                                                        "is_unordered_access": false,
-                                                        "total_size": 0,
-                                                        "variables": []
-                                                    },
-                                                    "upload_type": -842150451
-                                                },
-                                                "m_stride_": 4,
-                                                "m_count_": 1,
-                                                "m_data_": []
-                                            }
-                                        }
-                                    }
-                                },
-                                {
-                                    "key": "_MainTex",
-                                    "value": {
-                                        "polymorphic_id": 2147483650,
-                                        "polymorphic_name": "engine::TextureBufferData",
-                                        "ptr_wrapper": {
-                                            "id": 2147483652,
-                                            "data": {
-                                                "cereal_class_version": 1,
-                                                "value0": {
-                                                    "parameter": {
                                                         "index": 4,
                                                         "name": "_MainTex",
                                                         "display_name": "_MainTex",
@@ -80,6 +53,33 @@
                                                         }
                                                     }
                                                 }
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    "key": "Lights",
+                                    "value": {
+                                        "polymorphic_id": 2147483650,
+                                        "polymorphic_name": "engine::StructuredBufferData",
+                                        "ptr_wrapper": {
+                                            "id": 2147483652,
+                                            "data": {
+                                                "cereal_class_version": 1,
+                                                "value0": {
+                                                    "parameter": {
+                                                        "index": 3,
+                                                        "name": "Lights",
+                                                        "display_name": "Lights",
+                                                        "is_unordered_access": false,
+                                                        "total_size": 0,
+                                                        "variables": []
+                                                    },
+                                                    "upload_type": -842150451
+                                                },
+                                                "m_stride_": 4,
+                                                "m_count_": 1,
+                                                "m_data_": []
                                             }
                                         }
                                     }
@@ -131,17 +131,17 @@
                                                         }
                                                     },
                                                     {
-                                                        "key": "shadow_map_size",
-                                                        "value": {
-                                                            "first": 2,
-                                                            "second": 8
-                                                        }
-                                                    },
-                                                    {
                                                         "key": "deltatime",
                                                         "value": {
                                                             "first": 1,
                                                             "second": 20
+                                                        }
+                                                    },
+                                                    {
+                                                        "key": "shadow_map_size",
+                                                        "value": {
+                                                            "first": 2,
+                                                            "second": 8
                                                         }
                                                     },
                                                     {

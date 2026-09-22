@@ -1,6 +1,8 @@
 ﻿#include "pch.h"
 #include "max_hp_card.h"
 
+#include "gui.h"
+
 void SlimeBoom::MaxHpCard::OnInspectorGui()
 {
     engine::Gui::PropertyField("Value", m_value_);

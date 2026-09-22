@@ -2,6 +2,7 @@
 #include "level_up_card.h"
 
 #include "engine_time.h"
+#include "gui.h"
 
 namespace SlimeBoom
 {

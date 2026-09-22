@@ -4,6 +4,7 @@
 
 #include "dithering.hlsli"
 #include "math.hlsli"
+#include "cabo_pbr.hlsli"
 
 cbuffer DamageColor : register(b5)
 {
@@ -27,6 +28,8 @@ struct VSOutput
 {
     float4 svpos : SV_POSITION;
     float3 normal : NORMAL;
+    float3 tangent : TANGENT;
+    float tangent_sign : TANGENT_SIGN;
     float4 color : COLOR;
     float2 uv : TEXCOORD0;
     float3 worldpos : TEXCOORD1;
@@ -46,15 +49,21 @@ VSOutput vrt(VSInput input, uint instance_id : SV_InstanceID)
     {
         local_pos.xyz *= 1.5f;
     }
+	//slimeを揺らす処理
+    local_pos.y += sin(time * 5.0f + input.pos.x + instance_id) * 0.15f;
+
     local_pos.xyz += slimes[instance_id].position;
 
     float4 world_pos = mul(World, local_pos);
     float4 proj_pos = mul(Proj, mul(View, world_pos));
 
     float3 world_normal = mul((float3x3)World, local_normal);
+    float3 world_tangent = mul((float3x3)World, input.tangent);
 
     output.svpos = proj_pos;
     output.normal = normalize(world_normal);
+    output.tangent = normalize(world_tangent);
+    output.tangent_sign = input.tangent.w;
     output.color = input.color;
     output.uv = input.uv;
     output.worldpos = world_pos.xyz;
@@ -64,36 +73,41 @@ VSOutput vrt(VSInput input, uint instance_id : SV_InstanceID)
 
 float4 pix(VSOutput input) : SV_Target
 {
+    float3 normal = normalize(input.normal);
     Dithering(input.svpos.xy, input.worldpos, camera_pos, player_pos, dithering_radius);
-    
-    float3 N = normalize(input.normal);
     float3 brightness = float3(0, 0, 0);
-    if (light_count == 0)
-    {
-        float2 flippedUV = float2(input.uv.x, 1.0 - input.uv.y);
-        float4 mainColor = MainTex.Sample(smp, flippedUV);
-        return float4(mainColor.rgb, mainColor.a);
-    }
 
     float4 viewPos = mul(View, float4(input.worldpos, 1.0));
     float depth = abs(viewPos.z);
 
-    brightness = CalcAllShadow(depth, normalize(input.normal), input.worldpos);
+    brightness = CalcAllShadow(depth, normal, input.worldpos);
 
-    float4 main_color;
+    float4 albedo_color;
 
     if (slimes[input.instance_id].slime_type == SLIME_TYPE::NORMAL)
-        main_color = slimes[input.instance_id].damage_color_timer <= 0.0f
+        albedo_color = slimes[input.instance_id].damage_color_timer <= 0.0f
                          ? MainTex.Sample(smp, input.uv)
                          : damage_color;
     else if(slimes[input.instance_id].slime_type == SLIME_TYPE::SPEED)
-        main_color = slimes[input.instance_id].damage_color_timer <= 0.0f
+        albedo_color = slimes[input.instance_id].damage_color_timer <= 0.0f
                          ? float4(1.0f, 1.0f, 1.0f, 1.0f)
                          : damage_color;
     else if(slimes[input.instance_id].slime_type == SLIME_TYPE::TANK)
-        main_color = slimes[input.instance_id].damage_color_timer <= 0.0f
+        albedo_color = slimes[input.instance_id].damage_color_timer <= 0.0f
                                  ? float4(0.5f, 0.0f, 0.5f, 1.0f)
                                  : damage_color;
 
-    return float4(main_color.rgb * brightness, main_color.a);
+    float3 lighting_color;
+    for (int i = 0; i < light_count; ++i)
+    {
+        float3 light_dir;
+        if (Lights[i].type == 0)
+            light_dir = normalize(-Lights[i].direction);
+        else
+            light_dir = normalize(Lights[i].pos - input.worldpos);
+        lighting_color = CalcLighting(albedo_color.rgb, 0.0f, 0.0f, normal, light_dir, camera_dir);
+    }
+    
+    brightness.rgb += float3(0.1f, 0.1f, 0.1f);
+    return float4(lighting_color * brightness, albedo_color.a);
 }

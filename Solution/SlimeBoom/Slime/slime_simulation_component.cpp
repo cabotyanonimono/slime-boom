@@ -1,6 +1,7 @@
 ﻿#include "pch.h"
 #include "slime_simulation_component.h"
 
+#include "gui.h"
 #include "../Sound/sound_manager_component.h"
 #include "Rendering/gpu_resource_manager.h"
 #include "../Utils/random.h"

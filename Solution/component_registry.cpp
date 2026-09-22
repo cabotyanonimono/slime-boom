@@ -14,6 +14,8 @@
 #include "SlimeBoom/Component/game_manager.h"
 #include "SlimeBoom/Component/object_disabler.h"
 #include "SlimeBoom/Component/scene_transition_controller.h"
+#include "SlimeBoom/Component/set_null_render_texture_component.h"
+#include "SlimeBoom/Component/texture_cube_recreator.h"
 #include "SlimeBoom/Component/title_scene_controller.h"
 #include "SlimeBoom/Exp/exp_simulation_component.h"
 #include "SlimeBoom/Exp/level_up_controller.h"
@@ -99,5 +101,7 @@ void ComponentRegistry::RegisterComponents()
     ADD_COMPONENT(AvoidCooldownGauge, "UI");
     ADD_COMPONENT(SlimeEliminateChecker, "Slime");
     ADD_COMPONENT(SlimeEliminateSe, "Slime");
+    ADD_COMPONENT(SetNullRenderTextureComponent, "Camera");
+    ADD_COMPONENT(TextureCubeRecreator, "Rendering");
 }
 }

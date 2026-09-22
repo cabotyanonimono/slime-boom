@@ -1,6 +1,8 @@
 ﻿#include "pch.h"
 #include "slime_eliminate_checker.h"
 
+#include "gui.h"
+
 namespace SlimeBoom
 {
 void SlimeEliminateChecker::OnInspectorGui()

@@ -2,6 +2,7 @@
 #include "gauge.h"
 
 #include "engine_time.h"
+#include "gui.h"
 #include "Components/rect_transform.h"
 
 namespace SlimeBoom

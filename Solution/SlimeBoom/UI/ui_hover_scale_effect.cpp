@@ -2,6 +2,7 @@
 #include "ui_hover_scale_effect.h"
 
 #include "engine_time.h"
+#include "gui.h"
 
 void UiHoverScaleEffect::OnInspectorGui()
 {

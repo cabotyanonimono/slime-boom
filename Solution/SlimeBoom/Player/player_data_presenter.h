@@ -4,6 +4,7 @@
 #include "Components/compute_shader_component.h"
 #include "Rendering/structured_buffer_data.h"
 #include "Rendering/CabotEngine/Graphics/ConstantBuffer.h"
+#include "Components/Transform.h""
 
 namespace SlimeBoom
 {

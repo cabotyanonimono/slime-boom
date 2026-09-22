@@ -1,6 +1,6 @@
 ﻿#include "pch.h"
 #include "aura_ability.h"
-
+#include "game_object.h"
 #include "../player_attack_data.h"
 #include "ability_data/ability_data_store.h"
 

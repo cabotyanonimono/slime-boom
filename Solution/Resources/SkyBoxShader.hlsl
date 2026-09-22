@@ -1,12 +1,12 @@
 #include "engine.hlsli"
 #include "Light.hlsli"
 
-Texture2D TextureLeft : register(t3);
-Texture2D TextureRight : register(t4);
-Texture2D TextureTop : register(t5);
-Texture2D TextureBottom : register(t6);
-Texture2D TextureFront : register(t7);
-Texture2D TextureBack : register(t8);
+TextureCube texture_cube : register(t3);
+
+cbuffer Params : register (b2)
+{
+    float intensity;
+}
 
 struct VSOutput
 {
@@ -57,54 +57,9 @@ VSOutput vrt(VSInput input)
 
 float4 pix(VSOutput input) : SV_Target
 {
-    float3 p = input.local_pos;
-    float3 absP = abs(p);
+    float3 dir = normalize(input.local_pos);
+    
+    float3 sky_color = texture_cube.Sample(smp, dir * float3(1.0f, -1.0f, 1.0f)).rgb * intensity;
 
-    float2 uv = float2(0.0f, 0.0f);
-    float4 color = float4(0.0f, 0.0f, 0.0f, 1.0f);
-
-    // Y軸が最大の面（上下）
-    if (absP.y >= absP.x && absP.y >= absP.z)
-    {
-        if (p.y > 0.0f) // Top面
-        {
-            uv = float2(p.x, p.z) * 0.5f + 0.5f;
-            color = TextureTop.Sample(SmpClamp, uv);
-        }
-        else // Bottom面
-        {
-            uv = float2(p.x, -p.z) * 0.5f + 0.5f;
-            color = TextureBottom.Sample(SmpClamp, uv);
-        }
-    }
-    // X軸が最大の面（左右）
-    else if (absP.x >= absP.y && absP.x >= absP.z)
-    {
-        if (p.x > 0.0f) // Right面
-        {
-            uv = float2(-p.z, -p.y) * 0.5f + 0.5f; // UVを 0.0 ~ 1.0 に変換
-            color = TextureRight.Sample(SmpClamp, uv);
-        }
-        else // Left面
-        {
-            uv = float2(p.z, -p.y) * 0.5f + 0.5f;
-            color = TextureLeft.Sample(SmpClamp, uv);
-        }
-    }
-    // Z軸が最大の面（前後）
-    else
-    {
-        if (p.z > 0.0f) // Front面
-        {
-            uv = float2(p.x, -p.y) * 0.5f + 0.5f;
-            color = TextureFront.Sample(SmpClamp, uv);
-        }
-        else // Back面
-        {
-            uv = float2(-p.x, -p.y) * 0.5f + 0.5f;
-            color = TextureBack.Sample(SmpClamp, uv);
-        }
-    }
-
-    return color;
+    return float4(sky_color, 1.0f);
 }

@@ -2,6 +2,7 @@
 #include "avoid_state.h"
 
 #include "engine_time.h"
+#include "event.h"
 #include "input.h"
 #include "../../Sound/sound_manager_component.h"
 #include "../../Utils/math_util.h"

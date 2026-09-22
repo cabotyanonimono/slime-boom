@@ -2,6 +2,7 @@
 #include "exp_simulation_component.h"
 
 #include "exp_data.h"
+#include "gui.h"
 #include "../compute_result.h"
 #include "Rendering/gpu_resource_manager.h"
 

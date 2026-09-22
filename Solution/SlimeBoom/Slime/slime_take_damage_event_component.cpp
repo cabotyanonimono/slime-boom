@@ -1,6 +1,8 @@
 ﻿#include "pch.h"
 #include "slime_take_damage_event_component.h"
 
+#include "gui.h"
+
 void SlimeBoom::SlimeTakeDamageEventComponent::OnInspectorGui()
 {
     engine::Gui::PropertyField("Compute Result", m_compute_result_);

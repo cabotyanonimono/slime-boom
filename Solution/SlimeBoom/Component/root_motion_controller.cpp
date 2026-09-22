@@ -1,6 +1,8 @@
 ﻿#include "pch.h"
 #include "root_motion_controller.h"
 
+#include "gui.h"
+
 void RootMotionController::OnInspectorGui()
 {
     engine::Gui::PropertyField("Animation Component", m_animation_);

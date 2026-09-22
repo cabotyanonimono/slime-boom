@@ -1,6 +1,7 @@
 ﻿#include "pch.h"
 #include "player_position_presenter.h"
 
+#include "gui.h"
 #include "Rendering/gpu_resource_manager.h"
 
 void SlimeBoom::PlayerPositionPresenter::OnInspectorGui()

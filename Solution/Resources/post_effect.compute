@@ -4,16 +4,64 @@
 #include "math.hlsli"
 #include "player_attack_data.hlsli"
 
+cbuffer NearFar : register(b2)
+{
+    float near;
+	float far;
+}
+
+cbuffer FogParams : register(b3)
+{
+    float4 fog_color;
+	float fog_max;
+}
+
 Texture2D<float4> depth_texture : register(t3);
 Texture2D<float4> source_texture : register(t4);
 
-RWTexture2D<float4> result_texture : register(u0);
+RWTexture2D<float4> result_texture : register(u1);
 
-[numthreads(64, 1, 1)]
+float LinearizeDepth(float depth)
+{
+    float linearZ = (near * far) / (far - depth * (far - near));
+    return (linearZ - near) / (far - near);
+}
+
+float3 ACESFilm(float3 x)
+{
+    float a = 2.51f;
+    float b = 0.03f;
+    float c = 2.43f;
+    float d = 0.59f;
+    float e = 0.14f;
+    return saturate((x * (a * x + b)) / (x * (c * x + d) + e));
+}
+
+float3 LinearToGamma(float3 color)
+{
+    return pow(color, 1.0f / 2.2f);
+}
+
+[numthreads(16, 16, 1)]
 void compute(uint3 globalID : SV_DispatchThreadID)
 {
-    float4 depth = depth_texture.Sample(smp, float2(globalID.x, globalID.y));
-    float4 color = source_texture.Sample(smp, float2(globalID.x, globalID.y));
+    uint2 uv = globalID.xy;
 
-    result_texture[globalID.x][globalID.y] = color * depth;
+    uint width, height;
+    result_texture.GetDimensions(width, height);
+
+    if (uv.x >= width || uv.y >= height)
+        return;
+
+	uv.y = height - uv.y;    
+
+    float4 depth = depth_texture[uv];
+    float3 color = source_texture[uv].rgb;
+
+	float linear_depth = LinearizeDepth(depth.r);
+	
+    float fog = min(linear_depth, fog_max);
+
+    color = lerp(color, fog_color.rgb, fog);
+    result_texture[uv] = float4(color, 1.0f);
 }

@@ -1,6 +1,8 @@
 ﻿#include "pch.h"
 #include "ui_navigator.h"
 
+#include "gui.h"
+
 namespace ui
 {
 bool UINavigator::IsPressed()

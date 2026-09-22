@@ -1,4 +1,5 @@
 ﻿#include "pch.h"
+#include "gui.h"
 #include "player_status_ui.h"
 
 namespace SlimeBoom

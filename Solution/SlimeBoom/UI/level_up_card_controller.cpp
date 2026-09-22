@@ -1,6 +1,8 @@
 ﻿#include "pch.h"
 #include "level_up_card_controller.h"
 
+#include "gui.h"
+
 namespace SlimeBoom
 {
 void LevelUpCardController::OnInspectorGui()

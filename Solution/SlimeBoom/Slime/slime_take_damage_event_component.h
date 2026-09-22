@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include "event.h"
 #include "../compute_result.h"
 #include "Asset/asset_ptr.h"
 #include "Components/component.h"

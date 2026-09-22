@@ -15,6 +15,7 @@
 #include "Components/component.h"
 #include "Components/transform.h"
 #include "Physics/rigidbody_component.h"
+#include "game_object.h"
 
 namespace SlimeBoom
 {

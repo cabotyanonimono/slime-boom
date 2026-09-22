@@ -1,6 +1,8 @@
 ﻿#include "pch.h"
 #include "player_hp_gauge.h"
 
+#include "gui.h"
+
 namespace SlimeBoom
 {
 void PlayerHpGauge::OnInspectorGui()

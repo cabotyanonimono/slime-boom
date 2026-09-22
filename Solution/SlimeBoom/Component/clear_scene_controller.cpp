@@ -2,6 +2,7 @@
 #include "clear_scene_controller.h"
 
 #include "engine.h"
+#include "gui.h"
 #include "input.h"
 
 namespace SlimeBoom

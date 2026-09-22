@@ -1,6 +1,7 @@
 ﻿#include "pch.h"
 #include "slime_eliminate_se.h"
 
+#include "gui.h"
 #include "../Sound/sound_manager_component.h"
 
 namespace SlimeBoom

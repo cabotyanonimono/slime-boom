@@ -1,5 +1,7 @@
 ﻿#include "pch.h"
 #include "title_scene_controller.h"
+
+#include "gui.h"
 #include "scene_manager.h"
 #include "input.h"
 

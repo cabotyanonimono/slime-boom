@@ -97,17 +97,17 @@
                                                         }
                                                     },
                                                     {
-                                                        "key": "shadow_map_size",
-                                                        "value": {
-                                                            "first": 2,
-                                                            "second": 8
-                                                        }
-                                                    },
-                                                    {
                                                         "key": "deltatime",
                                                         "value": {
                                                             "first": 1,
                                                             "second": 20
+                                                        }
+                                                    },
+                                                    {
+                                                        "key": "shadow_map_size",
+                                                        "value": {
+                                                            "first": 2,
+                                                            "second": 8
                                                         }
                                                     },
                                                     {

@@ -1,6 +1,8 @@
 ﻿#include "pch.h"
 #include "bush_generator.h"
 #include <utility>
+
+#include "gui.h"
 #include "../Utils/random.h"
 #include "Components/renderer_2d.h"
 

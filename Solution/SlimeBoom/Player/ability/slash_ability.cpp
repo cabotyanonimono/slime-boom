@@ -20,6 +20,9 @@ engine::Task SlashAbility::DelaySetAttackDataTask()
     
     co_await engine::WaitForSeconds(m_attack_delay_time_);
 
+    if (this == nullptr)
+        co_return;   
+    
     m_player_data_presenter_->SetAttackData(*attack_data);
     delete attack_data;
 }

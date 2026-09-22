@@ -1,6 +1,7 @@
 ﻿#include "pch.h"
 #include "slash_ability_card.h"
 
+#include "gui.h"
 #include "../../Player/ability/slash_ability.h"
 
 namespace SlimeBoom

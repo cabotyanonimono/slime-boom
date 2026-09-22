@@ -206,6 +206,7 @@
     <ClCompile Include="External\GenericEngine\Engine\Asset\Importer\asset_importer.cpp" />
     <ClCompile Include="External\GenericEngine\Engine\Asset\Importer\audio_clip_importer.cpp" />
     <ClCompile Include="External\GenericEngine\Engine\Asset\Importer\compute_shader_importer.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Asset\Importer\depth_texture_importer.cpp" />
     <ClCompile Include="External\GenericEngine\Engine\Asset\Importer\effekseer_effect_importer.cpp" />
     <ClCompile Include="External\GenericEngine\Engine\Asset\Importer\fbx_importer.cpp" />
     <ClCompile Include="External\GenericEngine\Engine\Asset\Importer\font_importer.cpp" />
@@ -214,7 +215,6 @@
     <ClCompile Include="External\GenericEngine\Engine\Asset\Importer\render_texture_importer.cpp" />
     <ClCompile Include="External\GenericEngine\Engine\Asset\Importer\shader_importer.cpp" />
     <ClCompile Include="External\GenericEngine\Engine\Asset\Importer\texture_2d_importer.cpp" />
-    <ClCompile Include="External\GenericEngine\Engine\Asset\Importer\texture_cube_importer.cpp" />
     <ClCompile Include="External\GenericEngine\Engine\Asset\Importer\txt_importer.cpp" />
     <ClCompile Include="External\GenericEngine\Engine\Asset\persistent_data_store.cpp" />
     <ClCompile Include="External\GenericEngine\Engine\Asset\text_asset.cpp" />
@@ -325,6 +325,7 @@
     <ClCompile Include="External\GenericEngine\Engine\Rendering\mesh.cpp" />
     <ClCompile Include="External\GenericEngine\Engine\Rendering\model_importer.cpp" />
     <ClCompile Include="External\GenericEngine\Engine\Rendering\primitives.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\layer.cpp" />
     <ClCompile Include="External\GenericEngine\Engine\Rendering\rendering_settings_component.cpp" />
     <ClCompile Include="External\GenericEngine\Engine\Rendering\render_command.cpp" />
     <ClCompile Include="External\GenericEngine\Engine\Rendering\render_pipeline.cpp" />
@@ -342,6 +343,7 @@
     <ClCompile Include="External\GenericEngine\Engine\Rendering\texture_buffer.cpp" />
     <ClCompile Include="External\GenericEngine\Engine\Rendering\texture_buffer_data.cpp" />
     <ClCompile Include="External\GenericEngine\Engine\Rendering\texture_collection.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\Rendering\texture_cube_buffer.cpp" />
     <ClCompile Include="External\GenericEngine\Engine\Rendering\uav_texture_buffer_data.cpp" />
     <ClCompile Include="External\GenericEngine\Engine\Rendering\vertex.cpp" />
     <ClCompile Include="External\GenericEngine\Engine\Rendering\view_projection.cpp" />
@@ -366,6 +368,8 @@
     <ClCompile Include="SlimeBoom\Component\scene_changer.cpp" />
     <ClCompile Include="SlimeBoom\Component\scene_transition_controller.cpp" />
     <ClCompile Include="SlimeBoom\Component\scene_transition_executor.cpp" />
+    <ClCompile Include="SlimeBoom\Component\set_null_render_texture_component.cpp" />
+    <ClCompile Include="SlimeBoom\Component\texture_cube_recreator.cpp" />
     <ClCompile Include="SlimeBoom\Component\title_scene_controller.cpp" />
     <ClCompile Include="SlimeBoom\compute_result.cpp" />
     <ClCompile Include="SlimeBoom\compute_result_types.cpp" />
@@ -702,6 +706,7 @@
     <ClInclude Include="External\GenericEngine\Engine\Asset\Importer\asset_importer.h" />
     <ClInclude Include="External\GenericEngine\Engine\Asset\Importer\audio_clip_importer.h" />
     <ClInclude Include="External\GenericEngine\Engine\Asset\Importer\compute_shader_importer.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Asset\Importer\depth_texture_importer.h" />
     <ClInclude Include="External\GenericEngine\Engine\Asset\Importer\effekseer_effect_importer.h" />
     <ClInclude Include="External\GenericEngine\Engine\Asset\Importer\fbx_importer.h" />
     <ClInclude Include="External\GenericEngine\Engine\Asset\Importer\font_importer.h" />
@@ -710,7 +715,6 @@
     <ClInclude Include="External\GenericEngine\Engine\Asset\Importer\render_texture_importer.h" />
     <ClInclude Include="External\GenericEngine\Engine\Asset\Importer\shader_importer.h" />
     <ClInclude Include="External\GenericEngine\Engine\Asset\Importer\texture_2d_importer.h" />
-    <ClInclude Include="External\GenericEngine\Engine\Asset\Importer\texture_cube_importer.h" />
     <ClInclude Include="External\GenericEngine\Engine\Asset\Importer\txt_importer.h" />
     <ClInclude Include="External\GenericEngine\Engine\Asset\persistent_data_store.h" />
     <ClInclude Include="External\GenericEngine\Engine\Asset\text_asset.h" />
@@ -831,6 +835,7 @@
     <ClInclude Include="External\GenericEngine\Engine\Rendering\model_importer.h" />
     <ClInclude Include="External\GenericEngine\Engine\Rendering\primitives.h" />
     <ClInclude Include="External\GenericEngine\Engine\Rendering\rendering_constants.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\layer.h" />
     <ClInclude Include="External\GenericEngine\Engine\Rendering\rendering_settings_component.h" />
     <ClInclude Include="External\GenericEngine\Engine\Rendering\render_command.h" />
     <ClInclude Include="External\GenericEngine\Engine\Rendering\render_pipeline.h" />
@@ -848,6 +853,7 @@
     <ClInclude Include="External\GenericEngine\Engine\Rendering\texture_buffer.h" />
     <ClInclude Include="External\GenericEngine\Engine\Rendering\texture_buffer_data.h" />
     <ClInclude Include="External\GenericEngine\Engine\Rendering\texture_collection.h" />
+    <ClInclude Include="External\GenericEngine\Engine\Rendering\texture_cube_buffer_data.h" />
     <ClInclude Include="External\GenericEngine\Engine\Rendering\uav_texture_buffer_data.h" />
     <ClInclude Include="External\GenericEngine\Engine\Rendering\vertex.h" />
     <ClInclude Include="External\GenericEngine\Engine\Rendering\view_projection.h" />
@@ -897,9 +903,12 @@
     <ClInclude Include="External\GenericEngine\ThirdParty\Effekseer\include\LLGI\LLGI.Platform.h" />
     <ClInclude Include="External\GenericEngine\ThirdParty\Effekseer\include\LLGI\LLGI.Shader.h" />
     <ClInclude Include="External\GenericEngine\ThirdParty\Effekseer\include\LLGI\LLGI.Texture.h" />
+    <ClInclude Include="Resources\cabo_pbr.hlsli" />
+    <ClInclude Include="Resources\engine.hlsli" />
     <ClInclude Include="Resources\Light.hlsli" />
     <ClInclude Include="Resources\slime.hlsli" />
     <ClInclude Include="Resources\dithering.hlsli" />
+    <ClInclude Include="Resources\util.hlsli" />
     <ClInclude Include="SlimeBoom\box.h" />
     <ClInclude Include="SlimeBoom\Component\animator.h" />
     <ClInclude Include="SlimeBoom\Component\bush_generator.h" />
@@ -915,6 +924,8 @@
     <ClInclude Include="SlimeBoom\Component\scene_changer.h" />
     <ClInclude Include="SlimeBoom\Component\scene_transition_controller.h" />
     <ClInclude Include="SlimeBoom\Component\scene_transition_executor.h" />
+    <ClInclude Include="SlimeBoom\Component\set_null_render_texture_component.h" />
+    <ClInclude Include="SlimeBoom\Component\texture_cube_recreator.h" />
     <ClInclude Include="SlimeBoom\Component\title_scene_controller.h" />
     <ClInclude Include="SlimeBoom\compute_result.h" />
     <ClInclude Include="SlimeBoom\compute_result_types.h" />

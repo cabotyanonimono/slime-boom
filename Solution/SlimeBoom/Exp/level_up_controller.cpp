@@ -1,6 +1,7 @@
 ﻿#include "pch.h"
 #include "level_up_controller.h"
 
+#include "gui.h"
 #include "input.h"
 
 int SlimeBoom::LevelUpController::CalcRequiredExp()

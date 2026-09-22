@@ -39,7 +39,7 @@ float pix(GSOutput input) : SV_TARGET
     return linearDepth / input.near_far.y;
 }
 
-#define MAX_SHADOWMAP_COUNT 10
+#define MAX_SHADOWMAP_COUNT 3
 
 [maxvertexcount(3 * MAX_SHADOWMAP_COUNT)]
 void geo(triangle VSOutput input[3], inout TriangleStream<GSOutput> tri_stream)

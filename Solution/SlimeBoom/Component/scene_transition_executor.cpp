@@ -1,6 +1,8 @@
 ﻿#include "pch.h"
 #include "scene_transition_executor.h"
 
+#include "gui.h"
+
 namespace SlimeBoom
 {
 void SceneTransitionExecutor::OnInspectorGui()

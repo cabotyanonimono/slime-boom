@@ -7,7 +7,7 @@
                 "cereal_class_version": 3,
                 "value0": {
                     "cereal_class_version": 1,
-                    "m_guid_": "036a8f23-db07-481d-864f-12823be19c26",
+                    "m_guid_": "61ac1538-7bbc-4db8-9177-573749cde6b2",
                     "m_name_": "New Material 1.material"
                 },
                 "shared_material_block": {
@@ -17,15 +17,15 @@
                         "data": {
                             "cereal_class_version": 2,
                             "value0": {
-                                "m_guid_": "1a13936f-c149-4d5b-a67d-aca84352024f",
+                                "m_guid_": "6981702b-44fe-4836-9d66-e06bee659595",
                                 "m_name_": "Material Block of New Material 1.material"
                             },
                             "m_buffer_data_": [
                                 {
-                                    "key": "TextureLeft",
+                                    "key": "texture_cube",
                                     "value": {
                                         "polymorphic_id": 2147483649,
-                                        "polymorphic_name": "engine::TextureBufferData",
+                                        "polymorphic_name": "engine::TextureCubeBufferData",
                                         "ptr_wrapper": {
                                             "id": 2147483651,
                                             "data": {
@@ -35,21 +35,68 @@
                                                     "parameter": {
                                                         "cereal_class_version": 1,
                                                         "index": 3,
-                                                        "name": "TextureLeft",
-                                                        "display_name": "TextureLeft",
+                                                        "name": "texture_cube",
+                                                        "display_name": "texture_cube",
                                                         "is_unordered_access": false,
                                                         "total_size": 0,
                                                         "variables": []
                                                     },
-                                                    "upload_type": -842150451
+                                                    "upload_type": 338649920
                                                 },
-                                                "m_texture_": {
+                                                "m_textures_": {
                                                     "value0": {
-                                                        "cereal_class_version": 1,
-                                                        "m_guid_": "b5af8856-b886-4805-9002-eb0929250f0d",
-                                                        "m_type_": 2,
-                                                        "m_stored_reference_": {
-                                                            "polymorphic_id": 0
+                                                        "value0": {
+                                                            "cereal_class_version": 1,
+                                                            "m_guid_": "d37c1e1f-988f-40d1-941b-1178c42a3fd3",
+                                                            "m_type_": 2,
+                                                            "m_stored_reference_": {
+                                                                "polymorphic_id": 0
+                                                            }
+                                                        }
+                                                    },
+                                                    "value1": {
+                                                        "value0": {
+                                                            "m_guid_": "b5af8856-b886-4805-9002-eb0929250f0d",
+                                                            "m_type_": 2,
+                                                            "m_stored_reference_": {
+                                                                "polymorphic_id": 0
+                                                            }
+                                                        }
+                                                    },
+                                                    "value2": {
+                                                        "value0": {
+                                                            "m_guid_": "6408a72f-bc3d-470a-8c24-5790cf9a0f57",
+                                                            "m_type_": 2,
+                                                            "m_stored_reference_": {
+                                                                "polymorphic_id": 0
+                                                            }
+                                                        }
+                                                    },
+                                                    "value3": {
+                                                        "value0": {
+                                                            "m_guid_": "4948d9c5-e9ae-4d59-b62e-12c6033cc616",
+                                                            "m_type_": 2,
+                                                            "m_stored_reference_": {
+                                                                "polymorphic_id": 0
+                                                            }
+                                                        }
+                                                    },
+                                                    "value4": {
+                                                        "value0": {
+                                                            "m_guid_": "3520943a-c875-4487-9aea-31427a99f0a7",
+                                                            "m_type_": 2,
+                                                            "m_stored_reference_": {
+                                                                "polymorphic_id": 0
+                                                            }
+                                                        }
+                                                    },
+                                                    "value5": {
+                                                        "value0": {
+                                                            "m_guid_": "765d53cb-0c84-44b5-86ba-47bdaabcdcf3",
+                                                            "m_type_": 2,
+                                                            "m_stored_reference_": {
+                                                                "polymorphic_id": 0
+                                                            }
                                                         }
                                                     }
                                                 }
@@ -58,156 +105,46 @@
                                     }
                                 },
                                 {
-                                    "key": "TextureRight",
+                                    "key": "Params",
                                     "value": {
-                                        "polymorphic_id": 1,
+                                        "polymorphic_id": 2147483650,
+                                        "polymorphic_name": "engine::ConstantBufferData",
                                         "ptr_wrapper": {
                                             "id": 2147483652,
                                             "data": {
+                                                "cereal_class_version": 1,
                                                 "value0": {
                                                     "parameter": {
-                                                        "index": 4,
-                                                        "name": "TextureRight",
-                                                        "display_name": "TextureRight",
+                                                        "index": 3,
+                                                        "name": "Params",
+                                                        "display_name": "Params",
                                                         "is_unordered_access": false,
-                                                        "total_size": 0,
-                                                        "variables": []
+                                                        "total_size": 16,
+                                                        "variables": [
+                                                            {
+                                                                "cereal_class_version": 0,
+                                                                "name": "intensity",
+                                                                "data_type": 1
+                                                            }
+                                                        ]
                                                     },
-                                                    "upload_type": -842150451
+                                                    "upload_type": 332179408
                                                 },
-                                                "m_texture_": {
-                                                    "value0": {
-                                                        "m_guid_": "d37c1e1f-988f-40d1-941b-1178c42a3fd3",
-                                                        "m_type_": 2,
-                                                        "m_stored_reference_": {
-                                                            "polymorphic_id": 0
+                                                "m_data_type_offset_pairs_": [
+                                                    {
+                                                        "key": "intensity",
+                                                        "value": {
+                                                            "first": 1,
+                                                            "second": 0
                                                         }
                                                     }
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                {
-                                    "key": "TextureTop",
-                                    "value": {
-                                        "polymorphic_id": 1,
-                                        "ptr_wrapper": {
-                                            "id": 2147483653,
-                                            "data": {
-                                                "value0": {
-                                                    "parameter": {
-                                                        "index": 5,
-                                                        "name": "TextureTop",
-                                                        "display_name": "TextureTop",
-                                                        "is_unordered_access": false,
-                                                        "total_size": 0,
-                                                        "variables": []
-                                                    },
-                                                    "upload_type": -842150451
-                                                },
-                                                "m_texture_": {
-                                                    "value0": {
-                                                        "m_guid_": "4948d9c5-e9ae-4d59-b62e-12c6033cc616",
-                                                        "m_type_": 2,
-                                                        "m_stored_reference_": {
-                                                            "polymorphic_id": 0
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                {
-                                    "key": "TextureBottom",
-                                    "value": {
-                                        "polymorphic_id": 1,
-                                        "ptr_wrapper": {
-                                            "id": 2147483654,
-                                            "data": {
-                                                "value0": {
-                                                    "parameter": {
-                                                        "index": 6,
-                                                        "name": "TextureBottom",
-                                                        "display_name": "TextureBottom",
-                                                        "is_unordered_access": false,
-                                                        "total_size": 0,
-                                                        "variables": []
-                                                    },
-                                                    "upload_type": -842150451
-                                                },
-                                                "m_texture_": {
-                                                    "value0": {
-                                                        "m_guid_": "6408a72f-bc3d-470a-8c24-5790cf9a0f57",
-                                                        "m_type_": 2,
-                                                        "m_stored_reference_": {
-                                                            "polymorphic_id": 0
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                {
-                                    "key": "TextureBack",
-                                    "value": {
-                                        "polymorphic_id": 1,
-                                        "ptr_wrapper": {
-                                            "id": 2147483655,
-                                            "data": {
-                                                "value0": {
-                                                    "parameter": {
-                                                        "index": 8,
-                                                        "name": "TextureBack",
-                                                        "display_name": "TextureBack",
-                                                        "is_unordered_access": false,
-                                                        "total_size": 0,
-                                                        "variables": []
-                                                    },
-                                                    "upload_type": -842150451
-                                                },
-                                                "m_texture_": {
-                                                    "value0": {
-                                                        "m_guid_": "3520943a-c875-4487-9aea-31427a99f0a7",
-                                                        "m_type_": 2,
-                                                        "m_stored_reference_": {
-                                                            "polymorphic_id": 0
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                {
-                                    "key": "TextureFront",
-                                    "value": {
-                                        "polymorphic_id": 1,
-                                        "ptr_wrapper": {
-                                            "id": 2147483656,
-                                            "data": {
-                                                "value0": {
-                                                    "parameter": {
-                                                        "index": 7,
-                                                        "name": "TextureFront",
-                                                        "display_name": "TextureFront",
-                                                        "is_unordered_access": false,
-                                                        "total_size": 0,
-                                                        "variables": []
-                                                    },
-                                                    "upload_type": -842150451
-                                                },
-                                                "m_texture_": {
-                                                    "value0": {
-                                                        "m_guid_": "765d53cb-0c84-44b5-86ba-47bdaabcdcf3",
-                                                        "m_type_": 2,
-                                                        "m_stored_reference_": {
-                                                            "polymorphic_id": 0
-                                                        }
-                                                    }
-                                                }
+                                                ],
+                                                "m_data_": [
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    63
+                                                ]
                                             }
                                         }
                                     }

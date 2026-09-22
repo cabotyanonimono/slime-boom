@@ -1,6 +1,8 @@
 ﻿#include "pch.h"
 #include "exp_gauge.h"
 
+#include "gui.h"
+
 void SlimeBoom::ExpGauge::OnInspectorGui()
 {
     engine::Gui::PropertyField("Ui Data Provider", m_ui_data_provider_);

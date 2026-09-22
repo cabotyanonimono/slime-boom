@@ -1,5 +1,7 @@
 ﻿#include "pch.h"
 #include "card_controller.h"
+
+#include "gui.h"
 #include "../Utils/random.h"
 
 namespace SlimeBoom

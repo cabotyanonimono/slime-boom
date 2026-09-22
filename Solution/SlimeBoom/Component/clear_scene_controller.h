@@ -9,6 +9,7 @@
 #include "Components/rect_transform.h"
 #include "Components/text_renderer.h"
 #include "Coroutine/task.h"
+#include "game_object.h"
 
 namespace SlimeBoom
 {

@@ -28,30 +28,9 @@ RWStructuredBuffer<SlimeData> slimes : register(u1);
 RWStructuredBuffer<Exp> exps : register(u2);
 RWByteAddressBuffer result : register(u3);
 
-bool CheckCollisionToPlayerAttack(float3 to_slime, PlayerAttackData attack_data)
-{
-    to_slime.y = 0.0f;
-    attack_data.angle.y = 0.0f;
+bool CheckCollisionToPlayerAttack(float3 to_slime, PlayerAttackData attack_data);
 
-    attack_data.angle = normalize(attack_data.angle);
-
-    float dist = length(to_slime);
-    if (dist > attack_data.size)
-        return false;
-
-    if (dist <= 3.0f)
-        return true;
-
-    float3 dir_to_slime = to_slime / dist;
-    float cos_angle = dot(attack_data.angle, dir_to_slime);
-
-    float cos_limit = cos(attack_data.arc * 0.5f);
-
-    if (cos_angle >= cos_limit)
-        return true;
-
-    return false;
-}
+void OnSlimeAttack(inout SlimeData slime_data, PlayerAttackData attack_data, float3 player_to_slime);
 
 [numthreads(64, 1, 1)]
 void compute(uint3 globalID : SV_DispatchThreadID)
@@ -66,27 +45,57 @@ void compute(uint3 globalID : SV_DispatchThreadID)
     {
         if (CheckCollisionToPlayerAttack(to_slime, player_attacks[i]))
         {
-            slimes[index].hp -= player_attacks[i].damage;
-            slimes[index].damage_color_timer = damage_color_time;
-			
-            float3 knockback =  float3(to_slime.x, 0.0f, to_slime.z) * player_attacks[i].power;
-            slimes[index].velocity += knockback;
-            result.InterlockedAdd(24, 1);
-            
-            if (slimes[index].hp <= 0)
-            {
-                result.InterlockedAdd(20, 1);
-                for (int j = 0; j < MAX_EXP_NUM; ++j)
-                {
-                    uint original_value;
-                    InterlockedCompareExchange(exps[j].is_active, 0, 1, original_value);
+            OnSlimeAttack(slimes[index], player_attacks[i], to_slime);
+        }
+    }
+}
 
-                    if (original_value == 0)
-                    {
-                        exps[j].pos = float3(slimes[index].position.x, 0.0f, slimes[index].position.z);
-                        break;
-                    }
-                }
+bool CheckCollisionToPlayerAttack(float3 to_slime, PlayerAttackData attack_data)
+{
+    to_slime.y = 0.0f;
+    attack_data.angle.y = 0.0f;
+
+    attack_data.angle = normalize(attack_data.angle);
+
+    float dist = length(to_slime);
+    if (dist > attack_data.size)
+        return false;
+
+    if (dist <= 3.0f)
+        return true;
+
+    float3 dir_to_slime = normalize(to_slime);
+    float cos_angle = dot(attack_data.angle, dir_to_slime);
+
+    float cos_limit = cos(attack_data.arc * 0.5f);
+
+    if (cos_angle >= cos_limit)
+        return true;
+
+    return false;
+}
+
+void OnSlimeAttack(inout SlimeData slime_data, PlayerAttackData attack_data, float3 player_to_slime)
+{
+    slime_data.hp -= attack_data.damage;
+    slime_data.damage_color_timer = damage_color_time;
+			
+    float3 knockback =  float3(player_to_slime.x, 0.0f, player_to_slime.z) * attack_data.power;
+    slime_data.velocity += knockback;
+    result.InterlockedAdd(24, 1);
+            
+    if (slime_data.hp <= 0)
+    {
+        result.InterlockedAdd(20, 1);
+        for (int j = 0; j < MAX_EXP_NUM; ++j)
+        {
+            uint original_value;
+            InterlockedCompareExchange(exps[j].is_active, 0, 1, original_value);
+
+            if (original_value == 0)
+            {
+                exps[j].pos = float3(slime_data.position.x, 0.0f, slime_data.position.z);
+                break;
             }
         }
     }

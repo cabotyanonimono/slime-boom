@@ -61,7 +61,7 @@
                         }
                     }
                 },
-                "render_queue": 8001,
+                "render_queue": 8100,
                 "m_shader_": {
                     "value0": {
                         "m_guid_": "0e452757-c751-4308-9cee-f8287170f88c",

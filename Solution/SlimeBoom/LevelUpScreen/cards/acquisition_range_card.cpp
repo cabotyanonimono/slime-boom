@@ -1,6 +1,8 @@
 ﻿#include "pch.h"
 #include "acquisition_range_card.h"
 
+#include "gui.h"
+
 void SlimeBoom::AcquisitionRangeCard::OnInspectorGui()
 {
     CardBase::OnInspectorGui();
