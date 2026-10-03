@@ -2,6 +2,7 @@
 #include "camera_controller.h"
 
 #include "application.h"
+#include "engine_time.h"
 #include "gui.h"
 #include "input.h"
 
@@ -26,8 +27,8 @@ void CameraController::OnUpdate()
     mouse_delta.y /= engine::Application::WindowHeight();
 
     mouse_delta *= m_sensitivity;
-    m_yaw_ -= mouse_delta.x;
-    m_pitch_ -= mouse_delta.y;
+    m_yaw_ -= mouse_delta.x * engine::Time::GetDeltaTime();
+    m_pitch_ -= mouse_delta.y * engine::Time::GetDeltaTime();
     
     m_pitch_ = std::clamp(m_pitch_, -DirectX::XM_PIDIV2, DirectX::XM_PIDIV2);
 

@@ -13,7 +13,7 @@ class LevelUpCardController : public engine::Component
     
 public:
     void OnInspectorGui() override;
-    void OnUpdate() override;
+    void OnEnabled() override;
     
     template <class Archive>
     void serialize(Archive& ar, const uint32_t version)

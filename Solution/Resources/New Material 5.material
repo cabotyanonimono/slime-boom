@@ -22,10 +22,10 @@
                             },
                             "m_buffer_data_": [
                                 {
-                                    "key": "Transform",
+                                    "key": "positions",
                                     "value": {
                                         "polymorphic_id": 2147483649,
-                                        "polymorphic_name": "engine::ConstantBufferData",
+                                        "polymorphic_name": "engine::StructuredBufferData",
                                         "ptr_wrapper": {
                                             "id": 2147483651,
                                             "data": {
@@ -34,6 +34,33 @@
                                                     "cereal_class_version": 1,
                                                     "parameter": {
                                                         "cereal_class_version": 1,
+                                                        "index": 4,
+                                                        "name": "positions",
+                                                        "display_name": "positions",
+                                                        "is_unordered_access": false,
+                                                        "total_size": 0,
+                                                        "variables": []
+                                                    },
+                                                    "upload_type": 0
+                                                },
+                                                "m_stride_": 4,
+                                                "m_count_": 1,
+                                                "m_data_": []
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    "key": "Transform",
+                                    "value": {
+                                        "polymorphic_id": 2147483650,
+                                        "polymorphic_name": "engine::ConstantBufferData",
+                                        "ptr_wrapper": {
+                                            "id": 2147483652,
+                                            "data": {
+                                                "cereal_class_version": 1,
+                                                "value0": {
+                                                    "parameter": {
                                                         "index": 0,
                                                         "name": "Transform",
                                                         "display_name": "Transform",
@@ -124,33 +151,6 @@
                                                     0,
                                                     0
                                                 ]
-                                            }
-                                        }
-                                    }
-                                },
-                                {
-                                    "key": "positions",
-                                    "value": {
-                                        "polymorphic_id": 2147483650,
-                                        "polymorphic_name": "engine::StructuredBufferData",
-                                        "ptr_wrapper": {
-                                            "id": 2147483652,
-                                            "data": {
-                                                "cereal_class_version": 1,
-                                                "value0": {
-                                                    "parameter": {
-                                                        "index": 4,
-                                                        "name": "positions",
-                                                        "display_name": "positions",
-                                                        "is_unordered_access": false,
-                                                        "total_size": 0,
-                                                        "variables": []
-                                                    },
-                                                    "upload_type": 0
-                                                },
-                                                "m_stride_": 4,
-                                                "m_count_": 1,
-                                                "m_data_": []
                                             }
                                         }
                                     }

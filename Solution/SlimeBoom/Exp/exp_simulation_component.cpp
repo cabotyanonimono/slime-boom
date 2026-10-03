@@ -21,8 +21,16 @@ void SlimeBoom::ExpSimulationComponent::OnStart()
 
 void SlimeBoom::ExpSimulationComponent::OnInspectorGui()
 {
+    engine::Gui::PropertyField("Compute Result", m_compute_result_);
     if (engine::Gui::PropertyField("Acquisition Range", m_acquisition_range_))
         SetAcquisitionRange(m_acquisition_range_);
+}
+
+void SlimeBoom::ExpSimulationComponent::OnUpdate()
+{
+    auto exp_count = *static_cast<int *>(m_compute_result_->GetValue("exp"));
+    m_delta_exp_count_ = exp_count - m_exp_count_;
+    m_exp_count_ = exp_count;
 }
 
 int SlimeBoom::ExpSimulationComponent::GetDeltaExpCount() const

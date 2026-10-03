@@ -9,6 +9,7 @@ class ExpSimulationComponent : public engine::Component
 {
     static constexpr size_t kMaxExpBufferSize = 1024;
 
+    engine::AssetPtr<ComputeResult> m_compute_result_;
     std::shared_ptr<engine::StructuredBuffer> m_exp_buffer_;
     std::shared_ptr<engine::StructuredBuffer> m_exp_count_buffer_;
     float m_acquisition_range_ = 10.0f;
@@ -19,6 +20,7 @@ class ExpSimulationComponent : public engine::Component
 public:
     void OnStart() override;
     void OnInspectorGui() override;
+    void OnUpdate() override;
 
     int GetDeltaExpCount() const;
     int GetExpCount() const;
@@ -39,8 +41,15 @@ public:
                 CEREAL_NVP(m_acquisition_range_)
             );
         }
+
+        if (version >= 3)
+        {
+            ar(
+                CEREAL_NVP(m_compute_result_)
+            );
+        }
     }
 };
 }
 
-CEREAL_CLASS_VERSION(SlimeBoom::ExpSimulationComponent, 2)
+CEREAL_CLASS_VERSION(SlimeBoom::ExpSimulationComponent, 3)

@@ -166,6 +166,9 @@
       <AdditionalLibraryDirectories>$(ProjectDir)External\GenericEngine\ThirdParty\dxlib_h;$(ProjectDir)External\GenericEngine;$(ProjectDir)External\GenericEngine\Engine</AdditionalLibraryDirectories>
       <AdditionalDependencies>$(ProjectDir)External\GenericEngine\ThirdParty\Effekseer\lib\*.lib;$(ProjectDir)vcpkg\installed\x64-windows\lib\*.lib;</AdditionalDependencies>
     </Link>
+    <Manifest>
+      <AdditionalManifestFiles>$(ProjectDir)SlimeBoom.exe.manifest</AdditionalManifestFiles>
+    </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="component_registry.cpp" />
@@ -223,6 +226,8 @@
     <ClCompile Include="External\GenericEngine\Engine\Audio\audio_clip.cpp" />
     <ClCompile Include="External\GenericEngine\Engine\Audio\audio_listener_component.cpp" />
     <ClCompile Include="External\GenericEngine\Engine\Audio\audio_source_component.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\cancellation_token.cpp" />
+    <ClCompile Include="External\GenericEngine\Engine\cancellation_token_source.cpp" />
     <ClCompile Include="External\GenericEngine\Engine\Components\billboard_renderer.cpp" />
     <ClCompile Include="External\GenericEngine\Engine\Components\camera_component.cpp" />
     <ClCompile Include="External\GenericEngine\Engine\Components\canvas.cpp" />
@@ -376,6 +381,7 @@
     <ClCompile Include="SlimeBoom\default_scene_creator.cpp" />
     <ClCompile Include="SlimeBoom\Exp\exp_data.cpp" />
     <ClCompile Include="SlimeBoom\Exp\exp_simulation_component.cpp" />
+    <ClCompile Include="SlimeBoom\Exp\exp_sound_emitter.cpp" />
     <ClCompile Include="SlimeBoom\Exp\level_up_controller.cpp" />
     <ClCompile Include="SlimeBoom\LevelUpScreen\cards\acquisition_range_card.cpp" />
     <ClCompile Include="SlimeBoom\LevelUpScreen\cards\attack_num_card.cpp" />
@@ -499,6 +505,9 @@
     <ClCompile Include="SlimeBoom\Player\States\avoid_state.cpp" />
     <ClCompile Include="SlimeBoom\Player\States\dash_state.cpp" />
     <ClCompile Include="SlimeBoom\Player\States\play_anim_state.cpp" />
+    <ClCompile Include="SlimeBoom\Settings\settings_model.cpp" />
+    <ClCompile Include="SlimeBoom\Settings\settings_presenter.cpp" />
+    <ClCompile Include="SlimeBoom\Settings\settings_view.cpp" />
     <ClCompile Include="SlimeBoom\Slime\slime_eliminate_checker.cpp">
       <AssemblerOutput>NoListing</AssemblerOutput>
       <AssemblerListingLocation>SlimeBoom\x64\Release\</AssemblerListingLocation>
@@ -593,6 +602,7 @@
     <ClCompile Include="SlimeBoom\StateMachine\transition.cpp" />
     <ClCompile Include="SlimeBoom\UI\avoid_cooldown_gauge.cpp" />
     <ClCompile Include="SlimeBoom\UI\direction.cpp" />
+    <ClCompile Include="SlimeBoom\UI\drop_down_button.cpp" />
     <ClCompile Include="SlimeBoom\UI\exp_gauge.cpp" />
     <ClCompile Include="SlimeBoom\UI\gauge.cpp" />
     <ClCompile Include="SlimeBoom\UI\level_text.cpp" />
@@ -666,6 +676,7 @@
     <Content Include="External\GenericEngine\vcpkg-configuration.json" />
     <Content Include="External\GenericEngine\vcpkg.json" />
     <Content Include="Resources\task.md" />
+    <Content Include="SlimeBoom.exe.manifest" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="component_registry.h" />
@@ -723,6 +734,8 @@
     <ClInclude Include="External\GenericEngine\Engine\Audio\audio_clip.h" />
     <ClInclude Include="External\GenericEngine\Engine\Audio\audio_listener_component.h" />
     <ClInclude Include="External\GenericEngine\Engine\Audio\audio_source_component.h" />
+    <ClInclude Include="External\GenericEngine\Engine\cancellation_token.h" />
+    <ClInclude Include="External\GenericEngine\Engine\cancellation_token_source.h" />
     <ClInclude Include="External\GenericEngine\Engine\Components\billboard_renderer.h" />
     <ClInclude Include="External\GenericEngine\Engine\Components\camera_component.h" />
     <ClInclude Include="External\GenericEngine\Engine\Components\canvas.h" />
@@ -932,6 +945,7 @@
     <ClInclude Include="SlimeBoom\default_scene_creator.h" />
     <ClInclude Include="SlimeBoom\Exp\exp_data.h" />
     <ClInclude Include="SlimeBoom\Exp\exp_simulation_component.h" />
+    <ClInclude Include="SlimeBoom\Exp\exp_sound_emitter.h" />
     <ClInclude Include="SlimeBoom\Exp\level_up_controller.h" />
     <ClInclude Include="SlimeBoom\LevelUpScreen\cards\acquisition_range_card.h" />
     <ClInclude Include="SlimeBoom\LevelUpScreen\cards\attack_num_card.h" />
@@ -974,6 +988,9 @@
     <ClInclude Include="SlimeBoom\Player\States\avoid_state.h" />
     <ClInclude Include="SlimeBoom\Player\States\dash_state.h" />
     <ClInclude Include="SlimeBoom\Player\States\play_anim_state.h" />
+    <ClInclude Include="SlimeBoom\Settings\settings_model.h" />
+    <ClInclude Include="SlimeBoom\Settings\settings_presenter.h" />
+    <ClInclude Include="SlimeBoom\Settings\settings_view.h" />
     <ClInclude Include="SlimeBoom\Slime\slime_eliminate_checker.h" />
     <ClInclude Include="SlimeBoom\Slime\slime_eliminate_se.h" />
     <ClInclude Include="SlimeBoom\Slime\slime_simulation_component.h" />
@@ -989,6 +1006,7 @@
     <ClInclude Include="SlimeBoom\StateMachine\transition.h" />
     <ClInclude Include="SlimeBoom\UI\avoid_cooldown_gauge.h" />
     <ClInclude Include="SlimeBoom\UI\direction.h" />
+    <ClInclude Include="SlimeBoom\UI\drop_down_button.h" />
     <ClInclude Include="SlimeBoom\UI\exp_gauge.h" />
     <ClInclude Include="SlimeBoom\UI\gauge.h" />
     <ClInclude Include="SlimeBoom\UI\level_text.h" />

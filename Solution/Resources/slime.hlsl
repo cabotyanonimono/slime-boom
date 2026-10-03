@@ -21,8 +21,14 @@ cbuffer DitheringRadius : register(b7)
     float dithering_radius;
 }
 
+cbuffer Intensity : register(b8)
+{
+    float intensity;
+}
+
 StructuredBuffer<SlimeData> slimes : register(t4);
 Texture2D MainTex : register (t5);
+TextureCube env_texture : register (t6);
 
 struct VSOutput
 {
@@ -97,7 +103,8 @@ float4 pix(VSOutput input) : SV_Target
                                  ? float4(0.5f, 0.0f, 0.5f, 1.0f)
                                  : damage_color;
 
-    float3 lighting_color;
+    float3 direct_light;
+    float3 view_dir = normalize(camera_pos - input.worldpos);
     for (int i = 0; i < light_count; ++i)
     {
         float3 light_dir;
@@ -105,9 +112,19 @@ float4 pix(VSOutput input) : SV_Target
             light_dir = normalize(-Lights[i].direction);
         else
             light_dir = normalize(Lights[i].pos - input.worldpos);
-        lighting_color = CalcLighting(albedo_color.rgb, 0.0f, 0.0f, normal, light_dir, camera_dir);
+        direct_light = CalcLighting(albedo_color.rgb, 0.0f, 1, normal, light_dir, view_dir);
     }
+
+    float3 r = reflect(-view_dir, normal);
+    float3 env_specular = env_texture.Sample(smp, r).rgb;
+
+    float n_dot_v = saturate(dot(normal, view_dir));
+    float3 f0 = lerp(float3(0.04f, 0.04f, 0.04f), albedo_color.rgb, 0.0f);
+    float3 f = min(FresnelSchlick(n_dot_v, f0), 1.0f);
+    float3 ibl_specular = env_specular * f * (1.0f - 1);
+
+    float3 final_color = (direct_light + ibl_specular) * brightness;
     
-    brightness.rgb += float3(0.1f, 0.1f, 0.1f);
-    return float4(lighting_color * brightness, albedo_color.a);
+    brightness.rgb += intensity;
+    return float4(final_color * brightness, albedo_color.a); 
 }

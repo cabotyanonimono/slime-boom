@@ -28,6 +28,7 @@ void Gauge::OnInspectorGui()
     engine::Gui::PropertyField("Bar Image", m_bar_image_);
     engine::Gui::PropertyField("Bar Frame Image", m_bar_frame_image_);
     engine::Gui::PropertyField("Ratio", m_ratio_);
+    engine::Gui::PropertyField("Alpha", m_alpha_);
 
     bool is_box_resized = false;
     if (engine::Gui::PropertyField("BarPos", m_box_.pos))
@@ -48,9 +49,19 @@ void Gauge::OnInspectorGui()
 
 void Gauge::OnUpdate()
 {
-    auto constant_buffer = m_bar_image_.CastedLock()->shared_material.CastedLock()->shared_material_block->
-                                        GetConstantBufferData("Ratio");
-    constant_buffer->SetFloatData("ratio", m_ratio_);
+    const auto bar_material_block = m_bar_image_.CastedLock()->shared_material.CastedLock()->shared_material_block;
+    const auto bar_ratio_buffer = bar_material_block->GetConstantBufferData("Ratio");
+    const auto bar_alpha_buffer = bar_material_block->GetConstantBufferData("Alpha");
+
+    bar_ratio_buffer->SetFloatData("ratio", m_ratio_);
+    bar_alpha_buffer->SetFloatData("alpha", m_alpha_);
+
+    const auto bar_frame_material_block = m_bar_frame_image_.CastedLock()->shared_material.CastedLock()->
+                                                             shared_material_block;
+    const auto bar_frame_alpha_buffer = bar_frame_material_block->GetConstantBufferData("Alpha");
+
+    if (bar_frame_alpha_buffer != nullptr)
+        bar_frame_alpha_buffer->SetFloatData("alpha", m_alpha_);
 }
 
 float Gauge::Ratio() const
@@ -61,6 +72,11 @@ float Gauge::Ratio() const
 void Gauge::SetRatio(const float ratio)
 {
     m_ratio_ = ratio;
+}
+
+void Gauge::SetAlpha(float alpha)
+{
+    m_alpha_ = alpha;
 }
 
 Gauge::Gauge() : m_box_(Vector2(100, 100), Vector2(100, 100))

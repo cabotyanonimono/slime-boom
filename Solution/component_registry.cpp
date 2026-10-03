@@ -18,6 +18,7 @@
 #include "SlimeBoom/Component/texture_cube_recreator.h"
 #include "SlimeBoom/Component/title_scene_controller.h"
 #include "SlimeBoom/Exp/exp_simulation_component.h"
+#include "SlimeBoom/Exp/exp_sound_emitter.h"
 #include "SlimeBoom/Exp/level_up_controller.h"
 #include "SlimeBoom/LevelUpScreen/level_up_screen_manager.h"
 #include "SlimeBoom/Player/avoid_effect.h"
@@ -32,6 +33,7 @@
 #include "SlimeBoom/Slime/slime_take_damage_event_component.h"
 #include "SlimeBoom/Sound/sound_manager_component.h"
 #include "SlimeBoom/UI/avoid_cooldown_gauge.h"
+#include "SlimeBoom/UI/drop_down_button.h"
 #include "SlimeBoom/UI/exp_gauge.h"
 #include "SlimeBoom/UI/gauge.h"
 #include "SlimeBoom/UI/level_text.h"
@@ -103,5 +105,7 @@ void ComponentRegistry::RegisterComponents()
     ADD_COMPONENT(SlimeEliminateSe, "Slime");
     ADD_COMPONENT(SetNullRenderTextureComponent, "Camera");
     ADD_COMPONENT(TextureCubeRecreator, "Rendering");
+    ADD_COMPONENT(ui::DropDownButton, "UI");
+    ADD_COMPONENT(SlimeBoom::ExpSoundEmitter, "Sound");
 }
 }

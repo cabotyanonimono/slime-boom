@@ -75,5 +75,6 @@ float4 pix(VSOutput input) : SV_Target
         lighting_color = CalcLighting(albedo_color.rgb, 0.0f, 0.0f, normal, light_dir, camera_dir);
     }
 
+    brightness += 2.0f;
     return float4(lighting_color.rgb * brightness, albedo_color.a);
 }

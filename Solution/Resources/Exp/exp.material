@@ -22,10 +22,10 @@
                             },
                             "m_buffer_data_": [
                                 {
-                                    "key": "MainTex",
+                                    "key": "exps",
                                     "value": {
                                         "polymorphic_id": 2147483649,
-                                        "polymorphic_name": "engine::TextureBufferData",
+                                        "polymorphic_name": "engine::StructuredBufferData",
                                         "ptr_wrapper": {
                                             "id": 2147483651,
                                             "data": {
@@ -34,6 +34,33 @@
                                                     "cereal_class_version": 1,
                                                     "parameter": {
                                                         "cereal_class_version": 1,
+                                                        "index": 5,
+                                                        "name": "exps",
+                                                        "display_name": "exps",
+                                                        "is_unordered_access": false,
+                                                        "total_size": 0,
+                                                        "variables": []
+                                                    },
+                                                    "upload_type": -842150451
+                                                },
+                                                "m_stride_": 4,
+                                                "m_count_": 1,
+                                                "m_data_": []
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    "key": "MainTex",
+                                    "value": {
+                                        "polymorphic_id": 2147483650,
+                                        "polymorphic_name": "engine::TextureBufferData",
+                                        "ptr_wrapper": {
+                                            "id": 2147483652,
+                                            "data": {
+                                                "cereal_class_version": 1,
+                                                "value0": {
+                                                    "parameter": {
                                                         "index": 4,
                                                         "name": "MainTex",
                                                         "display_name": "MainTex",
@@ -58,36 +85,9 @@
                                     }
                                 },
                                 {
-                                    "key": "exps",
-                                    "value": {
-                                        "polymorphic_id": 2147483650,
-                                        "polymorphic_name": "engine::StructuredBufferData",
-                                        "ptr_wrapper": {
-                                            "id": 2147483652,
-                                            "data": {
-                                                "cereal_class_version": 1,
-                                                "value0": {
-                                                    "parameter": {
-                                                        "index": 5,
-                                                        "name": "exps",
-                                                        "display_name": "exps",
-                                                        "is_unordered_access": false,
-                                                        "total_size": 0,
-                                                        "variables": []
-                                                    },
-                                                    "upload_type": -842150451
-                                                },
-                                                "m_stride_": 4,
-                                                "m_count_": 1,
-                                                "m_data_": []
-                                            }
-                                        }
-                                    }
-                                },
-                                {
                                     "key": "Lights",
                                     "value": {
-                                        "polymorphic_id": 2,
+                                        "polymorphic_id": 1,
                                         "ptr_wrapper": {
                                             "id": 2147483653,
                                             "data": {
@@ -156,17 +156,17 @@
                                                         }
                                                     },
                                                     {
-                                                        "key": "deltatime",
-                                                        "value": {
-                                                            "first": 1,
-                                                            "second": 20
-                                                        }
-                                                    },
-                                                    {
                                                         "key": "shadow_map_size",
                                                         "value": {
                                                             "first": 2,
                                                             "second": 8
+                                                        }
+                                                    },
+                                                    {
+                                                        "key": "deltatime",
+                                                        "value": {
+                                                            "first": 1,
+                                                            "second": 20
                                                         }
                                                     },
                                                     {

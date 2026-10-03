@@ -8,6 +8,7 @@ namespace SlimeBoom
 class Gauge : public engine::Component
 {
     float m_ratio_;
+    float m_alpha_ = 1.0f;
     
     Box m_box_;
     engine::AssetPtr<engine::Image> m_bar_image_;
@@ -24,6 +25,7 @@ public:
 
     float Ratio() const;
     void SetRatio(float ratio);
+    void SetAlpha(float alpha);
     
     template <class Archive>
     void serialize(Archive &ar, const uint32_t version)

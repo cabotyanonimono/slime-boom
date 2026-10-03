@@ -798,11 +798,11 @@
                                                                                                     },
                                                                                                     "size_delta": {
                                                                                                         "v.x": 960.0,
-                                                                                                        "v.y": -553.0
+                                                                                                        "v.y": -532.5
                                                                                                     },
                                                                                                     "anchored_position": {
                                                                                                         "v.x": 0.0,
-                                                                                                        "v.y": -40.0
+                                                                                                        "v.y": 0.0
                                                                                                     }
                                                                                                 }
                                                                                             }
@@ -1771,67 +1771,6 @@
                                                     {
                                                         "key": {
                                                             "value0": {
-                                                                "m_guid_": "90bb1741-1f1b-4e9e-b1b9-404a290eeb5f",
-                                                                "m_type_": 2,
-                                                                "m_stored_reference_": {
-                                                                    "polymorphic_id": 0
-                                                                }
-                                                            }
-                                                        },
-                                                        "value": [
-                                                            {
-                                                                "key": 0,
-                                                                "value": {
-                                                                    "value0": {
-                                                                        "m_guid_": "00000000-0000-0000-0000-000000000000",
-                                                                        "m_type_": 0,
-                                                                        "m_stored_reference_": {
-                                                                            "polymorphic_id": 0
-                                                                        }
-                                                                    }
-                                                                }
-                                                            },
-                                                            {
-                                                                "key": 2,
-                                                                "value": {
-                                                                    "value0": {
-                                                                        "m_guid_": "00000000-0000-0000-0000-000000000000",
-                                                                        "m_type_": 0,
-                                                                        "m_stored_reference_": {
-                                                                            "polymorphic_id": 0
-                                                                        }
-                                                                    }
-                                                                }
-                                                            },
-                                                            {
-                                                                "key": 1,
-                                                                "value": {
-                                                                    "value0": {
-                                                                        "m_guid_": "00000000-0000-0000-0000-000000000000",
-                                                                        "m_type_": 0,
-                                                                        "m_stored_reference_": {
-                                                                            "polymorphic_id": 0
-                                                                        }
-                                                                    }
-                                                                }
-                                                            },
-                                                            {
-                                                                "key": 3,
-                                                                "value": {
-                                                                    "value0": {
-                                                                        "m_guid_": "ee1b351a-a57e-4a2b-bcca-8f1b858f04c9",
-                                                                        "m_type_": 2,
-                                                                        "m_stored_reference_": {
-                                                                            "polymorphic_id": 0
-                                                                        }
-                                                                    }
-                                                                }
-                                                            }
-                                                        ]
-                                                    },
-                                                    {
-                                                        "key": {
-                                                            "value0": {
                                                                 "m_guid_": "ee1b351a-a57e-4a2b-bcca-8f1b858f04c9",
                                                                 "m_type_": 2,
                                                                 "m_stored_reference_": {
@@ -1882,6 +1821,67 @@
                                                                     "value0": {
                                                                         "m_guid_": "00000000-0000-0000-0000-000000000000",
                                                                         "m_type_": 0,
+                                                                        "m_stored_reference_": {
+                                                                            "polymorphic_id": 0
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "key": {
+                                                            "value0": {
+                                                                "m_guid_": "90bb1741-1f1b-4e9e-b1b9-404a290eeb5f",
+                                                                "m_type_": 2,
+                                                                "m_stored_reference_": {
+                                                                    "polymorphic_id": 0
+                                                                }
+                                                            }
+                                                        },
+                                                        "value": [
+                                                            {
+                                                                "key": 0,
+                                                                "value": {
+                                                                    "value0": {
+                                                                        "m_guid_": "00000000-0000-0000-0000-000000000000",
+                                                                        "m_type_": 0,
+                                                                        "m_stored_reference_": {
+                                                                            "polymorphic_id": 0
+                                                                        }
+                                                                    }
+                                                                }
+                                                            },
+                                                            {
+                                                                "key": 2,
+                                                                "value": {
+                                                                    "value0": {
+                                                                        "m_guid_": "00000000-0000-0000-0000-000000000000",
+                                                                        "m_type_": 0,
+                                                                        "m_stored_reference_": {
+                                                                            "polymorphic_id": 0
+                                                                        }
+                                                                    }
+                                                                }
+                                                            },
+                                                            {
+                                                                "key": 1,
+                                                                "value": {
+                                                                    "value0": {
+                                                                        "m_guid_": "00000000-0000-0000-0000-000000000000",
+                                                                        "m_type_": 0,
+                                                                        "m_stored_reference_": {
+                                                                            "polymorphic_id": 0
+                                                                        }
+                                                                    }
+                                                                }
+                                                            },
+                                                            {
+                                                                "key": 3,
+                                                                "value": {
+                                                                    "value0": {
+                                                                        "m_guid_": "ee1b351a-a57e-4a2b-bcca-8f1b858f04c9",
+                                                                        "m_type_": 2,
                                                                         "m_stored_reference_": {
                                                                             "polymorphic_id": 0
                                                                         }
@@ -2159,7 +2159,7 @@
                                                         "cereal_class_version": 1,
                                                         "type": 0,
                                                         "cast_shadow": 1,
-                                                        "intensity": 25.0,
+                                                        "intensity": 1.0,
                                                         "range": 10.0,
                                                         "pos": {
                                                             "v.x": 0.0,
@@ -4327,17 +4327,17 @@
                                                                                                                                     },
                                                                                                                                     "m_data_type_offset_pairs_": [
                                                                                                                                         {
-                                                                                                                                            "key": "texture_size",
-                                                                                                                                            "value": {
-                                                                                                                                                "first": 2,
-                                                                                                                                                "second": 0
-                                                                                                                                            }
-                                                                                                                                        },
-                                                                                                                                        {
                                                                                                                                             "key": "threshold",
                                                                                                                                             "value": {
                                                                                                                                                 "first": 1,
                                                                                                                                                 "second": 8
+                                                                                                                                            }
+                                                                                                                                        },
+                                                                                                                                        {
+                                                                                                                                            "key": "texture_size",
+                                                                                                                                            "value": {
+                                                                                                                                                "first": 2,
+                                                                                                                                                "second": 0
                                                                                                                                             }
                                                                                                                                         }
                                                                                                                                     ],
@@ -4471,42 +4471,11 @@
                                                                                                                 },
                                                                                                                 "m_buffer_data_": [
                                                                                                                     {
-                                                                                                                        "key": "main_texture",
-                                                                                                                        "value": {
-                                                                                                                            "polymorphic_id": 17,
-                                                                                                                            "ptr_wrapper": {
-                                                                                                                                "id": 2147483773,
-                                                                                                                                "data": {
-                                                                                                                                    "value0": {
-                                                                                                                                        "parameter": {
-                                                                                                                                            "index": 3,
-                                                                                                                                            "name": "main_texture",
-                                                                                                                                            "display_name": "main_texture",
-                                                                                                                                            "is_unordered_access": false,
-                                                                                                                                            "total_size": 0,
-                                                                                                                                            "variables": []
-                                                                                                                                        },
-                                                                                                                                        "upload_type": 0
-                                                                                                                                    },
-                                                                                                                                    "m_texture_": {
-                                                                                                                                        "value0": {
-                                                                                                                                            "m_guid_": "d736d0fe-4d0d-40b7-a7a2-2c3c04385116",
-                                                                                                                                            "m_type_": 2,
-                                                                                                                                            "m_stored_reference_": {
-                                                                                                                                                "polymorphic_id": 0
-                                                                                                                                            }
-                                                                                                                                        }
-                                                                                                                                    }
-                                                                                                                                }
-                                                                                                                            }
-                                                                                                                        }
-                                                                                                                    },
-                                                                                                                    {
                                                                                                                         "key": "blur_texture",
                                                                                                                         "value": {
                                                                                                                             "polymorphic_id": 17,
                                                                                                                             "ptr_wrapper": {
-                                                                                                                                "id": 2147483774,
+                                                                                                                                "id": 2147483773,
                                                                                                                                 "data": {
                                                                                                                                     "value0": {
                                                                                                                                         "parameter": {
@@ -4522,6 +4491,37 @@
                                                                                                                                     "m_texture_": {
                                                                                                                                         "value0": {
                                                                                                                                             "m_guid_": "06c1dcf6-a45c-44de-a156-657ab61e6cff",
+                                                                                                                                            "m_type_": 2,
+                                                                                                                                            "m_stored_reference_": {
+                                                                                                                                                "polymorphic_id": 0
+                                                                                                                                            }
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                    },
+                                                                                                                    {
+                                                                                                                        "key": "main_texture",
+                                                                                                                        "value": {
+                                                                                                                            "polymorphic_id": 17,
+                                                                                                                            "ptr_wrapper": {
+                                                                                                                                "id": 2147483774,
+                                                                                                                                "data": {
+                                                                                                                                    "value0": {
+                                                                                                                                        "parameter": {
+                                                                                                                                            "index": 3,
+                                                                                                                                            "name": "main_texture",
+                                                                                                                                            "display_name": "main_texture",
+                                                                                                                                            "is_unordered_access": false,
+                                                                                                                                            "total_size": 0,
+                                                                                                                                            "variables": []
+                                                                                                                                        },
+                                                                                                                                        "upload_type": 0
+                                                                                                                                    },
+                                                                                                                                    "m_texture_": {
+                                                                                                                                        "value0": {
+                                                                                                                                            "m_guid_": "d736d0fe-4d0d-40b7-a7a2-2c3c04385116",
                                                                                                                                             "m_type_": 2,
                                                                                                                                             "m_stored_reference_": {
                                                                                                                                                 "polymorphic_id": 0
@@ -4728,42 +4728,11 @@
                                                                     }
                                                                 },
                                                                 {
-                                                                    "key": "source_texture",
-                                                                    "value": {
-                                                                        "polymorphic_id": 17,
-                                                                        "ptr_wrapper": {
-                                                                            "id": 2147483780,
-                                                                            "data": {
-                                                                                "value0": {
-                                                                                    "parameter": {
-                                                                                        "index": 4,
-                                                                                        "name": "source_texture",
-                                                                                        "display_name": "source_texture",
-                                                                                        "is_unordered_access": false,
-                                                                                        "total_size": 0,
-                                                                                        "variables": []
-                                                                                    },
-                                                                                    "upload_type": 295919728
-                                                                                },
-                                                                                "m_texture_": {
-                                                                                    "value0": {
-                                                                                        "m_guid_": "4629b00b-6d17-4dd5-8ac9-f773ebb126a6",
-                                                                                        "m_type_": 2,
-                                                                                        "m_stored_reference_": {
-                                                                                            "polymorphic_id": 0
-                                                                                        }
-                                                                                    }
-                                                                                }
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                },
-                                                                {
                                                                     "key": "NearFar",
                                                                     "value": {
                                                                         "polymorphic_id": 19,
                                                                         "ptr_wrapper": {
-                                                                            "id": 2147483781,
+                                                                            "id": 2147483780,
                                                                             "data": {
                                                                                 "value0": {
                                                                                     "parameter": {
@@ -4811,6 +4780,37 @@
                                                                                     250,
                                                                                     67
                                                                                 ]
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "key": "source_texture",
+                                                                    "value": {
+                                                                        "polymorphic_id": 17,
+                                                                        "ptr_wrapper": {
+                                                                            "id": 2147483781,
+                                                                            "data": {
+                                                                                "value0": {
+                                                                                    "parameter": {
+                                                                                        "index": 4,
+                                                                                        "name": "source_texture",
+                                                                                        "display_name": "source_texture",
+                                                                                        "is_unordered_access": false,
+                                                                                        "total_size": 0,
+                                                                                        "variables": []
+                                                                                    },
+                                                                                    "upload_type": 295919728
+                                                                                },
+                                                                                "m_texture_": {
+                                                                                    "value0": {
+                                                                                        "m_guid_": "4629b00b-6d17-4dd5-8ac9-f773ebb126a6",
+                                                                                        "m_type_": 2,
+                                                                                        "m_stored_reference_": {
+                                                                                            "polymorphic_id": 0
+                                                                                        }
+                                                                                    }
+                                                                                }
                                                                             }
                                                                         }
                                                                     }
@@ -14515,6 +14515,15 @@
                                                     {
                                                         "value0": {
                                                             "m_guid_": "ffcf3e2e-93b0-4bbe-a647-c76cbdb9e63f",
+                                                            "m_type_": 2,
+                                                            "m_stored_reference_": {
+                                                                "polymorphic_id": 0
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        "value0": {
+                                                            "m_guid_": "96f0e990-9e24-4311-99c2-c42842fc7fd8",
                                                             "m_type_": 2,
                                                             "m_stored_reference_": {
                                                                 "polymorphic_id": 0

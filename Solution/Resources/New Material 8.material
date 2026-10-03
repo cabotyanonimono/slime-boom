@@ -138,7 +138,7 @@
                                                     0,
                                                     0,
                                                     180,
-                                                    194
+                                                    66
                                                 ]
                                             }
                                         }
@@ -190,7 +190,7 @@
                         }
                     }
                 },
-                "render_queue": 5014,
+                "render_queue": 5766,
                 "m_shader_": {
                     "value0": {
                         "m_guid_": "c5d0eb65-f6ea-40bc-b104-49ac7b22bd85",

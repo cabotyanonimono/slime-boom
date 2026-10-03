@@ -8,6 +8,8 @@ enum class kSoundTypes
     kAbilityAura,
     kSlimeTakeDamage,
     kSlimeEliminate,
+    kGetExp,
+    kGetExpMany,
 
     kSoundTypesCount
 };
@@ -23,6 +25,8 @@ inline const char* ToString(const kSoundTypes e)
     case kSoundTypes::kSlimeTakeDamage: return "kSlimeTakeDamage";
     case kSoundTypes::kSoundTypesCount: return "kSoundTypesCount";
     case kSoundTypes::kSlimeEliminate: return "kSlimeEliminate";
+    case kSoundTypes::kGetExp: return "kGetExp";
+    case kSoundTypes::kGetExpMany: return "kGetExpMany";
     default: return "unknown";
     }
 }

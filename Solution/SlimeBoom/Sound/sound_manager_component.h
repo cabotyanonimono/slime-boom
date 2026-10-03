@@ -22,10 +22,9 @@ public:
         ar(
                 cereal::base_class<Component>(this)
             );
-        if (version >= 2)
+        if (version >= 4)
         {
             ar(
-                cereal::base_class<Component>(this),
                 CEREAL_NVP(m_sounds_)
             );
         }
@@ -33,4 +32,4 @@ public:
 };
 }
 
-CEREAL_CLASS_VERSION(SlimeBoom::SoundManagerComponent, 2)
+CEREAL_CLASS_VERSION(SlimeBoom::SoundManagerComponent, 4)

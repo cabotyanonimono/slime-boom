@@ -17,7 +17,7 @@ void LevelUpCardController::OnInspectorGui()
     }
 }
 
-void LevelUpCardController::OnUpdate()
+void LevelUpCardController::OnEnabled()
 {
     const auto cards = m_ui_data_provider_->GetCards();
     for (int i = 0; i < m_level_up_card_.size(); ++i)
