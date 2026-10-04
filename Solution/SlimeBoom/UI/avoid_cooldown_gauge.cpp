@@ -49,8 +49,13 @@ void SlimeBoom::AvoidCooldownGauge::OnUpdate()
     if (!m_is_transparent_ && ratio >= 1.0f)
     {
         m_is_transparent_ = true;
-        engine::Engine::coroutine.Start(GaugeTransparentTask());
+        engine::Engine::coroutine.Start(GaugeTransparentTask(), m_gauge_transparent_task_token_.GetToken());
     }
+}
+
+void SlimeBoom::AvoidCooldownGauge::OnDestroy()
+{
+    m_gauge_transparent_task_token_.Cancel();
 }
 
 CEREAL_REGISTER_TYPE(SlimeBoom::AvoidCooldownGauge)

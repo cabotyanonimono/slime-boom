@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include "cancellation_token_source.h"
 #include "gauge.h"
 #include "ui_data_provider.h"
 #include "Asset/asset_ptr.h"
@@ -17,6 +18,8 @@ class AvoidCooldownGauge : public engine::Component
     engine::AssetPtr<engine::RectTransform> m_bar_rect_transform_;
     engine::AssetPtr<engine::RectTransform> m_bar_frame_rect_transform_;
     engine::AssetPtr<engine::Transform> m_target_transform_;
+
+    CancellationTokenSource m_gauge_transparent_task_token_;
     Vector2 m_offset_ = Vector2(0.0f, 0.0f);
 
     //Gaugeを少しずつ透明にしていく
@@ -25,6 +28,7 @@ class AvoidCooldownGauge : public engine::Component
 public:
     void OnInspectorGui() override;
     void OnUpdate() override;
+    void OnDestroy() override;
     
     template <class Archive>
     void serialize(Archive& ar, const uint32_t version)
