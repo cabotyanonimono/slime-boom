@@ -1,0 +1,176 @@
+{
+    "value0": {
+        "polymorphic_id": 1073741824,
+        "ptr_wrapper": {
+            "id": 2147483649,
+            "data": {
+                "cereal_class_version": 3,
+                "value0": {
+                    "cereal_class_version": 1,
+                    "m_guid_": "8c33c7e4-acd9-42a9-ad6e-11eddc8a46b0",
+                    "m_name_": "New Material 5.material"
+                },
+                "shared_material_block": {
+                    "polymorphic_id": 1073741824,
+                    "ptr_wrapper": {
+                        "id": 2147483650,
+                        "data": {
+                            "cereal_class_version": 2,
+                            "value0": {
+                                "m_guid_": "b1f85df1-d7e2-44a2-8478-cd1b0f8ce91f",
+                                "m_name_": "Material Block of New Material 5.material"
+                            },
+                            "m_buffer_data_": [
+                                {
+                                    "key": "positions",
+                                    "value": {
+                                        "polymorphic_id": 2147483649,
+                                        "polymorphic_name": "engine::StructuredBufferData",
+                                        "ptr_wrapper": {
+                                            "id": 2147483651,
+                                            "data": {
+                                                "cereal_class_version": 1,
+                                                "value0": {
+                                                    "cereal_class_version": 1,
+                                                    "parameter": {
+                                                        "cereal_class_version": 1,
+                                                        "index": 4,
+                                                        "name": "positions",
+                                                        "display_name": "positions",
+                                                        "is_unordered_access": false,
+                                                        "total_size": 0,
+                                                        "variables": []
+                                                    },
+                                                    "upload_type": 0
+                                                },
+                                                "m_stride_": 4,
+                                                "m_count_": 1,
+                                                "m_data_": []
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    "key": "Transform",
+                                    "value": {
+                                        "polymorphic_id": 2147483650,
+                                        "polymorphic_name": "engine::ConstantBufferData",
+                                        "ptr_wrapper": {
+                                            "id": 2147483652,
+                                            "data": {
+                                                "cereal_class_version": 1,
+                                                "value0": {
+                                                    "parameter": {
+                                                        "index": 0,
+                                                        "name": "Transform",
+                                                        "display_name": "Transform",
+                                                        "is_unordered_access": false,
+                                                        "total_size": 64,
+                                                        "variables": [
+                                                            {
+                                                                "cereal_class_version": 0,
+                                                                "name": "World",
+                                                                "data_type": 5
+                                                            }
+                                                        ]
+                                                    },
+                                                    "upload_type": 1663196270
+                                                },
+                                                "m_data_type_offset_pairs_": [
+                                                    {
+                                                        "key": "World",
+                                                        "value": {
+                                                            "first": 5,
+                                                            "second": 0
+                                                        }
+                                                    }
+                                                ],
+                                                "m_data_": [
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                "render_queue": 5000,
+                "m_shader_": {
+                    "value0": {
+                        "cereal_class_version": 1,
+                        "m_guid_": "5dbacbc8-f5bd-4485-bd8d-773c7a9abb32",
+                        "m_type_": 2,
+                        "m_stored_reference_": {
+                            "polymorphic_id": 0
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

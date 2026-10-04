@@ -1,0 +1,73 @@
+{
+    "value0": {
+        "polymorphic_id": 1073741824,
+        "ptr_wrapper": {
+            "id": 2147483649,
+            "data": {
+                "cereal_class_version": 1,
+                "value0": {
+                    "cereal_class_version": 1,
+                    "m_guid_": "251e08b3-d09e-4268-910f-609ab45d240c",
+                    "m_name_": "New TextureCube.cubemap"
+                },
+                "m_textures_": {
+                    "value0": {
+                        "value0": {
+                            "cereal_class_version": 1,
+                            "m_guid_": "d37c1e1f-988f-40d1-941b-1178c42a3fd3",
+                            "m_type_": 2,
+                            "m_stored_reference_": {
+                                "polymorphic_id": 0
+                            }
+                        }
+                    },
+                    "value1": {
+                        "value0": {
+                            "m_guid_": "b5af8856-b886-4805-9002-eb0929250f0d",
+                            "m_type_": 2,
+                            "m_stored_reference_": {
+                                "polymorphic_id": 0
+                            }
+                        }
+                    },
+                    "value2": {
+                        "value0": {
+                            "m_guid_": "4948d9c5-e9ae-4d59-b62e-12c6033cc616",
+                            "m_type_": 2,
+                            "m_stored_reference_": {
+                                "polymorphic_id": 0
+                            }
+                        }
+                    },
+                    "value3": {
+                        "value0": {
+                            "m_guid_": "6408a72f-bc3d-470a-8c24-5790cf9a0f57",
+                            "m_type_": 2,
+                            "m_stored_reference_": {
+                                "polymorphic_id": 0
+                            }
+                        }
+                    },
+                    "value4": {
+                        "value0": {
+                            "m_guid_": "3520943a-c875-4487-9aea-31427a99f0a7",
+                            "m_type_": 2,
+                            "m_stored_reference_": {
+                                "polymorphic_id": 0
+                            }
+                        }
+                    },
+                    "value5": {
+                        "value0": {
+                            "m_guid_": "765d53cb-0c84-44b5-86ba-47bdaabcdcf3",
+                            "m_type_": 2,
+                            "m_stored_reference_": {
+                                "polymorphic_id": 0
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

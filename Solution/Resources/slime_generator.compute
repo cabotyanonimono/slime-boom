@@ -1,0 +1,73 @@
+#include "engine.hlsli"
+#include "slime.hlsli"
+#include "math.hlsli"
+
+cbuffer SpawnDistance : register(b3)
+{
+    float spawn_distance_min;
+    float spawn_distance_max;
+}
+
+cbuffer PlayerPos : register(b4)
+{
+    float3 player_pos;
+}
+
+cbuffer SlimeCount : register(b5)
+{
+    int slime_count;
+}
+
+cbuffer SpawnRate : register(b6)
+{
+    float normal_spawn_rate;
+    float speed_spawn_rate;
+    float tank_spawn_rate;
+}
+
+RWStructuredBuffer<SlimeData> slimes : register(u1);
+
+int DecideSpawnSlimeType(float seed)
+{
+    float sum_spawn_rate = normal_spawn_rate + speed_spawn_rate + tank_spawn_rate;
+    seed *= sum_spawn_rate;
+
+    if (seed < normal_spawn_rate)
+        return SLIME_TYPE::NORMAL;
+
+    seed -= normal_spawn_rate;
+    if (seed < speed_spawn_rate)
+        return SLIME_TYPE::SPEED;
+
+    seed -= speed_spawn_rate;
+    if (seed < tank_spawn_rate)
+        return SLIME_TYPE::TANK;
+    return SLIME_TYPE::NORMAL;
+}
+
+[numthreads(64, 1, 1)]
+void compute(uint3 globalID : SV_DispatchThreadID)
+{
+    uint index = globalID.x;
+    
+    if (index < slime_count && slimes[index].hp <= 0.0f)
+    {
+        float random = rand(float2(index, time));
+        slimes[index].slime_type = DecideSpawnSlimeType(random);
+
+        float angle = rand(float2(time, index)) * PI2;
+        float spawn_distance = lerp(spawn_distance_min, spawn_distance_max, rand(float2(index * time, deltatime)));
+
+        slimes[index].position.x = player_pos.x + spawn_distance * cos(angle);
+        slimes[index].position.y = player_pos.y;
+        slimes[index].position.z = player_pos.z + spawn_distance * sin(angle);
+
+        slimes[index].rotation = float3(0, 0, 0);
+        slimes[index].scale = float3(1, 1, 1);
+
+        slimes[index].velocity = float3(0, 0, 0);
+        slimes[index].angular_velocity = float3(0, 0, 0);
+        slimes[index].hp = slimes[index].slime_type == SLIME_TYPE::TANK ? 45 : 15;
+		slimes[index].damage_color_timer = 0.0f;
+    }
+}

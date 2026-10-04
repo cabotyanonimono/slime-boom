@@ -1,0 +1,111 @@
+#include "pch.h"
+#include "component_registry.h"
+
+#include "component_factory.h"
+#include "SlimeBoom/Component/camera_controller.h"
+#include "SlimeBoom/Component/delay_follower.h"
+#include "SlimeBoom/Component/mesh_renderer_generator_test.h"
+#include "SlimeBoom/Component/root_motion_controller.h"
+#include "SlimeBoom/Player/player_position_presenter.h"
+#include "SlimeBoom/Player/player_component.h"
+#include "SlimeBoom/compute_result.h"
+#include "SlimeBoom/Component/bush_generator.h"
+#include "SlimeBoom/Component/clear_scene_controller.h"
+#include "SlimeBoom/Component/game_manager.h"
+#include "SlimeBoom/Component/object_disabler.h"
+#include "SlimeBoom/Component/scene_transition_controller.h"
+#include "SlimeBoom/Component/set_null_render_texture_component.h"
+#include "SlimeBoom/Component/texture_cube_recreator.h"
+#include "SlimeBoom/Component/title_scene_controller.h"
+#include "SlimeBoom/Exp/exp_simulation_component.h"
+#include "SlimeBoom/Exp/exp_sound_emitter.h"
+#include "SlimeBoom/Exp/level_up_controller.h"
+#include "SlimeBoom/LevelUpScreen/level_up_screen_manager.h"
+#include "SlimeBoom/Player/avoid_effect.h"
+#include "SlimeBoom/Player/player_aura_controller.h"
+#include "SlimeBoom/Slime/slime_simulation_component.h"
+#include "SlimeBoom/Player/player_data_presenter.h"
+#include "SlimeBoom/Player/player_sword_controller.h"
+#include "SlimeBoom/Player/slash_effect_component.h"
+#include "SlimeBoom/Player/ability/ability_data/ability_data_store.h"
+#include "SlimeBoom/Slime/slime_eliminate_checker.h"
+#include "SlimeBoom/Slime/slime_eliminate_se.h"
+#include "SlimeBoom/Slime/slime_take_damage_event_component.h"
+#include "SlimeBoom/Sound/sound_manager_component.h"
+#include "SlimeBoom/UI/avoid_cooldown_gauge.h"
+#include "SlimeBoom/UI/drop_down_button.h"
+#include "SlimeBoom/UI/exp_gauge.h"
+#include "SlimeBoom/UI/gauge.h"
+#include "SlimeBoom/UI/level_text.h"
+#include "SlimeBoom/UI/level_up_card_controller.h"
+#include "SlimeBoom/UI/player_hp_gauge.h"
+#include "SlimeBoom/UI/player_status_ui.h"
+#include "SlimeBoom/UI/survival_timer.h"
+#include "SlimeBoom/UI/ui_button.h"
+#include "SlimeBoom/UI/ui_data_provider.h"
+#include "SlimeBoom/UI/ui_hover_scale_effect.h"
+#include "SlimeBoom/UI/ui_navigator.h"
+#include "SlimeBoom/Wave/wave_controller.h"
+
+namespace SlimeBoom
+{
+void ComponentRegistry::RegisterComponents()
+{
+#define ADD_COMPONENT(type, category) engine::IComponentFactory::Register(std::make_shared<engine::ComponentFactory<type>>(category))
+
+    ADD_COMPONENT(DelayFollower, "Camera");
+    ADD_COMPONENT(CameraController, "Camera");
+    ADD_COMPONENT(SlimeSimulationComponent, "Slime");
+    ADD_COMPONENT(PlayerDataComponent, "Player");
+    ADD_COMPONENT(PlayerPositionPresenter, "Player");
+    ADD_COMPONENT(RootMotionController, "Animation");
+    ADD_COMPONENT(Animator, "Animation");
+    ADD_COMPONENT(MeshRendererGenerator, "Renderer");
+    ADD_COMPONENT(ComputeResult, "Debug");
+    ADD_COMPONENT(PlayerDataPresenter, "Player");
+    ADD_COMPONENT(SlashEffectComponent, "Player");
+    ADD_COMPONENT(PlayerSwordController, "Player");
+    ADD_COMPONENT(AbilityDataStore, "Player");
+    ADD_COMPONENT(ComputeResult, "ComputeShader");
+    ADD_COMPONENT(ExpSimulationComponent, "Exp");
+    ADD_COMPONENT(WaveController, "Slime");
+    ADD_COMPONENT(ui::UIButton, "UI");
+    ADD_COMPONENT(ui::UINavigator, "UI");
+    ADD_COMPONENT(SlimeBoom::GameManager, "SlimeBoom");
+    ADD_COMPONENT(SurvivalTimer, "UI");
+    ADD_COMPONENT(LevelUpController, "Exp");
+    ADD_COMPONENT(Gauge, "UI");
+    ADD_COMPONENT(ExpGauge, "UI");
+    ADD_COMPONENT(PlayerDamageDispatcher, "Player");
+    ADD_COMPONENT(UiDataProvider, "UI");
+    ADD_COMPONENT(PlayerHpGauge, "UI");
+    ADD_COMPONENT(CardPool, "LevelUpScreen");
+    ADD_COMPONENT(CardController, "LevelUpScreen");
+    ADD_COMPONENT(LevelUpScreenManager, "LevelUpScreen");
+    ADD_COMPONENT(LevelUpCardController, "UI");
+    ADD_COMPONENT(LevelUpCard, "UI");
+    ADD_COMPONENT(UiHoverScaleEffect, "UI");
+    ADD_COMPONENT(ObjectDisabler, "Debug");
+    ADD_COMPONENT(ClearSceneController, "ClearScene");
+    ADD_COMPONENT(PlayerAuraController, "Player");
+    ADD_COMPONENT(SoundManagerComponent, "Sound");
+    ADD_COMPONENT(SlimeTakeDamageEventComponent, "Slime");
+    ADD_COMPONENT(AvoidEffect, "Player");
+    ADD_COMPONENT(SceneTransitionController, "Scene");
+    ADD_COMPONENT(TitleSceneController, "Scene");
+    ADD_COMPONENT(PlayerDataComponent, "Player");
+    ADD_COMPONENT(AbilityProcesser, "Player");
+    ADD_COMPONENT(BushGenerator, "Map");
+    ADD_COMPONENT(LevelText, "UI");
+    ADD_COMPONENT(PlayerStatusUi, "UI");
+    ADD_COMPONENT(SceneTransitionExecutor, "Scene");
+    ADD_COMPONENT(MapSizeComponent, "Map");
+    ADD_COMPONENT(AvoidCooldownGauge, "UI");
+    ADD_COMPONENT(SlimeEliminateChecker, "Slime");
+    ADD_COMPONENT(SlimeEliminateSe, "Slime");
+    ADD_COMPONENT(SetNullRenderTextureComponent, "Camera");
+    ADD_COMPONENT(TextureCubeRecreator, "Rendering");
+    ADD_COMPONENT(ui::DropDownButton, "UI");
+    ADD_COMPONENT(SlimeBoom::ExpSoundEmitter, "Sound");
+}
+}

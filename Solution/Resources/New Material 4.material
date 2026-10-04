@@ -1,0 +1,77 @@
+{
+    "value0": {
+        "polymorphic_id": 1073741824,
+        "ptr_wrapper": {
+            "id": 2147483649,
+            "data": {
+                "cereal_class_version": 3,
+                "value0": {
+                    "cereal_class_version": 1,
+                    "m_guid_": "aa888c98-0726-4086-b80e-98e1c63aea7a",
+                    "m_name_": "New Material 4.material"
+                },
+                "shared_material_block": {
+                    "polymorphic_id": 1073741824,
+                    "ptr_wrapper": {
+                        "id": 2147483650,
+                        "data": {
+                            "cereal_class_version": 2,
+                            "value0": {
+                                "m_guid_": "913c9e85-1f62-489b-b1af-cabd494b6036",
+                                "m_name_": "Material Block of New Material 4.material"
+                            },
+                            "m_buffer_data_": [
+                                {
+                                    "key": "_MainTex",
+                                    "value": {
+                                        "polymorphic_id": 2147483649,
+                                        "polymorphic_name": "engine::TextureBufferData",
+                                        "ptr_wrapper": {
+                                            "id": 2147483651,
+                                            "data": {
+                                                "cereal_class_version": 1,
+                                                "value0": {
+                                                    "cereal_class_version": 1,
+                                                    "parameter": {
+                                                        "cereal_class_version": 1,
+                                                        "index": 3,
+                                                        "name": "_MainTex",
+                                                        "display_name": "_MainTex",
+                                                        "is_unordered_access": false,
+                                                        "total_size": 0,
+                                                        "variables": []
+                                                    },
+                                                    "upload_type": 0
+                                                },
+                                                "m_texture_": {
+                                                    "value0": {
+                                                        "cereal_class_version": 1,
+                                                        "m_guid_": "81b34a06-759a-4929-95ed-7e46aaef6563",
+                                                        "m_type_": 2,
+                                                        "m_stored_reference_": {
+                                                            "polymorphic_id": 0
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                "render_queue": 5016,
+                "m_shader_": {
+                    "value0": {
+                        "m_guid_": "0e452757-c751-4308-9cee-f8287170f88c",
+                        "m_type_": 2,
+                        "m_stored_reference_": {
+                            "polymorphic_id": 0
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,60 @@
+#include "engine.hlsli"
+#include "slime.hlsli"
+#include "math.hlsli"
+#include "player_attack_data.hlsli"
+
+cbuffer PlayerPos : register(b2)
+{
+    float3 player_pos;
+}
+
+cbuffer SlimeCount : register(b3)
+{
+    int slime_count;
+}
+
+StructuredBuffer<SlimeData> slimes : register(t3);
+RWByteAddressBuffer result : register(u1);
+
+groupshared float shared_min_dist[64];
+groupshared float3 shared_closest_pos[64];
+
+[numthreads(64, 1, 1)]
+void compute(uint3 globalID : SV_DispatchThreadID, uint groupIndex : SV_GroupIndex)
+{
+    int index = globalID.x;
+
+    if (index < slime_count && slimes[index].hp > 0.0f)
+    {
+        float dist = length(slimes[index].position - player_pos);
+        shared_min_dist[groupIndex] = dist;
+        shared_closest_pos[groupIndex] = slimes[index].position;
+    }
+    else
+    {
+        shared_min_dist[groupIndex] = 9999999.0f;
+        shared_closest_pos[groupIndex] = float3(1.0f, 1.0f, 1.0f);
+    }
+
+    GroupMemoryBarrierWithGroupSync();
+
+    for (uint stride = 64 * 0.5f; stride > 0; stride /= 2)
+    {
+        if (groupIndex < stride)
+        {
+            if (shared_min_dist[groupIndex + stride] < shared_min_dist[groupIndex])
+            {
+                shared_min_dist[groupIndex] = shared_min_dist[groupIndex + stride];
+                
+                shared_closest_pos[groupIndex] = shared_closest_pos[groupIndex + stride];
+            }
+        }
+
+        GroupMemoryBarrierWithGroupSync();
+    }
+
+    if (groupIndex == 0)
+    {
+        result.Store3(0, asuint(shared_closest_pos[0]));
+    }
+}

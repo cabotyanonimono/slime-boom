@@ -1,0 +1,31 @@
+#include "engine.hlsli"
+
+Texture2D input_texture : register(t3);
+RWTexture2D<float4> output_texture : register(u1);
+
+cbuffer Params : register(b2)
+{
+    float2 output_texel_size;
+}
+
+[numthreads(16, 16, 1)]
+void compute(uint3 globalID : SV_DispatchThreadID)
+{
+    uint2 pos = globalID.xy;
+
+    if (pos.x >= output_texel_size.x || pos.y >= output_texel_size.y)
+        return;
+	
+	float2 texel_size = 1.0f / float2(output_texel_size.x, output_texel_size.y);
+    float2 uv = (float2(pos) + 0.5f) * texel_size;
+
+    float2 half_pixel = texel_size * 0.5f;
+
+    float4 sum = input_texture.SampleLevel(SmpClamp, uv, 0) * 4.0f;
+    sum += input_texture.SampleLevel(SmpClamp, uv + float2(-half_pixel.x, -half_pixel.y), 0);
+    sum += input_texture.SampleLevel(SmpClamp, uv + float2(half_pixel.x, -half_pixel.y), 0);
+    sum += input_texture.SampleLevel(SmpClamp, uv + float2(-half_pixel.x, half_pixel.y), 0);
+    sum += input_texture.SampleLevel(SmpClamp, uv + float2(half_pixel.x, half_pixel.y), 0);
+
+    output_texture[pos] = sum / 8.0f;
+}

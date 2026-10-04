@@ -1,0 +1,17 @@
+{
+    "guid": "faaabe87-30d6-4ea8-9991-cfc6d0baa8ff",
+    "type": ".fbx",
+    "data": {},
+    "objects": [
+        {
+            "guid": "f2ed709f-a96d-4b7c-8d3c-2aee3acaecd8",
+            "name": "Cube",
+            "type_hint": "class engine::Mesh"
+        },
+        {
+            "guid": "79b2fa19-4be5-4240-85f2-8d282f7d39e5",
+            "name": "Material",
+            "type_hint": "class engine::Material"
+        }
+    ]
+}

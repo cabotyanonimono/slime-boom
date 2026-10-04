@@ -1,0 +1,307 @@
+{
+    "value0": {
+        "polymorphic_id": 1073741824,
+        "ptr_wrapper": {
+            "id": 2147483649,
+            "data": {
+                "cereal_class_version": 3,
+                "value0": {
+                    "cereal_class_version": 1,
+                    "m_guid_": "2c1657c5-45ed-4447-8bd1-f3bf23374152",
+                    "m_name_": "wall.material"
+                },
+                "shared_material_block": {
+                    "polymorphic_id": 1073741824,
+                    "ptr_wrapper": {
+                        "id": 2147483650,
+                        "data": {
+                            "cereal_class_version": 2,
+                            "value0": {
+                                "m_guid_": "d1575dd9-8824-4612-827a-943393e03441",
+                                "m_name_": "Material Block of wall.material"
+                            },
+                            "m_buffer_data_": [
+                                {
+                                    "key": "Lights",
+                                    "value": {
+                                        "polymorphic_id": 2147483649,
+                                        "polymorphic_name": "engine::StructuredBufferData",
+                                        "ptr_wrapper": {
+                                            "id": 2147483651,
+                                            "data": {
+                                                "cereal_class_version": 1,
+                                                "value0": {
+                                                    "cereal_class_version": 1,
+                                                    "parameter": {
+                                                        "cereal_class_version": 1,
+                                                        "index": 3,
+                                                        "name": "Lights",
+                                                        "display_name": "Lights",
+                                                        "is_unordered_access": false,
+                                                        "total_size": 0,
+                                                        "variables": []
+                                                    },
+                                                    "upload_type": -842150451
+                                                },
+                                                "m_stride_": 4,
+                                                "m_count_": 1,
+                                                "m_data_": []
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    "key": "SceneData",
+                                    "value": {
+                                        "polymorphic_id": 2147483650,
+                                        "polymorphic_name": "engine::ConstantBufferData",
+                                        "ptr_wrapper": {
+                                            "id": 2147483652,
+                                            "data": {
+                                                "cereal_class_version": 1,
+                                                "value0": {
+                                                    "parameter": {
+                                                        "index": 2,
+                                                        "name": "SceneData",
+                                                        "display_name": "SceneData",
+                                                        "is_unordered_access": false,
+                                                        "total_size": 32,
+                                                        "variables": [
+                                                            {
+                                                                "cereal_class_version": 0,
+                                                                "name": "screen_size",
+                                                                "data_type": 2
+                                                            },
+                                                            {
+                                                                "name": "shadow_map_size",
+                                                                "data_type": 2
+                                                            },
+                                                            {
+                                                                "name": "time",
+                                                                "data_type": 1
+                                                            },
+                                                            {
+                                                                "name": "deltatime",
+                                                                "data_type": 1
+                                                            }
+                                                        ]
+                                                    },
+                                                    "upload_type": -842150451
+                                                },
+                                                "m_data_type_offset_pairs_": [
+                                                    {
+                                                        "key": "screen_size",
+                                                        "value": {
+                                                            "first": 2,
+                                                            "second": 0
+                                                        }
+                                                    },
+                                                    {
+                                                        "key": "deltatime",
+                                                        "value": {
+                                                            "first": 1,
+                                                            "second": 20
+                                                        }
+                                                    },
+                                                    {
+                                                        "key": "shadow_map_size",
+                                                        "value": {
+                                                            "first": 2,
+                                                            "second": 8
+                                                        }
+                                                    },
+                                                    {
+                                                        "key": "time",
+                                                        "value": {
+                                                            "first": 1,
+                                                            "second": 16
+                                                        }
+                                                    }
+                                                ],
+                                                "m_data_": [
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0
+                                                ]
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    "key": "ShadowCascadeSlices",
+                                    "value": {
+                                        "polymorphic_id": 2,
+                                        "ptr_wrapper": {
+                                            "id": 2147483653,
+                                            "data": {
+                                                "value0": {
+                                                    "parameter": {
+                                                        "index": 3,
+                                                        "name": "ShadowCascadeSlices",
+                                                        "display_name": "ShadowCascadeSlices",
+                                                        "is_unordered_access": false,
+                                                        "total_size": 48,
+                                                        "variables": [
+                                                            {
+                                                                "name": "cascade_slices",
+                                                                "data_type": 1
+                                                            }
+                                                        ]
+                                                    },
+                                                    "upload_type": -842150451
+                                                },
+                                                "m_data_type_offset_pairs_": [
+                                                    {
+                                                        "key": "cascade_slices",
+                                                        "value": {
+                                                            "first": 1,
+                                                            "second": 0
+                                                        }
+                                                    }
+                                                ],
+                                                "m_data_": [
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0
+                                                ]
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    "key": "LightCount",
+                                    "value": {
+                                        "polymorphic_id": 2,
+                                        "ptr_wrapper": {
+                                            "id": 2147483654,
+                                            "data": {
+                                                "value0": {
+                                                    "parameter": {
+                                                        "index": 4,
+                                                        "name": "LightCount",
+                                                        "display_name": "LightCount",
+                                                        "is_unordered_access": false,
+                                                        "total_size": 16,
+                                                        "variables": [
+                                                            {
+                                                                "name": "light_count",
+                                                                "data_type": 0
+                                                            }
+                                                        ]
+                                                    },
+                                                    "upload_type": -842150451
+                                                },
+                                                "m_data_type_offset_pairs_": [
+                                                    {
+                                                        "key": "light_count",
+                                                        "value": {
+                                                            "first": 0,
+                                                            "second": 0
+                                                        }
+                                                    }
+                                                ],
+                                                "m_data_": [
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0
+                                                ]
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    "key": "Color",
+                                    "value": {
+                                        "polymorphic_id": 2,
+                                        "ptr_wrapper": {
+                                            "id": 2147483655,
+                                            "data": {
+                                                "value0": {
+                                                    "parameter": {
+                                                        "index": 5,
+                                                        "name": "Color",
+                                                        "display_name": "Color",
+                                                        "is_unordered_access": false,
+                                                        "total_size": 16,
+                                                        "variables": [
+                                                            {
+                                                                "name": "color",
+                                                                "data_type": 4
+                                                            }
+                                                        ]
+                                                    },
+                                                    "upload_type": -842150451
+                                                },
+                                                "m_data_type_offset_pairs_": [
+                                                    {
+                                                        "key": "color",
+                                                        "value": {
+                                                            "first": 4,
+                                                            "second": 0
+                                                        }
+                                                    }
+                                                ],
+                                                "m_data_": [
+                                                    135,
+                                                    223,
+                                                    72,
+                                                    63,
+                                                    108,
+                                                    232,
+                                                    101,
+                                                    62,
+                                                    108,
+                                                    232,
+                                                    101,
+                                                    62,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                "render_queue": 5000,
+                "m_shader_": {
+                    "value0": {
+                        "cereal_class_version": 1,
+                        "m_guid_": "c2bf66b4-72e1-4b97-8bb3-d4f6a6624ec3",
+                        "m_type_": 2,
+                        "m_stored_reference_": {
+                            "polymorphic_id": 0
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
