@@ -675,7 +675,6 @@
     <Content Include="External\GenericEngine\ThirdParty\Effekseer\lib\pkgconfig\glfw3.pc" />
     <Content Include="External\GenericEngine\vcpkg-configuration.json" />
     <Content Include="External\GenericEngine\vcpkg.json" />
-    <Content Include="Resources\task.md" />
     <Content Include="SlimeBoom.exe.manifest" />
   </ItemGroup>
   <ItemGroup>
