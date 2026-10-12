@@ -164,7 +164,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(ProjectDir)External\GenericEngine\ThirdParty\dxlib_h;$(ProjectDir)External\GenericEngine;$(ProjectDir)External\GenericEngine\Engine</AdditionalLibraryDirectories>
-      <AdditionalDependencies>$(ProjectDir)External\GenericEngine\ThirdParty\Effekseer\lib\*.lib;$(ProjectDir)vcpkg\installed\x64-windows\lib\*.lib;</AdditionalDependencies>
+      <AdditionalDependencies>$(ProjectDir)External\GenericEngine\ThirdParty\Effekseer\lib\*.lib;$(ProjectDir)vcpkg_installed\x64-windows\lib\*.lib;</AdditionalDependencies>
     </Link>
     <Manifest>
       <AdditionalManifestFiles>$(ProjectDir)SlimeBoom.exe.manifest</AdditionalManifestFiles>
