@@ -589,6 +589,7 @@
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="SlimeBoom\Slime\slime_eliminate_se.cpp" />
+    <ClCompile Include="SlimeBoom\Slime\slime_death_effect_component.cpp" />
     <ClCompile Include="SlimeBoom\Slime\slime_simulation_component.cpp" />
     <ClCompile Include="SlimeBoom\Slime\slime_take_damage_event_component.cpp" />
     <ClCompile Include="SlimeBoom\Slime\slime_types.cpp" />
@@ -992,6 +993,7 @@
     <ClInclude Include="SlimeBoom\Settings\settings_view.h" />
     <ClInclude Include="SlimeBoom\Slime\slime_eliminate_checker.h" />
     <ClInclude Include="SlimeBoom\Slime\slime_eliminate_se.h" />
+    <ClInclude Include="SlimeBoom\Slime\slime_death_effect_component.h" />
     <ClInclude Include="SlimeBoom\Slime\slime_simulation_component.h" />
     <ClInclude Include="SlimeBoom\Slime\slime_take_damage_event_component.h" />
     <ClInclude Include="SlimeBoom\Slime\slime_types.h" />
