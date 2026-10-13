@@ -131,7 +131,7 @@ void PlayerComponent::OnStart()
 
 void PlayerComponent::OnUpdate()
 {
-    if (GameTime::IsGamePaused())
+    if (GameTime::IsGameStopped())
         return;
     
     if (IsDead())

@@ -4,7 +4,7 @@
 
 namespace GameTime
 {
-inline bool IsGamePaused()
+inline bool IsGameStopped()
 {
     return engine::Mathf::Approximately(engine::Time::Get()->TimeScale(), 0.0f);
 }
