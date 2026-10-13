@@ -3,6 +3,7 @@
 #include "engine_time.h"
 #include "gui.h"
 #include "input.h"
+#include "../game_time.h"
 #include "../StateMachine/comparison_condition.h"
 #include "../Utils/random.h"
 #include "ability/aura_ability.h"
@@ -38,7 +39,7 @@ void PlayerComponent::UpdateParameter()
         m_state_machine_->SetParameter("Avoid",true);
     }
     
-    if (engine::Input::GetKeyDown(DirectX::Keyboard::Space) && m_avoid_cooldown_timer_ <= 0.0f && engine::Time::Get()->TimeScale() > 0.0f)
+    if (engine::Input::GetKeyDown(DirectX::Keyboard::Space) && m_avoid_cooldown_timer_ <= 0.0f)
     {
         m_is_immune_ = true;
         m_avoid_timer_ = m_player_data_->GetAvoidTime();
@@ -130,6 +131,9 @@ void PlayerComponent::OnStart()
 
 void PlayerComponent::OnUpdate()
 {
+    if (GameTime::IsGamePaused())
+        return;
+    
     if (IsDead())
     {
         m_dead_delay_timer_ -= engine::Time::GetDeltaTime();
