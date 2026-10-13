@@ -1,6 +1,7 @@
 ﻿#include "pch.h"
 #include "level_up_screen_manager.h"
 
+#include "engine.h"
 #include "engine_time.h"
 #include "gui.h"
 
@@ -15,8 +16,9 @@ void SlimeBoom::LevelUpScreenManager::ScreenStart() const
     m_level_text_->color = Color(0.1f, 0.1f, 0.1f, 1.0f);
 }
 
-void SlimeBoom::LevelUpScreenManager::ScreenEnd() const
+engine::Task SlimeBoom::LevelUpScreenManager::ScreenEnd() const
 {
+    co_await engine::WaitForNextFrame();
     engine::Input::SetMouseMode(engine::kMouseMode::kLocked);
     engine::Time::Get()->TimeScale(1.0f);
     m_level_up_ui_object_->SetActive(false);
@@ -51,7 +53,7 @@ void SlimeBoom::LevelUpScreenManager::OnStart()
 
     for (auto button : m_buttons_)
     {
-        button->AddEventListener([this](){ScreenEnd();});
+        button->AddEventListener([this](){engine::Engine::coroutine.Start(ScreenEnd());});
     }
 }
 
