@@ -3,6 +3,7 @@
 #include "engine_time.h"
 #include "gui.h"
 #include "input.h"
+#include "../game_time.h"
 #include "../StateMachine/comparison_condition.h"
 #include "../Utils/random.h"
 #include "ability/aura_ability.h"
@@ -130,6 +131,9 @@ void PlayerComponent::OnStart()
 
 void PlayerComponent::OnUpdate()
 {
+    if (GameTime::IsGameStopped())
+        return;
+    
     if (IsDead())
     {
         m_dead_delay_timer_ -= engine::Time::GetDeltaTime();

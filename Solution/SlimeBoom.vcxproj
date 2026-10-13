@@ -947,6 +947,7 @@
     <ClInclude Include="SlimeBoom\Exp\exp_simulation_component.h" />
     <ClInclude Include="SlimeBoom\Exp\exp_sound_emitter.h" />
     <ClInclude Include="SlimeBoom\Exp\level_up_controller.h" />
+    <ClInclude Include="SlimeBoom\game_time.h" />
     <ClInclude Include="SlimeBoom\LevelUpScreen\cards\acquisition_range_card.h" />
     <ClInclude Include="SlimeBoom\LevelUpScreen\cards\attack_num_card.h" />
     <ClInclude Include="SlimeBoom\LevelUpScreen\cards\attack_power_card.h" />

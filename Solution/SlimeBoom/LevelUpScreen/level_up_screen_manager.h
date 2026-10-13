@@ -18,7 +18,7 @@ class LevelUpScreenManager final : public engine::Component
     std::array<engine::AssetPtr<ui::UIButton>, CardController::kCardCount> m_buttons_;
     
     void ScreenStart() const;
-    void ScreenEnd() const;
+    engine::Task ScreenEnd() const;
     
 public:
     void OnInspectorGui() override;
