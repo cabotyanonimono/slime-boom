@@ -13,6 +13,8 @@ class SoundManagerComponent : public engine::Component
     
 public:
     void OnInspectorGui() override;
+    /// ゲームが停止した際にサウンドの再生を停止する
+    void OnUpdate() override;
     /// 指定した種類の効果音を再生する。
     /// @return 効果音が登録されていて再生できたらtrue
     static bool Play(const kSoundTypes sound_type);
