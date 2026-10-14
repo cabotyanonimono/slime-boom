@@ -12,6 +12,10 @@ engine::Task ClearSceneController::ShowClearSceneBackground() const
     m_background_->GameObject()->SetActive(true);
     float alpha = 0.0f;
     auto buff_data = m_background_->shared_material->shared_material_block->GetConstantBufferData("Alpha");
+
+    if (buff_data == nullptr)
+        co_return;
+    
     while (alpha < 1.0f)
     {
         alpha += 0.01f;
@@ -77,8 +81,6 @@ void ClearSceneController::OnStart()
 {
     m_restart_button_->AddEventListener([this]() { m_restart_scene_transition_controller_->Execute(); });
     m_quit_button_->AddEventListener([this]() { m_quit_scene_transition_controller_->Execute(); });
-    const auto buff_data = m_background_->shared_material->shared_material_block->GetConstantBufferData("Alpha");
-    buff_data->SetFloatData("alpha", 0.0f);
 }
 
 void ClearSceneController::OnEnabled()
@@ -88,7 +90,9 @@ void ClearSceneController::OnEnabled()
 
 void ClearSceneController::OnDestroy()
 {
-    const auto buff_data = m_background_->shared_material->shared_material_block->GetConstantBufferData("Alpha");
+    const auto buff_data = m_background_->shared_material->shared_material_block->GetConstantBufferData("Alpha");\
+    if (buff_data == nullptr)
+        return;
     buff_data->SetFloatData("alpha", 0.0f);
 }
 
