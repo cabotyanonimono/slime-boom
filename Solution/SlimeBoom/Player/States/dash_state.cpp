@@ -14,12 +14,14 @@ void SlimeBoom::DashState::OnEnter()
         m_animator_->BlendAnim(current_anim_name, m_anim_name_, 1.0f);
         return;
     }
-    
+
     m_animator_->PlayAnim(m_anim_name_);
 }
 
 void SlimeBoom::DashState::Update()
 {
+    if (!SoundManagerComponent::IsPlaying(kSoundTypes::kPlayerWalk))
+        SoundManagerComponent::Play(kSoundTypes::kPlayerWalk);
     m_move_direction_ = Vector3::Zero;
     if (engine::Input::GetKey(DirectX::Keyboard::W))
         m_move_direction_.z += 1.0f;
@@ -35,7 +37,7 @@ void SlimeBoom::DashState::FixedUpdate()
 {
     if (m_move_direction_.Length() == 0)
         return;
-    
+
     m_move_direction_.Normalize();
     auto target_dir = Vector3::Transform(m_move_direction_, m_camera_transform_->Rotation());
     target_dir.y = 0;
@@ -59,8 +61,9 @@ void SlimeBoom::DashState::OnExit()
     SoundManagerComponent::Stop(kSoundTypes::kPlayerWalk);
 }
 
-SlimeBoom::DashState::DashState(std::string animation_name, const std::shared_ptr<PlayerDataComponent> &player_data,
-                                const std::shared_ptr<Animator>& animator, const std::shared_ptr<engine::Transform>& camera_transform,
+SlimeBoom::DashState::DashState(std::string animation_name, const std::shared_ptr<PlayerDataComponent>& player_data,
+                                const std::shared_ptr<Animator>& animator,
+                                const std::shared_ptr<engine::Transform>& camera_transform,
                                 const std::shared_ptr<engine::Transform>& rotation_transform)
     : m_anim_name_(std::move(animation_name)),
       m_player_data_(player_data),
