@@ -33,6 +33,14 @@ void AbilityProcesser::OnFixedUpdate()
     }
 }
 
+void AbilityProcesser::OnDestroy()
+{
+    for (auto& ability : m_abilities_)
+        ability->OnDetach();
+
+    m_abilities_.clear();
+}
+
 std::unordered_set<std::shared_ptr<IAbility>> AbilityProcesser::GetAbilities()
 {
     return m_abilities_;

@@ -16,6 +16,7 @@ public:
     void Detach(const std::shared_ptr<IAbility>& ability);
     void OnUpdate() override;
     void OnFixedUpdate() override;
+    void OnDestroy() override;
 
     /// 型Tのアビリティを保持しているかを返す。
     template <typename T>
