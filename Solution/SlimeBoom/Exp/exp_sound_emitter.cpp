@@ -2,6 +2,7 @@
 #include "exp_sound_emitter.h"
 
 #include "gui.h"
+#include "../game_time.h"
 #include "../Sound/sound_manager_component.h"
 
 namespace SlimeBoom
@@ -17,6 +18,9 @@ void ExpSoundEmitter::OnInspectorGui()
 
 void ExpSoundEmitter::OnUpdate()
 {
+    if (GameTime::IsGameStopped())
+        return;
+    
     m_sound_queue_count_ += m_exp_simulation_component_->GetDeltaExpCount();
     m_sound_queue_count_ = std::min(m_sound_queue_count_, m_max_sound_queue_count_);
     m_emmit_timer_ += engine::Time::GetDeltaTime();
