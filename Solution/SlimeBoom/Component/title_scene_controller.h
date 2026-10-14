@@ -6,6 +6,7 @@
 
 namespace SlimeBoom
 {
+// タイトルシーンを制御するComponent。プレイボタンでゲームシーンへ遷移する。
 class TitleSceneController : public engine::Component
 {
     engine::AssetPtr<SceneTransitionController> m_scene_transition_controller_;
@@ -14,6 +15,7 @@ class TitleSceneController : public engine::Component
 
 public:
     void OnInspectorGui() override;
+    /// プレイボタンに、シーン遷移の実行を登録する。
     void OnStart() override;
     void OnUpdate() override;
 

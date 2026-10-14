@@ -2,6 +2,7 @@
 
 namespace SlimeBoom
 {
+// オーラアビリティのパラメーター。
 struct AuraAbilityData
 {
     float arc;

@@ -6,6 +6,7 @@
 
 namespace SlimeBoom
 {
+// 経過時間に応じてウェーブを進め、スライムの数と出現率を切り替えるComponent。
 class WaveController : public engine::Component
 {
     uint32_t m_current_wave_index_ = 0;
@@ -16,8 +17,10 @@ class WaveController : public engine::Component
 public:
     void OnInspectorGui() override;
     void OnStart() override;
+    /// 毎秒の追加数を加味してスライムの数を更新し、ウェーブの時間が経過したら次のウェーブへ進める。
     void OnUpdate() override;
 
+    /// 現在のウェーブの基本のスライム数を返す。
     [[nodiscard]] uint32_t GetCurrentNumSlimes() const;
     
     template <class Archive>

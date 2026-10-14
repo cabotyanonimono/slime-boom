@@ -8,6 +8,7 @@
 
 namespace SlimeBoom
 {
+// 回避のクールダウンを、ターゲットの位置に追従して表示するゲージ。クールダウンが終わると徐々に透明になる。
 class AvoidCooldownGauge : public engine::Component
 {
     bool m_is_transparent_ = false;
@@ -27,7 +28,9 @@ class AvoidCooldownGauge : public engine::Component
     
 public:
     void OnInspectorGui() override;
+    /// ターゲットの画面上の位置にゲージを追従させ、クールダウンの割合を反映する。クールダウンが終わったら透明化を開始する。
     void OnUpdate() override;
+    /// 実行中の透明化のタスクをキャンセルする。
     void OnDestroy() override;
     
     template <class Archive>

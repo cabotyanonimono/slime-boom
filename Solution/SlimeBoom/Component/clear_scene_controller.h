@@ -13,6 +13,8 @@
 
 namespace SlimeBoom
 {
+// クリア/ゲームオーバー画面を制御するComponent。
+// 画面の演出と、リスタート・終了ボタンによるシーン遷移を担当する。
 class ClearSceneController : public engine::Component
 {
     engine::AssetPtr<engine::Image> m_background_;
@@ -27,14 +29,20 @@ class ClearSceneController : public engine::Component
     engine::AssetPtr<ui::UIButton> m_restart_button_;
     engine::AssetPtr<ui::UIButton> m_quit_button_;
 
+    /// 背景を徐々に不透明にしながら表示するコルーチン。
     engine::Task ShowClearSceneBackground() const;
+    /// スコアボードを少し大きく拡大してから元の大きさに戻しつつ表示するコルーチン。
     engine::Task ScoreBoardScaleChangeMotion() const;
+    /// 背景の表示、スコアボードの演出の順に実行するコルーチン。
     engine::Task ShowClearScene() const;
 
 public:
     void OnInspectorGui() override;
     void OnStart() override;
+    /// 有効化されたときにクリア画面の演出を開始する。
     void OnEnabled() override;
+    /// 撃破数とレベルを表示し、クリア/ゲームオーバーのどちらの文言を出すか切り替える。
+    /// @param clear_scene_data 画面に表示する結果データ
     void SetClearSceneData(const ClearSceneData& clear_scene_data) const;
 
     template <class Archive>

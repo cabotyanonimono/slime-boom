@@ -2,6 +2,7 @@
 
 namespace SlimeBoom
 {
+// スラッシュアビリティのパラメーター。
 struct SlashAbilityData
 {
     float arc;

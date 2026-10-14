@@ -6,6 +6,7 @@
 
 namespace SlimeBoom
 {
+// ComputeResultのダメージ回数(deal_damage_count)を監視し、スライムがダメージを受けたことを通知するComponent。
 class SlimeTakeDamageEventComponent : public engine::Component
 {
     int m_before_deal_damage_count_ = 0;
@@ -15,7 +16,12 @@ class SlimeTakeDamageEventComponent : public engine::Component
 public:
     void OnInspectorGui() override;
     void OnUpdate() override;
+    /// スライムがダメージを受けたときに呼ばれるコールバックを登録する。
+    /// @param callback 前回からのダメージ回数の増加分を引数に呼ばれる
+    /// @return RemoveOnDamageEventListenerに渡すトークン
     size_t AddOnDamageEventListener(const std::function<void(int)>& callback);
+    /// ダメージ時のコールバックを解除する。
+    /// @param token AddOnDamageEventListenerで受け取ったトークン
     void RemoveOnDamageEventListener(size_t token);
     
     template <class Archive>

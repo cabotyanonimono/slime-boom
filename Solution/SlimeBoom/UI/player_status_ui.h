@@ -6,6 +6,7 @@
 
 namespace SlimeBoom
 {
+// プレイヤーのステータスをテキストに表示するComponent。
 class PlayerStatusUi : public engine::Component
 {
     engine::AssetPtr<UiDataProvider> m_ui_data_provider_;

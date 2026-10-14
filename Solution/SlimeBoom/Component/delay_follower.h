@@ -5,6 +5,7 @@
 
 namespace SlimeBoom
 {
+// ターゲットに遅れて追従するComponent。ターゲットから離れているほど速く追いかける。
 class DelayFollower : public engine::Component
 {
     float m_base_speed_ = 1.5f;
@@ -14,6 +15,7 @@ class DelayFollower : public engine::Component
 public:
 
     void OnInspectorGui() override;
+    /// ターゲットとの距離に応じた速度でターゲットへ近づく。
     void OnUpdate() override;
     
     template <class Archive>

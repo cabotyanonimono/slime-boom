@@ -4,6 +4,7 @@
 
 namespace SlimeBoom
 {
+// レベルアップカードの基底クラス。見た目(CardData)と、選択時の効果を定義する。
 class CardBase : public engine::Inspectable
 {
 protected:
@@ -11,8 +12,12 @@ protected:
     
 public:
     void OnInspectorGui() override;
+    /// カードが選択されたときに呼ばれ、効果を適用する。
     virtual void OnSelect() = 0;
+    /// 抽選の候補にできるかを返す。上限に達しているカードや取得済みのカードはfalseを返す。
+    /// デフォルトはtrue。
     virtual bool CanSelect();
+    /// カードの見た目のデータを返す。
     CardData& GetCardData();
     
     template <class Archive>

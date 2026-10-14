@@ -4,6 +4,7 @@
 
 namespace SlimeBoom
 {
+// 攻撃回数を増やすカード。
 class AttackNumCard : public CardBase
 {
     uint32_t m_max_value_;
@@ -13,6 +14,7 @@ class AttackNumCard : public CardBase
 public:
     void OnInspectorGui() override;
     void OnSelect() override;
+    /// 攻撃回数が上限以下の間だけ選択可能。
     bool CanSelect() override;
 
     template <class Archive>

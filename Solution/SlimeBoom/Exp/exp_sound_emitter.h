@@ -20,6 +20,8 @@ class ExpSoundEmitter : public engine::Component
 
 public:
     void OnInspectorGui() override;
+    /// 経験値の獲得数をキューに溜め、一定間隔ごとに獲得音を再生する。
+    /// キューの数がしきい値を超えている場合は、その分をまとめて消費して大量獲得用の音を再生する。
     void OnUpdate() override;
 
     template <class Archive>

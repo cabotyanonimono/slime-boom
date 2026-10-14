@@ -7,6 +7,7 @@
 
 namespace SlimeBoom
 {
+// プレイヤーの回避中に、カメラの視野角(FOV)を変化させる演出を行うComponent。
 class AvoidEffect : public engine::Component
 {
     float m_in_time_ = 0.0f;
@@ -17,10 +18,12 @@ class AvoidEffect : public engine::Component
     engine::AssetPtr<PlayerDataComponent> m_player_data_;
     engine::AssetPtr<engine::CameraComponent> m_camera_component_;
 
+    /// FOVを通常値から回避用の値まで変化させ、回避時間の間維持したあと、通常値へ戻すコルーチン。
     engine::Task FovEffect();
 
 public:
     void OnInspectorGui() override;
+    /// プレイヤーの回避イベントで、FOVの演出を開始するよう登録する。
     void OnStart() override;
 
     template <class Archive>

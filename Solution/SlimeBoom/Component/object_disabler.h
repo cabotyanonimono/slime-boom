@@ -2,6 +2,7 @@
 #include "Asset/asset_ptr.h"
 #include "Components/component.h"
 
+// 開始時に自身のGameObjectを非アクティブにするComponent。
 class ObjectDisabler : public engine::Component
 {
 public:

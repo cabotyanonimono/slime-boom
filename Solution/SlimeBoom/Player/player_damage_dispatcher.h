@@ -5,6 +5,7 @@
 
 namespace SlimeBoom
 {
+// ComputeResultの被ダメージ量(taken_damage)から、フレームごとの被ダメージを計算して通知するComponent。
 class PlayerDamageDispatcher : public engine::Component
 {
     engine::AssetPtr<ComputeResult> m_compute_result_;
@@ -14,9 +15,15 @@ class PlayerDamageDispatcher : public engine::Component
 
 public:
     void OnInspectorGui() override;
+    /// 被ダメージ量の増加分に、経過時間と被ダメージ倍率を掛けてダメージイベントを発火する。TimeScaleが0の間は発火しない。
     void OnUpdate() override;
 
+    /// ダメージを受けたときに呼ばれるコールバックを登録する。
+    /// @param callback ダメージ量を引数に呼ばれる
+    /// @return RemoveOnTakeDamageListenerに渡すトークン
     size_t AddOnTakeDamageListener(const std::function<void(float)>& callback);
+    /// ダメージ時のコールバックを解除する。
+    /// @param token AddOnTakeDamageListenerで受け取ったトークン
     void RemoveOnTakeDamageListener(size_t token);
 
     template <class Archive>

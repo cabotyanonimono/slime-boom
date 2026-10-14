@@ -5,6 +5,7 @@
 
 namespace SlimeBoom
 {
+// 経過時間を「分:秒」の形式でテキストに表示するタイマー。
 class SurvivalTimer : public engine::Component
 {
     static constexpr float kSecondsPerMinute = 60.0f;

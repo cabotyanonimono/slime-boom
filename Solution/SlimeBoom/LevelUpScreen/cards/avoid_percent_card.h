@@ -4,6 +4,7 @@
 
 namespace SlimeBoom
 {
+// 回避率(ダメージを無効化する確率)を上げるカード。
 class AvoidPercentCard : public CardBase
 {
     float m_value_;
@@ -11,6 +12,7 @@ class AvoidPercentCard : public CardBase
 
     public:
     void OnInspectorGui() override;
+    /// 回避率を上げる。
     void OnSelect() override;
 
     template <class Archive>

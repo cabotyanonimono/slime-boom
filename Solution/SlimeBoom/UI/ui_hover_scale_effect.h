@@ -4,6 +4,7 @@
 #include "Engine/Components/rect_transform.h"
 #include "Components/component.h"
 
+// ボタンが選択されている間、画像を拡大するComponent。
 class UiHoverScaleEffect : public engine::Component
 {
     engine::AssetPtr<ui::UIButton> m_ui_button_;
@@ -18,6 +19,7 @@ class UiHoverScaleEffect : public engine::Component
 public:
     void OnInspectorGui() override;
     void OnStart() override;
+    /// ボタンが選択されている間は時間を進め、選択されていない間は戻して、大きさを補間する。
     void OnUpdate() override;
 
     template <class Archive>

@@ -4,6 +4,7 @@
 
 namespace SlimeBoom
 {
+// 斬撃エフェクトのメッシュを、一定時間だけ表示するComponent。
 class SlashEffectComponent : public engine::Component
 {
     bool m_is_playing_ = false;
@@ -15,6 +16,7 @@ public:
     void OnInspectorGui() override;
     void OnUpdate() override;
 
+    /// 斬撃のメッシュを表示して再生を開始する。設定された時間が経過すると非表示になる。
     void Play();
     
     template <class Archive>

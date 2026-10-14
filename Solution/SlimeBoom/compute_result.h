@@ -9,6 +9,7 @@
 namespace SlimeBoom
 {
 
+// ComputeShaderが書き込んだ結果バッファをGPUからCPUへ読み戻し、項目名で値を取得できるようにするComponent。
 class ComputeResult : public engine::Component
 {
     bool m_is_first_frame_ = true;
@@ -18,9 +19,14 @@ class ComputeResult : public engine::Component
     
 public:
     void OnStart() override;
+    /// 読み戻しが完了していれば結果を取り込み、次の読み戻しをレンダリング時にリクエストする。
     void OnUpdate() override;
     void OnDestroy() override;
 
+    /// 読み戻した結果から、項目の値へのポインタを返す。
+    /// GPUからの読み戻しは非同期のため、最新フレームの値とは限らない。
+    /// @param name ComputeResultTypes::kResultTypeOffsetsに定義された項目名
+    /// @return 項目の先頭ポインタ。項目ごとの型(intやVector3など)にキャストして使う。
     void *GetValue(const std::string& name);
     
     template <class Archive>

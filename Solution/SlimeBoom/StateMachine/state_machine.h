@@ -2,6 +2,7 @@
 #include "parameter.h"
 #include "state.h"
 
+// 状態(State)と遷移条件を管理し、条件を満たしたら状態を切り替えるステートマシン。
 class StateMachine : public enable_shared_from_base<StateMachine>
 {
     std::unordered_map<std::string, Parameter> m_parameters_;
@@ -11,16 +12,25 @@ class StateMachine : public enable_shared_from_base<StateMachine>
     
 public:
     
+    /// 現在の状態を、初期状態に戻す。
     void ResetState();
+    /// 現在の状態を切り替える。現在の状態のOnExit、新しい状態のOnEnterの順に呼ぶ。
     void SetCurrentState(const std::shared_ptr<State> &state);
+    /// 初期状態を設定する。現在の状態にもなり、OnEnterが呼ばれる。
     void SetDefaultState(const std::shared_ptr<State> &state);
+    /// 1つの条件で、base_stateからnext_stateへの遷移を作る。base_stateが登録されていない場合は失敗する。
     void CreateTransition(const std::shared_ptr<State> &base_state, const std::shared_ptr<ConditionBase> &condition, const std::shared_ptr<State>& next_state);
+    /// 複数の条件(Transition)で、base_stateからnext_stateへの遷移を作る。base_stateが登録されていない場合は失敗する。
     void CreateTransition(const std::shared_ptr<State> &base_state, const Transition &transition, std::shared_ptr<State> next_state);
+    /// 現在の状態からの遷移条件を評価して、満たしていれば状態を切り替える。その後、現在の状態のUpdateを呼ぶ。
     void Update();
+    /// 現在の状態のFixedUpdateを呼ぶ。
     void FixedUpdate() const;
 
+    /// パラメーターを設定する。対応している型はint/float/bool/Vector3。
     template<typename T>
     void SetParameter(const std::string &name, T value);
+    /// パラメーターを取得する。パラメーターが存在しない場合はstd::runtime_errorを投げる。
     template<typename T>
     T GetParameter(const std::string &name);
 };

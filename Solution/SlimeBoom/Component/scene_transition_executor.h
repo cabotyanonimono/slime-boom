@@ -4,6 +4,7 @@
 
 namespace SlimeBoom
 {
+// Awake時にSceneTransitionControllerを実行し、自動でシーン遷移させるComponent。
 class SceneTransitionExecutor : public engine::Component
 {
     engine::AssetPtr<SceneTransitionController> m_scene_transition_controller_;

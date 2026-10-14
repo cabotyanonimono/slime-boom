@@ -19,6 +19,8 @@
 
 namespace SlimeBoom
 {
+// プレイヤーの挙動を管理するComponent。
+// ステートマシンで待機・移動・回避・死亡を切り替え、被ダメージや回避の処理も行う。
 class PlayerComponent final : public engine::Component
 {
     static constexpr float kIdleBlendSpeed = 5.0f;
@@ -46,24 +48,40 @@ class PlayerComponent final : public engine::Component
     engine::Event<> m_on_dead_;
     engine::Event<> m_on_avoid_;
 
+    /// 入力と回避の状態から、ステートマシンのパラメーター(Move/Avoid/Dead)と無敵状態を更新する。
     void UpdateParameter();
+    /// 死亡イベントを発火する。
     void Dead();
+    /// ダメージを受ける。無敵中、または回避率による判定で回避した場合は無効になる。HPが0になったら死亡する。
     void TakeDamage(float damage);
 
 public:
     void OnInspectorGui() override;
+    /// ステートマシンと状態の遷移条件を構築し、被ダメージとレベルアップのイベントを登録する。
     void OnStart() override;
     void OnUpdate() override;
     void OnFixedUpdate() override;
 
+    /// 死亡してから、死亡演出の待ち時間が経過したかを返す。
     bool IsDeadEffectEnd();
+    /// HPが0以下かを返す。
     bool IsDead() const;
+    /// 回避を開始したときに呼ばれるコールバックを登録する。
+    /// @return RemoveOnAvoidEventに渡すトークン
     size_t AddOnAvoidEvent(const std::function<void()>& callback);
+    /// 回避時のコールバックを解除する。
+    /// @param token AddOnAvoidEventで受け取ったトークン
     void RemoveOnAvoidEvent(size_t token);
+    /// 死亡したときに呼ばれるコールバックを登録する。
+    /// @return RemoveOnDeadEventに渡すトークン
     size_t AddOnDeadEvent(const std::function<void()>& callback);
+    /// 死亡時のコールバックを解除する。
+    /// @param token AddOnDeadEventで受け取ったトークン
     void RemoveOnDeadEvent(size_t token);
 
+    /// 回避のクールダウン時間(秒)を返す。
     float GetAvoidCooldown() const;
+    /// 回避のクールダウンの残り時間(秒)を返す。
     float GetAvoidTimer() const;
 
     template <class Archive>

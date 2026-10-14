@@ -7,6 +7,7 @@
 
 namespace SlimeBoom
 {
+// スラッシュ攻撃時に、剣を扇状に振る動きを再生するComponent。
 class PlayerSwordController : public engine::Component
 {
     bool m_is_playing_ = false;
@@ -26,6 +27,9 @@ public:
     void OnStart() override;
     void OnUpdate() override;
 
+    /// 攻撃位置の方向を中心に、設定された角度の範囲を剣が振られる動きを開始する。再生中はGameObjectがアクティブになり、終了すると非アクティブになる。
+    /// @param attack_pos 攻撃する位置
+    /// @param offset プレイヤーから剣までの距離
     void Play(Vector3 attack_pos, float offset);
 
     template <class Archive>

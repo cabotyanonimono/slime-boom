@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include <random>
 
+/// minからmaxまでの一様乱数を返す。Tが浮動小数点型なら実数、整数型なら整数の乱数になる。
 template <typename T>
 static T Random(T min, T max)
 {

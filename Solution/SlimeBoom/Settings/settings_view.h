@@ -3,6 +3,7 @@
 #include "Asset/asset_ptr.h"
 #include "Components/component.h"
 
+// 設定画面のボタン(ウィンドウモード・FPS上限)を保持するComponent。
 class SettingsView : public engine::Component
 {
     engine::AssetPtr<ui::UIButton> m_window_mode_button_;

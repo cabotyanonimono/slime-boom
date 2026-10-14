@@ -7,6 +7,7 @@
 
 namespace SlimeBoom
 {
+// UIが表示に使うゲームのデータ(プレイヤー・レベル・カード)を、まとめて提供するComponent。
 class UiDataProvider final : public engine::Component
 {
     engine::AssetPtr<PlayerDataComponent> m_player_data_;
@@ -17,10 +18,15 @@ class UiDataProvider final : public engine::Component
 public:
     void OnInspectorGui() override;
 
+    /// プレイヤーのステータスを返す。
     const PlayerData& GetPlayerData() const;
+    /// 現在のレベルで獲得した経験値を返す。
     int GetCurrentLevelExp() const;
+    /// 次のレベルに必要な経験値を返す。
     int GetRequiredExp() const;
+    /// 現在提示しているカードを返す。
     std::array<std::shared_ptr<CardBase>, CardController::kCardCount> GetCards() const;
+    /// 回避のクールダウンの進行度を割合で返す。
     float GetAvoidCooldownRatio() const;
 
     template <class Archive>

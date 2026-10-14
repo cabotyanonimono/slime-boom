@@ -3,6 +3,7 @@
 
 namespace SlimeBoom
 {
+// プレイヤーのステータス(HP・速度・攻撃・回避・経験値倍率・レベルなど)。
 struct PlayerData
 {
     float max_hp;
