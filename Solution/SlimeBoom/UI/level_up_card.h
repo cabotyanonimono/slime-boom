@@ -9,6 +9,7 @@
 
 namespace SlimeBoom
 {
+// レベルアップ画面のカード1枚分のUI。カードの見た目を表示し、ボタンが押されたらカードの効果を適用する。
 class LevelUpCard : public engine::Component
 {
     std::shared_ptr<CardBase> m_card_;
@@ -22,6 +23,8 @@ public:
     void OnInspectorGui() override;
     void OnStart() override;
     
+    /// カードを設定し、カードのテクスチャ(アイコン・名前・説明・背景)を反映する。
+    /// @param card 表示するカード。nullptrまたは設定済みと同じカードの場合は何もしない。
     void SetCard(const std::shared_ptr<CardBase>& card);
 
     template <class Archive>

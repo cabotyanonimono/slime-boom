@@ -5,6 +5,7 @@
 
 namespace SlimeBoom
 {
+// スライムを倒したときの効果音を鳴らすComponent。倒した数だけ再生する。
 class SlimeEliminateSe : public engine::Component
 {
     engine::AssetPtr<SlimeEliminateChecker> m_slime_eliminate_checker_;

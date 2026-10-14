@@ -6,14 +6,18 @@
 
 namespace SlimeBoom
 {
+// 指定したシーンファイルを読み込み、現在のシーンと入れ替えるComponent。
 class SceneTransitionController : public engine::Component
 {
     std::string m_scene_path_;
 
+    /// シーンファイルを読み込んで新しいシーンを生成し、それまでアクティブだったシーンを破棄する。
     void ChangeScene() const;
 
 public:
+    /// 遷移先のシーンファイルのパスを設定する。
     void SetScenePath(const std::string& scene_path);
+    /// シーン遷移を実行する。
     void Execute() const;
     void OnInspectorGui() override;
 

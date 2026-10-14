@@ -2,6 +2,8 @@
 
 namespace SlimeBoom
 {
+// プレイヤーの攻撃1回分のデータ(範囲・向き・ダメージ・ノックバック量)。
+// StructuredBufferとしてGPUに送られ、スライムとの当たり判定に使われる。
 struct PlayerAttackData
 {
     float arc;

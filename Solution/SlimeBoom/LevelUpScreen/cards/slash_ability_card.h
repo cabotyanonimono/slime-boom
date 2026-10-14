@@ -10,6 +10,7 @@
 
 namespace SlimeBoom
 {
+// スラッシュ(最も近いスライムへの剣攻撃)アビリティを習得するカード。
 class SlashAbilityCard : public CardBase
 {
     float m_attack_delay_time_;
@@ -23,7 +24,9 @@ class SlashAbilityCard : public CardBase
 
 public:
     void OnInspectorGui() override;
+    /// SlashAbilityを生成して、AbilityProcesserに追加する。
     void OnSelect() override;
+    /// スラッシュアビリティを未習得の場合のみ選択可能。
     bool CanSelect() override;
 
     template <class Archive>

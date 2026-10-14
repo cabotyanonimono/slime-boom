@@ -2,6 +2,7 @@
 
 namespace SlimeBoom
 {
+// アビリティの汎用パラメーター(効果量・数・角度・サイズ・持続時間・クールダウン・ノックバック)。
 struct AbilityData : engine::Inspectable
 {
     float value;

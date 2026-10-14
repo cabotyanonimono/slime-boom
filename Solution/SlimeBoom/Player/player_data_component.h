@@ -4,6 +4,7 @@
 
 namespace SlimeBoom
 {
+// PlayerDataを保持し、各ステータスの取得・設定を提供するComponent。
 class PlayerDataComponent : public engine::Component
 {
     PlayerData m_player_data_;
@@ -11,6 +12,7 @@ class PlayerDataComponent : public engine::Component
 public:
     void OnInspectorGui() override;
 
+    /// 各ステータスのセッター。
     void SetMaxHp(float max_hp);
     void SetHp(float hp);
     void SetSpeed(float speed);
@@ -24,6 +26,7 @@ public:
     void SetAttackNum(uint32_t attack_num);
     void SetAvoidPercent(float avoid_percent);
 
+    /// 各ステータスのゲッター。
     [[nodiscard]] float GetMaxHp() const;
     [[nodiscard]] float GetHp() const;
     [[nodiscard]] float GetSpeed() const;
@@ -37,6 +40,7 @@ public:
     [[nodiscard]] float GetAvoidPercent() const;
     [[nodiscard]] uint32_t GetLevel() const;
     
+    /// ステータス全体を返す。
     [[nodiscard]] const PlayerData &GetPlayerData() const;
 
     template <class Archive>

@@ -5,6 +5,7 @@
 
 namespace SlimeBoom
 {
+// オーラのメッシュの透明度を最小値と最大値の間で往復させ、明滅させるComponent。
 class PlayerAuraController : public engine::Component
 {
     bool m_is_fading_in_ = true;

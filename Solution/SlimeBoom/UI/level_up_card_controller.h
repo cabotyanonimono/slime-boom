@@ -6,6 +6,7 @@
 
 namespace SlimeBoom
 {
+// レベルアップ画面のカードUIに、現在提示しているカードを設定するComponent。
 class LevelUpCardController : public engine::Component
 {
     engine::AssetPtr<UiDataProvider> m_ui_data_provider_;
@@ -13,6 +14,7 @@ class LevelUpCardController : public engine::Component
     
 public:
     void OnInspectorGui() override;
+    /// 有効化されたときに、提示しているカードを各カードUIに設定する。
     void OnEnabled() override;
     
     template <class Archive>

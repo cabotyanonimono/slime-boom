@@ -1,5 +1,6 @@
 ﻿#pragma once
 
+// 設定項目(ウィンドウモード・FPS上限・解像度・音量)を保持するデータ。
 struct SettingsModel
 {
     uint32_t window_mode;

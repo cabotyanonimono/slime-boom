@@ -6,6 +6,8 @@
 
 namespace SlimeBoom
 {
+// マウス移動でターゲットの周囲を回るようにカメラを回転させるComponent。
+// カメラの位置はMapSizeComponentの範囲内に制限される。
 class CameraController : public engine::Component
 {
     float m_yaw_;
@@ -18,6 +20,7 @@ class CameraController : public engine::Component
 
 public:
     void OnInspectorGui() override;
+    /// マウスの移動量からyaw/pitchを更新して回転させ、カメラ位置をマップの範囲内に収める。
     void OnUpdate() override;
 
     template <class Archive>

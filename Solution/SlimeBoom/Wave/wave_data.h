@@ -3,6 +3,7 @@
 
 namespace SlimeBoom
 {
+// 1ウェーブ分の設定(継続時間・基本のスライム数・毎秒の追加数・種類ごとの出現率)。
 struct WaveData
 {
     float time;

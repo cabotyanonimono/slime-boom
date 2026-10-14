@@ -1,5 +1,6 @@
 ﻿#pragma once
 
+// アビリティの種類。
 enum kAbilityTypes
 {
     kAbilityTypesSlash,
@@ -8,6 +9,7 @@ enum kAbilityTypes
     kAbilityTypesCount
 };
 
+/// kAbilityTypesを文字列に変換する。
 inline const char* ToString(const kAbilityTypes e)
 {
     switch (e)

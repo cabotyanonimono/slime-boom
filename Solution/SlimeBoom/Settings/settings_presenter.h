@@ -2,6 +2,7 @@
 #include "settings_model.h"
 #include "Components/component.h"
 
+// 設定データ(SettingsModel)を保持するComponent。
 class SettingsPresenter : public engine::Component
 {
     SettingsModel m_model_;

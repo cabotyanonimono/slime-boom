@@ -1,17 +1,27 @@
 ﻿#pragma once
 
+// 数学のユーティリティ。
 namespace MathUtils
 {
+/// 度をラジアンに変換する。
 constexpr float DegToRad(const float deg)
 {
     return deg * std::numbers::pi_v<float> / 180.0f;
 }
 
+/// ラジアンを度に変換する。
 constexpr float RadToDeg(float rad)
 {
     return rad * 180.0f / std::numbers::pi_v<float>;
 }
 
+/// 現在の回転から、forwardの方向を向く回転へ、最大でrotation_speed * delta_timeだけ近づけた回転を返す。
+/// forwardの長さがほぼ0の場合や、すでにほぼ向いている場合は現在の回転をそのまま返す。
+/// @param forward 向かせたい方向
+/// @param up 上方向
+/// @param current_rotation 現在の回転
+/// @param rotation_speed 回転速度(ラジアン/秒)
+/// @param delta_time 経過時間(秒)
 inline Quaternion LookRotationSmooth(const Vector3 &forward, const Vector3 &up, const Quaternion &current_rotation, float rotation_speed, float delta_time)
 {
     using namespace DirectX;
@@ -56,6 +66,7 @@ inline Quaternion LookRotationSmooth(const Vector3 &forward, const Vector3 &up, 
     return result;
 }
 
+/// XZ平面上での、2つのベクトルのなす角を度で返す。
 inline float YawAngle(const Vector3& v1, const Vector3& v2)
 {
     Vector3 a = { v1.x, 0.0f, v1.z };

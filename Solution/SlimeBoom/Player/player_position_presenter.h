@@ -5,6 +5,7 @@
 
 namespace SlimeBoom
 {
+// プレイヤーの位置(少し上にずらした位置)を、シェーダーのグローバル値(PlayerPos)に設定するComponent。
 class PlayerPositionPresenter : public engine::Component
 {
     engine::AssetPtr<engine::Transform> m_player_transform_;

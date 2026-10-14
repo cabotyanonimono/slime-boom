@@ -4,6 +4,7 @@
 
 namespace SlimeBoom
 {
+// 攻撃範囲を広げるカード。
 class AttackRangeCard : public CardBase
 {
     float m_value_;

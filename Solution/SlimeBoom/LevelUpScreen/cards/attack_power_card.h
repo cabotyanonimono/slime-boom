@@ -5,6 +5,7 @@
 
 namespace SlimeBoom
 {
+// 攻撃力を強化するカード。
 class AttackPowerCard : public CardBase
 {
     float m_value_;

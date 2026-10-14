@@ -6,6 +6,7 @@
 
 namespace ui
 {
+// ボタンを選択すると選択肢のボタンを展開するドロップダウン。
 class DropDownButton : public engine::Component
 {
     bool m_is_open_ = false;
@@ -17,11 +18,14 @@ class DropDownButton : public engine::Component
 
     engine::Event<int> m_on_option_selected_event_;
 
+    /// 選択肢のボタンのRectTransformを取得してキャッシュする。
     void CacheRectTransforms();
+    /// 開くボタンと選択肢のボタンの位置を更新する。
     void UpdateButtonsPosition();
     
 public:
     void OnInspectorGui() override;
+    /// 開くボタンが選択されたら開閉を切り替え、押された選択肢をイベントで通知する。
     void OnUpdate() override;
 
     // これを設定したときUIのButtonも同時に更新されます。
@@ -33,6 +37,8 @@ public:
     // これを設定したときUIのButtonも同時に更新されます。
     void SetIsOpen(bool is_open);
 
+    /// 選択肢が選ばれたときに呼ばれるコールバックを登録する。
+    /// @param func 選ばれた選択肢のインデックスを引数に呼ばれる
     void AddOnOptionSelectedEvent(const std::function<void(int)> &func);
     
     template <class Archive>

@@ -3,6 +3,7 @@
 
 namespace SlimeBoom
 {
+// クリア画面に渡す結果データ(クリアしたか、撃破数、プレイヤーの最終ステータス)。
 struct ClearSceneData
 {
     bool is_game_cleared;

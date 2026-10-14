@@ -1,9 +1,11 @@
 ﻿#pragma once
 #include <any>
 
+// ステートマシンのパラメーター。bool/int/float/Vector3のいずれかの値をstd::anyで保持する。
 struct Parameter
 {
     std::any value;
+    /// 各型のセッター。
     void SetBool(bool value)
     {
         this->value = value;
@@ -21,6 +23,7 @@ struct Parameter
         this->value = value;
     }
     
+    /// 各型のゲッター。保持している型と異なる型で取得するとstd::bad_any_castになる。
     [[nodiscard]] int GetInt() const
     {
         return std::any_cast<int>(value);

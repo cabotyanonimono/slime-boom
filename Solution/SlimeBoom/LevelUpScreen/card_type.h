@@ -1,5 +1,6 @@
 ﻿#pragma once
 
+// レベルアップカードの種類。
 enum kCardType
 {
     kCardType_MaxHp,
@@ -17,6 +18,7 @@ enum kCardType
     kCardType_Count
 };
 
+/// kCardTypeを文字列に変換する。
 inline const char* ToString(const kCardType e)
 {
     switch (e)

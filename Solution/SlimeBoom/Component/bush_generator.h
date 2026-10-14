@@ -5,6 +5,8 @@
 
 namespace SlimeBoom
 {
+// プレイヤーの周囲に草(Bush)をランダム配置するComponent。
+// プレイヤーから離れすぎた草はプレイヤーの近くに再配置し、位置を描画用バッファへ送る。
 class BushGenerator : public engine::Component
 {
     bool m_is_dirty_ = false;
@@ -14,7 +16,9 @@ class BushGenerator : public engine::Component
     engine::AssetPtr<engine::MeshRenderer> m_bush_renderer_;
     engine::AssetPtr<engine::Transform> m_player_transform_;
 
+    /// プレイヤーから最大距離を超えて離れた草を、プレイヤーの周囲へ再配置する。
     void UpdateBushPositions();
+    /// 草の位置が更新されていれば、描画用(本体・影)のバッファへ転送する。
     void UploadBushPositions();
     
 public:

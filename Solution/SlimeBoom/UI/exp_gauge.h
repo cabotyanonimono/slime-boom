@@ -6,6 +6,7 @@
 
 namespace SlimeBoom
 {
+// 経験値のゲージ。現在のレベルで獲得した経験値と、必要経験値の割合を表示する。
 class ExpGauge : public engine::Component
 {
     engine::AssetPtr<UiDataProvider> m_ui_data_provider_;

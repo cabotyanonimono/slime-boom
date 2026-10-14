@@ -3,6 +3,7 @@
 #include "Components/camera_component.h"
 #include "Components/component.h"
 
+// 最初のフレームを過ぎたあと、カメラのRenderTextureをnullに設定するComponent。
 class SetNullRenderTextureComponent : public engine::Component
 {
     bool m_is_enable_ = true;

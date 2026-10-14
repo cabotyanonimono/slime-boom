@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "Components/component.h"
 
+// インスペクターのボタンから、現在のアクティブシーンを破棄するデバッグ用のComponent。
 class SceneChanger : public engine::Component
 {
 public:

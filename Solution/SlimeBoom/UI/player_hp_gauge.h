@@ -7,6 +7,7 @@
 
 namespace SlimeBoom
 {
+// プレイヤーのHPを、ゲージとテキストに表示するComponent。
 class PlayerHpGauge final : public engine::Component
 {
     engine::AssetPtr<Gauge> m_gauge_;

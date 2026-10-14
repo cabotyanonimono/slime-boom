@@ -5,6 +5,7 @@
 
 namespace SlimeBoom
 {
+// 攻撃速度を強化するカード。
 class AttackSpeedCard : public CardBase
 {
     float m_value_;
@@ -12,6 +13,7 @@ class AttackSpeedCard : public CardBase
 
 public:
     void OnInspectorGui() override;
+    /// 攻撃速度を強化する。
     void OnSelect() override;
 
     template <class Archive>

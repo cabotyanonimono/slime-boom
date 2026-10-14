@@ -4,6 +4,7 @@
 
 namespace SlimeBoom
 {
+// 最大HPを増やすカード。
 class MaxHpCard : public CardBase
 {
     float m_value_;
@@ -11,6 +12,7 @@ class MaxHpCard : public CardBase
 
 public:
     void OnInspectorGui() override;
+    /// 最大HPと現在のHPを、同じ量だけ増やす。
     void OnSelect() override;
 
     template <class Archive>

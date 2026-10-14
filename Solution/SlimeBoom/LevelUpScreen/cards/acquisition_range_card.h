@@ -4,6 +4,7 @@
 
 namespace SlimeBoom
 {
+// 経験値の獲得範囲を広げるカード。
 class AcquisitionRangeCard : public CardBase
 {
     float m_value_;
@@ -11,6 +12,7 @@ class AcquisitionRangeCard : public CardBase
 
 public:
     void OnInspectorGui() override;
+    /// 経験値の獲得範囲を強化する。
     void OnSelect() override;
 
     template <class Archive>

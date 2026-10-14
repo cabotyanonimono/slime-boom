@@ -5,6 +5,7 @@
 
 namespace SlimeBoom
 {
+// 獲得経験値の倍率を上げるカード。
 class ExpMultiplierCard : public CardBase
 {
     float m_value_;

@@ -1,5 +1,6 @@
 ﻿#pragma once
 
+// 効果音の種類。
 enum class kSoundTypes
 {
     kPlayerWalk,
@@ -14,6 +15,7 @@ enum class kSoundTypes
     kSoundTypesCount
 };
 
+/// kSoundTypesを文字列に変換する。
 inline const char* ToString(const kSoundTypes e)
 {
     switch (e)

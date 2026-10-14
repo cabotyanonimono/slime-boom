@@ -12,6 +12,7 @@
 
 namespace SlimeBoom
 {
+// 最も近いスライムに向かって剣を振るスラッシュアビリティ。クールダウンごとに自動で発動する。
 class SlashAbility : public CooldownAbility
 {
     Vector3 m_closest_slime_pos_;
@@ -23,10 +24,19 @@ class SlashAbility : public CooldownAbility
     std::shared_ptr<PlayerDataComponent> m_player_data_;
     std::shared_ptr<engine::EffekseerRenderer> m_effekseer_renderer_;
 
+    /// 攻撃データを作成し、剣の動きに合わせて遅延させてからPlayerDataPresenterに送るコルーチン。
     engine::Task DelaySetAttackDataTask();
+    /// 最も近いスライムの位置を取得して剣を振らせ、攻撃データの送信とエフェクトの再生を行う。
     void Execute(float delta_time) override;
 
 public:
+    /// @param compute_result 最も近いスライムの位置を取得するためのComputeResult
+    /// @param player_data プレイヤーのステータス
+    /// @param player_transform プレイヤーのTransform
+    /// @param player_data_presenter 攻撃データの送り先
+    /// @param swc_controller 剣を振る動きを制御するPlayerSwordController
+    /// @param effekseer_renderer 発動時に再生するエフェクト
+    /// @param attack_delay_time 剣を振ってから攻撃判定が出るまでの遅延(秒)
     SlashAbility(const std::shared_ptr<ComputeResult>& compute_result,
                  const std::shared_ptr<PlayerDataComponent>& player_data,
                  const std::shared_ptr<engine::Transform>& player_transform,

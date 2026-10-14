@@ -3,6 +3,7 @@
 
 namespace SlimeBoom
 {
+// マップの範囲(最小座標と最大座標)を保持するComponent。
 class MapSizeComponent : public engine::Component
 {
     Vector3 m_min_;
@@ -10,7 +11,9 @@ class MapSizeComponent : public engine::Component
     
 public:
     void OnInspectorGui() override;
+    /// マップの最小座標を返す。
     Vector3 GetMin() const { return m_min_; }
+    /// マップの最大座標を返す。
     Vector3 GetMax() const { return m_max_; }
     
     template <class Archive>

@@ -4,18 +4,23 @@
 
 namespace SlimeBoom
 {
+// アビリティ(IAbility)を保持し、毎フレームUpdate/FixedUpdateを実行するComponent。
 class AbilityProcesser : public engine::Component
 {
     std::unordered_set<std::shared_ptr<IAbility>> m_abilities_;
 
 public:
+    /// アビリティを追加し、OnAttachを呼ぶ。
     void Attach(const std::shared_ptr<IAbility>& ability);
+    /// アビリティのOnDetachを呼んだあと、削除する。
     void Detach(const std::shared_ptr<IAbility>& ability);
     void OnUpdate() override;
     void OnFixedUpdate() override;
 
+    /// 型Tのアビリティを保持しているかを返す。
     template <typename T>
     bool HasAbility();
+    /// 保持しているアビリティの一覧を返す。
     [[nodiscard]] std::unordered_set<std::shared_ptr<IAbility>> GetAbilities();
 
     template <class Archive>

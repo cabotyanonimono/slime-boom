@@ -9,6 +9,7 @@
 
 namespace SlimeBoom
 {
+// スライム1体分のGPU用データ(位置・回転・スケール・速度・角速度・HP・被ダメージ色のタイマー)。
 struct SlimeData
 {
     Vector3 position;
@@ -20,6 +21,8 @@ struct SlimeData
     float damage_color_timer;
 };
 
+// 全スライムのシミュレーションを、GPU(ComputeShader)で行うComponent。
+// スライムの生成・物理・最寄りのスライムの検索・プレイヤーの攻撃判定を担当する。
 class SlimeSimulationComponent : public engine::Component
 {
     static constexpr int kMaxSlimesCount = 8096;
@@ -38,8 +41,12 @@ public:
     void OnInspectorGui() override;
     void OnUpdate() override;
 
+    /// 現在のスライムの数を返す。
     int GetCurrentSlimesCount() const;
+    /// スライムの数を設定する。最大数を超える場合は最大数に制限され、ComputeShaderのスレッドグループ数と描画のインスタンス数にも反映される。
     void SetCurrentSlimesCount(int count);
+    /// スライムの種類ごとの出現率を設定する。
+    /// @param rates SlimeTypesの種類ごとの出現率
     void SetSpawnRate(std::array<float, SlimeTypes::Count> rates) const;
 
     template <class Archive>

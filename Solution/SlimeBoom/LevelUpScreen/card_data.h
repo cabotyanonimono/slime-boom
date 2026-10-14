@@ -4,6 +4,7 @@
 
 namespace SlimeBoom
 {
+// カードの見た目に使うテクスチャ(アイコン・名前・説明・背景)をまとめたデータ。
 struct CardData : engine::Inspectable
 {
     engine::AssetPtr<engine::Texture2D> icon;

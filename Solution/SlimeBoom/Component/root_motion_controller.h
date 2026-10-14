@@ -3,6 +3,7 @@
 #include "Asset/asset_ptr.h"
 #include "Components/component.h"
 
+// AnimationComponentのルートモーション(アニメーションによる移動量)を、このGameObjectの位置に反映するComponent。
 class RootMotionController : public engine::Component
 {
     engine::AssetPtr<engine::AnimationComponent> m_animation_;
@@ -10,6 +11,7 @@ class RootMotionController : public engine::Component
 public:
     
     void OnInspectorGui() override;
+    /// アニメーションの移動量をモデルのスケールで補正し、ローカル位置に加算する。
     void OnUpdate() override;
 
     template <class Archive>

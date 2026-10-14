@@ -7,6 +7,7 @@
 
 namespace SlimeBoom
 {
+// オーラ(周囲全方向への攻撃)アビリティを習得するカード。
 class AuraAbilityCard : public CardBase
 {
     engine::AssetPtr<AbilityProcesser> m_ability_processer_;
@@ -17,7 +18,9 @@ class AuraAbilityCard : public CardBase
 
 public:
     void OnInspectorGui() override;
+    /// AuraAbilityを生成して、AbilityProcesserに追加する。
     void OnSelect() override;
+    /// オーラアビリティを未習得の場合のみ選択可能。
     bool CanSelect() override;
 
     template <class Archive>

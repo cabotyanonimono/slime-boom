@@ -6,6 +6,7 @@
 
 namespace SlimeBoom
 {
+// スライムが死亡したときのパーティクル1個分のGPU用データ。
 struct SlimeDeathParticleData
 {
     float position[3];
@@ -18,6 +19,7 @@ struct SlimeDeathParticleData
     float life_ratio;
 };
 
+// スライム死亡時のパーティクルを、GPU(ComputeShader)で更新するComponent。
 class SlimeDeathEffectComponent : public engine::Component
 {
     static constexpr uint32_t kMaxParticleCount = 4096;

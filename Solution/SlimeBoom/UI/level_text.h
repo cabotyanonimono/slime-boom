@@ -6,6 +6,7 @@
 
 namespace SlimeBoom
 {
+// プレイヤーのレベルをテキストに表示するComponent。
 class LevelText : public engine::Component
 {
     engine::AssetPtr<engine::TextRenderer> m_level_text_;
