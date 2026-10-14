@@ -5,7 +5,7 @@
 #include "Coroutine/task.h"
 
 // クールダウン制のアビリティの基底クラス。
-// クールダウンが経過するたびに、プレイヤーの攻撃回数ぶんExecuteを実行する。
+// クールダウンが経過するたびに、プレイヤーの攻撃回数ぶんExecuteを実行する。再利用はできません。Detachした後は破棄してください。
 class CooldownAbility : public IAbility
 {
 protected:
