@@ -25,7 +25,7 @@ engine::Task ClearSceneController::ShowClearSceneBackground() const
 engine::Task ClearSceneController::ScoreBoardScaleChangeMotion() const
 {
     float scale = 0.0f;
-    
+
     Vector2 base_scale = m_score_board_->size_delta;
     m_score_board_->GameObject()->SetActive(true);
     m_text_ui_->SetActive(false);
@@ -36,7 +36,7 @@ engine::Task ClearSceneController::ScoreBoardScaleChangeMotion() const
         m_score_board_->size_delta = base_scale * scale;
         co_await engine::WaitForNextFrame();
     }
-    
+
     while (scale > 1.0f)
     {
         scale -= 0.025f;
@@ -54,7 +54,7 @@ engine::Task ClearSceneController::ShowClearScene() const
     co_await ShowClearSceneBackground();
 
     co_await ScoreBoardScaleChangeMotion();
-    
+
     co_return;
 }
 
@@ -75,13 +75,21 @@ void ClearSceneController::OnInspectorGui()
 
 void ClearSceneController::OnStart()
 {
-    m_restart_button_->AddEventListener([this](){m_restart_scene_transition_controller_->Execute();});
-    m_quit_button_->AddEventListener([this](){m_quit_scene_transition_controller_->Execute();});
+    m_restart_button_->AddEventListener([this]() { m_restart_scene_transition_controller_->Execute(); });
+    m_quit_button_->AddEventListener([this]() { m_quit_scene_transition_controller_->Execute(); });
+    const auto buff_data = m_background_->shared_material->shared_material_block->GetConstantBufferData("Alpha");
+    buff_data->SetFloatData("alpha", 0.0f);
 }
 
 void ClearSceneController::OnEnabled()
 {
     engine::Engine::coroutine.Start(ShowClearScene());
+}
+
+void ClearSceneController::OnDestroy()
+{
+    const auto buff_data = m_background_->shared_material->shared_material_block->GetConstantBufferData("Alpha");
+    buff_data->SetFloatData("alpha", 0.0f);
 }
 
 void ClearSceneController::SetClearSceneData(const ClearSceneData& clear_scene_data) const

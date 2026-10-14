@@ -41,6 +41,9 @@ public:
     void OnStart() override;
     /// 有効化されたときにクリア画面の演出を開始する。
     void OnEnabled() override;
+
+    /// 変更したマテリアルの状態を初期化する
+    void OnDestroy() override;
     /// 撃破数とレベルを表示し、クリア/ゲームオーバーのどちらの文言を出すか切り替える。
     /// @param clear_scene_data 画面に表示する結果データ
     void SetClearSceneData(const ClearSceneData& clear_scene_data) const;
