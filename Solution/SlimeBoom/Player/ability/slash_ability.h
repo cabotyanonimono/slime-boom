@@ -1,7 +1,5 @@
 ﻿#pragma once
 #include "cooldown_ability.h"
-#include "../player_attack_data.h"
-#include "../player_data.h"
 #include "../player_data_component.h"
 #include "../player_data_presenter.h"
 #include "../player_sword_controller.h"
