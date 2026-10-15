@@ -400,6 +400,7 @@
     <ClCompile Include="SlimeBoom\LevelUpScreen\card_pool.cpp" />
     <ClCompile Include="SlimeBoom\LevelUpScreen\card_type.cpp" />
     <ClCompile Include="SlimeBoom\LevelUpScreen\level_up_screen_manager.cpp" />
+    <ClCompile Include="SlimeBoom\PauseScreen\pause_screen_manager.cpp" />
     <ClCompile Include="SlimeBoom\Player\ability\ability_data\ability_data.cpp" />
     <ClCompile Include="SlimeBoom\Player\ability\ability_data\ability_data_store.cpp" />
     <ClCompile Include="SlimeBoom\Player\ability\ability_data\ability_types.cpp" />
@@ -612,6 +613,7 @@
     <ClCompile Include="SlimeBoom\UI\player_hp_gauge.cpp" />
     <ClCompile Include="SlimeBoom\UI\player_status.cpp" />
     <ClCompile Include="SlimeBoom\UI\survival_timer.cpp" />
+    <ClCompile Include="SlimeBoom\UI\text_color_changer.cpp" />
     <ClCompile Include="SlimeBoom\UI\ui_button.cpp" />
     <ClCompile Include="SlimeBoom\UI\ui_data_provider.cpp" />
     <ClCompile Include="SlimeBoom\UI\ui_hover_scale_effect.cpp" />
@@ -965,6 +967,7 @@
     <ClInclude Include="SlimeBoom\LevelUpScreen\card_pool.h" />
     <ClInclude Include="SlimeBoom\LevelUpScreen\card_type.h" />
     <ClInclude Include="SlimeBoom\LevelUpScreen\level_up_screen_manager.h" />
+    <ClInclude Include="SlimeBoom\PauseScreen\pause_screen_manager.h" />
     <ClInclude Include="SlimeBoom\Player\ability\ability_data\ability_data.h" />
     <ClInclude Include="SlimeBoom\Player\ability\ability_data\ability_data_store.h" />
     <ClInclude Include="SlimeBoom\Player\ability\ability_data\ability_types.h" />
@@ -1017,6 +1020,7 @@
     <ClInclude Include="SlimeBoom\UI\player_hp_gauge.h" />
     <ClInclude Include="SlimeBoom\UI\player_status_ui.h" />
     <ClInclude Include="SlimeBoom\UI\survival_timer.h" />
+    <ClInclude Include="SlimeBoom\UI\text_color_changer.h" />
     <ClInclude Include="SlimeBoom\UI\ui_button.h" />
     <ClInclude Include="SlimeBoom\UI\ui_data_provider.h" />
     <ClInclude Include="SlimeBoom\UI\ui_hover_scale_effect.h" />
