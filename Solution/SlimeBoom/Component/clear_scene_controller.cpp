@@ -82,6 +82,12 @@ engine::Task ClearSceneController::ShowClearScene()
 {
     m_eliminated_slime_count_->string = "0";
     m_level_->string = "0";
+    // ランクはカウントアップが終わるまで隠しておく
+    if (const auto rank_text = m_rank_text_.CastedLock())
+    {
+        m_rank_base_scale_ = rank_text->scale;
+        rank_text->GameObject()->SetActive(false);
+    }
 
     co_await ShowClearSceneBackground();
 
@@ -89,7 +95,49 @@ engine::Task ClearSceneController::ShowClearScene()
 
     co_await CountUpResultValues();
 
+    co_await ShowRank();
+
     StartIdleMotion();
+
+    co_return;
+}
+
+const char* ClearSceneController::CalcRank(const int eliminate_count) const
+{
+    if (eliminate_count >= m_rank_s_threshold_)
+        return "S";
+    if (eliminate_count >= m_rank_a_threshold_)
+        return "A";
+    if (eliminate_count >= m_rank_b_threshold_)
+        return "B";
+    if (eliminate_count >= m_rank_c_threshold_)
+        return "C";
+    return "D";
+}
+
+engine::Task ClearSceneController::ShowRank() const
+{
+    const auto rank_text = m_rank_text_.CastedLock();
+    if (!rank_text)
+        co_return;
+
+    rank_text->string = CalcRank(m_target_eliminate_count_);
+    rank_text->scale = m_rank_base_scale_ * m_rank_pop_scale_;
+    rank_text->GameObject()->SetActive(true);
+
+    const float duration = (std::max)(m_rank_pop_duration_sec_, 0.01f);
+    float elapsed = 0.0f;
+
+    while (elapsed < duration)
+    {
+        elapsed += engine::Time::Get()->UnscaledDeltaTime();
+        const float t = (std::min)(elapsed / duration, 1.0f);
+        const float eased = 1.0f - (1.0f - t) * (1.0f - t);
+        rank_text->scale = m_rank_base_scale_ * (m_rank_pop_scale_ + (1.0f - m_rank_pop_scale_) * eased);
+        co_await engine::WaitForNextFrame();
+    }
+
+    rank_text->scale = m_rank_base_scale_;
 
     co_return;
 }
@@ -117,6 +165,13 @@ void ClearSceneController::OnInspectorGui()
     engine::Gui::PropertyField("Count Up Duration Sec", m_count_up_duration_sec_);
     engine::Gui::PropertyField("Idle Pulse Amplitude", m_idle_pulse_amplitude_);
     engine::Gui::PropertyField("Idle Pulse Period Sec", m_idle_pulse_period_sec_);
+    engine::Gui::PropertyField("Rank Text", m_rank_text_);
+    engine::Gui::PropertyField("Rank S Threshold", m_rank_s_threshold_);
+    engine::Gui::PropertyField("Rank A Threshold", m_rank_a_threshold_);
+    engine::Gui::PropertyField("Rank B Threshold", m_rank_b_threshold_);
+    engine::Gui::PropertyField("Rank C Threshold", m_rank_c_threshold_);
+    engine::Gui::PropertyField("Rank Pop Scale", m_rank_pop_scale_);
+    engine::Gui::PropertyField("Rank Pop Duration Sec", m_rank_pop_duration_sec_);
 }
 
 void ClearSceneController::OnStart()

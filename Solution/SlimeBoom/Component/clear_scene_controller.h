@@ -45,6 +45,25 @@ class ClearSceneController : public engine::Component
     /// 余韻の動きを開始する。開始時点の見出しの大きさを基準にする。
     void StartIdleMotion();
 
+    /// 評価ランク(S/A/B/C/D)を表示するテキスト。スコアボード右側の空白に置く
+    engine::AssetPtr<engine::TextRenderer> m_rank_text_;
+    /// 各ランクに必要な撃破数の下限。どれにも届かなければD。インスペクタで調整する
+    int m_rank_s_threshold_ = 300;
+    int m_rank_a_threshold_ = 200;
+    int m_rank_b_threshold_ = 100;
+    int m_rank_c_threshold_ = 50;
+    /// ランクが出るときに、基準の何倍の大きさから縮むか
+    float m_rank_pop_scale_ = 3.0f;
+    /// ランクが基準の大きさに縮むまでの時間(秒)
+    float m_rank_pop_duration_sec_ = 0.3f;
+    /// シーンに保存されているランクテキストの大きさ(ShowClearSceneの開始時に記録する)
+    float m_rank_base_scale_ = 1.0f;
+
+    /// 撃破数から評価ランクの文字列を返す。
+    const char* CalcRank(int eliminate_count) const;
+    /// ランクを大きく出してから基準の大きさに縮めて表示するコルーチン。
+    engine::Task ShowRank() const;
+
     /// 背景を徐々に不透明にしながら表示するコルーチン。
     engine::Task ShowClearSceneBackground() const;
     /// スコアボードを少し大きく拡大してから元の大きさに戻しつつ表示するコルーチン。
@@ -134,8 +153,21 @@ public:
                 CEREAL_NVP(m_idle_pulse_period_sec_)
             );
         }
+
+        if (version >= 10)
+        {
+            ar(
+                CEREAL_NVP(m_rank_text_),
+                CEREAL_NVP(m_rank_s_threshold_),
+                CEREAL_NVP(m_rank_a_threshold_),
+                CEREAL_NVP(m_rank_b_threshold_),
+                CEREAL_NVP(m_rank_c_threshold_),
+                CEREAL_NVP(m_rank_pop_scale_),
+                CEREAL_NVP(m_rank_pop_duration_sec_)
+            );
+        }
     }
 };
 }
 
-CEREAL_CLASS_VERSION(SlimeBoom::ClearSceneController, 9)
+CEREAL_CLASS_VERSION(SlimeBoom::ClearSceneController, 10)
