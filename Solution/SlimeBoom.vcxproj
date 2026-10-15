@@ -369,6 +369,7 @@
     <ClCompile Include="SlimeBoom\Component\map_size_component.cpp" />
     <ClCompile Include="SlimeBoom\Component\mesh_renderer_generator_test.cpp" />
     <ClCompile Include="SlimeBoom\Component\object_disabler.cpp" />
+    <ClCompile Include="SlimeBoom\Component\result_rank.cpp" />
     <ClCompile Include="SlimeBoom\Component\root_motion_controller.cpp" />
     <ClCompile Include="SlimeBoom\Component\scene_changer.cpp" />
     <ClCompile Include="SlimeBoom\Component\scene_transition_controller.cpp" />
@@ -935,6 +936,7 @@
     <ClInclude Include="SlimeBoom\Component\map_size_component.h" />
     <ClInclude Include="SlimeBoom\Component\mesh_renderer_generator_test.h" />
     <ClInclude Include="SlimeBoom\Component\object_disabler.h" />
+    <ClInclude Include="SlimeBoom\Component\result_rank.h" />
     <ClInclude Include="SlimeBoom\Component\root_motion_controller.h" />
     <ClInclude Include="SlimeBoom\Component\scene_changer.h" />
     <ClInclude Include="SlimeBoom\Component\scene_transition_controller.h" />

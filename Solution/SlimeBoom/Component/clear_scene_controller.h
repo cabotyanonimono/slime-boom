@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "clear_scene_data.h"
+#include "result_rank.h"
 #include "scene_transition_controller.h"
 #include "scene_transition_executor.h"
 #include "../UI/ui_button.h"
@@ -45,24 +46,8 @@ class ClearSceneController : public engine::Component
     /// 余韻の動きを開始する。開始時点の見出しの大きさを基準にする。
     void StartIdleMotion();
 
-    /// 評価ランク(S/A/B/C/D)を表示するテキスト。スコアボード右側の空白に置く
-    engine::AssetPtr<engine::TextRenderer> m_rank_text_;
-    /// 各ランクに必要な撃破数の下限。どれにも届かなければD。インスペクタで調整する
-    int m_rank_s_threshold_ = 300;
-    int m_rank_a_threshold_ = 200;
-    int m_rank_b_threshold_ = 100;
-    int m_rank_c_threshold_ = 50;
-    /// ランクが出るときに、基準の何倍の大きさから縮むか
-    float m_rank_pop_scale_ = 3.0f;
-    /// ランクが基準の大きさに縮むまでの時間(秒)
-    float m_rank_pop_duration_sec_ = 0.3f;
-    /// シーンに保存されているランクテキストの大きさ(ShowClearSceneの開始時に記録する)
-    float m_rank_base_scale_ = 1.0f;
-
-    /// 撃破数から評価ランクの文字列を返す。
-    const char* CalcRank(int eliminate_count) const;
-    /// ランクを大きく出してから基準の大きさに縮めて表示するコルーチン。
-    engine::Task ShowRank() const;
+    /// 評価ランクの判定と表示。カウントアップのあとに表示する
+    engine::AssetPtr<ResultRank> m_result_rank_;
 
     /// 背景を徐々に不透明にしながら表示するコルーチン。
     engine::Task ShowClearSceneBackground() const;
@@ -154,20 +139,31 @@ public:
             );
         }
 
-        if (version >= 10)
+        // v10ではランクの設定をこのクラスで持っていた。ResultRankに移したので、v10のシーンからは読み捨てる
+        if (version == 10)
+        {
+            engine::AssetPtr<engine::TextRenderer> unused_rank_text;
+            int unused_threshold = 0;
+            float unused_float = 0.0f;
+            ar(
+                cereal::make_nvp("m_rank_text_", unused_rank_text),
+                cereal::make_nvp("m_rank_s_threshold_", unused_threshold),
+                cereal::make_nvp("m_rank_a_threshold_", unused_threshold),
+                cereal::make_nvp("m_rank_b_threshold_", unused_threshold),
+                cereal::make_nvp("m_rank_c_threshold_", unused_threshold),
+                cereal::make_nvp("m_rank_pop_scale_", unused_float),
+                cereal::make_nvp("m_rank_pop_duration_sec_", unused_float)
+            );
+        }
+
+        if (version >= 11)
         {
             ar(
-                CEREAL_NVP(m_rank_text_),
-                CEREAL_NVP(m_rank_s_threshold_),
-                CEREAL_NVP(m_rank_a_threshold_),
-                CEREAL_NVP(m_rank_b_threshold_),
-                CEREAL_NVP(m_rank_c_threshold_),
-                CEREAL_NVP(m_rank_pop_scale_),
-                CEREAL_NVP(m_rank_pop_duration_sec_)
+                CEREAL_NVP(m_result_rank_)
             );
         }
     }
 };
 }
 
-CEREAL_CLASS_VERSION(SlimeBoom::ClearSceneController, 10)
+CEREAL_CLASS_VERSION(SlimeBoom::ClearSceneController, 11)
