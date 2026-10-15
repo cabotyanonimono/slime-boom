@@ -21,6 +21,7 @@
 #include "SlimeBoom/Exp/exp_sound_emitter.h"
 #include "SlimeBoom/Exp/level_up_controller.h"
 #include "SlimeBoom/LevelUpScreen/level_up_screen_manager.h"
+#include "SlimeBoom/PauseScreen/pause_screen_manager.h"
 #include "SlimeBoom/Player/avoid_effect.h"
 #include "SlimeBoom/Player/player_aura_controller.h"
 #include "SlimeBoom/Slime/slime_simulation_component.h"
@@ -42,6 +43,7 @@
 #include "SlimeBoom/UI/player_hp_gauge.h"
 #include "SlimeBoom/UI/player_status_ui.h"
 #include "SlimeBoom/UI/survival_timer.h"
+#include "SlimeBoom/UI/text_color_changer.h"
 #include "SlimeBoom/UI/ui_button.h"
 #include "SlimeBoom/UI/ui_data_provider.h"
 #include "SlimeBoom/UI/ui_hover_scale_effect.h"
@@ -74,6 +76,7 @@ void ComponentRegistry::RegisterComponents()
     ADD_COMPONENT(ui::UINavigator, "UI");
     ADD_COMPONENT(SlimeBoom::GameManager, "SlimeBoom");
     ADD_COMPONENT(SurvivalTimer, "UI");
+    ADD_COMPONENT(TextColorChanger, "UI");
     ADD_COMPONENT(LevelUpController, "Exp");
     ADD_COMPONENT(Gauge, "UI");
     ADD_COMPONENT(ExpGauge, "UI");
@@ -83,6 +86,7 @@ void ComponentRegistry::RegisterComponents()
     ADD_COMPONENT(CardPool, "LevelUpScreen");
     ADD_COMPONENT(CardController, "LevelUpScreen");
     ADD_COMPONENT(LevelUpScreenManager, "LevelUpScreen");
+    ADD_COMPONENT(PauseScreenManager, "PauseScreen");
     ADD_COMPONENT(LevelUpCardController, "UI");
     ADD_COMPONENT(LevelUpCard, "UI");
     ADD_COMPONENT(UiHoverScaleEffect, "UI");
