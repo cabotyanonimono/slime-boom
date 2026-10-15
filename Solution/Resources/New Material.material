@@ -1,0 +1,212 @@
+{
+    "value0": {
+        "polymorphic_id": 1073741824,
+        "ptr_wrapper": {
+            "id": 2147483649,
+            "data": {
+                "cereal_class_version": 3,
+                "value0": {
+                    "cereal_class_version": 1,
+                    "m_guid_": "a6ad06c8-c30d-4e65-becc-79f017b129ef",
+                    "m_name_": "New Material.material"
+                },
+                "shared_material_block": {
+                    "polymorphic_id": 1073741824,
+                    "ptr_wrapper": {
+                        "id": 2147483650,
+                        "data": {
+                            "cereal_class_version": 2,
+                            "value0": {
+                                "m_guid_": "57d35d86-86f7-4323-b9c6-f73ffc57e1b6",
+                                "m_name_": "Material Block of New Material.material"
+                            },
+                            "m_buffer_data_": [
+                                {
+                                    "key": "slime_death_particles",
+                                    "value": {
+                                        "polymorphic_id": 2147483649,
+                                        "polymorphic_name": "engine::StructuredBufferData",
+                                        "ptr_wrapper": {
+                                            "id": 2147483651,
+                                            "data": {
+                                                "cereal_class_version": 1,
+                                                "value0": {
+                                                    "cereal_class_version": 1,
+                                                    "parameter": {
+                                                        "cereal_class_version": 1,
+                                                        "index": 3,
+                                                        "name": "slime_death_particles",
+                                                        "display_name": "slime_death_particles",
+                                                        "is_unordered_access": false,
+                                                        "total_size": 0,
+                                                        "variables": []
+                                                    },
+                                                    "upload_type": 0
+                                                },
+                                                "m_stride_": 4,
+                                                "m_count_": 1,
+                                                "m_data_": []
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    "key": "DeathParticleLook",
+                                    "value": {
+                                        "polymorphic_id": 2147483650,
+                                        "polymorphic_name": "engine::ConstantBufferData",
+                                        "ptr_wrapper": {
+                                            "id": 2147483652,
+                                            "data": {
+                                                "cereal_class_version": 1,
+                                                "value0": {
+                                                    "parameter": {
+                                                        "index": 3,
+                                                        "name": "DeathParticleLook",
+                                                        "display_name": "DeathParticleLook",
+                                                        "is_unordered_access": false,
+                                                        "total_size": 64,
+                                                        "variables": [
+                                                            {
+                                                                "cereal_class_version": 0,
+                                                                "name": "normal_color",
+                                                                "data_type": 4
+                                                            },
+                                                            {
+                                                                "name": "speed_color",
+                                                                "data_type": 4
+                                                            },
+                                                            {
+                                                                "name": "tank_color",
+                                                                "data_type": 4
+                                                            },
+                                                            {
+                                                                "name": "particle_size",
+                                                                "data_type": 1
+                                                            },
+                                                            {
+                                                                "name": "glow",
+                                                                "data_type": 1
+                                                            }
+                                                        ]
+                                                    },
+                                                    "upload_type": 0
+                                                },
+                                                "m_data_type_offset_pairs_": [
+                                                    {
+                                                        "key": "normal_color",
+                                                        "value": {
+                                                            "first": 4,
+                                                            "second": 0
+                                                        }
+                                                    },
+                                                    {
+                                                        "key": "speed_color",
+                                                        "value": {
+                                                            "first": 4,
+                                                            "second": 16
+                                                        }
+                                                    },
+                                                    {
+                                                        "key": "tank_color",
+                                                        "value": {
+                                                            "first": 4,
+                                                            "second": 32
+                                                        }
+                                                    },
+                                                    {
+                                                        "key": "particle_size",
+                                                        "value": {
+                                                            "first": 1,
+                                                            "second": 48
+                                                        }
+                                                    },
+                                                    {
+                                                        "key": "glow",
+                                                        "value": {
+                                                            "first": 1,
+                                                            "second": 52
+                                                        }
+                                                    }
+                                                ],
+                                                "m_data_": [
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    232,
+                                                    226,
+                                                    180,
+                                                    62,
+                                                    0,
+                                                    0,
+                                                    128,
+                                                    63,
+                                                    0,
+                                                    0,
+                                                    128,
+                                                    63,
+                                                    0,
+                                                    0,
+                                                    128,
+                                                    63,
+                                                    0,
+                                                    0,
+                                                    128,
+                                                    63,
+                                                    0,
+                                                    0,
+                                                    128,
+                                                    63,
+                                                    0,
+                                                    0,
+                                                    128,
+                                                    63,
+                                                    133,
+                                                    132,
+                                                    132,
+                                                    62,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    221,
+                                                    220,
+                                                    220,
+                                                    62,
+                                                    0,
+                                                    0,
+                                                    128,
+                                                    63,
+                                                    0,
+                                                    0,
+                                                    128,
+                                                    63,
+                                                    0,
+                                                    0,
+                                                    128,
+                                                    63
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                "render_queue": 5000,
+                "m_shader_": {
+                    "value0": {
+                        "cereal_class_version": 1,
+                        "m_guid_": "a7ebc1b0-c3b9-4462-9314-60f158d7d589",
+                        "m_type_": 2,
+                        "m_stored_reference_": {
+                            "polymorphic_id": 0
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

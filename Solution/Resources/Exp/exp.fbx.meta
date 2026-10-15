@@ -1,0 +1,17 @@
+{
+    "data": {},
+    "guid": "60c7116a-09a3-44f8-8149-93d1956d1925",
+    "type": ".fbx",
+    "objects": [
+        {
+            "guid": "85c0f692-5466-483e-91cb-88af4d37b531",
+            "name": "DefaultMaterial",
+            "type_hint": "class engine::Material"
+        },
+        {
+            "guid": "1d7933ad-7924-4123-8681-78901b2f12f5",
+            "name": "Icosphere",
+            "type_hint": "class engine::Mesh"
+        }
+    ]
+}

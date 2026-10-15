@@ -1,0 +1,22 @@
+{
+    "data": {},
+    "guid": "672a8b99-76f8-44a7-a8f8-dd278dd797ce",
+    "type": ".fbx",
+    "objects": [
+        {
+            "guid": "5576401d-3b19-4653-8b4e-a175984c1797",
+            "name": "Nature_Mat_01.001",
+            "type_hint": "class engine::Material"
+        },
+        {
+            "guid": "aa7d9dc3-f264-4cb3-95f5-61d6101daf0e",
+            "name": "Icosphere.083",
+            "type_hint": "class engine::Mesh"
+        },
+        {
+            "guid": "96bf3681-8cf6-4400-b6e2-f3ff9938c091",
+            "name": "Icosphere.001",
+            "type_hint": "class engine::Mesh"
+        }
+    ]
+}

@@ -1,0 +1,32 @@
+{
+    "data": {},
+    "guid": "ec6cc580-eba6-4053-a56b-674b5398638f",
+    "type": ".fbx",
+    "objects": [
+        {
+            "guid": "33b307a3-b4b5-481b-85b1-90653d82a426",
+            "name": "Mat_SwordMetal3.001",
+            "type_hint": "class engine::Material"
+        },
+        {
+            "guid": "bad52687-070e-482a-beb6-5785158a1b23",
+            "name": "Mat_Sword3.001",
+            "type_hint": "class engine::Material"
+        },
+        {
+            "guid": "59b2cc6e-72fe-40f0-a784-b788de2acf2f",
+            "name": "Mat_SwordPearl3.001",
+            "type_hint": "class engine::Material"
+        },
+        {
+            "guid": "a841dd1e-a3f6-4127-9179-140974d753b2",
+            "name": "Mesh.002",
+            "type_hint": "class engine::Mesh"
+        },
+        {
+            "guid": "066e05a6-dc8d-4bbf-81d7-a299b844deea",
+            "name": "Mesh.003",
+            "type_hint": "class engine::Mesh"
+        }
+    ]
+}

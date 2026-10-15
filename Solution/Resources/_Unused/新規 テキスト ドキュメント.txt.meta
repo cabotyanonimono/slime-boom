@@ -1,0 +1,12 @@
+{
+    "data": {},
+    "guid": "9548b974-a173-46d7-a233-829e06859f85",
+    "type": ".txt",
+    "objects": [
+        {
+            "guid": "ea6c5410-826d-4b8c-b27d-972456e9a2d5",
+            "name": "Secondary Text",
+            "type_hint": "class engine::TextAsset"
+        }
+    ]
+}

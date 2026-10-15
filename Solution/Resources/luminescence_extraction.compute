@@ -1,0 +1,26 @@
+#include "engine.hlsli"
+
+cbuffer Params : register(b2)
+{
+    float2 texture_size;
+    float threshold;
+}
+
+Texture2D input_texture : register(t3);
+RWTexture2D<float4> output_texture : register(u1);
+
+[numthreads(16, 16, 1)]
+void compute(uint3 globalID : SV_DispatchThreadID)
+{
+    float2 uv = float2(globalID.xy);
+    if (uv.x >= texture_size.x || uv.y >= texture_size.y)
+        return;
+    float4 main_color = input_texture[uv];
+
+    float max_color = max(main_color.r , max(main_color.g, main_color.b));
+    float contribution = max(0.0f, max_color - threshold);
+
+    float3 extracted_color = main_color.rgb * (contribution / max(max_color, 0.00001f));
+
+    output_texture[uv] = float4(extracted_color, 1.0f);
+}

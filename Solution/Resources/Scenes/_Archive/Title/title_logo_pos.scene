@@ -1,0 +1,553 @@
+{
+    "value0": {
+        "polymorphic_id": 1073741824,
+        "ptr_wrapper": {
+            "id": 2147483649,
+            "data": {
+                "cereal_class_version": 1,
+                "value0": {
+                    "cereal_class_version": 1,
+                    "m_guid_": "9ab4def3-11fc-4727-85a5-f9f108ebb695",
+                    "m_name_": "Default Scene"
+                },
+                "m_root_game_objects_": [
+                    {
+                        "polymorphic_id": 1073741824,
+                        "ptr_wrapper": {
+                            "id": 2147483650,
+                            "data": {
+                                "value0": {
+                                    "m_guid_": "525c3fbb-3a69-4ec5-adf9-53e4551ba3a1",
+                                    "m_name_": "Camera"
+                                },
+                                "m_is_active_self_": true,
+                                "m_components_": [
+                                    {
+                                        "polymorphic_id": 2147483649,
+                                        "polymorphic_name": "engine::Transform",
+                                        "ptr_wrapper": {
+                                            "id": 2147483651,
+                                            "data": {
+                                                "cereal_class_version": 1,
+                                                "value0": {
+                                                    "cereal_class_version": 1,
+                                                    "value0": {
+                                                        "m_guid_": "62fef966-e404-4a2b-933f-0691d4162e14",
+                                                        "m_name_": "Transform"
+                                                    },
+                                                    "value1": {
+                                                        "locked_ptr": {
+                                                            "polymorphic_id": 1073741824,
+                                                            "ptr_wrapper": {
+                                                                "id": 2
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "m_local_position_": {
+                                                    "v.x": 0.0,
+                                                    "v.y": 0.8500000238418579,
+                                                    "v.z": 1.5
+                                                },
+                                                "m_local_rotation_": {
+                                                    "v.x": 0.0,
+                                                    "v.y": 0.0,
+                                                    "v.z": 0.0,
+                                                    "v.w": 1.0
+                                                },
+                                                "m_local_scale_": {
+                                                    "v.x": 1.0,
+                                                    "v.y": 1.0,
+                                                    "v.z": 1.0
+                                                },
+                                                "m_parent_": {
+                                                    "locked_ptr": {
+                                                        "polymorphic_id": 0
+                                                    }
+                                                },
+                                                "m_children_": []
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "polymorphic_id": 2147483650,
+                                        "polymorphic_name": "engine::CameraComponent",
+                                        "ptr_wrapper": {
+                                            "id": 2147483652,
+                                            "data": {
+                                                "cereal_class_version": 2,
+                                                "value0": {
+                                                    "value0": {
+                                                        "m_guid_": "0be27786-af8a-4118-aa12-63c4e56a8659",
+                                                        "m_name_": "CameraComponent"
+                                                    },
+                                                    "value1": {
+                                                        "locked_ptr": {
+                                                            "polymorphic_id": 1073741824,
+                                                            "ptr_wrapper": {
+                                                                "id": 2
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "property": {
+                                                    "cereal_class_version": 1,
+                                                    "view_mode": 0,
+                                                    "field_of_view": 70.0,
+                                                    "near_plane": 0.10000000149011612,
+                                                    "far_plane": 1000.0,
+                                                    "ortho_size": 50.0,
+                                                    "aspect_ratio": 1.7777777910232545,
+                                                    "background_color": {
+                                                        "value0": 0.10196079313755036,
+                                                        "value1": 0.10196079313755036,
+                                                        "value2": 1.0,
+                                                        "value3": 0.10196079313755036
+                                                    }
+                                                },
+                                                "m_render_texture_": {
+                                                    "value0": {
+                                                        "cereal_class_version": 1,
+                                                        "m_guid_": "00000000-0000-0000-0000-000000000000",
+                                                        "m_type_": 0,
+                                                        "m_stored_reference_": {
+                                                            "polymorphic_id": 0
+                                                        }
+                                                    }
+                                                },
+                                                "m_depth_texture_": {
+                                                    "value0": {
+                                                        "m_guid_": "00000000-0000-0000-0000-000000000000",
+                                                        "m_type_": 0,
+                                                        "m_stored_reference_": {
+                                                            "polymorphic_id": 0
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "polymorphic_id": 2147483651,
+                                        "polymorphic_name": "engine::AudioListenerComponent",
+                                        "ptr_wrapper": {
+                                            "id": 2147483653,
+                                            "data": {
+                                                "cereal_class_version": 1,
+                                                "value0": {
+                                                    "value0": {
+                                                        "m_guid_": "85dad6a1-5bef-4d60-bae2-494be3c896dd",
+                                                        "m_name_": "AudioListenerComponent"
+                                                    },
+                                                    "value1": {
+                                                        "locked_ptr": {
+                                                            "polymorphic_id": 1073741824,
+                                                            "ptr_wrapper": {
+                                                                "id": 2
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "polymorphic_id": 1073741824,
+                        "ptr_wrapper": {
+                            "id": 2147483654,
+                            "data": {
+                                "value0": {
+                                    "m_guid_": "b5dfe136-db07-49c3-aff4-9ff281cd0aed",
+                                    "m_name_": "TitleSceneController"
+                                },
+                                "m_is_active_self_": true,
+                                "m_components_": [
+                                    {
+                                        "polymorphic_id": 1,
+                                        "ptr_wrapper": {
+                                            "id": 2147483655,
+                                            "data": {
+                                                "value0": {
+                                                    "value0": {
+                                                        "m_guid_": "eeb39fbb-e002-43b5-99c1-a6b2a72e4851",
+                                                        "m_name_": "Transform"
+                                                    },
+                                                    "value1": {
+                                                        "locked_ptr": {
+                                                            "polymorphic_id": 1073741824,
+                                                            "ptr_wrapper": {
+                                                                "id": 6
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "m_local_position_": {
+                                                    "v.x": 0.0,
+                                                    "v.y": 0.0,
+                                                    "v.z": 0.0
+                                                },
+                                                "m_local_rotation_": {
+                                                    "v.x": 0.0,
+                                                    "v.y": 0.0,
+                                                    "v.z": 0.0,
+                                                    "v.w": 1.0
+                                                },
+                                                "m_local_scale_": {
+                                                    "v.x": 1.0,
+                                                    "v.y": 1.0,
+                                                    "v.z": 1.0
+                                                },
+                                                "m_parent_": {
+                                                    "locked_ptr": {
+                                                        "polymorphic_id": 0
+                                                    }
+                                                },
+                                                "m_children_": []
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "polymorphic_id": 2147483652,
+                                        "polymorphic_name": "SlimeBoom::TitleSceneController",
+                                        "ptr_wrapper": {
+                                            "id": 2147483656,
+                                            "data": {
+                                                "cereal_class_version": 1,
+                                                "value0": {
+                                                    "value0": {
+                                                        "m_guid_": "c63aa84e-5904-4878-b8af-15b9201952e8",
+                                                        "m_name_": "TitleSceneController"
+                                                    },
+                                                    "value1": {
+                                                        "locked_ptr": {
+                                                            "polymorphic_id": 1073741824,
+                                                            "ptr_wrapper": {
+                                                                "id": 6
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "m_scene_transition_controller_": {
+                                                    "value0": {
+                                                        "m_guid_": "161f0eec-6aac-43ec-acc4-faf0cec13c26",
+                                                        "m_type_": 2,
+                                                        "m_stored_reference_": {
+                                                            "polymorphic_id": 0
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "polymorphic_id": 2147483653,
+                                        "polymorphic_name": "SlimeBoom::SceneTransitionController",
+                                        "ptr_wrapper": {
+                                            "id": 2147483657,
+                                            "data": {
+                                                "cereal_class_version": 1,
+                                                "value0": {
+                                                    "value0": {
+                                                        "m_guid_": "161f0eec-6aac-43ec-acc4-faf0cec13c26",
+                                                        "m_name_": "SceneTransitionController"
+                                                    },
+                                                    "value1": {
+                                                        "locked_ptr": {
+                                                            "polymorphic_id": 1073741824,
+                                                            "ptr_wrapper": {
+                                                                "id": 6
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "m_scene_path_": "Resources/Scenes/Game/game.scene"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "polymorphic_id": 1073741824,
+                        "ptr_wrapper": {
+                            "id": 2147483658,
+                            "data": {
+                                "value0": {
+                                    "m_guid_": "dddc31b4-bfc5-4afd-b04c-f3bfd267290e",
+                                    "m_name_": "Canvas"
+                                },
+                                "m_is_active_self_": true,
+                                "m_components_": [
+                                    {
+                                        "polymorphic_id": 1,
+                                        "ptr_wrapper": {
+                                            "id": 2147483659,
+                                            "data": {
+                                                "value0": {
+                                                    "value0": {
+                                                        "m_guid_": "8700eee4-a34a-461e-8948-36a6ffe4af22",
+                                                        "m_name_": "Transform"
+                                                    },
+                                                    "value1": {
+                                                        "locked_ptr": {
+                                                            "polymorphic_id": 1073741824,
+                                                            "ptr_wrapper": {
+                                                                "id": 10
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "m_local_position_": {
+                                                    "v.x": 0.0,
+                                                    "v.y": 0.0,
+                                                    "v.z": 0.0
+                                                },
+                                                "m_local_rotation_": {
+                                                    "v.x": 0.0,
+                                                    "v.y": 0.0,
+                                                    "v.z": 0.0,
+                                                    "v.w": 1.0
+                                                },
+                                                "m_local_scale_": {
+                                                    "v.x": 1.0,
+                                                    "v.y": 1.0,
+                                                    "v.z": 1.0
+                                                },
+                                                "m_parent_": {
+                                                    "locked_ptr": {
+                                                        "polymorphic_id": 0
+                                                    }
+                                                },
+                                                "m_children_": [
+                                                    {
+                                                        "polymorphic_id": 1073741824,
+                                                        "ptr_wrapper": {
+                                                            "id": 2147483660,
+                                                            "data": {
+                                                                "value0": {
+                                                                    "value0": {
+                                                                        "m_guid_": "d3f0ceeb-50b7-4d82-b23e-36bf8477f20c",
+                                                                        "m_name_": "Transform"
+                                                                    },
+                                                                    "value1": {
+                                                                        "locked_ptr": {
+                                                                            "polymorphic_id": 1073741824,
+                                                                            "ptr_wrapper": {
+                                                                                "id": 2147483661,
+                                                                                "data": {
+                                                                                    "value0": {
+                                                                                        "m_guid_": "58676f94-c7a7-4435-87d7-c1eb21c3b6db",
+                                                                                        "m_name_": "TitleLogo"
+                                                                                    },
+                                                                                    "m_is_active_self_": true,
+                                                                                    "m_components_": [
+                                                                                        {
+                                                                                            "polymorphic_id": 1,
+                                                                                            "ptr_wrapper": {
+                                                                                                "id": 12
+                                                                                            }
+                                                                                        },
+                                                                                        {
+                                                                                            "polymorphic_id": 2147483654,
+                                                                                            "polymorphic_name": "engine::Image",
+                                                                                            "ptr_wrapper": {
+                                                                                                "id": 2147483662,
+                                                                                                "data": {
+                                                                                                    "cereal_class_version": 2,
+                                                                                                    "value0": {
+                                                                                                        "cereal_class_version": 1,
+                                                                                                        "value0": {
+                                                                                                            "value0": {
+                                                                                                                "m_guid_": "aa875e89-45a8-4ccf-9846-809ba249f67e",
+                                                                                                                "m_name_": "Image"
+                                                                                                            },
+                                                                                                            "value1": {
+                                                                                                                "locked_ptr": {
+                                                                                                                    "polymorphic_id": 1073741824,
+                                                                                                                    "ptr_wrapper": {
+                                                                                                                        "id": 13
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        },
+                                                                                                        "m_canvas_": {
+                                                                                                            "value0": {
+                                                                                                                "m_guid_": "11ae32f1-1ef8-4624-bd76-b8e59a65472c",
+                                                                                                                "m_type_": 2,
+                                                                                                                "m_stored_reference_": {
+                                                                                                                    "polymorphic_id": 0
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    },
+                                                                                                    "value1": {
+                                                                                                        "value0": {
+                                                                                                            "m_guid_": "81cb4785-3b89-40b7-8afe-00a8501e60c5",
+                                                                                                            "m_type_": 2,
+                                                                                                            "m_stored_reference_": {
+                                                                                                                "polymorphic_id": 0
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        },
+                                                                                        {
+                                                                                            "polymorphic_id": 2147483655,
+                                                                                            "polymorphic_name": "engine::RectTransform",
+                                                                                            "ptr_wrapper": {
+                                                                                                "id": 2147483663,
+                                                                                                "data": {
+                                                                                                    "cereal_class_version": 1,
+                                                                                                    "value0": {
+                                                                                                        "value0": {
+                                                                                                            "m_guid_": "c04aaa43-f4ce-4266-80fc-4d7522932e3a",
+                                                                                                            "m_name_": "RectTransform"
+                                                                                                        },
+                                                                                                        "value1": {
+                                                                                                            "locked_ptr": {
+                                                                                                                "polymorphic_id": 1073741824,
+                                                                                                                "ptr_wrapper": {
+                                                                                                                    "id": 13
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    },
+                                                                                                    "anchor_min": {
+                                                                                                        "v.x": 0.5,
+                                                                                                        "v.y": 0.5
+                                                                                                    },
+                                                                                                    "anchor_max": {
+                                                                                                        "v.x": 0.5,
+                                                                                                        "v.y": 0.5
+                                                                                                    },
+                                                                                                    "pivot": {
+                                                                                                        "v.x": 0.0,
+                                                                                                        "v.y": 0.0
+                                                                                                    },
+                                                                                                    "size_delta": {
+                                                                                                        "v.x": 798.0,
+                                                                                                        "v.y": 131.0
+                                                                                                    },
+                                                                                                    "anchored_position": {
+                                                                                                        "v.x": 0.0,
+                                                                                                        "v.y": 300.0
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                },
+                                                                "m_local_position_": {
+                                                                    "v.x": 0.0,
+                                                                    "v.y": 0.0,
+                                                                    "v.z": 0.0
+                                                                },
+                                                                "m_local_rotation_": {
+                                                                    "v.x": 0.0,
+                                                                    "v.y": 0.0,
+                                                                    "v.z": 0.0,
+                                                                    "v.w": 1.0
+                                                                },
+                                                                "m_local_scale_": {
+                                                                    "v.x": 1.0,
+                                                                    "v.y": 1.0,
+                                                                    "v.z": 1.0
+                                                                },
+                                                                "m_parent_": {
+                                                                    "locked_ptr": {
+                                                                        "polymorphic_id": 1073741824,
+                                                                        "ptr_wrapper": {
+                                                                            "id": 11
+                                                                        }
+                                                                    }
+                                                                },
+                                                                "m_children_": []
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "polymorphic_id": 2147483656,
+                                        "polymorphic_name": "engine::Canvas",
+                                        "ptr_wrapper": {
+                                            "id": 2147483664,
+                                            "data": {
+                                                "cereal_class_version": 1,
+                                                "value0": {
+                                                    "value0": {
+                                                        "m_guid_": "11ae32f1-1ef8-4624-bd76-b8e59a65472c",
+                                                        "m_name_": "Canvas"
+                                                    },
+                                                    "value1": {
+                                                        "locked_ptr": {
+                                                            "polymorphic_id": 1073741824,
+                                                            "ptr_wrapper": {
+                                                                "id": 10
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "m_canvas_size_": {
+                                                    "v.x": 1920.0,
+                                                    "v.y": 1065.0
+                                                },
+                                                "m_target_camera_": {
+                                                    "value0": {
+                                                        "m_guid_": "0be27786-af8a-4118-aa12-63c4e56a8659",
+                                                        "m_type_": 2,
+                                                        "m_stored_reference_": {
+                                                            "polymorphic_id": 0
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "m_all_game_objects_": [
+                    {
+                        "polymorphic_id": 1073741824,
+                        "ptr_wrapper": {
+                            "id": 2
+                        }
+                    },
+                    {
+                        "polymorphic_id": 1073741824,
+                        "ptr_wrapper": {
+                            "id": 6
+                        }
+                    },
+                    {
+                        "polymorphic_id": 1073741824,
+                        "ptr_wrapper": {
+                            "id": 10
+                        }
+                    },
+                    {
+                        "polymorphic_id": 1073741824,
+                        "ptr_wrapper": {
+                            "id": 13
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

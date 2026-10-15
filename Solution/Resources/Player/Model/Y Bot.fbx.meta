@@ -1,0 +1,32 @@
+{
+    "data": {},
+    "guid": "b93a08e5-db71-4383-92ca-b3dc1c0749e4",
+    "type": ".fbx",
+    "objects": [
+        {
+            "guid": "6bb05ec8-2fb9-4fab-8359-897e75a9124b",
+            "name": "Alpha_Joints",
+            "type_hint": "class engine::Mesh"
+        },
+        {
+            "guid": "069fc8b6-bf3a-47df-a703-35560852f752",
+            "name": "Alpha_Joints_MAT",
+            "type_hint": "class engine::Material"
+        },
+        {
+            "guid": "d6b308f4-0acf-4226-9e56-21d7d2f14265",
+            "name": "Alpha_Surface",
+            "type_hint": "class engine::Mesh"
+        },
+        {
+            "guid": "8c0e6a4c-8ecf-404a-8f89-79a23763fb6a",
+            "name": "Alpha_Body_MAT",
+            "type_hint": "class engine::Material"
+        },
+        {
+            "guid": "9063ba70-7368-41c3-880b-d4ca26a839e7",
+            "name": "mixamo.com",
+            "type_hint": "class engine::AnimationClip"
+        }
+    ]
+}

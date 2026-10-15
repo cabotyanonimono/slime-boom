@@ -1,0 +1,62 @@
+#include "engine.hlsli"
+#include "slime_death_particle.hlsli"
+
+cbuffer DeathParticleParams : register(b3)
+{
+    float life_time;
+    float speed_min;
+    float speed_max;
+    float gravity;
+    float drag;
+    float bounce;
+}
+
+RWStructuredBuffer<SlimeDeathParticle> slime_death_particles : register(u1);
+
+float OrDefault(float value, float default_value)
+{
+    return value > 0.0f ? value : default_value;
+}
+
+[numthreads(64, 1, 1)]
+void compute(uint3 globalID : SV_DispatchThreadID)
+{
+    uint index = globalID.x;
+    if (index >= DEATH_PARTICLE_MAX)
+        return;
+
+    SlimeDeathParticle p = slime_death_particles[index];
+    if (p.state == DEATH_PARTICLE_STATE_DEAD)
+        return;
+
+    float lifetime = OrDefault(life_time, 0.6f);
+
+    if (p.state == DEATH_PARTICLE_STATE_SPAWNED)
+    {
+        p.velocity *= lerp(OrDefault(speed_min, 4.0f), OrDefault(speed_max, 9.0f), p.random);
+        p.state = DEATH_PARTICLE_STATE_ALIVE;
+    }
+
+    p.age += deltatime;
+    if (p.age >= lifetime)
+    {
+        p.state = DEATH_PARTICLE_STATE_DEAD;
+        p.life_ratio = 1.0f;
+        slime_death_particles[index] = p;
+        return;
+    }
+
+    p.velocity.y -= OrDefault(gravity, 20.0f) * deltatime;
+    p.velocity.xz *= saturate(1.0f - OrDefault(drag, 2.0f) * deltatime);
+    p.position += p.velocity * deltatime;
+
+    if (p.position.y < p.floor_y)
+    {
+        p.position.y = p.floor_y;
+        p.velocity.y = -p.velocity.y * OrDefault(bounce, 0.35f);
+        p.velocity.xz *= 0.7f;
+    }
+
+    p.life_ratio = p.age / lifetime;
+    slime_death_particles[index] = p;
+}

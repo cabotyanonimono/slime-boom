@@ -1,0 +1,27 @@
+{
+    "guid": "a354145d-0449-4d47-b1a6-db674cef5960",
+    "type": ".fbx",
+    "data": {},
+    "objects": [
+        {
+            "guid": "ff516a39-1c33-4d4b-a809-f53cb5bcdba0",
+            "name": "Cube",
+            "type_hint": "class engine::Mesh"
+        },
+        {
+            "guid": "e7360cb0-f1d1-47e3-a1da-a1fa5ed34c7f",
+            "name": "FirstMaterial",
+            "type_hint": "class engine::Material"
+        },
+        {
+            "guid": "6969e390-55e3-4ee1-a3e9-1de9bbd4226f",
+            "name": "SecondMaterial",
+            "type_hint": "class engine::Material"
+        },
+        {
+            "guid": "193af854-a358-415d-bd5b-de79ecc63588",
+            "name": "ThirdMaterial",
+            "type_hint": "class engine::Material"
+        }
+    ]
+}

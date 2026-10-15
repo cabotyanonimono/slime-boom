@@ -1,0 +1,9 @@
+{
+    "data": {
+        "shader_meta": "{\n\"value0\": {\n\"polymorphic_id\": 1073741824,\n\"ptr_wrapper\": {\n\"id\": 2147483649,\n\"data\": {\n\"cereal_class_version\": 1,\n\"value0\": {\n\"cereal_class_version\": 1,\n\"m_guid_\": \"f2921c8a-f5ec-4581-9ab1-6d7fab4ae5d4\",\n\"m_name_\": \"LineShader.hlsl\"\n},\n\"parameters\": [\n{\n\"cereal_class_version\": 1,\n\"index\": 1,\n\"name\": \"Transform\",\n\"display_name\": \"Transform\",\n\"is_unordered_access\": false,\n\"total_size\": 128,\n\"variables\": [\n{\n\"cereal_class_version\": 0,\n\"name\": \"View\",\n\"data_type\": 5\n},\n{\n\"name\": \"Proj\",\n\"data_type\": 5\n}\n]\n}\n],\n\"m_shader_settings_\": {\n\"cereal_class_version\": 5,\n\"z_test\": 0,\n\"z_write\": 1,\n\"cull\": 0,\n\"blend_src\": 0,\n\"blend_dst\": 0,\n\"blend_op\": 0,\n\"color_mask\": 0,\n\"alpha_to_mask\": false,\n\"use_blend\": false,\n\"primitive_topology_type\": 2\n}\n}\n}\n}\n}",
+        "shader_meta_version": 3
+    },
+    "guid": "f2921c8a-f5ec-4581-9ab1-6d7fab4ae5d4",
+    "type": ".hlsl",
+    "objects": []
+}

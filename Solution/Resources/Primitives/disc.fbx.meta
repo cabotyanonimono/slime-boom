@@ -1,0 +1,32 @@
+{
+    "data": {},
+    "guid": "af172a81-3ea0-4ed7-b09f-ef95965a4bec",
+    "type": ".fbx",
+    "objects": [
+        {
+            "guid": "db78cddd-e955-465e-a621-4c42d87a6505",
+            "name": "DefaultMaterial",
+            "type_hint": "class engine::Material"
+        },
+        {
+            "guid": "99502afc-8e99-41ff-9e39-6a97ba34e447",
+            "name": "Circle",
+            "type_hint": "class engine::Mesh"
+        },
+        {
+            "guid": "cc1b3c74-aa5a-46ef-b2e7-f5732ec81f3e",
+            "name": "disc.fbm\\aura.png",
+            "type_hint": "class engine::Texture2D"
+        },
+        {
+            "guid": "f456b343-45ec-4b47-8050-b662c30d168c",
+            "name": "Material.002",
+            "type_hint": "class engine::Material"
+        },
+        {
+            "guid": "15b80382-c756-4e5d-afb1-627905005ff1",
+            "name": "Plane",
+            "type_hint": "class engine::Mesh"
+        }
+    ]
+}

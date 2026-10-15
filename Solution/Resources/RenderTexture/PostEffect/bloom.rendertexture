@@ -1,0 +1,24 @@
+{
+    "value0": {
+        "polymorphic_id": 1073741824,
+        "ptr_wrapper": {
+            "id": 2147483649,
+            "data": {
+                "cereal_class_version": 1,
+                "value0": {
+                    "cereal_class_version": 1,
+                    "value0": {
+                        "cereal_class_version": 1,
+                        "m_guid_": "8e8185d0-dc77-4527-a31e-b69336aec5b9",
+                        "m_name_": "bloom.rendertexture"
+                    },
+                    "width": 1920,
+                    "height": 1065,
+                    "format": 28,
+                    "mip_level": 0
+                },
+                "m_allow_uav_": true
+            }
+        }
+    }
+}

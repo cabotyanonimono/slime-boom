@@ -1,0 +1,72 @@
+{
+    "data": {},
+    "guid": "e537146c-fd8c-4672-9c74-91ff14ed7e9f",
+    "type": ".fbx",
+    "objects": [
+        {
+            "guid": "947a6451-9c6b-4164-a3c1-c4f8aa81ff1f",
+            "name": "../../../../home/app/mixamo-mini/tmp/skins_af6748e5-4780-47ed-a326-5bac88a8171e.fbm/Paladin_diffuse.png",
+            "type_hint": "class engine::Texture2D"
+        },
+        {
+            "guid": "f3afd477-9671-488b-9108-8d0807704e57",
+            "name": "../../../../home/app/mixamo-mini/tmp/skins_af6748e5-4780-47ed-a326-5bac88a8171e.fbm/Paladin_normal.png",
+            "type_hint": "class engine::Texture2D"
+        },
+        {
+            "guid": "cdb24f0e-e17d-4863-b34e-082947a98a4f",
+            "name": "../../../../home/app/mixamo-mini/tmp/skins_af6748e5-4780-47ed-a326-5bac88a8171e.fbm/Paladin_specular.png",
+            "type_hint": "class engine::Texture2D"
+        },
+        {
+            "guid": "98eeeeac-a703-476d-85a2-653691f4d7c6",
+            "name": "Paladin_MAT",
+            "type_hint": "class engine::Material"
+        },
+        {
+            "guid": "d1439507-7d2a-4443-993b-ac8c17c32114",
+            "name": "Paladin_J_Nordstrom_Shield",
+            "type_hint": "class engine::Mesh"
+        },
+        {
+            "guid": "9aace858-a61a-4f50-a27e-9ff874575f0f",
+            "name": "Paladin_J_Nordstrom_Sword",
+            "type_hint": "class engine::Mesh"
+        },
+        {
+            "guid": "6d7af464-e633-40f1-87f0-561424d65106",
+            "name": "Paladin_J_Nordstrom_Helmet",
+            "type_hint": "class engine::Mesh"
+        },
+        {
+            "guid": "50e4d6db-1d4d-4585-8fb9-03ec917e5818",
+            "name": "Paladin_J_Nordstrom",
+            "type_hint": "class engine::Mesh"
+        },
+        {
+            "guid": "9166d2d2-0d63-4a0d-a9cd-ed785b9087ef",
+            "name": "mixamo.com",
+            "type_hint": "class engine::AnimationClip"
+        },
+        {
+            "guid": "7a335e08-6299-4ebb-b9a3-303dda646e4d",
+            "name": "paladin.fbm\\Paladin_diffuse.png",
+            "type_hint": "class engine::Texture2D"
+        },
+        {
+            "guid": "0b959508-f039-404c-aec8-9e0700078a4d",
+            "name": "paladin.fbm\\Paladin_normal.png",
+            "type_hint": "class engine::Texture2D"
+        },
+        {
+            "guid": "dfcaa1cd-6613-4bd7-8bd8-c1eb2fb25a80",
+            "name": "Armature|mixamo.com",
+            "type_hint": "class engine::AnimationClip"
+        },
+        {
+            "guid": "df3d3c0e-7d33-45de-96f1-ca67bccb19c5",
+            "name": "Armature|Armature|mixamo.com",
+            "type_hint": "class engine::AnimationClip"
+        }
+    ]
+}
