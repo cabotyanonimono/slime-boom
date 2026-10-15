@@ -1,7 +1,9 @@
 ﻿#include "pch.h"
+#include <cmath>
 #include "clear_scene_controller.h"
 
 #include "engine.h"
+#include "engine_time.h"
 #include "gui.h"
 #include "input.h"
 
@@ -53,13 +55,50 @@ engine::Task ClearSceneController::ScoreBoardScaleChangeMotion() const
     co_return;
 }
 
-engine::Task ClearSceneController::ShowClearScene() const
+engine::Task ClearSceneController::CountUpResultValues() const
 {
+    const float duration = (std::max)(m_count_up_duration_sec_, 0.01f);
+    float elapsed = 0.0f;
+
+    while (elapsed < duration)
+    {
+        elapsed += engine::Time::Get()->UnscaledDeltaTime();
+        const float t = std::min(elapsed / duration, 1.0f);
+        const float inv = 1.0f - t;
+        const float eased = 1.0f - inv * inv * inv;
+
+        m_eliminated_slime_count_->string = std::to_string(static_cast<int>(static_cast<float>(m_target_eliminate_count_) * eased));
+        m_level_->string = std::to_string(static_cast<uint32_t>(static_cast<float>(m_target_level_) * eased));
+        co_await engine::WaitForNextFrame();
+    }
+
+    m_eliminated_slime_count_->string = std::to_string(m_target_eliminate_count_);
+    m_level_->string = std::to_string(m_target_level_);
+
+    co_return;
+}
+
+engine::Task ClearSceneController::ShowClearScene()
+{
+    m_eliminated_slime_count_->string = "0";
+    m_level_->string = "0";
+
     co_await ShowClearSceneBackground();
 
     co_await ScoreBoardScaleChangeMotion();
 
+    co_await CountUpResultValues();
+
+    StartIdleMotion();
+
     co_return;
+}
+
+void ClearSceneController::StartIdleMotion()
+{
+    m_idle_base_scale_ = m_clear_text_->scale;
+    m_idle_elapsed_sec_ = 0.0f;
+    m_is_idle_motion_active_ = true;
 }
 
 void ClearSceneController::OnInspectorGui()
@@ -75,6 +114,9 @@ void ClearSceneController::OnInspectorGui()
     engine::Gui::PropertyField("Quit Scene Controller", m_quit_scene_transition_controller_);
     engine::Gui::PropertyField("Restart Button", m_restart_button_);
     engine::Gui::PropertyField("Quit Button", m_quit_button_);
+    engine::Gui::PropertyField("Count Up Duration Sec", m_count_up_duration_sec_);
+    engine::Gui::PropertyField("Idle Pulse Amplitude", m_idle_pulse_amplitude_);
+    engine::Gui::PropertyField("Idle Pulse Period Sec", m_idle_pulse_period_sec_);
 }
 
 void ClearSceneController::OnStart()
@@ -85,7 +127,24 @@ void ClearSceneController::OnStart()
 
 void ClearSceneController::OnEnabled()
 {
+    m_is_idle_motion_active_ = false;
     engine::Engine::coroutine.Start(ShowClearScene());
+}
+
+void ClearSceneController::OnUpdate()
+{
+    if (!m_is_idle_motion_active_)
+        return;
+
+    constexpr float kTwoPi = 6.28318530718f;
+    const float period = (std::max)(m_idle_pulse_period_sec_, 0.01f);
+
+    m_idle_elapsed_sec_ += engine::Time::Get()->UnscaledDeltaTime();
+    m_idle_elapsed_sec_ = std::fmod(m_idle_elapsed_sec_, period);
+
+    const float scale = m_idle_base_scale_ * (1.0f + m_idle_pulse_amplitude_ * std::sin(kTwoPi * m_idle_elapsed_sec_ / period));
+    m_clear_text_->scale = scale;
+    m_game_over_text_->scale = scale;
 }
 
 void ClearSceneController::OnDestroy()
@@ -96,10 +155,10 @@ void ClearSceneController::OnDestroy()
     buff_data->SetFloatData("alpha", 0.0f);
 }
 
-void ClearSceneController::SetClearSceneData(const ClearSceneData& clear_scene_data) const
+void ClearSceneController::SetClearSceneData(const ClearSceneData& clear_scene_data)
 {
-    m_eliminated_slime_count_->string = std::to_string(clear_scene_data.eliminate_count);
-    m_level_->string = std::to_string(clear_scene_data.player_data.level);
+    m_target_eliminate_count_ = clear_scene_data.eliminate_count;
+    m_target_level_ = clear_scene_data.player_data.level;
     m_game_over_text_->GameObject()->SetActive(!clear_scene_data.is_game_cleared);
     m_clear_text_->GameObject()->SetActive(clear_scene_data.is_game_cleared);
 }
