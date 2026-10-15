@@ -13,6 +13,7 @@
 #include "SlimeBoom/Component/clear_scene_controller.h"
 #include "SlimeBoom/Component/game_manager.h"
 #include "SlimeBoom/Component/object_disabler.h"
+#include "SlimeBoom/Component/result_rank.h"
 #include "SlimeBoom/Component/scene_transition_controller.h"
 #include "SlimeBoom/Component/set_null_render_texture_component.h"
 #include "SlimeBoom/Component/texture_cube_recreator.h"
@@ -92,6 +93,7 @@ void ComponentRegistry::RegisterComponents()
     ADD_COMPONENT(UiHoverScaleEffect, "UI");
     ADD_COMPONENT(ObjectDisabler, "Debug");
     ADD_COMPONENT(ClearSceneController, "ClearScene");
+    ADD_COMPONENT(ResultRank, "ClearScene");
     ADD_COMPONENT(PlayerAuraController, "Player");
     ADD_COMPONENT(SoundManagerComponent, "Sound");
     ADD_COMPONENT(SlimeTakeDamageEventComponent, "Slime");

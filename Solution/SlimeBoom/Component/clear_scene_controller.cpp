@@ -82,12 +82,17 @@ engine::Task ClearSceneController::ShowClearScene()
 {
     m_eliminated_slime_count_->string = "0";
     m_level_->string = "0";
+    if (const auto result_rank = m_result_rank_.CastedLock())
+        result_rank->Hide();
 
     co_await ShowClearSceneBackground();
 
     co_await ScoreBoardScaleChangeMotion();
 
     co_await CountUpResultValues();
+
+    if (const auto result_rank = m_result_rank_.CastedLock())
+        co_await result_rank->Show(m_target_eliminate_count_);
 
     StartIdleMotion();
 
@@ -117,6 +122,7 @@ void ClearSceneController::OnInspectorGui()
     engine::Gui::PropertyField("Count Up Duration Sec", m_count_up_duration_sec_);
     engine::Gui::PropertyField("Idle Pulse Amplitude", m_idle_pulse_amplitude_);
     engine::Gui::PropertyField("Idle Pulse Period Sec", m_idle_pulse_period_sec_);
+    engine::Gui::PropertyField("Result Rank", m_result_rank_);
 }
 
 void ClearSceneController::OnStart()

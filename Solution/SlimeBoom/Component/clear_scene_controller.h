@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "clear_scene_data.h"
+#include "result_rank.h"
 #include "scene_transition_controller.h"
 #include "scene_transition_executor.h"
 #include "../UI/ui_button.h"
@@ -44,6 +45,9 @@ class ClearSceneController : public engine::Component
 
     /// 余韻の動きを開始する。開始時点の見出しの大きさを基準にする。
     void StartIdleMotion();
+
+    /// 評価ランクの判定と表示。カウントアップのあとに表示する
+    engine::AssetPtr<ResultRank> m_result_rank_;
 
     /// 背景を徐々に不透明にしながら表示するコルーチン。
     engine::Task ShowClearSceneBackground() const;
@@ -134,8 +138,32 @@ public:
                 CEREAL_NVP(m_idle_pulse_period_sec_)
             );
         }
+
+        // v10ではランクの設定をこのクラスで持っていた。ResultRankに移したので、v10のシーンからは読み捨てる
+        if (version == 10)
+        {
+            engine::AssetPtr<engine::TextRenderer> unused_rank_text;
+            int unused_threshold = 0;
+            float unused_float = 0.0f;
+            ar(
+                cereal::make_nvp("m_rank_text_", unused_rank_text),
+                cereal::make_nvp("m_rank_s_threshold_", unused_threshold),
+                cereal::make_nvp("m_rank_a_threshold_", unused_threshold),
+                cereal::make_nvp("m_rank_b_threshold_", unused_threshold),
+                cereal::make_nvp("m_rank_c_threshold_", unused_threshold),
+                cereal::make_nvp("m_rank_pop_scale_", unused_float),
+                cereal::make_nvp("m_rank_pop_duration_sec_", unused_float)
+            );
+        }
+
+        if (version >= 11)
+        {
+            ar(
+                CEREAL_NVP(m_result_rank_)
+            );
+        }
     }
 };
 }
 
-CEREAL_CLASS_VERSION(SlimeBoom::ClearSceneController, 9)
+CEREAL_CLASS_VERSION(SlimeBoom::ClearSceneController, 11)
