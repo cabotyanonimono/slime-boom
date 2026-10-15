@@ -82,7 +82,6 @@ engine::Task ClearSceneController::ShowClearScene()
 {
     m_eliminated_slime_count_->string = "0";
     m_level_->string = "0";
-    // ランクはカウントアップが終わるまで隠しておく
     if (const auto result_rank = m_result_rank_.CastedLock())
         result_rank->Hide();
 
