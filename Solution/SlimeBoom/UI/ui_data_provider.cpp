@@ -35,7 +35,7 @@ std::array<std::shared_ptr<CardBase>, CardController::kCardCount> UiDataProvider
 
 float UiDataProvider::GetAvoidCooldownRatio() const
 {
-    return (1.0f - m_player_->GetAvoidTimer()) / m_player_->GetAvoidCooldown();
+    return 1.0f - ((m_player_->GetAvoidTimer()) / m_player_->GetAvoidCooldown());
 }
 }
 
