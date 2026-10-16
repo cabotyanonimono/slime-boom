@@ -31,4 +31,17 @@ float CalcSpecularPowerWithSpecularMap(Texture2D specular_map, float2 uv, float3
     return spec * n_dot_l * spec_val;
 }
 
+float3x3 LookRotation(float3 forward, float3 up)
+{
+    float3 z = forward;
+    float3 x = normalize(cross(up, z));
+    float3 y = cross(z, x);
+
+    return float3x3(
+        x.x, y.x, z.x,
+        x.y, y.y, z.y,
+        x.z, y.z, z.z
+    );
+}
+
 #endif
