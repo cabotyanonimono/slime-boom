@@ -45,10 +45,12 @@ void SlimeBoom::AvoidCooldownGauge::OnUpdate()
         m_is_transparent_ = false;
         m_current_alpha_ = 1.0f;
         m_gauge_->SetAlpha(m_current_alpha_);
+        m_gauge_transparent_task_token_.Cancel();
     }
     if (!m_is_transparent_ && ratio >= 1.0f)
     {
         m_is_transparent_ = true;
+        m_gauge_transparent_task_token_ = CancellationTokenSource();
         engine::Engine::coroutine.Start(GaugeTransparentTask(), m_gauge_transparent_task_token_.GetToken());
     }
 }
