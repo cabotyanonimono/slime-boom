@@ -17,7 +17,7 @@
                         "data": {
                             "cereal_class_version": 2,
                             "value0": {
-                                "m_guid_": "9150157d-7e30-4ed7-8a4e-6420a70f2968",
+                                "m_guid_": "efd465df-78f5-4ac1-9334-c14f0f8766d9",
                                 "m_name_": "Material Block of slime.material"
                             },
                             "m_buffer_data_": [
@@ -61,14 +61,14 @@
                                                 "cereal_class_version": 1,
                                                 "value0": {
                                                     "parameter": {
-                                                        "index": 6,
+                                                        "index": 8,
                                                         "name": "env_texture",
                                                         "display_name": "env_texture",
                                                         "is_unordered_access": false,
                                                         "total_size": 0,
                                                         "variables": []
                                                     },
-                                                    "upload_type": -1427240480
+                                                    "upload_type": 1087034608
                                                 },
                                                 "m_textures_": {
                                                     "value0": {
@@ -303,7 +303,7 @@
                                                         "total_size": 0,
                                                         "variables": []
                                                     },
-                                                    "upload_type": 0
+                                                    "upload_type": 695335472
                                                 },
                                                 "m_stride_": 4,
                                                 "m_count_": 1,
@@ -313,7 +313,7 @@
                                     }
                                 },
                                 {
-                                    "key": "MainTex",
+                                    "key": "base_texture",
                                     "value": {
                                         "polymorphic_id": 2147483652,
                                         "polymorphic_name": "engine::TextureBufferData",
@@ -324,8 +324,8 @@
                                                 "value0": {
                                                     "parameter": {
                                                         "index": 5,
-                                                        "name": "MainTex",
-                                                        "display_name": "MainTex",
+                                                        "name": "base_texture",
+                                                        "display_name": "base_texture",
                                                         "is_unordered_access": false,
                                                         "total_size": 0,
                                                         "variables": []
@@ -346,11 +346,73 @@
                                     }
                                 },
                                 {
+                                    "key": "speed_texture",
+                                    "value": {
+                                        "polymorphic_id": 4,
+                                        "ptr_wrapper": {
+                                            "id": 2147483656,
+                                            "data": {
+                                                "value0": {
+                                                    "parameter": {
+                                                        "index": 6,
+                                                        "name": "speed_texture",
+                                                        "display_name": "speed_texture",
+                                                        "is_unordered_access": false,
+                                                        "total_size": 0,
+                                                        "variables": []
+                                                    },
+                                                    "upload_type": 0
+                                                },
+                                                "m_texture_": {
+                                                    "value0": {
+                                                        "m_guid_": "f5cb40d7-36e6-4f67-9cea-565fe2c1fad4",
+                                                        "m_type_": 2,
+                                                        "m_stored_reference_": {
+                                                            "polymorphic_id": 0
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    "key": "tank_texture",
+                                    "value": {
+                                        "polymorphic_id": 4,
+                                        "ptr_wrapper": {
+                                            "id": 2147483657,
+                                            "data": {
+                                                "value0": {
+                                                    "parameter": {
+                                                        "index": 7,
+                                                        "name": "tank_texture",
+                                                        "display_name": "tank_texture",
+                                                        "is_unordered_access": false,
+                                                        "total_size": 0,
+                                                        "variables": []
+                                                    },
+                                                    "upload_type": 0
+                                                },
+                                                "m_texture_": {
+                                                    "value0": {
+                                                        "m_guid_": "1159ba98-4db2-43bd-bf4c-741e676653a8",
+                                                        "m_type_": 2,
+                                                        "m_stored_reference_": {
+                                                            "polymorphic_id": 0
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                {
                                     "key": "ShadowCascadeSlices",
                                     "value": {
                                         "polymorphic_id": 3,
                                         "ptr_wrapper": {
-                                            "id": 2147483656,
+                                            "id": 2147483658,
                                             "data": {
                                                 "value0": {
                                                     "parameter": {
@@ -404,7 +466,7 @@
                                     "value": {
                                         "polymorphic_id": 3,
                                         "ptr_wrapper": {
-                                            "id": 2147483657,
+                                            "id": 2147483659,
                                             "data": {
                                                 "value0": {
                                                     "parameter": {
@@ -420,7 +482,7 @@
                                                             }
                                                         ]
                                                     },
-                                                    "upload_type": 1663196270
+                                                    "upload_type": 0
                                                 },
                                                 "m_data_type_offset_pairs_": [
                                                     {
@@ -446,7 +508,7 @@
                                     "value": {
                                         "polymorphic_id": 3,
                                         "ptr_wrapper": {
-                                            "id": 2147483658,
+                                            "id": 2147483660,
                                             "data": {
                                                 "value0": {
                                                     "parameter": {
@@ -462,7 +524,7 @@
                                                             }
                                                         ]
                                                     },
-                                                    "upload_type": 0
+                                                    "upload_type": -674268480
                                                 },
                                                 "m_data_type_offset_pairs_": [
                                                     {
@@ -478,14 +540,14 @@
                                                     0,
                                                     128,
                                                     63,
-                                                    0,
-                                                    0,
-                                                    0,
-                                                    0,
-                                                    0,
-                                                    0,
-                                                    0,
-                                                    0,
+                                                    64,
+                                                    35,
+                                                    111,
+                                                    62,
+                                                    64,
+                                                    35,
+                                                    111,
+                                                    62,
                                                     0,
                                                     0,
                                                     0,
@@ -500,7 +562,7 @@
                                     "value": {
                                         "polymorphic_id": 3,
                                         "ptr_wrapper": {
-                                            "id": 2147483659,
+                                            "id": 2147483661,
                                             "data": {
                                                 "value0": {
                                                     "parameter": {
@@ -550,7 +612,7 @@
                                     "value": {
                                         "polymorphic_id": 3,
                                         "ptr_wrapper": {
-                                            "id": 2147483660,
+                                            "id": 2147483662,
                                             "data": {
                                                 "value0": {
                                                     "parameter": {
@@ -592,7 +654,7 @@
                                     "value": {
                                         "polymorphic_id": 3,
                                         "ptr_wrapper": {
-                                            "id": 2147483661,
+                                            "id": 2147483663,
                                             "data": {
                                                 "value0": {
                                                     "parameter": {
@@ -608,7 +670,7 @@
                                                             }
                                                         ]
                                                     },
-                                                    "upload_type": 2687016
+                                                    "upload_type": 0
                                                 },
                                                 "m_data_type_offset_pairs_": [
                                                     {
@@ -622,8 +684,8 @@
                                                 "m_data_": [
                                                     0,
                                                     0,
-                                                    0,
-                                                    64
+                                                    128,
+                                                    63
                                                 ]
                                             }
                                         }

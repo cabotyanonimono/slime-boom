@@ -27,8 +27,10 @@ cbuffer Intensity : register(b8)
 }
 
 StructuredBuffer<SlimeData> slimes : register(t4);
-Texture2D MainTex : register (t5);
-TextureCube env_texture : register (t6);
+Texture2D base_texture : register (t5);
+Texture2D speed_texture : register (t6);
+Texture2D tank_texture : register (t7);
+TextureCube env_texture : register (t8);
 
 struct VSOutput
 {
@@ -55,12 +57,17 @@ VSOutput vrt(VSInput input, uint instance_id : SV_InstanceID)
     {
         local_pos.xyz *= 1.5f;
     }
-	//slimeを揺らす処理
-    local_pos.y += sin(time * 5.0f + input.pos.x + instance_id) * 0.15f;
+    
+    float3x3 rot = LookRotation(normalize(float3(slimes[instance_id].velocity.x, 0.0f, slimes[instance_id].velocity.z)), float3(0, 1, 0));
+	local_pos.z += sin(time * 5.0f + local_pos.y * 0.03f + instance_id) * 5.15f;
+	local_pos.y += sin(time * 5.0f + local_pos.z * 0.03f + instance_id) * 5.15f;
+	local_pos.xyz = mul(rot, local_pos.xyz);
 
-    local_pos.xyz += slimes[instance_id].position;
+    local_normal.xyz = mul(rot, local_normal.xyz);
 
     float4 world_pos = mul(World, local_pos);
+    world_pos.xyz += slimes[instance_id].position;
+
     float4 proj_pos = mul(Proj, mul(View, world_pos));
 
     float3 world_normal = mul((float3x3)World, local_normal);
@@ -92,15 +99,15 @@ float4 pix(VSOutput input) : SV_Target
 
     if (slimes[input.instance_id].slime_type == SLIME_TYPE::NORMAL)
         albedo_color = slimes[input.instance_id].damage_color_timer <= 0.0f
-                         ? MainTex.Sample(smp, input.uv)
+                         ? base_texture.Sample(smp, input.uv)
                          : damage_color;
     else if(slimes[input.instance_id].slime_type == SLIME_TYPE::SPEED)
         albedo_color = slimes[input.instance_id].damage_color_timer <= 0.0f
-                         ? float4(1.0f, 1.0f, 1.0f, 1.0f)
+                         ? speed_texture.Sample(smp, input.uv)
                          : damage_color;
     else if(slimes[input.instance_id].slime_type == SLIME_TYPE::TANK)
         albedo_color = slimes[input.instance_id].damage_color_timer <= 0.0f
-                                 ? float4(0.5f, 0.0f, 0.5f, 1.0f)
+                                 ? tank_texture.Sample(smp, input.uv)
                                  : damage_color;
 
     float3 direct_light;
