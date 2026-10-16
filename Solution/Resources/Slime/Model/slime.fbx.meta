@@ -1,16 +1,31 @@
 {
     "data": {},
-    "guid": "9e206d40-7269-499f-8704-8711aca8bdb4",
+    "guid": "3cdd57e6-8b01-4764-93a9-618064bca0fd",
     "type": ".fbx",
     "objects": [
         {
-            "guid": "f0e5ef84-031d-4a82-a830-d1af24161fee",
-            "name": "DefaultMaterial",
+            "guid": "216d2994-452b-4c55-a18f-f5db951a141b",
+            "name": "slime_basecolor.png",
+            "type_hint": "class engine::Texture2D"
+        },
+        {
+            "guid": "042cf427-2a50-4537-9286-629cbcaace67",
+            "name": "slime_normal.png",
+            "type_hint": "class engine::Texture2D"
+        },
+        {
+            "guid": "542494c4-24f5-46a6-81c7-255dfe8e1645",
+            "name": "slime_emissive.png",
+            "type_hint": "class engine::Texture2D"
+        },
+        {
+            "guid": "6017eb49-0c99-4a1e-b9bd-ff8080922f27",
+            "name": "SlimeBody",
             "type_hint": "class engine::Material"
         },
         {
-            "guid": "1c9a8b0b-2457-4317-bee9-33ed586e13a9",
-            "name": "Sphere",
+            "guid": "efe82d49-36db-46bd-ae1c-5945804a3e34",
+            "name": "Slime",
             "type_hint": "class engine::Mesh"
         }
     ]
