@@ -89,6 +89,8 @@ engine::Task ClearSceneController::ShowClearScene()
 
     co_await ScoreBoardScaleChangeMotion();
 
+    m_result_info_->SetActive(true);
+    
     co_await CountUpResultValues();
 
     if (const auto result_rank = m_result_rank_.CastedLock())
@@ -123,6 +125,7 @@ void ClearSceneController::OnInspectorGui()
     engine::Gui::PropertyField("Idle Pulse Amplitude", m_idle_pulse_amplitude_);
     engine::Gui::PropertyField("Idle Pulse Period Sec", m_idle_pulse_period_sec_);
     engine::Gui::PropertyField("Result Rank", m_result_rank_);
+    engine::Gui::PropertyField("Result Info", m_result_info_);
 }
 
 void ClearSceneController::OnStart()

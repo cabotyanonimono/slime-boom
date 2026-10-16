@@ -29,16 +29,14 @@ class ClearSceneController : public engine::Component
     engine::AssetPtr<SceneTransitionController> m_quit_scene_transition_controller_;
     engine::AssetPtr<ui::UIButton> m_restart_button_;
     engine::AssetPtr<ui::UIButton> m_quit_button_;
+    engine::AssetPtr<engine::GameObject> m_result_info_;
 
-    /// カウントアップの最終値(SetClearSceneDataで受け取る)
     int m_target_eliminate_count_ = 0;
     uint32_t m_target_level_ = 0;
-    /// 撃破数・レベルを0から最終値まで数え上げるのにかける時間(秒)
     float m_count_up_duration_sec_ = 1.0f;
 
-    /// 見出し(クリア/ゲームオーバー)をゆっくり拡縮させる余韻の動き
-    float m_idle_pulse_amplitude_ = 0.05f;  ///< 拡縮の幅(基準の大きさに対する割合)
-    float m_idle_pulse_period_sec_ = 2.0f;  ///< 1往復にかかる時間(秒)
+    float m_idle_pulse_amplitude_ = 0.05f;
+    float m_idle_pulse_period_sec_ = 2.0f;
     bool m_is_idle_motion_active_ = false;
     float m_idle_elapsed_sec_ = 0.0f;
     float m_idle_base_scale_ = 1.0f;
@@ -162,8 +160,15 @@ public:
                 CEREAL_NVP(m_result_rank_)
             );
         }
+        
+        if (version >= 12)
+        {
+            ar(
+                CEREAL_NVP(m_result_info_)
+            );
+        }
     }
 };
 }
 
-CEREAL_CLASS_VERSION(SlimeBoom::ClearSceneController, 11)
+CEREAL_CLASS_VERSION(SlimeBoom::ClearSceneController, 12)
