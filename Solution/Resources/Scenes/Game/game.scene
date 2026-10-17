@@ -14918,7 +14918,7 @@
                                                                                         "m_guid_": "aa3f144d-3186-4e4d-83c2-98c6d67ba4a7",
                                                                                         "m_name_": "Left Wall"
                                                                                     },
-                                                                                    "m_is_active_self_": false,
+                                                                                    "m_is_active_self_": true,
                                                                                     "m_components_": [
                                                                                         {
                                                                                             "polymorphic_id": 1,
@@ -15173,14 +15173,14 @@
                                                                                                                             }
                                                                                                                         },
                                                                                                                         "m_offset_": {
-                                                                                                                            "v.x": -1000.0,
+                                                                                                                            "v.x": -1007.0,
                                                                                                                             "v.y": 0.0,
                                                                                                                             "v.z": 0.0
                                                                                                                         },
                                                                                                                         "m_is_trigger_": false
                                                                                                                     },
                                                                                                                     "m_extents_": {
-                                                                                                                        "v.x": 1.0,
+                                                                                                                        "v.x": 8.0,
                                                                                                                         "v.y": 1000.0,
                                                                                                                         "v.z": 1000.0
                                                                                                                     }
@@ -15251,7 +15251,7 @@
                                                                                         "m_guid_": "a3bf3f26-7dd3-4e1d-8558-1024b62a5daf",
                                                                                         "m_name_": "Right Wall"
                                                                                     },
-                                                                                    "m_is_active_self_": false,
+                                                                                    "m_is_active_self_": true,
                                                                                     "m_components_": [
                                                                                         {
                                                                                             "polymorphic_id": 1,
@@ -15504,14 +15504,14 @@
                                                                                                                             }
                                                                                                                         },
                                                                                                                         "m_offset_": {
-                                                                                                                            "v.x": 1000.0,
+                                                                                                                            "v.x": 1007.0,
                                                                                                                             "v.y": 0.0,
                                                                                                                             "v.z": 0.0
                                                                                                                         },
                                                                                                                         "m_is_trigger_": false
                                                                                                                     },
                                                                                                                     "m_extents_": {
-                                                                                                                        "v.x": 1.0,
+                                                                                                                        "v.x": 8.0,
                                                                                                                         "v.y": 1000.0,
                                                                                                                         "v.z": 1000.0
                                                                                                                     }
@@ -15582,7 +15582,7 @@
                                                                                         "m_guid_": "84f424e7-37a8-4c65-81c1-14df4a35025c",
                                                                                         "m_name_": "Front Wall"
                                                                                     },
-                                                                                    "m_is_active_self_": false,
+                                                                                    "m_is_active_self_": true,
                                                                                     "m_components_": [
                                                                                         {
                                                                                             "polymorphic_id": 1,
@@ -15837,14 +15837,14 @@
                                                                                                                         "m_offset_": {
                                                                                                                             "v.x": 0.0,
                                                                                                                             "v.y": 0.0,
-                                                                                                                            "v.z": 1000.0
+                                                                                                                            "v.z": 1007.0
                                                                                                                         },
                                                                                                                         "m_is_trigger_": false
                                                                                                                     },
                                                                                                                     "m_extents_": {
                                                                                                                         "v.x": 1000.0,
                                                                                                                         "v.y": 1000.0,
-                                                                                                                        "v.z": 1.0
+                                                                                                                        "v.z": 8.0
                                                                                                                     }
                                                                                                                 }
                                                                                                             }
@@ -15913,7 +15913,7 @@
                                                                                         "m_guid_": "270dd23d-412e-4791-acbb-057fc07bf3f6",
                                                                                         "m_name_": "Back Wall"
                                                                                     },
-                                                                                    "m_is_active_self_": false,
+                                                                                    "m_is_active_self_": true,
                                                                                     "m_components_": [
                                                                                         {
                                                                                             "polymorphic_id": 1,
@@ -16168,14 +16168,14 @@
                                                                                                                         "m_offset_": {
                                                                                                                             "v.x": 0.0,
                                                                                                                             "v.y": 0.0,
-                                                                                                                            "v.z": -1000.0
+                                                                                                                            "v.z": -1007.0
                                                                                                                         },
                                                                                                                         "m_is_trigger_": false
                                                                                                                     },
                                                                                                                     "m_extents_": {
                                                                                                                         "v.x": 1000.0,
                                                                                                                         "v.y": 100.0,
-                                                                                                                        "v.z": 1.0
+                                                                                                                        "v.z": 8.0
                                                                                                                     }
                                                                                                                 }
                                                                                                             }
