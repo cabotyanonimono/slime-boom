@@ -93,6 +93,9 @@ engine::Rect UIButton::GetRect() const
 
 void UIButton::SetIsSelected(const bool selected)
 {
+    if (!GameObject()->IsActiveInHierarchy())
+        return;
+    
     if (selected && m_button_state_ == kButtonState::kNormal)
     {
         m_button_state_ = kButtonState::kSelect;
@@ -115,6 +118,9 @@ void UIButton::SetIsSelected(const bool selected)
 
 void UIButton::SetPressed(const bool pressed)
 {
+    if (!GameObject()->IsActiveInHierarchy())
+        return;
+    
     if (pressed && m_button_state_ == kButtonState::kSelect)
     {
         m_button_state_ = kButtonState::kPress;
