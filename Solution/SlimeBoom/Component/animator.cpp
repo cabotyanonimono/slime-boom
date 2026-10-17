@@ -41,35 +41,64 @@ void Animator::OnAwake()
 
 void Animator::OnUpdate()
 {
-    if (m_before_anim_type_.empty() || m_current_anim_type_.empty())
+    if (m_current_anim_type_.empty() || GetState(m_current_anim_type_) == nullptr)
     {
         m_blending_ = false;
         return;
     }
 
-    auto before_anim = GetState(m_before_anim_type_);
-    auto current_anim = GetState(m_current_anim_type_);
-
-    if (before_anim == nullptr || current_anim == nullptr)
+    if (m_before_anim_type_ != m_current_anim_type_ && GetState(m_before_anim_type_) != nullptr)
+    {
+        m_blend_weight_ += m_blend_speed_ * engine::Time::GetDeltaTime();
+        if (m_blend_weight_ >= 1.0f)
+        {
+            m_blending_ = false;
+        }
+    }
+    else
     {
         m_blending_ = false;
-        return;
     }
 
-    if (m_before_anim_type_ == m_current_anim_type_)
+    ApplyWeights();
+}
+
+void Animator::StopOtherStates(const std::string &keep_a, const std::string &keep_b)
+{
+    for (auto &[name, state] : m_states_)
     {
-        m_blending_ = false;
+        if (state == nullptr || name == keep_a || name == keep_b)
+            continue;
+
+        if (state->enabled)
+        {
+            state->enabled = false;
+            state->time = 0.0f;
+            state->ReleaseCurvesCache();
+        }
+        state->weight = 0.0f;
+    }
+}
+
+void Animator::ApplyWeights()
+{
+    m_blend_weight_ = std::clamp(m_blend_weight_, 0.0f, 1.0f);
+
+    const auto current_anim = GetState(m_current_anim_type_);
+    if (current_anim == nullptr)
+        return;
+
+    const auto before_anim = m_before_anim_type_ == m_current_anim_type_
+        ? nullptr
+        : GetState(m_before_anim_type_);
+
+    if (before_anim == nullptr || !before_anim->enabled)
+    {
         current_anim->weight = 1.0f;
         return;
     }
 
-    m_blend_weight_ += m_blend_speed_ * engine::Time::GetDeltaTime();
-
-    if (m_blend_weight_ >= 1.0f)
-    {
-        m_blending_ = false;
-        m_blend_weight_ = std::min(m_blend_weight_, 1.0f);
-    }
+    // ブレンド元とブレンド先の合計は常に1になる
     before_anim->weight = 1.0f - m_blend_weight_;
     current_anim->weight = m_blend_weight_;
 }
@@ -123,7 +152,7 @@ float Animator::BlendWeight() const
 
 void Animator::SetBlendWeight(const float weight)
 {
-    m_blend_weight_ = weight;
+    m_blend_weight_ = std::clamp(weight, 0.0f, 1.0f);
 }
 
 bool Animator::Blending() const
@@ -138,45 +167,57 @@ std::string Animator::GetCurrentAnimName()
 
 void Animator::PlayAnim(const std::string &anim_name)
 {
+    const auto state = GetState(anim_name);
+    if (state == nullptr)
+        return;
+
     m_blending_ = false;
-    if (!m_before_anim_type_.empty())
-    {
-        StopAnim(m_before_anim_type_);
-    }
-    
-    m_blend_weight_ = 1;
-    m_current_anim_type_ = std::move(anim_name);
-    const auto state = GetState(m_current_anim_type_);
+    StopOtherStates(anim_name, anim_name);
+
+    m_before_anim_type_ = anim_name;
+    m_current_anim_type_ = anim_name;
+    m_blend_weight_ = 1.0f;
     state->enabled = true;
+
+    ApplyWeights();
 }
 
 void Animator::BlendAnim(const std::string &from_name, const std::string &to_name, const float blend_speed)
 {
-    m_blend_weight_ = 1 - m_blend_weight_;
+    const auto from_state = GetState(from_name);
+    const auto to_state = GetState(to_name);
+
+    if (to_state == nullptr)
+        return;
+    if (from_state == nullptr || from_name == to_name)
+    {
+        PlayAnim(to_name);
+        return;
+    }
+
+    if (from_name == m_current_anim_type_)
+        m_blend_weight_ = 1.0f - m_blend_weight_;
+    else if (from_name != m_before_anim_type_)
+        m_blend_weight_ = 0.0f;
+    m_blend_weight_ = std::clamp(m_blend_weight_, 0.0f, 1.0f);
+
     m_blend_speed_ = blend_speed;
     m_blending_ = true;
 
-    if (!m_before_anim_type_.empty() && m_before_anim_type_ != to_name)
-    {
-        StopAnim(m_before_anim_type_);
-    }
+    StopOtherStates(from_name, to_name);
 
-    m_before_anim_type_ = std::move(from_name);
-    m_current_anim_type_ = std::move(to_name);
-
-    const auto from_state = GetState(m_before_anim_type_);
-    const auto to_state = GetState(m_current_anim_type_);
+    m_before_anim_type_ = from_name;
+    m_current_anim_type_ = to_name;
 
     if (to_state->wrap_mode != engine::kWrapMode::kLoop)
     {
         StopAnim(m_current_anim_type_);
     }
-    
-    if (from_state == nullptr || to_state == nullptr)
-        return;
 
     from_state->enabled = true;
     to_state->enabled = true;
+
+    ApplyWeights();
 }
 
 CEREAL_REGISTER_TYPE(Animator);
