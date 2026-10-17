@@ -11,6 +11,8 @@ namespace SlimeBoom
 // 画面の表示中はTimeScaleを0にしてゲームを止め、マウスを解放する。
 class LevelUpScreenManager final : public engine::Component
 {
+    float m_button_enable_delay_ = 0.5f;
+
     engine::AssetPtr<CardController> m_card_controller_;
     engine::AssetPtr<LevelUpController> m_level_up_controller_;
     engine::AssetPtr<engine::GameObject> m_level_up_ui_object_;
@@ -18,17 +20,20 @@ class LevelUpScreenManager final : public engine::Component
     engine::AssetPtr<engine::TextRenderer> m_hp_text_;
     engine::AssetPtr<engine::TextRenderer> m_level_text_;
     std::array<engine::AssetPtr<ui::UIButton>, CardController::kCardCount> m_buttons_;
-    
+
     /// マウスを解放してカードを抽選し、TimeScaleを0にしてレベルアップのUIを表示する。HUDのテキスト色も画面用に変更する。
-    void ScreenStart() const;
+    engine::Task ScreenStart() const;
     /// 1フレーム待ってからマウスをロックし、TimeScaleを戻してUIを閉じる。HUDのテキスト色も元に戻す。
     engine::Task ScreenEnd() const;
-    
+
+    ///ボタンを指定の時間待ってからEnable状態にする。
+    engine::Task DelayButtonEnable() const;
+
 public:
     void OnInspectorGui() override;
     /// レベルアップの通知で画面を開始し、いずれかのカードボタンが押されたら画面を終了するよう登録する。
     void OnStart() override;
-    
+
     template <class Archive>
     void serialize(Archive& ar, const uint32_t version)
     {
@@ -52,6 +57,13 @@ public:
                 CEREAL_NVP(m_timer_text_),
                 CEREAL_NVP(m_hp_text_),
                 CEREAL_NVP(m_level_text_)
+            );
+        }
+
+        if (version >= 4)
+        {
+            ar(
+                CEREAL_NVP(m_button_enable_delay_)
             );
         }
     }

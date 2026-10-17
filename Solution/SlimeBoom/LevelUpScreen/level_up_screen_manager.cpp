@@ -5,40 +5,61 @@
 #include "engine_time.h"
 #include "gui.h"
 
-void SlimeBoom::LevelUpScreenManager::ScreenStart() const
+engine::Task SlimeBoom::LevelUpScreenManager::ScreenStart() const
 {
     engine::Input::SetMouseMode(engine::kMouseMode::kNormal);
     m_card_controller_->GenerateRandomCards();
-    engine::Time::Get()->TimeScale(0.0f);
     m_level_up_ui_object_->SetActive(true);
     m_timer_text_->color = Color(0.1f, 0.1f, 0.1f, 1.0f);
     m_hp_text_->color = Color(0.1f, 0.1f, 0.1f, 1.0f);
     m_level_text_->color = Color(0.1f, 0.1f, 0.1f, 1.0f);
+
+    co_await DelayButtonEnable();
+    
+    engine::Time::Get()->TimeScale(0.0f);
+
+    co_return;
 }
 
 engine::Task SlimeBoom::LevelUpScreenManager::ScreenEnd() const
 {
     co_await engine::WaitForNextFrame();
+
+    for (const auto& button : m_buttons_)
+        button->GameObject()->SetActive(false);
+    
     engine::Input::SetMouseMode(engine::kMouseMode::kLocked);
     engine::Time::Get()->TimeScale(1.0f);
     m_level_up_ui_object_->SetActive(false);
     m_timer_text_->color = Color(1.0f, 1.0f, 1.0f, 1.0f);
     m_hp_text_->color = Color(1.0f, 1.0f, 1.0f, 1.0f);
     m_level_text_->color = Color(1.0f, 1.0f, 1.0f, 1.0f);
+
+    co_return;
+}
+
+engine::Task SlimeBoom::LevelUpScreenManager::DelayButtonEnable() const
+{
+    co_await engine::WaitForSeconds(m_button_enable_delay_, true);
+    for (auto& button : m_buttons_)
+        button->GameObject()->SetActive(true);
+
+    co_return;
 }
 
 void SlimeBoom::LevelUpScreenManager::OnInspectorGui()
 {
+    engine::Gui::PropertyField("Button Enable Delay", m_button_enable_delay_);
     engine::Gui::PropertyField("Card Controller", m_card_controller_);
     engine::Gui::PropertyField("Level Up UI", m_level_up_ui_object_);
     engine::Gui::PropertyField("Level Up Controller", m_level_up_controller_);
     engine::Gui::PropertyField("Timer Text", m_timer_text_);
     engine::Gui::PropertyField("Hp Text", m_hp_text_);
     engine::Gui::PropertyField("Level Text", m_level_text_);
-    
+
     if (ImGui::CollapsingHeader("Level Card Button"))
     {
-        for (auto &button : m_buttons_)
+        for (auto& button : m_buttons_)
         {
             ImGui::PushID(&button);
             engine::Gui::PropertyField("Button", button);
@@ -49,11 +70,14 @@ void SlimeBoom::LevelUpScreenManager::OnInspectorGui()
 
 void SlimeBoom::LevelUpScreenManager::OnStart()
 {
-    m_level_up_controller_->AddOnLevelUpListener([this](int){ScreenStart();});
+    m_level_up_controller_->AddOnLevelUpListener([this](int) { engine::Engine::coroutine.Start(ScreenStart()); });
 
-    for (auto button : m_buttons_)
+    for (const auto& button : m_buttons_)
     {
-        button->AddEventListener([this](){engine::Engine::coroutine.Start(ScreenEnd());});
+        button->AddEventListener([this]()
+        {
+            engine::Engine::coroutine.Start(ScreenEnd());
+        });
     }
 }
 
