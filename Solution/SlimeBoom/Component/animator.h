@@ -12,6 +12,12 @@ class Animator : public engine::Component
     float m_blend_weight_ = 0.0f;
     std::multimap<std::string, std::shared_ptr<engine::AnimationState>> m_states_ = {};
 
+    /// keep_a / keep_b 以外の有効なStateを全て停止する。
+    /// 管理外のStateのweightがAnimationComponent側で加算され、合計weightが1を超えるのを防ぐ。
+    void StopOtherStates(const std::string& keep_a, const std::string& keep_b);
+    /// m_blend_weight_ をブレンド元/先のStateのweightへ即座に反映する(合計が必ず1になる)。
+    void ApplyWeights();
+
 public:
     /// AnimationComponentが未設定なら同じGameObjectから取得し、登録済みのStateをAnimationComponentへ追加する。
     void OnAwake() override;
