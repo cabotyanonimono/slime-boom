@@ -14,9 +14,9 @@ engine::Task SlimeBoom::LevelUpScreenManager::ScreenStart() const
     m_hp_text_->color = Color(0.1f, 0.1f, 0.1f, 1.0f);
     m_level_text_->color = Color(0.1f, 0.1f, 0.1f, 1.0f);
 
-    co_await DelayButtonEnable();
-    
     engine::Time::Get()->TimeScale(0.0f);
+    
+    co_await DelayButtonEnable();
 
     co_return;
 }
