@@ -16,7 +16,6 @@
 #include "SlimeBoom/Component/result_rank.h"
 #include "SlimeBoom/Component/scene_transition_controller.h"
 #include "SlimeBoom/Component/set_null_render_texture_component.h"
-#include "SlimeBoom/Component/stage_select_scene_controller.h"
 #include "SlimeBoom/Component/texture_cube_recreator.h"
 #include "SlimeBoom/Component/title_scene_controller.h"
 #include "SlimeBoom/Exp/exp_simulation_component.h"
@@ -47,7 +46,6 @@
 #include "SlimeBoom/UI/survival_timer.h"
 #include "SlimeBoom/UI/text_color_changer.h"
 #include "SlimeBoom/UI/ui_button.h"
-#include "SlimeBoom/UI/ui_button_label.h"
 #include "SlimeBoom/UI/ui_data_provider.h"
 #include "SlimeBoom/UI/ui_hover_scale_effect.h"
 #include "SlimeBoom/UI/ui_navigator.h"
@@ -117,7 +115,5 @@ void ComponentRegistry::RegisterComponents()
     ADD_COMPONENT(TextureCubeRecreator, "Rendering");
     ADD_COMPONENT(ui::DropDownButton, "UI");
     ADD_COMPONENT(SlimeBoom::ExpSoundEmitter, "Sound");
-    ADD_COMPONENT(ui::UIButtonLabel, "ui");
-    ADD_COMPONENT(StageSelectSceneController);
 }
 }

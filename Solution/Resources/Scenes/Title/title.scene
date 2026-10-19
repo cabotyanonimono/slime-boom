@@ -376,7 +376,7 @@
                                         "ptr_wrapper": {
                                             "id": 2147483659,
                                             "data": {
-                                                "cereal_class_version": 2,
+                                                "cereal_class_version": 3,
                                                 "value0": {
                                                     "value0": {
                                                         "m_guid_": "c63aa84e-5904-4878-b8af-15b9201952e8",
@@ -417,7 +417,13 @@
                                                             "polymorphic_id": 0
                                                         }
                                                     }
-                                                }
+                                                },
+"m_stage1_button_": { "value0": { "m_guid_": "8556a1fd-2f72-4f62-81fc-f7766e2f2a1b", "m_type_": 2, "m_stored_reference_": { "polymorphic_id": 0 } } },
+"m_stage2_button_": { "value0": { "m_guid_": "051ce582-8f46-4096-95a7-6032d0b4af9d", "m_type_": 2, "m_stored_reference_": { "polymorphic_id": 0 } } },
+"m_stage3_button_": { "value0": { "m_guid_": "5f9fb93c-8d37-4067-8717-1a66c6d41fc4", "m_type_": 2, "m_stored_reference_": { "polymorphic_id": 0 } } },
+"m_back_button_": { "value0": { "m_guid_": "667dcc06-a523-44c2-a8f1-a15ac340a628", "m_type_": 2, "m_stored_reference_": { "polymorphic_id": 0 } } },
+"m_stage_menu_background_": { "value0": { "m_guid_": "47ad115b-6236-4af4-88e4-3262843d35d1", "m_type_": 2, "m_stored_reference_": { "polymorphic_id": 0 } } },
+"m_title_logo_": { "value0": { "m_guid_": "aa875e89-45a8-4ccf-9846-809ba249f67e", "m_type_": 2, "m_stored_reference_": { "polymorphic_id": 0 } } }
                                             }
                                         }
                                     },
@@ -442,7 +448,7 @@
                                                         }
                                                     }
                                                 },
-                                                "m_scene_path_": "Resources/Scenes/StageSelect/stage_select.scene"
+                                                "m_scene_path_": "Resources/Scenes/Game/game.scene"
                                             }
                                         }
                                     }
@@ -636,6 +642,173 @@
                                                                                                     "anchored_position": {
                                                                                                         "v.x": -500.0,
                                                                                                         "v.y": 230.0
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                },
+                                                                "m_local_position_": {
+                                                                    "v.x": 0.0,
+                                                                    "v.y": 0.0,
+                                                                    "v.z": 0.0
+                                                                },
+                                                                "m_local_rotation_": {
+                                                                    "v.x": 0.0,
+                                                                    "v.y": 0.0,
+                                                                    "v.z": 0.0,
+                                                                    "v.w": 1.0
+                                                                },
+                                                                "m_local_scale_": {
+                                                                    "v.x": 1.0,
+                                                                    "v.y": 1.0,
+                                                                    "v.z": 1.0
+                                                                },
+                                                                "m_parent_": {
+                                                                    "locked_ptr": {
+                                                                        "polymorphic_id": 1073741824,
+                                                                        "ptr_wrapper": {
+                                                                            "id": 14
+                                                                        }
+                                                                    }
+                                                                },
+                                                                "m_children_": []
+                                                            }
+                                                        }
+                                                    },
+{
+                                                        "polymorphic_id": 1073741824,
+                                                        "ptr_wrapper": {
+                                                            "id": 2147983648,
+                                                            "data": {
+                                                                "value0": {
+                                                                    "value0": {
+                                                                        "m_guid_": "062f79f9-77dc-42f6-9339-5075c1363d86",
+                                                                        "m_name_": "Transform"
+                                                                    },
+                                                                    "value1": {
+                                                                        "locked_ptr": {
+                                                                            "polymorphic_id": 1073741824,
+                                                                            "ptr_wrapper": {
+                                                                                "id": 2147983649,
+                                                                                "data": {
+                                                                                    "value0": {
+                                                                                        "m_guid_": "d576074a-a541-4596-883f-81c1a5a94c99",
+                                                                                        "m_name_": "StageMenuBackground"
+                                                                                    },
+                                                                                    "m_is_active_self_": false,
+                                                                                    "m_components_": [
+                                                                                        {
+                                                                                            "polymorphic_id": 1,
+                                                                                            "ptr_wrapper": {
+                                                                                                "id": 500000
+                                                                                            }
+                                                                                        },
+                                                                                        {
+                                                                                            "polymorphic_id": 6,
+                                                                                            "ptr_wrapper": {
+                                                                                                "id": 2147983650,
+                                                                                                "data": {
+                                                                                                    "value0": {
+                                                                                                        "value0": {
+                                                                                                            "value0": {
+                                                                                                                "m_guid_": "47ad115b-6236-4af4-88e4-3262843d35d1",
+                                                                                                                "m_name_": "Image"
+                                                                                                            },
+                                                                                                            "value1": {
+                                                                                                                "locked_ptr": {
+                                                                                                                    "polymorphic_id": 1073741824,
+                                                                                                                    "ptr_wrapper": {
+                                                                                                                        "id": 500001
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        },
+                                                                                                        "m_canvas_": {
+                                                                                                            "value0": {
+                                                                                                                "m_guid_": "11ae32f1-1ef8-4624-bd76-b8e59a65472c",
+                                                                                                                "m_type_": 2,
+                                                                                                                "m_stored_reference_": {
+                                                                                                                    "polymorphic_id": 0
+                                                                                                                }
+                                                                                                            }
+                                                                                                        },
+                                                                                                        "m_rendering_layer_": {
+                                                                                                            "m_layer_names_": {
+                                                                                                                "value0": "3D",
+                                                                                                                "value1": "UI",
+                                                                                                                "value2": "Enviroment",
+                                                                                                                "value3": "",
+                                                                                                                "value4": "",
+                                                                                                                "value5": "",
+                                                                                                                "value6": "",
+                                                                                                                "value7": "",
+                                                                                                                "value8": "",
+                                                                                                                "value9": "",
+                                                                                                                "value10": "",
+                                                                                                                "value11": "",
+                                                                                                                "value12": "",
+                                                                                                                "value13": "",
+                                                                                                                "value14": "",
+                                                                                                                "value15": ""
+                                                                                                            },
+                                                                                                            "m_masks_": 2
+                                                                                                        }
+                                                                                                    },
+                                                                                                    "value1": {
+                                                                                                        "value0": {
+                                                                                                            "m_guid_": "ee7e69ac-63af-4ea2-bc4c-9b3b557ed027",
+                                                                                                            "m_type_": 2,
+                                                                                                            "m_stored_reference_": {
+                                                                                                                "polymorphic_id": 0
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        },
+                                                                                        {
+                                                                                            "polymorphic_id": 7,
+                                                                                            "ptr_wrapper": {
+                                                                                                "id": 2147983651,
+                                                                                                "data": {
+                                                                                                    "value0": {
+                                                                                                        "value0": {
+                                                                                                            "m_guid_": "89e6db62-0798-4a4c-9522-936e7fcbe351",
+                                                                                                            "m_name_": "RectTransform"
+                                                                                                        },
+                                                                                                        "value1": {
+                                                                                                            "locked_ptr": {
+                                                                                                                "polymorphic_id": 1073741824,
+                                                                                                                "ptr_wrapper": {
+                                                                                                                    "id": 500001
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    },
+                                                                                                    "anchor_min": {
+                                                                                                        "v.x": 0.5,
+                                                                                                        "v.y": 0.5
+                                                                                                    },
+                                                                                                    "anchor_max": {
+                                                                                                        "v.x": 0.5,
+                                                                                                        "v.y": 0.5
+                                                                                                    },
+                                                                                                    "pivot": {
+                                                                                                        "v.x": 0.0,
+                                                                                                        "v.y": 0.0
+                                                                                                    },
+                                                                                                    "size_delta": {
+                                                                                                        "v.x": 340.0,
+                                                                                                        "v.y": 340.0
+                                                                                                    },
+                                                                                                    "anchored_position": {
+                                                                                                        "v.x": -480.0,
+                                                                                                        "v.y": 40.0
                                                                                                     }
                                                                                                 }
                                                                                             }
@@ -1411,6 +1584,1330 @@
                                                             }
                                                         }
                                                     },
+{
+                                                        "polymorphic_id": 1073741824,
+                                                        "ptr_wrapper": {
+                                                            "id": 2147883648,
+                                                            "data": {
+                                                                "value0": {
+                                                                    "value0": {
+                                                                        "m_guid_": "0e477d77-a28e-40d3-ba02-89268c2193c8",
+                                                                        "m_name_": "Transform"
+                                                                    },
+                                                                    "value1": {
+                                                                        "locked_ptr": {
+                                                                            "polymorphic_id": 1073741824,
+                                                                            "ptr_wrapper": {
+                                                                                "id": 2147883649,
+                                                                                "data": {
+                                                                                    "value0": {
+                                                                                        "m_guid_": "c9f026e4-0f0d-464a-8fdb-f6585a5e4fab",
+                                                                                        "m_name_": "Stage1Button"
+                                                                                    },
+                                                                                    "m_is_active_self_": false,
+                                                                                    "m_components_": [
+                                                                                        {
+                                                                                            "polymorphic_id": 1,
+                                                                                            "ptr_wrapper": {
+                                                                                                "id": 400000
+                                                                                            }
+                                                                                        },
+                                                                                        {
+                                                                                            "polymorphic_id": 10,
+                                                                                            "ptr_wrapper": {
+                                                                                                "id": 2147883650,
+                                                                                                "data": {
+                                                                                                    "value0": {
+                                                                                                        "value0": {
+                                                                                                            "m_guid_": "8556a1fd-2f72-4f62-81fc-f7766e2f2a1b",
+                                                                                                            "m_name_": "UIButton"
+                                                                                                        },
+                                                                                                        "value1": {
+                                                                                                            "locked_ptr": {
+                                                                                                                "polymorphic_id": 1073741824,
+                                                                                                                "ptr_wrapper": {
+                                                                                                                    "id": 400001
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    },
+                                                                                                    "m_image_": {
+                                                                                                        "value0": {
+                                                                                                            "m_guid_": "b137c00f-a974-4dd7-aa5c-b9d6e57518ad",
+                                                                                                            "m_type_": 2,
+                                                                                                            "m_stored_reference_": {
+                                                                                                                "polymorphic_id": 0
+                                                                                                            }
+                                                                                                        }
+                                                                                                    },
+                                                                                                    "m_normal_texture_": {
+                                                                                                        "value0": {
+                                                                                                            "m_guid_": "8745f6cf-f230-4eb2-8766-088cc0a814d2",
+                                                                                                            "m_type_": 2,
+                                                                                                            "m_stored_reference_": {
+                                                                                                                "polymorphic_id": 0
+                                                                                                            }
+                                                                                                        }
+                                                                                                    },
+                                                                                                    "m_selected_texture_": {
+                                                                                                        "value0": {
+                                                                                                            "m_guid_": "47099dc4-7cb0-4e0e-abe3-3330f378310a",
+                                                                                                            "m_type_": 2,
+                                                                                                            "m_stored_reference_": {
+                                                                                                                "polymorphic_id": 0
+                                                                                                            }
+                                                                                                        }
+                                                                                                    },
+                                                                                                    "m_pressed_texture_": {
+                                                                                                        "value0": {
+                                                                                                            "m_guid_": "661da40b-e245-457a-a2f1-96500235e5ff",
+                                                                                                            "m_type_": 2,
+                                                                                                            "m_stored_reference_": {
+                                                                                                                "polymorphic_id": 0
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        },
+                                                                                        {
+                                                                                            "polymorphic_id": 11,
+                                                                                            "ptr_wrapper": {
+                                                                                                "id": 2147883651,
+                                                                                                "data": {
+                                                                                                    "value0": {
+                                                                                                        "value0": {
+                                                                                                            "m_guid_": "6e903200-1541-487a-bd87-dbfdf1be467b",
+                                                                                                            "m_name_": "UiHoverScaleEffect"
+                                                                                                        },
+                                                                                                        "value1": {
+                                                                                                            "locked_ptr": {
+                                                                                                                "polymorphic_id": 1073741824,
+                                                                                                                "ptr_wrapper": {
+                                                                                                                    "id": 400001
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    },
+                                                                                                    "m_ui_button_": {
+                                                                                                        "value0": {
+                                                                                                            "m_guid_": "8556a1fd-2f72-4f62-81fc-f7766e2f2a1b",
+                                                                                                            "m_type_": 2,
+                                                                                                            "m_stored_reference_": {
+                                                                                                                "polymorphic_id": 0
+                                                                                                            }
+                                                                                                        }
+                                                                                                    },
+                                                                                                    "m_rect_transform_": {
+                                                                                                        "value0": {
+                                                                                                            "m_guid_": "1ef83099-f686-4100-81a6-1a98b85dd6a0",
+                                                                                                            "m_type_": 2,
+                                                                                                            "m_stored_reference_": {
+                                                                                                                "polymorphic_id": 0
+                                                                                                            }
+                                                                                                        }
+                                                                                                    },
+                                                                                                    "m_transition_time_": 0.10000000149011612,
+                                                                                                    "m_target_scale_": 1.100000023841858,
+                                                                                                    "m_use_unscaled_delta_time_": true
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                },
+                                                                "m_local_position_": {
+                                                                    "v.x": 0.0,
+                                                                    "v.y": 0.0,
+                                                                    "v.z": 0.0
+                                                                },
+                                                                "m_local_rotation_": {
+                                                                    "v.x": 0.0,
+                                                                    "v.y": 0.0,
+                                                                    "v.z": 0.0,
+                                                                    "v.w": 1.0
+                                                                },
+                                                                "m_local_scale_": {
+                                                                    "v.x": 1.0,
+                                                                    "v.y": 1.0,
+                                                                    "v.z": 1.0
+                                                                },
+                                                                "m_parent_": {
+                                                                    "locked_ptr": {
+                                                                        "polymorphic_id": 1073741824,
+                                                                        "ptr_wrapper": {
+                                                                            "id": 28
+                                                                        }
+                                                                    }
+                                                                },
+                                                                "m_children_": [
+                                                                    {
+                                                                        "polymorphic_id": 1073741824,
+                                                                        "ptr_wrapper": {
+                                                                            "id": 2147883652,
+                                                                            "data": {
+                                                                                "value0": {
+                                                                                    "value0": {
+                                                                                        "m_guid_": "e7080a58-decb-4140-9ad6-20502b84c964",
+                                                                                        "m_name_": "Transform"
+                                                                                    },
+                                                                                    "value1": {
+                                                                                        "locked_ptr": {
+                                                                                            "polymorphic_id": 1073741824,
+                                                                                            "ptr_wrapper": {
+                                                                                                "id": 2147883653,
+                                                                                                "data": {
+                                                                                                    "value0": {
+                                                                                                        "m_guid_": "1a0edb3e-da24-40aa-ab31-777532290b7c",
+                                                                                                        "m_name_": "Image"
+                                                                                                    },
+                                                                                                    "m_is_active_self_": true,
+                                                                                                    "m_components_": [
+                                                                                                        {
+                                                                                                            "polymorphic_id": 1,
+                                                                                                            "ptr_wrapper": {
+                                                                                                                "id": 400004
+                                                                                                            }
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "polymorphic_id": 6,
+                                                                                                            "ptr_wrapper": {
+                                                                                                                "id": 2147883654,
+                                                                                                                "data": {
+                                                                                                                    "value0": {
+                                                                                                                        "value0": {
+                                                                                                                            "value0": {
+                                                                                                                                "m_guid_": "b137c00f-a974-4dd7-aa5c-b9d6e57518ad",
+                                                                                                                                "m_name_": "Image"
+                                                                                                                            },
+                                                                                                                            "value1": {
+                                                                                                                                "locked_ptr": {
+                                                                                                                                    "polymorphic_id": 1073741824,
+                                                                                                                                    "ptr_wrapper": {
+                                                                                                                                        "id": 400005
+                                                                                                                                    }
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        },
+                                                                                                                        "m_canvas_": {
+                                                                                                                            "value0": {
+                                                                                                                                "m_guid_": "8fc62ced-a55f-43fc-a3c0-6c50962d95fe",
+                                                                                                                                "m_type_": 2,
+                                                                                                                                "m_stored_reference_": {
+                                                                                                                                    "polymorphic_id": 0
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        },
+                                                                                                                        "m_rendering_layer_": {
+                                                                                                                            "m_layer_names_": {
+                                                                                                                                "value0": "3D",
+                                                                                                                                "value1": "UI",
+                                                                                                                                "value2": "Enviroment",
+                                                                                                                                "value3": "",
+                                                                                                                                "value4": "",
+                                                                                                                                "value5": "",
+                                                                                                                                "value6": "",
+                                                                                                                                "value7": "",
+                                                                                                                                "value8": "",
+                                                                                                                                "value9": "",
+                                                                                                                                "value10": "",
+                                                                                                                                "value11": "",
+                                                                                                                                "value12": "",
+                                                                                                                                "value13": "",
+                                                                                                                                "value14": "",
+                                                                                                                                "value15": ""
+                                                                                                                            },
+                                                                                                                            "m_masks_": 2
+                                                                                                                        }
+                                                                                                                    },
+                                                                                                                    "value1": {
+                                                                                                                        "value0": {
+                                                                                                                            "m_guid_": "52868aa1-ecf0-489d-a65c-5be9578e4027",
+                                                                                                                            "m_type_": 2,
+                                                                                                                            "m_stored_reference_": {
+                                                                                                                                "polymorphic_id": 0
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "polymorphic_id": 7,
+                                                                                                            "ptr_wrapper": {
+                                                                                                                "id": 2147883655,
+                                                                                                                "data": {
+                                                                                                                    "value0": {
+                                                                                                                        "value0": {
+                                                                                                                            "m_guid_": "1ef83099-f686-4100-81a6-1a98b85dd6a0",
+                                                                                                                            "m_name_": "RectTransform"
+                                                                                                                        },
+                                                                                                                        "value1": {
+                                                                                                                            "locked_ptr": {
+                                                                                                                                "polymorphic_id": 1073741824,
+                                                                                                                                "ptr_wrapper": {
+                                                                                                                                    "id": 400005
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                    },
+                                                                                                                    "anchor_min": {
+                                                                                                                        "v.x": 0.5,
+                                                                                                                        "v.y": 0.5
+                                                                                                                    },
+                                                                                                                    "anchor_max": {
+                                                                                                                        "v.x": 0.5,
+                                                                                                                        "v.y": 0.5
+                                                                                                                    },
+                                                                                                                    "pivot": {
+                                                                                                                        "v.x": 0.0,
+                                                                                                                        "v.y": 0.0
+                                                                                                                    },
+                                                                                                                    "size_delta": {
+                                                                                                                        "v.x": 300.0,
+                                                                                                                        "v.y": 55.0
+                                                                                                                    },
+                                                                                                                    "anchored_position": {
+                                                                                                                        "v.x": -480.0,
+                                                                                                                        "v.y": 202.0
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "m_local_position_": {
+                                                                                    "v.x": 0.0,
+                                                                                    "v.y": 0.0,
+                                                                                    "v.z": 0.0
+                                                                                },
+                                                                                "m_local_rotation_": {
+                                                                                    "v.x": 0.0,
+                                                                                    "v.y": 0.0,
+                                                                                    "v.z": 0.0,
+                                                                                    "v.w": 1.0
+                                                                                },
+                                                                                "m_local_scale_": {
+                                                                                    "v.x": 1.0,
+                                                                                    "v.y": 1.0,
+                                                                                    "v.z": 1.0
+                                                                                },
+                                                                                "m_parent_": {
+                                                                                    "locked_ptr": {
+                                                                                        "polymorphic_id": 1073741824,
+                                                                                        "ptr_wrapper": {
+                                                                                            "id": 400000
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "m_children_": []
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                ]
+                                                            }
+                                                        }
+                                                    },
+{
+                                                        "polymorphic_id": 1073741824,
+                                                        "ptr_wrapper": {
+                                                            "id": 2147883748,
+                                                            "data": {
+                                                                "value0": {
+                                                                    "value0": {
+                                                                        "m_guid_": "f4b9827d-bd95-4ad1-9f61-0fe33b74c693",
+                                                                        "m_name_": "Transform"
+                                                                    },
+                                                                    "value1": {
+                                                                        "locked_ptr": {
+                                                                            "polymorphic_id": 1073741824,
+                                                                            "ptr_wrapper": {
+                                                                                "id": 2147883749,
+                                                                                "data": {
+                                                                                    "value0": {
+                                                                                        "m_guid_": "421c7c9f-9ce5-4348-93b6-e8f157a6627b",
+                                                                                        "m_name_": "Stage2Button"
+                                                                                    },
+                                                                                    "m_is_active_self_": false,
+                                                                                    "m_components_": [
+                                                                                        {
+                                                                                            "polymorphic_id": 1,
+                                                                                            "ptr_wrapper": {
+                                                                                                "id": 400100
+                                                                                            }
+                                                                                        },
+                                                                                        {
+                                                                                            "polymorphic_id": 10,
+                                                                                            "ptr_wrapper": {
+                                                                                                "id": 2147883750,
+                                                                                                "data": {
+                                                                                                    "value0": {
+                                                                                                        "value0": {
+                                                                                                            "m_guid_": "051ce582-8f46-4096-95a7-6032d0b4af9d",
+                                                                                                            "m_name_": "UIButton"
+                                                                                                        },
+                                                                                                        "value1": {
+                                                                                                            "locked_ptr": {
+                                                                                                                "polymorphic_id": 1073741824,
+                                                                                                                "ptr_wrapper": {
+                                                                                                                    "id": 400101
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    },
+                                                                                                    "m_image_": {
+                                                                                                        "value0": {
+                                                                                                            "m_guid_": "42ac8615-9b36-4c36-8148-416367025c6f",
+                                                                                                            "m_type_": 2,
+                                                                                                            "m_stored_reference_": {
+                                                                                                                "polymorphic_id": 0
+                                                                                                            }
+                                                                                                        }
+                                                                                                    },
+                                                                                                    "m_normal_texture_": {
+                                                                                                        "value0": {
+                                                                                                            "m_guid_": "f3c1b594-dc45-417b-abac-dfa20a491ea9",
+                                                                                                            "m_type_": 2,
+                                                                                                            "m_stored_reference_": {
+                                                                                                                "polymorphic_id": 0
+                                                                                                            }
+                                                                                                        }
+                                                                                                    },
+                                                                                                    "m_selected_texture_": {
+                                                                                                        "value0": {
+                                                                                                            "m_guid_": "348af55e-98a0-4c97-afb2-e54c713dc848",
+                                                                                                            "m_type_": 2,
+                                                                                                            "m_stored_reference_": {
+                                                                                                                "polymorphic_id": 0
+                                                                                                            }
+                                                                                                        }
+                                                                                                    },
+                                                                                                    "m_pressed_texture_": {
+                                                                                                        "value0": {
+                                                                                                            "m_guid_": "239c4929-4160-459e-9cd6-ce8a99f4908a",
+                                                                                                            "m_type_": 2,
+                                                                                                            "m_stored_reference_": {
+                                                                                                                "polymorphic_id": 0
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        },
+                                                                                        {
+                                                                                            "polymorphic_id": 11,
+                                                                                            "ptr_wrapper": {
+                                                                                                "id": 2147883751,
+                                                                                                "data": {
+                                                                                                    "value0": {
+                                                                                                        "value0": {
+                                                                                                            "m_guid_": "aaaf32de-20e6-4706-99e6-e6db767eb334",
+                                                                                                            "m_name_": "UiHoverScaleEffect"
+                                                                                                        },
+                                                                                                        "value1": {
+                                                                                                            "locked_ptr": {
+                                                                                                                "polymorphic_id": 1073741824,
+                                                                                                                "ptr_wrapper": {
+                                                                                                                    "id": 400101
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    },
+                                                                                                    "m_ui_button_": {
+                                                                                                        "value0": {
+                                                                                                            "m_guid_": "051ce582-8f46-4096-95a7-6032d0b4af9d",
+                                                                                                            "m_type_": 2,
+                                                                                                            "m_stored_reference_": {
+                                                                                                                "polymorphic_id": 0
+                                                                                                            }
+                                                                                                        }
+                                                                                                    },
+                                                                                                    "m_rect_transform_": {
+                                                                                                        "value0": {
+                                                                                                            "m_guid_": "aec12113-2d3b-426c-a82e-f04aa8869fcf",
+                                                                                                            "m_type_": 2,
+                                                                                                            "m_stored_reference_": {
+                                                                                                                "polymorphic_id": 0
+                                                                                                            }
+                                                                                                        }
+                                                                                                    },
+                                                                                                    "m_transition_time_": 0.10000000149011612,
+                                                                                                    "m_target_scale_": 1.100000023841858,
+                                                                                                    "m_use_unscaled_delta_time_": true
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                },
+                                                                "m_local_position_": {
+                                                                    "v.x": 0.0,
+                                                                    "v.y": 0.0,
+                                                                    "v.z": 0.0
+                                                                },
+                                                                "m_local_rotation_": {
+                                                                    "v.x": 0.0,
+                                                                    "v.y": 0.0,
+                                                                    "v.z": 0.0,
+                                                                    "v.w": 1.0
+                                                                },
+                                                                "m_local_scale_": {
+                                                                    "v.x": 1.0,
+                                                                    "v.y": 1.0,
+                                                                    "v.z": 1.0
+                                                                },
+                                                                "m_parent_": {
+                                                                    "locked_ptr": {
+                                                                        "polymorphic_id": 1073741824,
+                                                                        "ptr_wrapper": {
+                                                                            "id": 28
+                                                                        }
+                                                                    }
+                                                                },
+                                                                "m_children_": [
+                                                                    {
+                                                                        "polymorphic_id": 1073741824,
+                                                                        "ptr_wrapper": {
+                                                                            "id": 2147883752,
+                                                                            "data": {
+                                                                                "value0": {
+                                                                                    "value0": {
+                                                                                        "m_guid_": "dcc89c46-671f-4d75-b477-876b8cd1b6c8",
+                                                                                        "m_name_": "Transform"
+                                                                                    },
+                                                                                    "value1": {
+                                                                                        "locked_ptr": {
+                                                                                            "polymorphic_id": 1073741824,
+                                                                                            "ptr_wrapper": {
+                                                                                                "id": 2147883753,
+                                                                                                "data": {
+                                                                                                    "value0": {
+                                                                                                        "m_guid_": "e7db8004-914f-4525-9665-74d1c8b4018c",
+                                                                                                        "m_name_": "Image"
+                                                                                                    },
+                                                                                                    "m_is_active_self_": true,
+                                                                                                    "m_components_": [
+                                                                                                        {
+                                                                                                            "polymorphic_id": 1,
+                                                                                                            "ptr_wrapper": {
+                                                                                                                "id": 400104
+                                                                                                            }
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "polymorphic_id": 6,
+                                                                                                            "ptr_wrapper": {
+                                                                                                                "id": 2147883754,
+                                                                                                                "data": {
+                                                                                                                    "value0": {
+                                                                                                                        "value0": {
+                                                                                                                            "value0": {
+                                                                                                                                "m_guid_": "42ac8615-9b36-4c36-8148-416367025c6f",
+                                                                                                                                "m_name_": "Image"
+                                                                                                                            },
+                                                                                                                            "value1": {
+                                                                                                                                "locked_ptr": {
+                                                                                                                                    "polymorphic_id": 1073741824,
+                                                                                                                                    "ptr_wrapper": {
+                                                                                                                                        "id": 400105
+                                                                                                                                    }
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        },
+                                                                                                                        "m_canvas_": {
+                                                                                                                            "value0": {
+                                                                                                                                "m_guid_": "8fc62ced-a55f-43fc-a3c0-6c50962d95fe",
+                                                                                                                                "m_type_": 2,
+                                                                                                                                "m_stored_reference_": {
+                                                                                                                                    "polymorphic_id": 0
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        },
+                                                                                                                        "m_rendering_layer_": {
+                                                                                                                            "m_layer_names_": {
+                                                                                                                                "value0": "3D",
+                                                                                                                                "value1": "UI",
+                                                                                                                                "value2": "Enviroment",
+                                                                                                                                "value3": "",
+                                                                                                                                "value4": "",
+                                                                                                                                "value5": "",
+                                                                                                                                "value6": "",
+                                                                                                                                "value7": "",
+                                                                                                                                "value8": "",
+                                                                                                                                "value9": "",
+                                                                                                                                "value10": "",
+                                                                                                                                "value11": "",
+                                                                                                                                "value12": "",
+                                                                                                                                "value13": "",
+                                                                                                                                "value14": "",
+                                                                                                                                "value15": ""
+                                                                                                                            },
+                                                                                                                            "m_masks_": 2
+                                                                                                                        }
+                                                                                                                    },
+                                                                                                                    "value1": {
+                                                                                                                        "value0": {
+                                                                                                                            "m_guid_": "b6bf2cf4-df52-4685-adae-8cbf0876ad31",
+                                                                                                                            "m_type_": 2,
+                                                                                                                            "m_stored_reference_": {
+                                                                                                                                "polymorphic_id": 0
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "polymorphic_id": 7,
+                                                                                                            "ptr_wrapper": {
+                                                                                                                "id": 2147883755,
+                                                                                                                "data": {
+                                                                                                                    "value0": {
+                                                                                                                        "value0": {
+                                                                                                                            "m_guid_": "aec12113-2d3b-426c-a82e-f04aa8869fcf",
+                                                                                                                            "m_name_": "RectTransform"
+                                                                                                                        },
+                                                                                                                        "value1": {
+                                                                                                                            "locked_ptr": {
+                                                                                                                                "polymorphic_id": 1073741824,
+                                                                                                                                "ptr_wrapper": {
+                                                                                                                                    "id": 400105
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                    },
+                                                                                                                    "anchor_min": {
+                                                                                                                        "v.x": 0.5,
+                                                                                                                        "v.y": 0.5
+                                                                                                                    },
+                                                                                                                    "anchor_max": {
+                                                                                                                        "v.x": 0.5,
+                                                                                                                        "v.y": 0.5
+                                                                                                                    },
+                                                                                                                    "pivot": {
+                                                                                                                        "v.x": 0.0,
+                                                                                                                        "v.y": 0.0
+                                                                                                                    },
+                                                                                                                    "size_delta": {
+                                                                                                                        "v.x": 300.0,
+                                                                                                                        "v.y": 55.0
+                                                                                                                    },
+                                                                                                                    "anchored_position": {
+                                                                                                                        "v.x": -480.0,
+                                                                                                                        "v.y": 67.0
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "m_local_position_": {
+                                                                                    "v.x": 0.0,
+                                                                                    "v.y": 0.0,
+                                                                                    "v.z": 0.0
+                                                                                },
+                                                                                "m_local_rotation_": {
+                                                                                    "v.x": 0.0,
+                                                                                    "v.y": 0.0,
+                                                                                    "v.z": 0.0,
+                                                                                    "v.w": 1.0
+                                                                                },
+                                                                                "m_local_scale_": {
+                                                                                    "v.x": 1.0,
+                                                                                    "v.y": 1.0,
+                                                                                    "v.z": 1.0
+                                                                                },
+                                                                                "m_parent_": {
+                                                                                    "locked_ptr": {
+                                                                                        "polymorphic_id": 1073741824,
+                                                                                        "ptr_wrapper": {
+                                                                                            "id": 400100
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "m_children_": []
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                ]
+                                                            }
+                                                        }
+                                                    },
+{
+                                                        "polymorphic_id": 1073741824,
+                                                        "ptr_wrapper": {
+                                                            "id": 2147883848,
+                                                            "data": {
+                                                                "value0": {
+                                                                    "value0": {
+                                                                        "m_guid_": "811dcbc8-9166-44ad-8d3d-cd27e3cd749c",
+                                                                        "m_name_": "Transform"
+                                                                    },
+                                                                    "value1": {
+                                                                        "locked_ptr": {
+                                                                            "polymorphic_id": 1073741824,
+                                                                            "ptr_wrapper": {
+                                                                                "id": 2147883849,
+                                                                                "data": {
+                                                                                    "value0": {
+                                                                                        "m_guid_": "0fa88acd-244c-45d4-81fc-00c4a2fb0ec0",
+                                                                                        "m_name_": "Stage3Button"
+                                                                                    },
+                                                                                    "m_is_active_self_": false,
+                                                                                    "m_components_": [
+                                                                                        {
+                                                                                            "polymorphic_id": 1,
+                                                                                            "ptr_wrapper": {
+                                                                                                "id": 400200
+                                                                                            }
+                                                                                        },
+                                                                                        {
+                                                                                            "polymorphic_id": 10,
+                                                                                            "ptr_wrapper": {
+                                                                                                "id": 2147883850,
+                                                                                                "data": {
+                                                                                                    "value0": {
+                                                                                                        "value0": {
+                                                                                                            "m_guid_": "5f9fb93c-8d37-4067-8717-1a66c6d41fc4",
+                                                                                                            "m_name_": "UIButton"
+                                                                                                        },
+                                                                                                        "value1": {
+                                                                                                            "locked_ptr": {
+                                                                                                                "polymorphic_id": 1073741824,
+                                                                                                                "ptr_wrapper": {
+                                                                                                                    "id": 400201
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    },
+                                                                                                    "m_image_": {
+                                                                                                        "value0": {
+                                                                                                            "m_guid_": "04386e53-ba57-4672-bae0-9a735ff17286",
+                                                                                                            "m_type_": 2,
+                                                                                                            "m_stored_reference_": {
+                                                                                                                "polymorphic_id": 0
+                                                                                                            }
+                                                                                                        }
+                                                                                                    },
+                                                                                                    "m_normal_texture_": {
+                                                                                                        "value0": {
+                                                                                                            "m_guid_": "8c813277-25ab-439d-8698-104ca56db64b",
+                                                                                                            "m_type_": 2,
+                                                                                                            "m_stored_reference_": {
+                                                                                                                "polymorphic_id": 0
+                                                                                                            }
+                                                                                                        }
+                                                                                                    },
+                                                                                                    "m_selected_texture_": {
+                                                                                                        "value0": {
+                                                                                                            "m_guid_": "85af0e2b-6c5a-4262-a888-9d3c4d9a67ab",
+                                                                                                            "m_type_": 2,
+                                                                                                            "m_stored_reference_": {
+                                                                                                                "polymorphic_id": 0
+                                                                                                            }
+                                                                                                        }
+                                                                                                    },
+                                                                                                    "m_pressed_texture_": {
+                                                                                                        "value0": {
+                                                                                                            "m_guid_": "96d49512-6561-4d8e-a8b3-26ddfecd0dc2",
+                                                                                                            "m_type_": 2,
+                                                                                                            "m_stored_reference_": {
+                                                                                                                "polymorphic_id": 0
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        },
+                                                                                        {
+                                                                                            "polymorphic_id": 11,
+                                                                                            "ptr_wrapper": {
+                                                                                                "id": 2147883851,
+                                                                                                "data": {
+                                                                                                    "value0": {
+                                                                                                        "value0": {
+                                                                                                            "m_guid_": "832771ce-e152-4fb6-9171-6b2ebf1500fe",
+                                                                                                            "m_name_": "UiHoverScaleEffect"
+                                                                                                        },
+                                                                                                        "value1": {
+                                                                                                            "locked_ptr": {
+                                                                                                                "polymorphic_id": 1073741824,
+                                                                                                                "ptr_wrapper": {
+                                                                                                                    "id": 400201
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    },
+                                                                                                    "m_ui_button_": {
+                                                                                                        "value0": {
+                                                                                                            "m_guid_": "5f9fb93c-8d37-4067-8717-1a66c6d41fc4",
+                                                                                                            "m_type_": 2,
+                                                                                                            "m_stored_reference_": {
+                                                                                                                "polymorphic_id": 0
+                                                                                                            }
+                                                                                                        }
+                                                                                                    },
+                                                                                                    "m_rect_transform_": {
+                                                                                                        "value0": {
+                                                                                                            "m_guid_": "93b90b01-bbea-46d0-8f1d-b60042da6078",
+                                                                                                            "m_type_": 2,
+                                                                                                            "m_stored_reference_": {
+                                                                                                                "polymorphic_id": 0
+                                                                                                            }
+                                                                                                        }
+                                                                                                    },
+                                                                                                    "m_transition_time_": 0.10000000149011612,
+                                                                                                    "m_target_scale_": 1.100000023841858,
+                                                                                                    "m_use_unscaled_delta_time_": true
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                },
+                                                                "m_local_position_": {
+                                                                    "v.x": 0.0,
+                                                                    "v.y": 0.0,
+                                                                    "v.z": 0.0
+                                                                },
+                                                                "m_local_rotation_": {
+                                                                    "v.x": 0.0,
+                                                                    "v.y": 0.0,
+                                                                    "v.z": 0.0,
+                                                                    "v.w": 1.0
+                                                                },
+                                                                "m_local_scale_": {
+                                                                    "v.x": 1.0,
+                                                                    "v.y": 1.0,
+                                                                    "v.z": 1.0
+                                                                },
+                                                                "m_parent_": {
+                                                                    "locked_ptr": {
+                                                                        "polymorphic_id": 1073741824,
+                                                                        "ptr_wrapper": {
+                                                                            "id": 28
+                                                                        }
+                                                                    }
+                                                                },
+                                                                "m_children_": [
+                                                                    {
+                                                                        "polymorphic_id": 1073741824,
+                                                                        "ptr_wrapper": {
+                                                                            "id": 2147883852,
+                                                                            "data": {
+                                                                                "value0": {
+                                                                                    "value0": {
+                                                                                        "m_guid_": "8661d8f8-d73f-478f-958e-7cc226ba5c6e",
+                                                                                        "m_name_": "Transform"
+                                                                                    },
+                                                                                    "value1": {
+                                                                                        "locked_ptr": {
+                                                                                            "polymorphic_id": 1073741824,
+                                                                                            "ptr_wrapper": {
+                                                                                                "id": 2147883853,
+                                                                                                "data": {
+                                                                                                    "value0": {
+                                                                                                        "m_guid_": "a05de392-7c4e-4361-877f-01b18d24d3e1",
+                                                                                                        "m_name_": "Image"
+                                                                                                    },
+                                                                                                    "m_is_active_self_": true,
+                                                                                                    "m_components_": [
+                                                                                                        {
+                                                                                                            "polymorphic_id": 1,
+                                                                                                            "ptr_wrapper": {
+                                                                                                                "id": 400204
+                                                                                                            }
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "polymorphic_id": 6,
+                                                                                                            "ptr_wrapper": {
+                                                                                                                "id": 2147883854,
+                                                                                                                "data": {
+                                                                                                                    "value0": {
+                                                                                                                        "value0": {
+                                                                                                                            "value0": {
+                                                                                                                                "m_guid_": "04386e53-ba57-4672-bae0-9a735ff17286",
+                                                                                                                                "m_name_": "Image"
+                                                                                                                            },
+                                                                                                                            "value1": {
+                                                                                                                                "locked_ptr": {
+                                                                                                                                    "polymorphic_id": 1073741824,
+                                                                                                                                    "ptr_wrapper": {
+                                                                                                                                        "id": 400205
+                                                                                                                                    }
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        },
+                                                                                                                        "m_canvas_": {
+                                                                                                                            "value0": {
+                                                                                                                                "m_guid_": "8fc62ced-a55f-43fc-a3c0-6c50962d95fe",
+                                                                                                                                "m_type_": 2,
+                                                                                                                                "m_stored_reference_": {
+                                                                                                                                    "polymorphic_id": 0
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        },
+                                                                                                                        "m_rendering_layer_": {
+                                                                                                                            "m_layer_names_": {
+                                                                                                                                "value0": "3D",
+                                                                                                                                "value1": "UI",
+                                                                                                                                "value2": "Enviroment",
+                                                                                                                                "value3": "",
+                                                                                                                                "value4": "",
+                                                                                                                                "value5": "",
+                                                                                                                                "value6": "",
+                                                                                                                                "value7": "",
+                                                                                                                                "value8": "",
+                                                                                                                                "value9": "",
+                                                                                                                                "value10": "",
+                                                                                                                                "value11": "",
+                                                                                                                                "value12": "",
+                                                                                                                                "value13": "",
+                                                                                                                                "value14": "",
+                                                                                                                                "value15": ""
+                                                                                                                            },
+                                                                                                                            "m_masks_": 2
+                                                                                                                        }
+                                                                                                                    },
+                                                                                                                    "value1": {
+                                                                                                                        "value0": {
+                                                                                                                            "m_guid_": "c62ae155-de25-4340-8aa4-54eb5843fc37",
+                                                                                                                            "m_type_": 2,
+                                                                                                                            "m_stored_reference_": {
+                                                                                                                                "polymorphic_id": 0
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "polymorphic_id": 7,
+                                                                                                            "ptr_wrapper": {
+                                                                                                                "id": 2147883855,
+                                                                                                                "data": {
+                                                                                                                    "value0": {
+                                                                                                                        "value0": {
+                                                                                                                            "m_guid_": "93b90b01-bbea-46d0-8f1d-b60042da6078",
+                                                                                                                            "m_name_": "RectTransform"
+                                                                                                                        },
+                                                                                                                        "value1": {
+                                                                                                                            "locked_ptr": {
+                                                                                                                                "polymorphic_id": 1073741824,
+                                                                                                                                "ptr_wrapper": {
+                                                                                                                                    "id": 400205
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                    },
+                                                                                                                    "anchor_min": {
+                                                                                                                        "v.x": 0.5,
+                                                                                                                        "v.y": 0.5
+                                                                                                                    },
+                                                                                                                    "anchor_max": {
+                                                                                                                        "v.x": 0.5,
+                                                                                                                        "v.y": 0.5
+                                                                                                                    },
+                                                                                                                    "pivot": {
+                                                                                                                        "v.x": 0.0,
+                                                                                                                        "v.y": 0.0
+                                                                                                                    },
+                                                                                                                    "size_delta": {
+                                                                                                                        "v.x": 300.0,
+                                                                                                                        "v.y": 55.0
+                                                                                                                    },
+                                                                                                                    "anchored_position": {
+                                                                                                                        "v.x": -480.0,
+                                                                                                                        "v.y": -68.0
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "m_local_position_": {
+                                                                                    "v.x": 0.0,
+                                                                                    "v.y": 0.0,
+                                                                                    "v.z": 0.0
+                                                                                },
+                                                                                "m_local_rotation_": {
+                                                                                    "v.x": 0.0,
+                                                                                    "v.y": 0.0,
+                                                                                    "v.z": 0.0,
+                                                                                    "v.w": 1.0
+                                                                                },
+                                                                                "m_local_scale_": {
+                                                                                    "v.x": 1.0,
+                                                                                    "v.y": 1.0,
+                                                                                    "v.z": 1.0
+                                                                                },
+                                                                                "m_parent_": {
+                                                                                    "locked_ptr": {
+                                                                                        "polymorphic_id": 1073741824,
+                                                                                        "ptr_wrapper": {
+                                                                                            "id": 400200
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "m_children_": []
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                ]
+                                                            }
+                                                        }
+                                                    },
+{
+                                                        "polymorphic_id": 1073741824,
+                                                        "ptr_wrapper": {
+                                                            "id": 2147883948,
+                                                            "data": {
+                                                                "value0": {
+                                                                    "value0": {
+                                                                        "m_guid_": "728e5863-847e-4da1-8bdf-0335ace03bc2",
+                                                                        "m_name_": "Transform"
+                                                                    },
+                                                                    "value1": {
+                                                                        "locked_ptr": {
+                                                                            "polymorphic_id": 1073741824,
+                                                                            "ptr_wrapper": {
+                                                                                "id": 2147883949,
+                                                                                "data": {
+                                                                                    "value0": {
+                                                                                        "m_guid_": "b6d3659f-88d5-441a-8a7c-0a511ff1d1a6",
+                                                                                        "m_name_": "BackButton"
+                                                                                    },
+                                                                                    "m_is_active_self_": false,
+                                                                                    "m_components_": [
+                                                                                        {
+                                                                                            "polymorphic_id": 1,
+                                                                                            "ptr_wrapper": {
+                                                                                                "id": 400300
+                                                                                            }
+                                                                                        },
+                                                                                        {
+                                                                                            "polymorphic_id": 10,
+                                                                                            "ptr_wrapper": {
+                                                                                                "id": 2147883950,
+                                                                                                "data": {
+                                                                                                    "value0": {
+                                                                                                        "value0": {
+                                                                                                            "m_guid_": "667dcc06-a523-44c2-a8f1-a15ac340a628",
+                                                                                                            "m_name_": "UIButton"
+                                                                                                        },
+                                                                                                        "value1": {
+                                                                                                            "locked_ptr": {
+                                                                                                                "polymorphic_id": 1073741824,
+                                                                                                                "ptr_wrapper": {
+                                                                                                                    "id": 400301
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    },
+                                                                                                    "m_image_": {
+                                                                                                        "value0": {
+                                                                                                            "m_guid_": "b2fa6f7f-f085-4012-b98a-05ed611c3a17",
+                                                                                                            "m_type_": 2,
+                                                                                                            "m_stored_reference_": {
+                                                                                                                "polymorphic_id": 0
+                                                                                                            }
+                                                                                                        }
+                                                                                                    },
+                                                                                                    "m_normal_texture_": {
+                                                                                                        "value0": {
+                                                                                                            "m_guid_": "2869465a-1cb4-46b5-bac6-e00addb02e37",
+                                                                                                            "m_type_": 2,
+                                                                                                            "m_stored_reference_": {
+                                                                                                                "polymorphic_id": 0
+                                                                                                            }
+                                                                                                        }
+                                                                                                    },
+                                                                                                    "m_selected_texture_": {
+                                                                                                        "value0": {
+                                                                                                            "m_guid_": "b0af8962-baee-444b-a031-e016ed131b49",
+                                                                                                            "m_type_": 2,
+                                                                                                            "m_stored_reference_": {
+                                                                                                                "polymorphic_id": 0
+                                                                                                            }
+                                                                                                        }
+                                                                                                    },
+                                                                                                    "m_pressed_texture_": {
+                                                                                                        "value0": {
+                                                                                                            "m_guid_": "fac42e3c-eaf1-4df4-8ad1-08196bec0e71",
+                                                                                                            "m_type_": 2,
+                                                                                                            "m_stored_reference_": {
+                                                                                                                "polymorphic_id": 0
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        },
+                                                                                        {
+                                                                                            "polymorphic_id": 11,
+                                                                                            "ptr_wrapper": {
+                                                                                                "id": 2147883951,
+                                                                                                "data": {
+                                                                                                    "value0": {
+                                                                                                        "value0": {
+                                                                                                            "m_guid_": "5c653e89-2c4c-48f2-9ccc-44ec23cff410",
+                                                                                                            "m_name_": "UiHoverScaleEffect"
+                                                                                                        },
+                                                                                                        "value1": {
+                                                                                                            "locked_ptr": {
+                                                                                                                "polymorphic_id": 1073741824,
+                                                                                                                "ptr_wrapper": {
+                                                                                                                    "id": 400301
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    },
+                                                                                                    "m_ui_button_": {
+                                                                                                        "value0": {
+                                                                                                            "m_guid_": "667dcc06-a523-44c2-a8f1-a15ac340a628",
+                                                                                                            "m_type_": 2,
+                                                                                                            "m_stored_reference_": {
+                                                                                                                "polymorphic_id": 0
+                                                                                                            }
+                                                                                                        }
+                                                                                                    },
+                                                                                                    "m_rect_transform_": {
+                                                                                                        "value0": {
+                                                                                                            "m_guid_": "5e8123d8-7740-4782-b904-7aae7f35e7fb",
+                                                                                                            "m_type_": 2,
+                                                                                                            "m_stored_reference_": {
+                                                                                                                "polymorphic_id": 0
+                                                                                                            }
+                                                                                                        }
+                                                                                                    },
+                                                                                                    "m_transition_time_": 0.10000000149011612,
+                                                                                                    "m_target_scale_": 1.100000023841858,
+                                                                                                    "m_use_unscaled_delta_time_": true
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                },
+                                                                "m_local_position_": {
+                                                                    "v.x": 0.0,
+                                                                    "v.y": 0.0,
+                                                                    "v.z": 0.0
+                                                                },
+                                                                "m_local_rotation_": {
+                                                                    "v.x": 0.0,
+                                                                    "v.y": 0.0,
+                                                                    "v.z": 0.0,
+                                                                    "v.w": 1.0
+                                                                },
+                                                                "m_local_scale_": {
+                                                                    "v.x": 1.0,
+                                                                    "v.y": 1.0,
+                                                                    "v.z": 1.0
+                                                                },
+                                                                "m_parent_": {
+                                                                    "locked_ptr": {
+                                                                        "polymorphic_id": 1073741824,
+                                                                        "ptr_wrapper": {
+                                                                            "id": 28
+                                                                        }
+                                                                    }
+                                                                },
+                                                                "m_children_": [
+                                                                    {
+                                                                        "polymorphic_id": 1073741824,
+                                                                        "ptr_wrapper": {
+                                                                            "id": 2147883952,
+                                                                            "data": {
+                                                                                "value0": {
+                                                                                    "value0": {
+                                                                                        "m_guid_": "2ee040fa-6f29-4b4c-a539-911042c94bba",
+                                                                                        "m_name_": "Transform"
+                                                                                    },
+                                                                                    "value1": {
+                                                                                        "locked_ptr": {
+                                                                                            "polymorphic_id": 1073741824,
+                                                                                            "ptr_wrapper": {
+                                                                                                "id": 2147883953,
+                                                                                                "data": {
+                                                                                                    "value0": {
+                                                                                                        "m_guid_": "f61e2874-f4f6-42bf-aa59-6875e55f7054",
+                                                                                                        "m_name_": "Image"
+                                                                                                    },
+                                                                                                    "m_is_active_self_": true,
+                                                                                                    "m_components_": [
+                                                                                                        {
+                                                                                                            "polymorphic_id": 1,
+                                                                                                            "ptr_wrapper": {
+                                                                                                                "id": 400304
+                                                                                                            }
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "polymorphic_id": 6,
+                                                                                                            "ptr_wrapper": {
+                                                                                                                "id": 2147883954,
+                                                                                                                "data": {
+                                                                                                                    "value0": {
+                                                                                                                        "value0": {
+                                                                                                                            "value0": {
+                                                                                                                                "m_guid_": "b2fa6f7f-f085-4012-b98a-05ed611c3a17",
+                                                                                                                                "m_name_": "Image"
+                                                                                                                            },
+                                                                                                                            "value1": {
+                                                                                                                                "locked_ptr": {
+                                                                                                                                    "polymorphic_id": 1073741824,
+                                                                                                                                    "ptr_wrapper": {
+                                                                                                                                        "id": 400305
+                                                                                                                                    }
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        },
+                                                                                                                        "m_canvas_": {
+                                                                                                                            "value0": {
+                                                                                                                                "m_guid_": "8fc62ced-a55f-43fc-a3c0-6c50962d95fe",
+                                                                                                                                "m_type_": 2,
+                                                                                                                                "m_stored_reference_": {
+                                                                                                                                    "polymorphic_id": 0
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        },
+                                                                                                                        "m_rendering_layer_": {
+                                                                                                                            "m_layer_names_": {
+                                                                                                                                "value0": "3D",
+                                                                                                                                "value1": "UI",
+                                                                                                                                "value2": "Enviroment",
+                                                                                                                                "value3": "",
+                                                                                                                                "value4": "",
+                                                                                                                                "value5": "",
+                                                                                                                                "value6": "",
+                                                                                                                                "value7": "",
+                                                                                                                                "value8": "",
+                                                                                                                                "value9": "",
+                                                                                                                                "value10": "",
+                                                                                                                                "value11": "",
+                                                                                                                                "value12": "",
+                                                                                                                                "value13": "",
+                                                                                                                                "value14": "",
+                                                                                                                                "value15": ""
+                                                                                                                            },
+                                                                                                                            "m_masks_": 2
+                                                                                                                        }
+                                                                                                                    },
+                                                                                                                    "value1": {
+                                                                                                                        "value0": {
+                                                                                                                            "m_guid_": "68ec08c1-9c55-4925-875a-67158be44690",
+                                                                                                                            "m_type_": 2,
+                                                                                                                            "m_stored_reference_": {
+                                                                                                                                "polymorphic_id": 0
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "polymorphic_id": 7,
+                                                                                                            "ptr_wrapper": {
+                                                                                                                "id": 2147883955,
+                                                                                                                "data": {
+                                                                                                                    "value0": {
+                                                                                                                        "value0": {
+                                                                                                                            "m_guid_": "5e8123d8-7740-4782-b904-7aae7f35e7fb",
+                                                                                                                            "m_name_": "RectTransform"
+                                                                                                                        },
+                                                                                                                        "value1": {
+                                                                                                                            "locked_ptr": {
+                                                                                                                                "polymorphic_id": 1073741824,
+                                                                                                                                "ptr_wrapper": {
+                                                                                                                                    "id": 400305
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                    },
+                                                                                                                    "anchor_min": {
+                                                                                                                        "v.x": 0.5,
+                                                                                                                        "v.y": 0.5
+                                                                                                                    },
+                                                                                                                    "anchor_max": {
+                                                                                                                        "v.x": 0.5,
+                                                                                                                        "v.y": 0.5
+                                                                                                                    },
+                                                                                                                    "pivot": {
+                                                                                                                        "v.x": 0.0,
+                                                                                                                        "v.y": 0.0
+                                                                                                                    },
+                                                                                                                    "size_delta": {
+                                                                                                                        "v.x": 300.0,
+                                                                                                                        "v.y": 55.0
+                                                                                                                    },
+                                                                                                                    "anchored_position": {
+                                                                                                                        "v.x": -480.0,
+                                                                                                                        "v.y": -203.0
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "m_local_position_": {
+                                                                                    "v.x": 0.0,
+                                                                                    "v.y": 0.0,
+                                                                                    "v.z": 0.0
+                                                                                },
+                                                                                "m_local_rotation_": {
+                                                                                    "v.x": 0.0,
+                                                                                    "v.y": 0.0,
+                                                                                    "v.z": 0.0,
+                                                                                    "v.w": 1.0
+                                                                                },
+                                                                                "m_local_scale_": {
+                                                                                    "v.x": 1.0,
+                                                                                    "v.y": 1.0,
+                                                                                    "v.z": 1.0
+                                                                                },
+                                                                                "m_parent_": {
+                                                                                    "locked_ptr": {
+                                                                                        "polymorphic_id": 1073741824,
+                                                                                        "ptr_wrapper": {
+                                                                                            "id": 400300
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "m_children_": []
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                ]
+                                                            }
+                                                        }
+                                                    },
                                                     {
                                                         "polymorphic_id": 1073741824,
                                                         "ptr_wrapper": {
@@ -1890,7 +3387,7 @@
                                                             }
                                                         ]
                                                     }
-                                                ],
+                                                , { "key": { "value0": { "m_guid_": "8556a1fd-2f72-4f62-81fc-f7766e2f2a1b", "m_type_": 2, "m_stored_reference_": { "polymorphic_id": 0 } } }, "value": [ { "key": 0, "value": { "value0": { "m_guid_": "00000000-0000-0000-0000-000000000000", "m_type_": 0, "m_stored_reference_": { "polymorphic_id": 0 } } } }, { "key": 1, "value": { "value0": { "m_guid_": "00000000-0000-0000-0000-000000000000", "m_type_": 0, "m_stored_reference_": { "polymorphic_id": 0 } } } }, { "key": 2, "value": { "value0": { "m_guid_": "00000000-0000-0000-0000-000000000000", "m_type_": 0, "m_stored_reference_": { "polymorphic_id": 0 } } } }, { "key": 3, "value": { "value0": { "m_guid_": "051ce582-8f46-4096-95a7-6032d0b4af9d", "m_type_": 2, "m_stored_reference_": { "polymorphic_id": 0 } } } } ] }, { "key": { "value0": { "m_guid_": "051ce582-8f46-4096-95a7-6032d0b4af9d", "m_type_": 2, "m_stored_reference_": { "polymorphic_id": 0 } } }, "value": [ { "key": 0, "value": { "value0": { "m_guid_": "8556a1fd-2f72-4f62-81fc-f7766e2f2a1b", "m_type_": 2, "m_stored_reference_": { "polymorphic_id": 0 } } } }, { "key": 1, "value": { "value0": { "m_guid_": "00000000-0000-0000-0000-000000000000", "m_type_": 0, "m_stored_reference_": { "polymorphic_id": 0 } } } }, { "key": 2, "value": { "value0": { "m_guid_": "00000000-0000-0000-0000-000000000000", "m_type_": 0, "m_stored_reference_": { "polymorphic_id": 0 } } } }, { "key": 3, "value": { "value0": { "m_guid_": "5f9fb93c-8d37-4067-8717-1a66c6d41fc4", "m_type_": 2, "m_stored_reference_": { "polymorphic_id": 0 } } } } ] }, { "key": { "value0": { "m_guid_": "5f9fb93c-8d37-4067-8717-1a66c6d41fc4", "m_type_": 2, "m_stored_reference_": { "polymorphic_id": 0 } } }, "value": [ { "key": 0, "value": { "value0": { "m_guid_": "051ce582-8f46-4096-95a7-6032d0b4af9d", "m_type_": 2, "m_stored_reference_": { "polymorphic_id": 0 } } } }, { "key": 1, "value": { "value0": { "m_guid_": "00000000-0000-0000-0000-000000000000", "m_type_": 0, "m_stored_reference_": { "polymorphic_id": 0 } } } }, { "key": 2, "value": { "value0": { "m_guid_": "00000000-0000-0000-0000-000000000000", "m_type_": 0, "m_stored_reference_": { "polymorphic_id": 0 } } } }, { "key": 3, "value": { "value0": { "m_guid_": "667dcc06-a523-44c2-a8f1-a15ac340a628", "m_type_": 2, "m_stored_reference_": { "polymorphic_id": 0 } } } } ] }, { "key": { "value0": { "m_guid_": "667dcc06-a523-44c2-a8f1-a15ac340a628", "m_type_": 2, "m_stored_reference_": { "polymorphic_id": 0 } } }, "value": [ { "key": 0, "value": { "value0": { "m_guid_": "5f9fb93c-8d37-4067-8717-1a66c6d41fc4", "m_type_": 2, "m_stored_reference_": { "polymorphic_id": 0 } } } }, { "key": 1, "value": { "value0": { "m_guid_": "00000000-0000-0000-0000-000000000000", "m_type_": 0, "m_stored_reference_": { "polymorphic_id": 0 } } } }, { "key": 2, "value": { "value0": { "m_guid_": "00000000-0000-0000-0000-000000000000", "m_type_": 0, "m_stored_reference_": { "polymorphic_id": 0 } } } }, { "key": 3, "value": { "value0": { "m_guid_": "00000000-0000-0000-0000-000000000000", "m_type_": 0, "m_stored_reference_": { "polymorphic_id": 0 } } } } ] } ],
                                                 "m_current_button_": {
                                                     "value0": {
                                                         "m_guid_": "90bb1741-1f1b-4e9e-b1b9-404a290eeb5f",
