@@ -7,7 +7,7 @@ namespace ui
 {
 bool UINavigator::IsPressed()
 {
-    return engine::Input::GetKeyDown(DirectX::Keyboard::Space) || engine::Input::GetKeyDown(DirectX::Keyboard::Enter) || (engine::Input::MouseMode() == engine::kMouseMode::kNormal && engine::Input::GetMouseLeft());
+    return engine::Input::MouseMode() == engine::kMouseMode::kNormal && engine::Input::GetMouseLeft();
 }
 
 void UINavigator::SetCurrentPosition(const engine::AssetPtr<UIButton> &ui_button)
@@ -106,7 +106,6 @@ void UINavigator::OnInspectorGui()
 
 void UINavigator::OnUpdate()
 {
-    UpdatePositionByKey();
     UpdatePositionByMouse();
     UpdateInput();
 }
