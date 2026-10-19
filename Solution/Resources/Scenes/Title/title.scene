@@ -442,7 +442,7 @@
                                                         }
                                                     }
                                                 },
-                                                "m_scene_path_": "Resources/Scenes/Game/game.scene"
+                                                "m_scene_path_": "Resources/Scenes/StageSelect/stage_select.scene"
                                             }
                                         }
                                     }
