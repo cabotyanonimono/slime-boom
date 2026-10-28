@@ -803,12 +803,12 @@
                                                                                                         "v.y": 0.0
                                                                                                     },
                                                                                                     "size_delta": {
-                                                                                                        "v.x": 340.0,
-                                                                                                        "v.y": 340.0
+                                                                                                        "v.x": 310.0,
+                                                                                                        "v.y": 425.0
                                                                                                     },
                                                                                                     "anchored_position": {
                                                                                                         "v.x": -480.0,
-                                                                                                        "v.y": 40.0
+                                                                                                        "v.y": 0.0
                                                                                                     }
                                                                                                 }
                                                                                             }
@@ -1642,7 +1642,7 @@
                                                                                                     },
                                                                                                     "m_normal_texture_": {
                                                                                                         "value0": {
-                                                                                                            "m_guid_": "8745f6cf-f230-4eb2-8766-088cc0a814d2",
+                                                                                                            "m_guid_": "53b72280-f757-45d2-b9ae-6c9873485055",
                                                                                                             "m_type_": 2,
                                                                                                             "m_stored_reference_": {
                                                                                                                 "polymorphic_id": 0
@@ -1651,7 +1651,7 @@
                                                                                                     },
                                                                                                     "m_selected_texture_": {
                                                                                                         "value0": {
-                                                                                                            "m_guid_": "47099dc4-7cb0-4e0e-abe3-3330f378310a",
+                                                                                                            "m_guid_": "aec920f1-6d62-4a6b-aef5-2fd21597e707",
                                                                                                             "m_type_": 2,
                                                                                                             "m_stored_reference_": {
                                                                                                                 "polymorphic_id": 0
@@ -1660,7 +1660,7 @@
                                                                                                     },
                                                                                                     "m_pressed_texture_": {
                                                                                                         "value0": {
-                                                                                                            "m_guid_": "661da40b-e245-457a-a2f1-96500235e5ff",
+                                                                                                            "m_guid_": "82d4ae2e-4733-454d-8de3-d8532b2cc86f",
                                                                                                             "m_type_": 2,
                                                                                                             "m_stored_reference_": {
                                                                                                                 "polymorphic_id": 0
@@ -1712,7 +1712,19 @@
                                                                                                     "m_use_unscaled_delta_time_": true
                                                                                                 }
                                                                                             }
-                                                                                        }
+                                                                                        },
+{ "polymorphic_id": 2147484248, "polymorphic_name": "engine::TextRenderer", "ptr_wrapper": { "id": 2147883738, "data": { "cereal_class_version": 3,
+  "value0": { "value0": { "value0": { "m_guid_": "c3549c72-17b6-471a-bd9a-bc3cca292afe", "m_name_": "TextRenderer" }, "value1": { "locked_ptr": { "polymorphic_id": 1073741824, "ptr_wrapper": { "id": 400001 } } } },
+    "shared_materials": [], "m_rendering_layer_": { "m_layer_names_": { "value0": "3D", "value1": "UI", "value2": "", "value3": "", "value4": "", "value5": "", "value6": "", "value7": "", "value8": "", "value9": "", "value10": "", "value11": "", "value12": "", "value13": "", "value14": "", "value15": "" }, "m_masks_": 2 } },
+  "position": { "v.x": 0.0, "v.y": 0.0 },
+  "font_data": { "value0": { "m_guid_": "dcbad571-dc53-4600-8406-233cc4ba6c2e", "m_type_": 2, "m_stored_reference_": { "polymorphic_id": 0 } } },
+  "color": { "value0": 0.16, "value1": 0.16, "value2": 0.16, "value3": 1.0 },
+  "string": "簡単", "rotation": 0.0, "origin": { "v.x": 0.0, "v.y": 0.0 }, "scale": 0.7, "render_queue": 0 } } },
+{ "polymorphic_id": 2147484249, "polymorphic_name": "ui::UIButtonLabel", "ptr_wrapper": { "id": 2147883739, "data": { "cereal_class_version": 2,
+  "value0": { "value0": { "m_guid_": "2c7b2a63-e619-458a-ba30-54bbb2bb5864", "m_name_": "UIButtonLabel" }, "value1": { "locked_ptr": { "polymorphic_id": 1073741824, "ptr_wrapper": { "id": 400001 } } } },
+  "m_ui_button_": { "value0": { "m_guid_": "8556a1fd-2f72-4f62-81fc-f7766e2f2a1b", "m_type_": 2, "m_stored_reference_": { "polymorphic_id": 0 } } },
+  "m_text_renderer_": { "value0": { "m_guid_": "c3549c72-17b6-471a-bd9a-bc3cca292afe", "m_type_": 2, "m_stored_reference_": { "polymorphic_id": 0 } } },
+  "m_offset_": { "v.x": 0.0, "v.y": 0.0 } } } }
                                                                                     ]
                                                                                 }
                                                                             }
@@ -1867,12 +1879,12 @@
                                                                                                                         "v.y": 0.0
                                                                                                                     },
                                                                                                                     "size_delta": {
-                                                                                                                        "v.x": 300.0,
-                                                                                                                        "v.y": 55.0
+                                                                                                                        "v.x": 240.0,
+                                                                                                                        "v.y": 80.0
                                                                                                                     },
                                                                                                                     "anchored_position": {
                                                                                                                         "v.x": -480.0,
-                                                                                                                        "v.y": 202.0
+                                                                                                                        "v.y": 285.0
                                                                                                                     }
                                                                                                                 }
                                                                                                             }
@@ -1973,7 +1985,7 @@
                                                                                                     },
                                                                                                     "m_normal_texture_": {
                                                                                                         "value0": {
-                                                                                                            "m_guid_": "f3c1b594-dc45-417b-abac-dfa20a491ea9",
+                                                                                                            "m_guid_": "53b72280-f757-45d2-b9ae-6c9873485055",
                                                                                                             "m_type_": 2,
                                                                                                             "m_stored_reference_": {
                                                                                                                 "polymorphic_id": 0
@@ -1982,7 +1994,7 @@
                                                                                                     },
                                                                                                     "m_selected_texture_": {
                                                                                                         "value0": {
-                                                                                                            "m_guid_": "348af55e-98a0-4c97-afb2-e54c713dc848",
+                                                                                                            "m_guid_": "aec920f1-6d62-4a6b-aef5-2fd21597e707",
                                                                                                             "m_type_": 2,
                                                                                                             "m_stored_reference_": {
                                                                                                                 "polymorphic_id": 0
@@ -1991,7 +2003,7 @@
                                                                                                     },
                                                                                                     "m_pressed_texture_": {
                                                                                                         "value0": {
-                                                                                                            "m_guid_": "239c4929-4160-459e-9cd6-ce8a99f4908a",
+                                                                                                            "m_guid_": "82d4ae2e-4733-454d-8de3-d8532b2cc86f",
                                                                                                             "m_type_": 2,
                                                                                                             "m_stored_reference_": {
                                                                                                                 "polymorphic_id": 0
@@ -2043,7 +2055,19 @@
                                                                                                     "m_use_unscaled_delta_time_": true
                                                                                                 }
                                                                                             }
-                                                                                        }
+                                                                                        },
+{ "polymorphic_id": 600, "ptr_wrapper": { "id": 2147883838, "data": { 
+  "value0": { "value0": { "value0": { "m_guid_": "4dd8afae-9886-49ca-9c6b-dbb70322e21b", "m_name_": "TextRenderer" }, "value1": { "locked_ptr": { "polymorphic_id": 1073741824, "ptr_wrapper": { "id": 400101 } } } },
+    "shared_materials": [], "m_rendering_layer_": { "m_layer_names_": { "value0": "3D", "value1": "UI", "value2": "", "value3": "", "value4": "", "value5": "", "value6": "", "value7": "", "value8": "", "value9": "", "value10": "", "value11": "", "value12": "", "value13": "", "value14": "", "value15": "" }, "m_masks_": 2 } },
+  "position": { "v.x": 0.0, "v.y": 0.0 },
+  "font_data": { "value0": { "m_guid_": "dcbad571-dc53-4600-8406-233cc4ba6c2e", "m_type_": 2, "m_stored_reference_": { "polymorphic_id": 0 } } },
+  "color": { "value0": 0.16, "value1": 0.16, "value2": 0.16, "value3": 1.0 },
+  "string": "普通", "rotation": 0.0, "origin": { "v.x": 0.0, "v.y": 0.0 }, "scale": 0.7, "render_queue": 0 } } },
+{ "polymorphic_id": 601, "ptr_wrapper": { "id": 2147883839, "data": { 
+  "value0": { "value0": { "m_guid_": "36aa2494-cd5e-4acc-9b84-d0a4b9afbb56", "m_name_": "UIButtonLabel" }, "value1": { "locked_ptr": { "polymorphic_id": 1073741824, "ptr_wrapper": { "id": 400101 } } } },
+  "m_ui_button_": { "value0": { "m_guid_": "051ce582-8f46-4096-95a7-6032d0b4af9d", "m_type_": 2, "m_stored_reference_": { "polymorphic_id": 0 } } },
+  "m_text_renderer_": { "value0": { "m_guid_": "4dd8afae-9886-49ca-9c6b-dbb70322e21b", "m_type_": 2, "m_stored_reference_": { "polymorphic_id": 0 } } },
+  "m_offset_": { "v.x": 0.0, "v.y": 0.0 } } } }
                                                                                     ]
                                                                                 }
                                                                             }
@@ -2198,12 +2222,12 @@
                                                                                                                         "v.y": 0.0
                                                                                                                     },
                                                                                                                     "size_delta": {
-                                                                                                                        "v.x": 300.0,
-                                                                                                                        "v.y": 55.0
+                                                                                                                        "v.x": 240.0,
+                                                                                                                        "v.y": 80.0
                                                                                                                     },
                                                                                                                     "anchored_position": {
                                                                                                                         "v.x": -480.0,
-                                                                                                                        "v.y": 67.0
+                                                                                                                        "v.y": 95.0
                                                                                                                     }
                                                                                                                 }
                                                                                                             }
@@ -2304,7 +2328,7 @@
                                                                                                     },
                                                                                                     "m_normal_texture_": {
                                                                                                         "value0": {
-                                                                                                            "m_guid_": "8c813277-25ab-439d-8698-104ca56db64b",
+                                                                                                            "m_guid_": "53b72280-f757-45d2-b9ae-6c9873485055",
                                                                                                             "m_type_": 2,
                                                                                                             "m_stored_reference_": {
                                                                                                                 "polymorphic_id": 0
@@ -2313,7 +2337,7 @@
                                                                                                     },
                                                                                                     "m_selected_texture_": {
                                                                                                         "value0": {
-                                                                                                            "m_guid_": "85af0e2b-6c5a-4262-a888-9d3c4d9a67ab",
+                                                                                                            "m_guid_": "aec920f1-6d62-4a6b-aef5-2fd21597e707",
                                                                                                             "m_type_": 2,
                                                                                                             "m_stored_reference_": {
                                                                                                                 "polymorphic_id": 0
@@ -2322,7 +2346,7 @@
                                                                                                     },
                                                                                                     "m_pressed_texture_": {
                                                                                                         "value0": {
-                                                                                                            "m_guid_": "96d49512-6561-4d8e-a8b3-26ddfecd0dc2",
+                                                                                                            "m_guid_": "82d4ae2e-4733-454d-8de3-d8532b2cc86f",
                                                                                                             "m_type_": 2,
                                                                                                             "m_stored_reference_": {
                                                                                                                 "polymorphic_id": 0
@@ -2374,7 +2398,19 @@
                                                                                                     "m_use_unscaled_delta_time_": true
                                                                                                 }
                                                                                             }
-                                                                                        }
+                                                                                        },
+{ "polymorphic_id": 600, "ptr_wrapper": { "id": 2147883938, "data": { 
+  "value0": { "value0": { "value0": { "m_guid_": "e9e70cd5-8adc-488a-b69d-01278c84065d", "m_name_": "TextRenderer" }, "value1": { "locked_ptr": { "polymorphic_id": 1073741824, "ptr_wrapper": { "id": 400201 } } } },
+    "shared_materials": [], "m_rendering_layer_": { "m_layer_names_": { "value0": "3D", "value1": "UI", "value2": "", "value3": "", "value4": "", "value5": "", "value6": "", "value7": "", "value8": "", "value9": "", "value10": "", "value11": "", "value12": "", "value13": "", "value14": "", "value15": "" }, "m_masks_": 2 } },
+  "position": { "v.x": 0.0, "v.y": 0.0 },
+  "font_data": { "value0": { "m_guid_": "dcbad571-dc53-4600-8406-233cc4ba6c2e", "m_type_": 2, "m_stored_reference_": { "polymorphic_id": 0 } } },
+  "color": { "value0": 0.16, "value1": 0.16, "value2": 0.16, "value3": 1.0 },
+  "string": "難しい", "rotation": 0.0, "origin": { "v.x": 0.0, "v.y": 0.0 }, "scale": 0.7, "render_queue": 0 } } },
+{ "polymorphic_id": 601, "ptr_wrapper": { "id": 2147883939, "data": { 
+  "value0": { "value0": { "m_guid_": "fab12526-5dbb-4413-9e05-bc56b0b27bbf", "m_name_": "UIButtonLabel" }, "value1": { "locked_ptr": { "polymorphic_id": 1073741824, "ptr_wrapper": { "id": 400201 } } } },
+  "m_ui_button_": { "value0": { "m_guid_": "5f9fb93c-8d37-4067-8717-1a66c6d41fc4", "m_type_": 2, "m_stored_reference_": { "polymorphic_id": 0 } } },
+  "m_text_renderer_": { "value0": { "m_guid_": "e9e70cd5-8adc-488a-b69d-01278c84065d", "m_type_": 2, "m_stored_reference_": { "polymorphic_id": 0 } } },
+  "m_offset_": { "v.x": 0.0, "v.y": 0.0 } } } }
                                                                                     ]
                                                                                 }
                                                                             }
@@ -2529,12 +2565,12 @@
                                                                                                                         "v.y": 0.0
                                                                                                                     },
                                                                                                                     "size_delta": {
-                                                                                                                        "v.x": 300.0,
-                                                                                                                        "v.y": 55.0
+                                                                                                                        "v.x": 240.0,
+                                                                                                                        "v.y": 80.0
                                                                                                                     },
                                                                                                                     "anchored_position": {
                                                                                                                         "v.x": -480.0,
-                                                                                                                        "v.y": -68.0
+                                                                                                                        "v.y": -95.0
                                                                                                                     }
                                                                                                                 }
                                                                                                             }
@@ -2635,7 +2671,7 @@
                                                                                                     },
                                                                                                     "m_normal_texture_": {
                                                                                                         "value0": {
-                                                                                                            "m_guid_": "2869465a-1cb4-46b5-bac6-e00addb02e37",
+                                                                                                            "m_guid_": "53b72280-f757-45d2-b9ae-6c9873485055",
                                                                                                             "m_type_": 2,
                                                                                                             "m_stored_reference_": {
                                                                                                                 "polymorphic_id": 0
@@ -2644,7 +2680,7 @@
                                                                                                     },
                                                                                                     "m_selected_texture_": {
                                                                                                         "value0": {
-                                                                                                            "m_guid_": "b0af8962-baee-444b-a031-e016ed131b49",
+                                                                                                            "m_guid_": "aec920f1-6d62-4a6b-aef5-2fd21597e707",
                                                                                                             "m_type_": 2,
                                                                                                             "m_stored_reference_": {
                                                                                                                 "polymorphic_id": 0
@@ -2653,7 +2689,7 @@
                                                                                                     },
                                                                                                     "m_pressed_texture_": {
                                                                                                         "value0": {
-                                                                                                            "m_guid_": "fac42e3c-eaf1-4df4-8ad1-08196bec0e71",
+                                                                                                            "m_guid_": "82d4ae2e-4733-454d-8de3-d8532b2cc86f",
                                                                                                             "m_type_": 2,
                                                                                                             "m_stored_reference_": {
                                                                                                                 "polymorphic_id": 0
@@ -2705,7 +2741,19 @@
                                                                                                     "m_use_unscaled_delta_time_": true
                                                                                                 }
                                                                                             }
-                                                                                        }
+                                                                                        },
+{ "polymorphic_id": 600, "ptr_wrapper": { "id": 2147884038, "data": { 
+  "value0": { "value0": { "value0": { "m_guid_": "a7f1db79-a6d9-454a-b352-0804afa9cd32", "m_name_": "TextRenderer" }, "value1": { "locked_ptr": { "polymorphic_id": 1073741824, "ptr_wrapper": { "id": 400301 } } } },
+    "shared_materials": [], "m_rendering_layer_": { "m_layer_names_": { "value0": "3D", "value1": "UI", "value2": "", "value3": "", "value4": "", "value5": "", "value6": "", "value7": "", "value8": "", "value9": "", "value10": "", "value11": "", "value12": "", "value13": "", "value14": "", "value15": "" }, "m_masks_": 2 } },
+  "position": { "v.x": 0.0, "v.y": 0.0 },
+  "font_data": { "value0": { "m_guid_": "dcbad571-dc53-4600-8406-233cc4ba6c2e", "m_type_": 2, "m_stored_reference_": { "polymorphic_id": 0 } } },
+  "color": { "value0": 0.16, "value1": 0.16, "value2": 0.16, "value3": 1.0 },
+  "string": "戻る", "rotation": 0.0, "origin": { "v.x": 0.0, "v.y": 0.0 }, "scale": 0.7, "render_queue": 0 } } },
+{ "polymorphic_id": 601, "ptr_wrapper": { "id": 2147884039, "data": { 
+  "value0": { "value0": { "m_guid_": "c79fae78-f954-4d44-aa34-a5be163c808a", "m_name_": "UIButtonLabel" }, "value1": { "locked_ptr": { "polymorphic_id": 1073741824, "ptr_wrapper": { "id": 400301 } } } },
+  "m_ui_button_": { "value0": { "m_guid_": "667dcc06-a523-44c2-a8f1-a15ac340a628", "m_type_": 2, "m_stored_reference_": { "polymorphic_id": 0 } } },
+  "m_text_renderer_": { "value0": { "m_guid_": "a7f1db79-a6d9-454a-b352-0804afa9cd32", "m_type_": 2, "m_stored_reference_": { "polymorphic_id": 0 } } },
+  "m_offset_": { "v.x": 0.0, "v.y": 0.0 } } } }
                                                                                     ]
                                                                                 }
                                                                             }
@@ -2860,12 +2908,12 @@
                                                                                                                         "v.y": 0.0
                                                                                                                     },
                                                                                                                     "size_delta": {
-                                                                                                                        "v.x": 300.0,
-                                                                                                                        "v.y": 55.0
+                                                                                                                        "v.x": 240.0,
+                                                                                                                        "v.y": 80.0
                                                                                                                     },
                                                                                                                     "anchored_position": {
                                                                                                                         "v.x": -480.0,
-                                                                                                                        "v.y": -203.0
+                                                                                                                        "v.y": -285.0
                                                                                                                     }
                                                                                                                 }
                                                                                                             }

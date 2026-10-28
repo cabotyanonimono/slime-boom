@@ -108,7 +108,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(ProjectDir)External\GenericEngine\ThirdParty\EffekseerDebug\include;$(ProjectDir)External\GenericEngine\ThirdParty\EffekseerDebug\include\Effekseer;$(ProjectDir)External\GenericEngine;$(ProjectDir)vcpkg_installed\x64-windows\include;$(ProjectDir)vcpkg_installed\x64-windows\include\bullet;$(ProjectDir)External\GenericEngine\Engine;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)External\GenericEngine\ThirdParty\Effekseer\include;$(ProjectDir)External\GenericEngine;$(ProjectDir)vcpkg_installed\x64-windows\include;$(ProjectDir)vcpkg_installed\x64-windows\include\bullet;$(ProjectDir)External\GenericEngine\Engine;</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -116,7 +116,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(ProjectDir)External\GenericEngine\ThirdParty\EffekseerDebug\lib\*.lib;$(ProjectDir)vcpkg\installed\x64-windows\debug\lib\*.lib;</AdditionalDependencies>
+      <AdditionalDependencies>$(ProjectDir)External\GenericEngine\ThirdParty\Effekseer\lib\Effekseerd.lib;$(ProjectDir)External\GenericEngine\ThirdParty\Effekseer\lib\EffekseerRendererCommond.lib;$(ProjectDir)External\GenericEngine\ThirdParty\Effekseer\lib\EffekseerRendererDX11d.lib;$(ProjectDir)External\GenericEngine\ThirdParty\Effekseer\lib\EffekseerRendererDX12d.lib;$(ProjectDir)External\GenericEngine\ThirdParty\Effekseer\lib\EffekseerRendererLLGId.lib;$(ProjectDir)External\GenericEngine\ThirdParty\Effekseer\lib\LLGId.lib;$(ProjectDir)External\GenericEngine\ThirdParty\Effekseer\lib\EffekseerSoundXAudio2d.lib;$(ProjectDir)vcpkg_installed\x64-windows\debug\lib\*.lib;</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(ProjectDir)External\GenericEngine\ThirdParty\dxlib_h;$(ProjectDir)External\GenericEngine;$(ProjectDir)External\GenericEngine\Engine              </AdditionalLibraryDirectories>
       <DelayLoadDLLs>assimp-vc143-mt.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
       <PerUserRedirection>true</PerUserRedirection>
@@ -408,86 +408,7 @@
     <ClCompile Include="SlimeBoom\Player\ability\ability_data\aura_ability_data.cpp" />
     <ClCompile Include="SlimeBoom\Player\ability\ability_data\slash_ability_data.cpp" />
     <ClCompile Include="SlimeBoom\Player\ability\ability_processer.cpp" />
-    <ClCompile Include="SlimeBoom\Player\ability\aura_ability.cpp">
-      <AssemblerOutput>NoListing</AssemblerOutput>
-      <AssemblerListingLocation>SlimeBoom\x64\Release\</AssemblerListingLocation>
-      <UndefineAllPreprocessorDefinitions>false</UndefineAllPreprocessorDefinitions>
-      <BrowseInformation>false</BrowseInformation>
-      <BrowseInformationFile>SlimeBoom\x64\Release\</BrowseInformationFile>
-      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
-      <CompileAs>Default</CompileAs>
-      <UseDynamicDebugging>false</UseDynamicDebugging>
-      <ConformanceMode>true</ConformanceMode>
-      <DiagnosticsFormat>Column</DiagnosticsFormat>
-      <DisableLanguageExtensions>false</DisableLanguageExtensions>
-      <ErrorReporting>Prompt</ErrorReporting>
-      <ExpandAttributedSource>false</ExpandAttributedSource>
-      <ExceptionHandling>Sync</ExceptionHandling>
-      <EnableASAN>false</EnableASAN>
-      <EnableFuzzer>false</EnableFuzzer>
-      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
-      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
-      <EnableVectorLength>NotSet</EnableVectorLength>
-      <FloatingPointModel>Precise</FloatingPointModel>
-      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
-      <GenerateModuleDependencies>false</GenerateModuleDependencies>
-      <GenerateSourceDependencies>false</GenerateSourceDependencies>
-      <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
-      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
-      <IntrinsicFunctions>true</IntrinsicFunctions>
-      <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
-      <LanguageStandard>stdcpp20</LanguageStandard>
-      <LanguageStandard_C>Default</LanguageStandard_C>
-      <MinimalRebuild>false</MinimalRebuild>
-      <ModuleDependenciesFile>SlimeBoom\x64\Release\</ModuleDependenciesFile>
-      <ModuleOutputFile>SlimeBoom\x64\Release\</ModuleOutputFile>
-      <OmitDefaultLibName>false</OmitDefaultLibName>
-      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
-      <WholeProgramOptimization>true</WholeProgramOptimization>
-      <Optimization>Full</Optimization>
-      <ObjectFileName>SlimeBoom\x64\Release\</ObjectFileName>
-      <CallingConvention>Cdecl</CallingConvention>
-      <ProgramDataBaseFileName>SlimeBoom\x64\Release\vc143.pdb</ProgramDataBaseFileName>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <PrecompiledHeaderOutputFile>SlimeBoom\x64\Release\SlimeBoom.pch</PrecompiledHeaderOutputFile>
-      <PreprocessToFile>false</PreprocessToFile>
-      <PreprocessKeepComments>false</PreprocessKeepComments>
-      <PreprocessSuppressLineNumbers>false</PreprocessSuppressLineNumbers>
-      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
-      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
-      <ShowIncludes>false</ShowIncludes>
-      <SourceDependenciesFile>SlimeBoom\x64\Release\</SourceDependenciesFile>
-      <SuppressStartupBanner>true</SuppressStartupBanner>
-      <BufferSecurityCheck>true</BufferSecurityCheck>
-      <SmallerTypeCheck>false</SmallerTypeCheck>
-      <SpectreMitigation>false</SpectreMitigation>
-      <StructMemberAlignment>Default</StructMemberAlignment>
-      <SupportJustMyCode>false</SupportJustMyCode>
-      <TrackerLogDirectory>SlimeBoom\x64\Release\SlimeBoom.tlog\</TrackerLogDirectory>
-      <TranslateIncludes>false</TranslateIncludes>
-      <MinimalRebuildFromTracking>true</MinimalRebuildFromTracking>
-      <TreatWarningAsError>false</TreatWarningAsError>
-      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
-      <UseFullPaths>true</UseFullPaths>
-      <WarningLevel>Level3</WarningLevel>
-      <XMLDocumentationFileName>SlimeBoom\x64\Release\</XMLDocumentationFileName>
-      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <IntelJCCErratum>false</IntelJCCErratum>
-      <BuildStlModules>false</BuildStlModules>
-      <TreatAngleIncludeAsExternal>false</TreatAngleIncludeAsExternal>
-      <ExternalWarningLevel>InheritWarningLevel</ExternalWarningLevel>
-      <TreatExternalTemplatesAsInternal>true</TreatExternalTemplatesAsInternal>
-      <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;_MBCS;</PreprocessorDefinitions>
-      <FunctionLevelLinking>true</FunctionLevelLinking>
-      <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\cabotya\Projects\slime-boom\Solution\External\GenericEngine\ThirdParty\Effekseer\include;C:\cabotya\Projects\slime-boom\Solution\External\GenericEngine;C:\cabotya\Projects\slime-boom\Solution\vcpkg_installed\x64-windows\include;C:\cabotya\Projects\slime-boom\Solution\vcpkg_installed\x64-windows\include\bullet;C:\cabotya\Projects\slime-boom\Solution\External\GenericEngine\Engine;</AdditionalIncludeDirectories>
-      <AdditionalOptions>/FS</AdditionalOptions>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <LinkCompiled>true</LinkCompiled>
-    </ClCompile>
+    <ClCompile Include="SlimeBoom\Player\ability\aura_ability.cpp" />
     <ClCompile Include="SlimeBoom\Player\ability\cooldown_ability.cpp" />
     <ClCompile Include="SlimeBoom\Player\ability\iability.cpp" />
     <ClCompile Include="SlimeBoom\Player\ability\slash_ability.cpp" />
@@ -510,86 +431,7 @@
     <ClCompile Include="SlimeBoom\Settings\settings_model.cpp" />
     <ClCompile Include="SlimeBoom\Settings\settings_presenter.cpp" />
     <ClCompile Include="SlimeBoom\Settings\settings_view.cpp" />
-    <ClCompile Include="SlimeBoom\Slime\slime_eliminate_checker.cpp">
-      <AssemblerOutput>NoListing</AssemblerOutput>
-      <AssemblerListingLocation>SlimeBoom\x64\Release\</AssemblerListingLocation>
-      <UndefineAllPreprocessorDefinitions>false</UndefineAllPreprocessorDefinitions>
-      <BrowseInformation>false</BrowseInformation>
-      <BrowseInformationFile>SlimeBoom\x64\Release\</BrowseInformationFile>
-      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
-      <CompileAs>Default</CompileAs>
-      <UseDynamicDebugging>false</UseDynamicDebugging>
-      <ConformanceMode>true</ConformanceMode>
-      <DiagnosticsFormat>Column</DiagnosticsFormat>
-      <DisableLanguageExtensions>false</DisableLanguageExtensions>
-      <ErrorReporting>Prompt</ErrorReporting>
-      <ExpandAttributedSource>false</ExpandAttributedSource>
-      <ExceptionHandling>Sync</ExceptionHandling>
-      <EnableASAN>false</EnableASAN>
-      <EnableFuzzer>false</EnableFuzzer>
-      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
-      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
-      <EnableVectorLength>NotSet</EnableVectorLength>
-      <FloatingPointModel>Precise</FloatingPointModel>
-      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
-      <GenerateModuleDependencies>false</GenerateModuleDependencies>
-      <GenerateSourceDependencies>false</GenerateSourceDependencies>
-      <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
-      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
-      <IntrinsicFunctions>true</IntrinsicFunctions>
-      <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
-      <LanguageStandard>stdcpp20</LanguageStandard>
-      <LanguageStandard_C>Default</LanguageStandard_C>
-      <MinimalRebuild>false</MinimalRebuild>
-      <ModuleDependenciesFile>SlimeBoom\x64\Release\</ModuleDependenciesFile>
-      <ModuleOutputFile>SlimeBoom\x64\Release\</ModuleOutputFile>
-      <OmitDefaultLibName>false</OmitDefaultLibName>
-      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
-      <WholeProgramOptimization>true</WholeProgramOptimization>
-      <Optimization>Full</Optimization>
-      <ObjectFileName>SlimeBoom\x64\Release\</ObjectFileName>
-      <CallingConvention>Cdecl</CallingConvention>
-      <ProgramDataBaseFileName>SlimeBoom\x64\Release\vc143.pdb</ProgramDataBaseFileName>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <PrecompiledHeaderOutputFile>SlimeBoom\x64\Release\SlimeBoom.pch</PrecompiledHeaderOutputFile>
-      <PreprocessToFile>false</PreprocessToFile>
-      <PreprocessKeepComments>false</PreprocessKeepComments>
-      <PreprocessSuppressLineNumbers>false</PreprocessSuppressLineNumbers>
-      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
-      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
-      <ShowIncludes>false</ShowIncludes>
-      <SourceDependenciesFile>SlimeBoom\x64\Release\</SourceDependenciesFile>
-      <SuppressStartupBanner>true</SuppressStartupBanner>
-      <BufferSecurityCheck>true</BufferSecurityCheck>
-      <SmallerTypeCheck>false</SmallerTypeCheck>
-      <SpectreMitigation>false</SpectreMitigation>
-      <StructMemberAlignment>Default</StructMemberAlignment>
-      <SupportJustMyCode>false</SupportJustMyCode>
-      <TrackerLogDirectory>SlimeBoom\x64\Release\SlimeBoom.tlog\</TrackerLogDirectory>
-      <TranslateIncludes>false</TranslateIncludes>
-      <MinimalRebuildFromTracking>true</MinimalRebuildFromTracking>
-      <TreatWarningAsError>false</TreatWarningAsError>
-      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
-      <UseFullPaths>true</UseFullPaths>
-      <WarningLevel>Level3</WarningLevel>
-      <XMLDocumentationFileName>SlimeBoom\x64\Release\</XMLDocumentationFileName>
-      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <IntelJCCErratum>false</IntelJCCErratum>
-      <BuildStlModules>false</BuildStlModules>
-      <TreatAngleIncludeAsExternal>false</TreatAngleIncludeAsExternal>
-      <ExternalWarningLevel>InheritWarningLevel</ExternalWarningLevel>
-      <TreatExternalTemplatesAsInternal>true</TreatExternalTemplatesAsInternal>
-      <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;_MBCS;</PreprocessorDefinitions>
-      <FunctionLevelLinking>true</FunctionLevelLinking>
-      <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\cabotya\Projects\slime-boom\Solution\External\GenericEngine\ThirdParty\Effekseer\include;C:\cabotya\Projects\slime-boom\Solution\External\GenericEngine;C:\cabotya\Projects\slime-boom\Solution\vcpkg_installed\x64-windows\include;C:\cabotya\Projects\slime-boom\Solution\vcpkg_installed\x64-windows\include\bullet;C:\cabotya\Projects\slime-boom\Solution\External\GenericEngine\Engine;</AdditionalIncludeDirectories>
-      <AdditionalOptions>/FS</AdditionalOptions>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <LinkCompiled>true</LinkCompiled>
-    </ClCompile>
+    <ClCompile Include="SlimeBoom\Slime\slime_eliminate_checker.cpp" />
     <ClCompile Include="SlimeBoom\Slime\slime_eliminate_se.cpp" />
     <ClCompile Include="SlimeBoom\Slime\slime_death_effect_component.cpp" />
     <ClCompile Include="SlimeBoom\Slime\slime_simulation_component.cpp" />
@@ -616,6 +458,7 @@
     <ClCompile Include="SlimeBoom\UI\survival_timer.cpp" />
     <ClCompile Include="SlimeBoom\UI\text_color_changer.cpp" />
     <ClCompile Include="SlimeBoom\UI\ui_button.cpp" />
+    <ClCompile Include="SlimeBoom\UI\ui_button_label.cpp" />
     <ClCompile Include="SlimeBoom\UI\ui_data_provider.cpp" />
     <ClCompile Include="SlimeBoom\UI\ui_hover_scale_effect.cpp" />
     <ClCompile Include="SlimeBoom\UI\ui_navigator.cpp" />
@@ -1025,6 +868,7 @@
     <ClInclude Include="SlimeBoom\UI\survival_timer.h" />
     <ClInclude Include="SlimeBoom\UI\text_color_changer.h" />
     <ClInclude Include="SlimeBoom\UI\ui_button.h" />
+    <ClInclude Include="SlimeBoom\UI\ui_button_label.h" />
     <ClInclude Include="SlimeBoom\UI\ui_data_provider.h" />
     <ClInclude Include="SlimeBoom\UI\ui_hover_scale_effect.h" />
     <ClInclude Include="SlimeBoom\UI\ui_navigator.h" />
