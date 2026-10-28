@@ -17921,7 +17921,7 @@
                                                                                                                     },
                                                                                                                     "value1": {
                                                                                                                         "value0": {
-                                                                                                                            "m_guid_": "194e7924-84e7-45ea-af6e-434918d4f295",
+                                                                                                                            "m_guid_": "2c858f31-e211-448e-958c-914010ac46e6",
                                                                                                                             "m_type_": 2,
                                                                                                                             "m_stored_reference_": {
                                                                                                                                 "polymorphic_id": 0
@@ -26176,18 +26176,7 @@
                                                                                                                                                         "v.x": 0.5,
                                                                                                                                                         "v.y": 0.5
                                                                                                                                                     },
-                                                                                                                                                    "pivot": {
-                                                                                                                                                        "v.x": -1.7200000286102296,
-                                                                                                                                                        "v.y": 5.340000152587891
-                                                                                                                                                    },
-                                                                                                                                                    "size_delta": {
-                                                                                                                                                        "v.x": 192.0,
-                                                                                                                                                        "v.y": 64.0
-                                                                                                                                                    },
-                                                                                                                                                    "anchored_position": {
-                                                                                                                                                        "v.x": 0.0,
-                                                                                                                                                        "v.y": 0.0
-                                                                                                                                                    }
+                                                                                                                                                    "pivot": { "v.x": 0.0, "v.y": 0.0 }, "size_delta": { "v.x": 192.0, "v.y": 64.0 }, "anchored_position": { "v.x": 330.24, "v.y": -341.76 }
                                                                                                                                                 }
                                                                                                                                             }
                                                                                                                                         },
@@ -26248,7 +26237,12 @@
                                                                                                                                                     }
                                                                                                                                                 }
                                                                                                                                             }
-                                                                                                                                        }
+                                                                                                                                        },
+{ "polymorphic_id": 54, "ptr_wrapper": { "id": 2148083648, "data": { 
+  "value0": { "value0": { "m_guid_": "f25aae41-cb90-4f2b-89f9-39cb26f6f5e3", "m_name_": "UiHoverScaleEffect" }, "value1": { "locked_ptr": { "polymorphic_id": 1073741824, "ptr_wrapper": { "id": 563 } } } },
+  "m_ui_button_": { "value0": { "m_guid_": "72165ef7-dff2-4f8a-b897-ef56f9089104", "m_type_": 2, "m_stored_reference_": { "polymorphic_id": 0 } } },
+  "m_rect_transform_": { "value0": { "m_guid_": "2931f77f-cb5f-4c13-93ac-f9c1e261f336", "m_type_": 2, "m_stored_reference_": { "polymorphic_id": 0 } } },
+  "m_transition_time_": 0.10000000149011612, "m_target_scale_": 1.100000023841858, "m_use_unscaled_delta_time_": true } } }
                                                                                                                                     ]
                                                                                                                                 }
                                                                                                                             }
@@ -26537,18 +26531,7 @@
                                                                                                                                                         "v.x": 0.5,
                                                                                                                                                         "v.y": 0.5
                                                                                                                                                     },
-                                                                                                                                                    "pivot": {
-                                                                                                                                                        "v.x": 1.7200000286102296,
-                                                                                                                                                        "v.y": 5.340000152587891
-                                                                                                                                                    },
-                                                                                                                                                    "size_delta": {
-                                                                                                                                                        "v.x": 192.0,
-                                                                                                                                                        "v.y": 64.0
-                                                                                                                                                    },
-                                                                                                                                                    "anchored_position": {
-                                                                                                                                                        "v.x": 0.0,
-                                                                                                                                                        "v.y": 0.0
-                                                                                                                                                    }
+                                                                                                                                                    "pivot": { "v.x": 0.0, "v.y": 0.0 }, "size_delta": { "v.x": 192.0, "v.y": 64.0 }, "anchored_position": { "v.x": -330.24, "v.y": -341.76 }
                                                                                                                                                 }
                                                                                                                                             }
                                                                                                                                         },
@@ -26609,7 +26592,12 @@
                                                                                                                                                     }
                                                                                                                                                 }
                                                                                                                                             }
-                                                                                                                                        }
+                                                                                                                                        },
+{ "polymorphic_id": 54, "ptr_wrapper": { "id": 2148083649, "data": { 
+  "value0": { "value0": { "m_guid_": "2272cdaf-7457-49d4-ab16-70338e17f4ef", "m_name_": "UiHoverScaleEffect" }, "value1": { "locked_ptr": { "polymorphic_id": 1073741824, "ptr_wrapper": { "id": 571 } } } },
+  "m_ui_button_": { "value0": { "m_guid_": "3a1911a5-9b96-4922-832f-7173e3258f3c", "m_type_": 2, "m_stored_reference_": { "polymorphic_id": 0 } } },
+  "m_rect_transform_": { "value0": { "m_guid_": "3376b57c-145a-4676-8bc0-b60f868468ed", "m_type_": 2, "m_stored_reference_": { "polymorphic_id": 0 } } },
+  "m_transition_time_": 0.10000000149011612, "m_target_scale_": 1.100000023841858, "m_use_unscaled_delta_time_": true } } }
                                                                                                                                     ]
                                                                                                                                 }
                                                                                                                             }
@@ -33217,18 +33205,7 @@
                                                                                                                         "v.x": 0.5,
                                                                                                                         "v.y": 0.5
                                                                                                                     },
-                                                                                                                    "pivot": {
-                                                                                                                        "v.x": -1.7200000286102296,
-                                                                                                                        "v.y": 5.0
-                                                                                                                    },
-                                                                                                                    "size_delta": {
-                                                                                                                        "v.x": 192.0,
-                                                                                                                        "v.y": 64.0
-                                                                                                                    },
-                                                                                                                    "anchored_position": {
-                                                                                                                        "v.x": 0.0,
-                                                                                                                        "v.y": 0.0
-                                                                                                                    }
+                                                                                                                    "pivot": { "v.x": 0.0, "v.y": 0.0 }, "size_delta": { "v.x": 192.0, "v.y": 64.0 }, "anchored_position": { "v.x": 330.24, "v.y": -320.0 }
                                                                                                                 }
                                                                                                             }
                                                                                                         },
@@ -33289,7 +33266,12 @@
                                                                                                                     }
                                                                                                                 }
                                                                                                             }
-                                                                                                        }
+                                                                                                        },
+{ "polymorphic_id": 54, "ptr_wrapper": { "id": 2148083650, "data": { 
+  "value0": { "value0": { "m_guid_": "ba352a52-8bd2-45fd-ae94-03ba903a5027", "m_name_": "UiHoverScaleEffect" }, "value1": { "locked_ptr": { "polymorphic_id": 1073741824, "ptr_wrapper": { "id": 747 } } } },
+  "m_ui_button_": { "value0": { "m_guid_": "a0b8689a-de2c-42ac-abeb-19bbc59c72ba", "m_type_": 2, "m_stored_reference_": { "polymorphic_id": 0 } } },
+  "m_rect_transform_": { "value0": { "m_guid_": "ccdd47a1-e56e-48bb-bb35-64e393a33631", "m_type_": 2, "m_stored_reference_": { "polymorphic_id": 0 } } },
+  "m_transition_time_": 0.10000000149011612, "m_target_scale_": 1.100000023841858, "m_use_unscaled_delta_time_": true } } }
                                                                                                     ]
                                                                                                 }
                                                                                             }
@@ -33578,18 +33560,7 @@
                                                                                                                         "v.x": 0.5,
                                                                                                                         "v.y": 0.5
                                                                                                                     },
-                                                                                                                    "pivot": {
-                                                                                                                        "v.x": 1.7200000286102296,
-                                                                                                                        "v.y": 5.0
-                                                                                                                    },
-                                                                                                                    "size_delta": {
-                                                                                                                        "v.x": 192.0,
-                                                                                                                        "v.y": 64.0
-                                                                                                                    },
-                                                                                                                    "anchored_position": {
-                                                                                                                        "v.x": 0.0,
-                                                                                                                        "v.y": 0.0
-                                                                                                                    }
+                                                                                                                    "pivot": { "v.x": 0.0, "v.y": 0.0 }, "size_delta": { "v.x": 192.0, "v.y": 64.0 }, "anchored_position": { "v.x": -330.24, "v.y": -320.0 }
                                                                                                                 }
                                                                                                             }
                                                                                                         },
@@ -33650,7 +33621,12 @@
                                                                                                                     }
                                                                                                                 }
                                                                                                             }
-                                                                                                        }
+                                                                                                        },
+{ "polymorphic_id": 54, "ptr_wrapper": { "id": 2148083651, "data": { 
+  "value0": { "value0": { "m_guid_": "6a14fc3c-1d5d-44a3-9a47-ec2432fb08a3", "m_name_": "UiHoverScaleEffect" }, "value1": { "locked_ptr": { "polymorphic_id": 1073741824, "ptr_wrapper": { "id": 755 } } } },
+  "m_ui_button_": { "value0": { "m_guid_": "90085671-b30c-4765-b1bb-5991eee6eac7", "m_type_": 2, "m_stored_reference_": { "polymorphic_id": 0 } } },
+  "m_rect_transform_": { "value0": { "m_guid_": "de2b23c2-a755-4454-ae36-7d9945ab3110", "m_type_": 2, "m_stored_reference_": { "polymorphic_id": 0 } } },
+  "m_transition_time_": 0.10000000149011612, "m_target_scale_": 1.100000023841858, "m_use_unscaled_delta_time_": true } } }
                                                                                                     ]
                                                                                                 }
                                                                                             }
