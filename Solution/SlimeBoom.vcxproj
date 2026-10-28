@@ -458,6 +458,7 @@
     <ClCompile Include="SlimeBoom\UI\survival_timer.cpp" />
     <ClCompile Include="SlimeBoom\UI\text_color_changer.cpp" />
     <ClCompile Include="SlimeBoom\UI\ui_button.cpp" />
+    <ClCompile Include="SlimeBoom\UI\ui_button_label.cpp" />
     <ClCompile Include="SlimeBoom\UI\ui_data_provider.cpp" />
     <ClCompile Include="SlimeBoom\UI\ui_hover_scale_effect.cpp" />
     <ClCompile Include="SlimeBoom\UI\ui_navigator.cpp" />
@@ -786,6 +787,7 @@
     <ClInclude Include="SlimeBoom\Component\set_null_render_texture_component.h" />
     <ClInclude Include="SlimeBoom\Component\texture_cube_recreator.h" />
     <ClInclude Include="SlimeBoom\Component\title_scene_controller.h" />
+    <ClInclude Include="SlimeBoom\Component\stage_selection.h" />
     <ClInclude Include="SlimeBoom\compute_result.h" />
     <ClInclude Include="SlimeBoom\compute_result_types.h" />
     <ClInclude Include="SlimeBoom\default_scene_creator.h" />
@@ -866,6 +868,7 @@
     <ClInclude Include="SlimeBoom\UI\survival_timer.h" />
     <ClInclude Include="SlimeBoom\UI\text_color_changer.h" />
     <ClInclude Include="SlimeBoom\UI\ui_button.h" />
+    <ClInclude Include="SlimeBoom\UI\ui_button_label.h" />
     <ClInclude Include="SlimeBoom\UI\ui_data_provider.h" />
     <ClInclude Include="SlimeBoom\UI\ui_hover_scale_effect.h" />
     <ClInclude Include="SlimeBoom\UI\ui_navigator.h" />
