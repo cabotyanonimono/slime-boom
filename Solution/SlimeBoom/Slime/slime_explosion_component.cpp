@@ -3,6 +3,7 @@
 
 #include "engine_time.h"
 #include "gui.h"
+#include "slime_simulation_component.h"
 #include "Rendering/gpu_resource_manager.h"
 #include "Rendering/render_pipeline.h"
 
@@ -26,20 +27,6 @@ void SlimeExplosionComponent::OnInspectorGui()
     engine::Gui::PropertyField("Chance", m_chance_);
     engine::Gui::PropertyField("Chain Decay", m_chain_decay_);
     engine::Gui::PropertyField("Damage Color Time", m_damage_color_time_);
-
-    ImGui::SeparatorText("Debug");
-    ImGui::Text("Enabled: %u", m_params_.enabled);
-    ImGui::Text("Chance: %.3f  Radius: %.2f  Damage: %.2f", m_params_.chance, m_params_.radius, m_params_.damage);
-    ImGui::Text("Max Generation: %u  Frame: %u", m_params_.max_generation, m_params_.frame);
-    // 先頭の要素のgenerationは、これまでに登録された爆発の総数
-    ImGui::Text("Registered Explosions: %u", m_debug_explosions_[0].generation);
-    uint32_t max_generation = 0;
-    for (uint32_t i = 1; i < kMaxExplosionCount; ++i)
-    {
-        if (m_debug_explosions_[i].frame != 0)
-            max_generation = std::max(max_generation, m_debug_explosions_[i].generation);
-    }
-    ImGui::Text("Deepest Chain: %u", max_generation);
 }
 
 void SlimeExplosionComponent::OnDestroy()
@@ -59,12 +46,6 @@ void SlimeExplosionComponent::OnUpdate()
         m_listener_token_ = -1;
     }
 
-    if (m_explosion_buffer_->FetchBufferData(m_debug_explosions_.data()) || m_is_first_frame_)
-    {
-        m_listener_token_ = engine::RenderPipeline::Instance()->on_rendering.AddListener([&] {m_explosion_buffer_->RequestReadBack();});
-        m_is_first_frame_ = false;
-    }
-
     // バッファの初期値(frame = 0)が爆発として扱われないように、2以上から数える
     m_params_.frame = engine::Time::Get()->Frames() + 2;
     m_params_.chain_decay = m_chain_decay_;
@@ -74,7 +55,7 @@ void SlimeExplosionComponent::OnUpdate()
     if (m_params_.enabled == 0 || m_explosion_compute_.CastedLock() == nullptr)
         return;
 
-    m_explosion_compute_->SetGroupCount((kMaxSlimesCount + kThreadGroupSize - 1) / kThreadGroupSize, 1, 1);
+    m_explosion_compute_->SetGroupCount((SlimeSimulationComponent::GetMaxSlimeCount() + kThreadGroupSize - 1) / kThreadGroupSize, 1, 1);
     m_explosion_compute_->Execute();
 }
 

@@ -35,7 +35,6 @@ struct SlimeExplosionParams
 class SlimeExplosionComponent : public engine::Component
 {
     static constexpr uint32_t kMaxExplosionCount = 128;
-    static constexpr uint32_t kMaxSlimesCount = 8096;
     static constexpr uint32_t kThreadGroupSize = 64;
 
     std::shared_ptr<engine::StructuredBuffer> m_explosion_buffer_;
@@ -46,9 +45,6 @@ class SlimeExplosionComponent : public engine::Component
     float m_chance_ = 0.3f;
     float m_chain_decay_ = 0.7f;
     float m_damage_color_time_ = 0.2f;
-
-    // デバッグ表示用。GPUから読み戻した爆発バッファ
-    std::array<SlimeExplosionData, kMaxExplosionCount> m_debug_explosions_ = {};
     size_t m_listener_token_ = -1;
     bool m_is_first_frame_ = true;
 
