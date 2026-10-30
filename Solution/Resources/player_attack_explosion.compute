@@ -1,0 +1,171 @@
+#include "engine.hlsli"
+#include "exp.hlsli"
+#include "slime.hlsli"
+#include "math.hlsli"
+#include "player_attack_data.hlsli"
+#include "slime_death_particle.hlsli"
+#include "slime_explosion.hlsli"
+
+#define MAX_EXP_NUM 1024
+#define MAX_ATTACK_COUNT 10
+
+cbuffer PlayerPos : register(b2)
+{
+    float3 player_pos;
+}
+
+cbuffer SlimeCount : register(b3)
+{
+    int slime_count;
+}
+
+cbuffer DamageColorTime : register(b4)
+{
+    float damage_color_time;
+}
+
+cbuffer ExplosionParams : register(b5)
+{
+    float explosion_chance;
+    float explosion_radius;
+    float explosion_damage;
+    float explosion_knockback;
+    float explosion_chain_decay;
+    uint explosion_max_generation;
+    uint explosion_frame;
+    uint explosion_enabled;
+    float explosion_damage_color_time;
+}
+
+StructuredBuffer<PlayerAttackData> player_attacks : register(t3);
+
+RWStructuredBuffer<SlimeData> slimes : register(u1);
+RWStructuredBuffer<Exp> exps : register(u2);
+RWByteAddressBuffer result : register(u3);
+RWStructuredBuffer<SlimeDeathParticle> slime_death_particles : register(u4);
+RWStructuredBuffer<uint> slime_death_particle_counter : register(u5);
+RWStructuredBuffer<SlimeExplosion> slime_explosions : register(u6);
+
+bool CheckCollisionToPlayerAttack(float3 to_slime, PlayerAttackData attack_data);
+
+void OnSlimeAttack(inout SlimeData slime_data, PlayerAttackData attack_data, float3 player_to_slime);
+
+void SpawnDeathParticles(SlimeData slime_data);
+
+void TrySpawnExplosion(float3 position, uint generation);
+
+[numthreads(64, 1, 1)]
+void compute(uint3 globalID : SV_DispatchThreadID)
+{
+    int index = globalID.x;
+
+    if (index >= slime_count)
+        return;
+    
+    float3 to_slime = slimes[index].position - player_pos;
+    for (int i = 0; i < MAX_ATTACK_COUNT; ++i)
+    {
+        if (CheckCollisionToPlayerAttack(to_slime, player_attacks[i]))
+        {
+            OnSlimeAttack(slimes[index], player_attacks[i], to_slime);
+        }
+    }
+}
+
+bool CheckCollisionToPlayerAttack(float3 to_slime, PlayerAttackData attack_data)
+{
+    to_slime.y = 0.0f;
+    attack_data.angle.y = 0.0f;
+
+    attack_data.angle = normalize(attack_data.angle);
+
+    float dist = length(to_slime);
+    if (dist > attack_data.size)
+        return false;
+
+    if (dist <= 3.0f)
+        return true;
+
+    float3 dir_to_slime = normalize(to_slime);
+    float cos_angle = dot(attack_data.angle, dir_to_slime);
+
+    float cos_limit = cos(attack_data.arc * 0.5f);
+
+    if (cos_angle >= cos_limit)
+        return true;
+
+    return false;
+}
+
+void OnSlimeAttack(inout SlimeData slime_data, PlayerAttackData attack_data, float3 player_to_slime)
+{
+    slime_data.hp -= attack_data.damage;
+    slime_data.damage_color_timer = damage_color_time;
+			
+    float3 knockback =  float3(player_to_slime.x, 0.0f, player_to_slime.z) * attack_data.power;
+    slime_data.velocity += knockback;
+    result.InterlockedAdd(24, 1);
+            
+    if (slime_data.hp <= 0)
+    {
+        result.InterlockedAdd(20, 1);
+        SpawnDeathParticles(slime_data);
+        TrySpawnExplosion(slime_data.position, 0);
+        for (int j = 0; j < MAX_EXP_NUM; ++j)
+        {
+            uint original_value;
+            InterlockedCompareExchange(exps[j].is_active, 0, 1, original_value);
+
+            if (original_value == 0)
+            {
+                exps[j].pos = float3(slime_data.position.x, 0.0f, slime_data.position.z);
+                break;
+            }
+        }
+    }
+}
+
+void SpawnDeathParticles(SlimeData slime_data)
+{
+    uint base_index;
+    InterlockedAdd(slime_death_particle_counter[0], DEATH_PARTICLE_PER_SLIME, base_index);
+
+    for (uint i = 0; i < DEATH_PARTICLE_PER_SLIME; ++i)
+    {
+        uint seed = base_index + i;
+        float angle = (i + rand(float2(seed, slime_data.position.x))) / DEATH_PARTICLE_PER_SLIME * PI2;
+        float up = lerp(0.4f, 1.2f, rand(float2(slime_data.position.z, seed)));
+
+        SlimeDeathParticle particle;
+        particle.position = slime_data.position;
+        particle.age = 0.0f;
+        particle.velocity = normalize(float3(cos(angle), up, sin(angle)));
+        particle.random = rand(float2(seed * 0.37f, slime_data.position.x + slime_data.position.z));
+        particle.slime_type = slime_data.slime_type;
+        particle.state = DEATH_PARTICLE_STATE_SPAWNED;
+        particle.floor_y = slime_data.position.y;
+        particle.life_ratio = 0.0f;
+
+        slime_death_particles[seed % DEATH_PARTICLE_MAX] = particle;
+    }
+}
+
+void TrySpawnExplosion(float3 position, uint generation)
+{
+    if (explosion_enabled == 0 || generation >= explosion_max_generation)
+        return;
+
+    float chance = explosion_chance * pow(explosion_chain_decay, generation);
+    if (rand(float2(position.x + explosion_frame * 0.13f, position.z + generation)) >= chance)
+        return;
+
+    uint index;
+    InterlockedAdd(slime_explosions[SLIME_EXPLOSION_HEADER].generation, 1, index);
+
+    SlimeExplosion explosion;
+    explosion.position = position;
+    explosion.generation = generation;
+    explosion.frame = explosion_frame;
+    explosion.padding = float3(0.0f, 0.0f, 0.0f);
+    slime_explosions[1 + index % (SLIME_EXPLOSION_MAX - 1)] = explosion;
+}
