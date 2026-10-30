@@ -5,7 +5,6 @@
 #include "gui.h"
 #include "slime_simulation_component.h"
 #include "Rendering/gpu_resource_manager.h"
-#include "Rendering/render_pipeline.h"
 
 namespace SlimeBoom
 {
@@ -29,23 +28,8 @@ void SlimeExplosionComponent::OnInspectorGui()
     engine::Gui::PropertyField("Damage Color Time", m_damage_color_time_);
 }
 
-void SlimeExplosionComponent::OnDestroy()
-{
-    if (m_listener_token_ != -1)
-    {
-        engine::RenderPipeline::Instance()->on_rendering.RemoveListener(m_listener_token_);
-        m_listener_token_ = -1;
-    }
-}
-
 void SlimeExplosionComponent::OnUpdate()
 {
-    if (m_listener_token_ != -1)
-    {
-        engine::RenderPipeline::Instance()->on_rendering.RemoveListener(m_listener_token_);
-        m_listener_token_ = -1;
-    }
-
     // バッファの初期値(frame = 0)が爆発として扱われないように、2以上から数える
     m_params_.frame = engine::Time::Get()->Frames() + 2;
     m_params_.chain_decay = m_chain_decay_;

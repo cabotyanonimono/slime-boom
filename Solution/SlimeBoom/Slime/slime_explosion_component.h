@@ -45,12 +45,9 @@ class SlimeExplosionComponent : public engine::Component
     float m_chance_ = 0.3f;
     float m_chain_decay_ = 0.7f;
     float m_damage_color_time_ = 0.2f;
-    size_t m_listener_token_ = -1;
-    bool m_is_first_frame_ = true;
 
 public:
     void OnStart() override;
-    void OnDestroy() override;
     void OnInspectorGui() override;
     /// パラメーターをGPUに転送し、爆発のダメージ判定用ComputeShaderを実行する。
     void OnUpdate() override;
