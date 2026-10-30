@@ -1,0 +1,96 @@
+#include "engine.hlsli"
+#include "math.hlsli"
+#include "slime_explosion_particle.hlsli"
+
+cbuffer ExplosionParams : register(b3)
+{
+    float explosion_chance;
+    float explosion_radius;
+    float explosion_damage;
+    float explosion_knockback;
+    float explosion_chain_decay;
+    uint explosion_max_generation;
+    uint explosion_frame;
+    uint explosion_enabled;
+    float explosion_damage_color_time;
+}
+
+cbuffer ExplosionParticleParams : register(b4)
+{
+    float life_time;
+    float speed_min;
+    float speed_max;
+    float gravity;
+    float drag;
+    float bounce;
+    float up_min;
+    float up_max;
+    float bounce_friction; // 地面で跳ねたときに残す横方向の速さの割合
+    uint particle_count;   // 爆発1回で出す数(最大EXPLOSION_PARTICLE_PER_EXPLOSION)
+}
+
+RWStructuredBuffer<SlimeExplosionParticle> slime_explosion_particles : register(u1);
+RWStructuredBuffer<SlimeExplosion> slime_explosions : register(u2);
+
+float OrDefault(float value, float default_value)
+{
+    return value > 0.0f ? value : default_value;
+}
+
+// 新しく登録された爆発から、パーティクルを生成して動かす。
+[numthreads(64, 1, 1)]
+void compute(uint3 globalID : SV_DispatchThreadID)
+{
+    uint index = globalID.x;
+    uint slot = index / EXPLOSION_PARTICLE_PER_EXPLOSION;
+    if (slot == SLIME_EXPLOSION_HEADER || index >= EXPLOSION_PARTICLE_MAX)
+        return;
+
+    SlimeExplosionParticle p = slime_explosion_particles[index];
+
+    SlimeExplosion explosion = slime_explosions[slot];
+    if (explosion.frame != 0 && explosion.frame != p.spawned_frame)
+    {
+        uint i = index % EXPLOSION_PARTICLE_PER_EXPLOSION;
+        uint count = particle_count > 0 ? min(particle_count, EXPLOSION_PARTICLE_PER_EXPLOSION) : EXPLOSION_PARTICLE_PER_EXPLOSION;
+        float angle = (i + rand(float2(index, explosion.position.x))) / count * PI2;
+        float up = lerp(OrDefault(up_min, 0.1f), OrDefault(up_max, 0.6f), rand(float2(explosion.position.z, index)));
+
+        p.position = explosion.position;
+        p.age = 0.0f;
+        p.random = rand(float2(index * 0.37f, explosion.position.x + explosion.position.z));
+        p.velocity = normalize(float3(cos(angle), up, sin(angle))) * lerp(OrDefault(speed_min, 6.0f), OrDefault(speed_max, 14.0f), p.random);
+        p.state = i < count ? EXPLOSION_PARTICLE_STATE_ALIVE : EXPLOSION_PARTICLE_STATE_DEAD;
+        p.floor_y = explosion.position.y;
+        p.life_ratio = 0.0f;
+        p.spawned_frame = explosion.frame;
+    }
+
+    if (p.state == EXPLOSION_PARTICLE_STATE_DEAD)
+        return;
+
+    float lifetime = OrDefault(life_time, 0.5f);
+
+    p.age += deltatime;
+    if (p.age >= lifetime)
+    {
+        p.state = EXPLOSION_PARTICLE_STATE_DEAD;
+        p.life_ratio = 1.0f;
+        slime_explosion_particles[index] = p;
+        return;
+    }
+
+    p.velocity.y -= OrDefault(gravity, 6.0f) * deltatime;
+    p.velocity.xz *= saturate(1.0f - OrDefault(drag, 2.0f) * deltatime);
+    p.position += p.velocity * deltatime;
+
+    if (p.position.y < p.floor_y)
+    {
+        p.position.y = p.floor_y;
+        p.velocity.y = -p.velocity.y * OrDefault(bounce, 0.35f);
+        p.velocity.xz *= OrDefault(bounce_friction, 0.7f);
+    }
+
+    p.life_ratio = p.age / lifetime;
+    slime_explosion_particles[index] = p;
+}

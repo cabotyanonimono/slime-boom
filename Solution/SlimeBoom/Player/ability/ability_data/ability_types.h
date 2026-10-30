@@ -5,6 +5,7 @@ enum kAbilityTypes
 {
     kAbilityTypesSlash,
     kAbilityTypesAura,
+    kAbilityTypesExplosion,
 
     kAbilityTypesCount
 };
@@ -16,6 +17,7 @@ inline const char* ToString(const kAbilityTypes e)
     {
     case kAbilityTypesSlash: return "kSlash";
     case kAbilityTypesAura: return "kAura";
+    case kAbilityTypesExplosion: return "kExplosion";
     default: return "unknown";
     }
 }

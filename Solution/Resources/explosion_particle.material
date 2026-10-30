@@ -1,0 +1,215 @@
+{
+    "value0": {
+        "polymorphic_id": 1073741824,
+        "ptr_wrapper": {
+            "id": 2147483649,
+            "data": {
+                "cereal_class_version": 3,
+                "value0": {
+                    "cereal_class_version": 1,
+                    "m_guid_": "1a762db8-c49c-4fe8-882d-70056f955f66",
+                    "m_name_": "explosion_particle.material"
+                },
+                "shared_material_block": {
+                    "polymorphic_id": 1073741824,
+                    "ptr_wrapper": {
+                        "id": 2147483650,
+                        "data": {
+                            "cereal_class_version": 2,
+                            "value0": {
+                                "m_guid_": "b66aeb64-7dc3-4bb1-8f96-21383b95c3b1",
+                                "m_name_": "Material Block of explosion_particle.material"
+                            },
+                            "m_buffer_data_": [
+                                {
+                                    "key": "ExplosionParticleLook",
+                                    "value": {
+                                        "polymorphic_id": 2147483649,
+                                        "polymorphic_name": "engine::ConstantBufferData",
+                                        "ptr_wrapper": {
+                                            "id": 2147483651,
+                                            "data": {
+                                                "cereal_class_version": 1,
+                                                "value0": {
+                                                    "cereal_class_version": 1,
+                                                    "parameter": {
+                                                        "cereal_class_version": 1,
+                                                        "index": 2,
+                                                        "name": "ExplosionParticleLook",
+                                                        "display_name": "ExplosionParticleLook",
+                                                        "is_unordered_access": false,
+                                                        "total_size": 48,
+                                                        "variables": [
+                                                            {
+                                                                "cereal_class_version": 0,
+                                                                "name": "start_color",
+                                                                "data_type": 4
+                                                            },
+                                                            {
+                                                                "name": "end_color",
+                                                                "data_type": 4
+                                                            },
+                                                            {
+                                                                "name": "particle_size",
+                                                                "data_type": 1
+                                                            },
+                                                            {
+                                                                "name": "glow",
+                                                                "data_type": 1
+                                                            },
+                                                            {
+                                                                "name": "size_random_min",
+                                                                "data_type": 1
+                                                            },
+                                                            {
+                                                                "name": "size_random_max",
+                                                                "data_type": 1
+                                                            }
+                                                        ]
+                                                    },
+                                                    "upload_type": 0
+                                                },
+                                                "m_data_type_offset_pairs_": [
+                                                    {
+                                                        "key": "start_color",
+                                                        "value": {
+                                                            "first": 4,
+                                                            "second": 0
+                                                        }
+                                                    },
+                                                    {
+                                                        "key": "end_color",
+                                                        "value": {
+                                                            "first": 4,
+                                                            "second": 16
+                                                        }
+                                                    },
+                                                    {
+                                                        "key": "particle_size",
+                                                        "value": {
+                                                            "first": 1,
+                                                            "second": 32
+                                                        }
+                                                    },
+                                                    {
+                                                        "key": "glow",
+                                                        "value": {
+                                                            "first": 1,
+                                                            "second": 36
+                                                        }
+                                                    },
+                                                    {
+                                                        "key": "size_random_min",
+                                                        "value": {
+                                                            "first": 1,
+                                                            "second": 40
+                                                        }
+                                                    },
+                                                    {
+                                                        "key": "size_random_max",
+                                                        "value": {
+                                                            "first": 1,
+                                                            "second": 44
+                                                        }
+                                                    }
+                                                ],
+                                                "m_data_": [
+                                                    0,
+                                                    0,
+                                                    128,
+                                                    63,
+                                                    102,
+                                                    102,
+                                                    102,
+                                                    63,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    63,
+                                                    0,
+                                                    0,
+                                                    128,
+                                                    63,
+                                                    102,
+                                                    102,
+                                                    102,
+                                                    63,
+                                                    205,
+                                                    204,
+                                                    76,
+                                                    62,
+                                                    205,
+                                                    204,
+                                                    76,
+                                                    61,
+                                                    0,
+                                                    0,
+                                                    128,
+                                                    63,
+                                                    0,
+                                                    0,
+                                                    64,
+                                                    63,
+                                                    0,
+                                                    0,
+                                                    192,
+                                                    63,
+                                                    154,
+                                                    153,
+                                                    25,
+                                                    63,
+                                                    51,
+                                                    51,
+                                                    179,
+                                                    63
+                                                ]
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    "key": "slime_explosion_particles",
+                                    "value": {
+                                        "polymorphic_id": 2147483650,
+                                        "polymorphic_name": "engine::StructuredBufferData",
+                                        "ptr_wrapper": {
+                                            "id": 2147483652,
+                                            "data": {
+                                                "cereal_class_version": 1,
+                                                "value0": {
+                                                    "parameter": {
+                                                        "index": 3,
+                                                        "name": "slime_explosion_particles",
+                                                        "display_name": "slime_explosion_particles",
+                                                        "is_unordered_access": false,
+                                                        "total_size": 0,
+                                                        "variables": []
+                                                    },
+                                                    "upload_type": 0
+                                                },
+                                                "m_stride_": 4,
+                                                "m_count_": 1,
+                                                "m_data_": []
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                "render_queue": 5000,
+                "m_shader_": {
+                    "value0": {
+                        "cereal_class_version": 1,
+                        "m_guid_": "0b035d36-39a0-4986-8705-08eb012b2b83",
+                        "m_type_": 2,
+                        "m_stored_reference_": {
+                            "polymorphic_id": 0
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
