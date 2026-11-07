@@ -33,6 +33,8 @@
 #include "SlimeBoom/Slime/slime_eliminate_checker.h"
 #include "SlimeBoom/Slime/slime_eliminate_se.h"
 #include "SlimeBoom/Slime/slime_death_effect_component.h"
+#include "SlimeBoom/Slime/slime_explosion_component.h"
+#include "SlimeBoom/Slime/slime_explosion_effect_component.h"
 #include "SlimeBoom/Slime/slime_take_damage_event_component.h"
 #include "SlimeBoom/Sound/sound_manager_component.h"
 #include "SlimeBoom/UI/avoid_cooldown_gauge.h"
@@ -112,6 +114,8 @@ void ComponentRegistry::RegisterComponents()
     ADD_COMPONENT(SlimeEliminateChecker, "Slime");
     ADD_COMPONENT(SlimeEliminateSe, "Slime");
     ADD_COMPONENT(SlimeDeathEffectComponent, "Slime");
+    ADD_COMPONENT(SlimeExplosionEffectComponent, "Slime");
+    ADD_COMPONENT(SlimeExplosionComponent, "Slime");
     ADD_COMPONENT(SetNullRenderTextureComponent, "Camera");
     ADD_COMPONENT(TextureCubeRecreator, "Rendering");
     ADD_COMPONENT(ui::DropDownButton, "UI");

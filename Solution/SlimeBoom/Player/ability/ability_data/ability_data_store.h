@@ -29,7 +29,17 @@ public:
             cereal::base_class<Component>(this)
         );
 
-        if (version >= 3)
+        if (version == 3)
+        {
+            // バージョン3はSlashとAuraの2種類だけを保存しているので、それぞれの位置に読み込む
+            std::array<AbilityData, 2> old_ability_data;
+            ar(
+                cereal::make_nvp("m_ability_data_", old_ability_data)
+            );
+            std::copy(old_ability_data.begin(), old_ability_data.end(), m_ability_data_.begin());
+        }
+
+        if (version >= 4)
         {
             ar(
                 CEREAL_NVP(m_ability_data_)
@@ -39,4 +49,4 @@ public:
 };
 }
 
-CEREAL_CLASS_VERSION(SlimeBoom::AbilityDataStore, 3)
+CEREAL_CLASS_VERSION(SlimeBoom::AbilityDataStore, 4)

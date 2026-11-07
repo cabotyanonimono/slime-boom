@@ -14,6 +14,7 @@ enum kCardType
     kCardType_AttackNum,
     kCardType_AvoidPercent,
     kCardType_AcquisitionRange,
+    kCardType_ExplosionAbility,
 
     kCardType_Count
 };
@@ -34,6 +35,7 @@ inline const char* ToString(const kCardType e)
     case kCardType_AttackNum: return "kCardType_AttackNum";
     case kCardType_AvoidPercent: return "kCardType_AvoidPercent";
     case kCardType_AcquisitionRange: return "kCardType_AcquisitionRange";
+    case kCardType_ExplosionAbility: return "kCardType_ExplosionAbility";
 
     default: return "unknown";
     }

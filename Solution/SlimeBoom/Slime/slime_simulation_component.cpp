@@ -80,6 +80,11 @@ void SlimeSimulationComponent::OnUpdate()
     m_slime_count_buffer_->UpdateBuffer(&m_current_slime_count_);
 }
 
+int SlimeSimulationComponent::GetMaxSlimeCount()
+{
+    return kMaxSlimesCount;
+}
+
 int SlimeSimulationComponent::GetCurrentSlimesCount() const
 {
     return m_current_slime_count_;

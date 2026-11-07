@@ -8,6 +8,7 @@
 #include "cards/attack_speed_card.h"
 #include "cards/aura_ability_card.h"
 #include "cards/avoid_percent_card.h"
+#include "cards/explosion_ability_card.h"
 #include "cards/exp_multiplier_card.h"
 #include "cards/max_hp_card.h"
 #include "cards/slash_ability_card.h"
@@ -28,6 +29,7 @@ void CardPool::RegisterCards()
     RegisterCard<AttackNumCard>(kCardType_AttackNum);
     RegisterCard<AvoidPercentCard>(kCardType_AvoidPercent);
     RegisterCard<AcquisitionRangeCard>(kCardType_AcquisitionRange);
+    RegisterCard<ExplosionAbilityCard>(kCardType_ExplosionAbility);
 }
 
 void CardPool::OnInspectorGui()

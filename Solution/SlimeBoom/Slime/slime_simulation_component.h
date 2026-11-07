@@ -41,6 +41,7 @@ public:
     void OnInspectorGui() override;
     void OnUpdate() override;
 
+    static int GetMaxSlimeCount();
     /// 現在のスライムの数を返す。
     int GetCurrentSlimesCount() const;
     /// スライムの数を設定する。最大数を超える場合は最大数に制限され、ComputeShaderのスレッドグループ数と描画のインスタンス数にも反映される。
