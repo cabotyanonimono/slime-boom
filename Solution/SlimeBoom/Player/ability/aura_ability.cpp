@@ -9,17 +9,22 @@ namespace SlimeBoom
 void AuraAbility::Execute(float delta_time)
 {
     PlayerAttackData attack_data;
-    const auto slash_data = AbilityDataStore::GetAbilityData(kAbilityTypesAura);
-    m_cooldown_ = slash_data.cooldown / m_player_data_->GetAttackSpeed();
+    const auto aura_data = AbilityDataStore::GetAbilityData(kAbilityTypesAura);
+    m_cooldown_ = aura_data.cooldown / m_player_data_->GetAttackSpeed();
 
-    auto transform = m_aura_renderer_->Transform();
-    transform->SetLocalScale(Vector3(slash_data.size, slash_data.size, slash_data.size));
-
+    //PlayerDataを参照する値の計算
+    const auto aura_size = aura_data.size + m_player_data_->GetAttackRange();
+    const auto aura_damage = aura_data.value * m_player_data_->GetAttackPower();
+    
     attack_data.arc = DirectX::XM_2PI;
     attack_data.angle = Vector3(0.0f, 0.0f, -1.0f);
-    attack_data.size = slash_data.size + m_player_data_->GetAttackRange();
-    attack_data.damage = m_player_data_->GetAttackPower() * slash_data.value;
-    attack_data.power = slash_data.knockback;
+    attack_data.size = aura_size;
+    attack_data.damage = aura_damage;
+    attack_data.power = aura_data.knockback;
+
+    auto transform = m_aura_renderer_->Transform();
+    transform->SetLocalScale(Vector3(aura_size, 1.0f, aura_size));
+    
     m_effekseer_renderer_->Play();
     m_player_data_presenter_->SetAttackData(attack_data);
 }

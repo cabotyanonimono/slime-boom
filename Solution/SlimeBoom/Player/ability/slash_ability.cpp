@@ -2,6 +2,7 @@
 #include "slash_ability.h"
 
 #include "engine.h"
+#include "game_object.h"
 #include "ability_data/ability_data_store.h"
 
 namespace SlimeBoom
@@ -12,16 +13,24 @@ engine::Task SlashAbility::DelaySetAttackDataTask()
     const auto slash_data = AbilityDataStore::GetAbilityData(kAbilityTypesSlash);
     m_cooldown_ = slash_data.cooldown / m_player_data_->GetAttackSpeed();
 
+    //PlayerDataを参照する値の計算
+    const auto slash_angle = m_closest_slime_pos_ - m_player_transform_->Position();
+    const auto slash_size = slash_data.size + m_player_data_->GetAttackRange();
+    const auto slash_damage = slash_data.value * m_player_data_->GetAttackPower();
+
     attack_data->arc = slash_data.arc;
-    attack_data->angle = m_closest_slime_pos_ - m_player_transform_->Position();
-    attack_data->size = slash_data.size;
-    attack_data->damage = m_player_data_->GetAttackPower() + slash_data.value;
+    attack_data->angle = slash_angle;
+    attack_data->size = slash_size;
+    attack_data->damage = slash_damage;
     attack_data->power = slash_data.knockback;
     
     co_await engine::WaitForSeconds(m_attack_delay_time_);
 
     if (this == nullptr)
-        co_return;   
+        co_return;
+
+    auto transform = m_effekseer_renderer_->GameObject()->Transform();
+    transform->SetLocalScale(Vector3(slash_size, slash_size, slash_size));
     
     m_player_data_presenter_->SetAttackData(*attack_data);
     delete attack_data;
