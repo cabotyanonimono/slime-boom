@@ -76,5 +76,5 @@ float4 pix(VSOutput input) : SV_Target
     }
 
     brightness += 2.0f;
-    return float4(lighting_color.rgb * brightness, albedo_color.a);
+    return float4(lighting_color.rgb * brightness + albedo_color.rgb * AmbientLight(), albedo_color.a);
 }

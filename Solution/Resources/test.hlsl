@@ -12,6 +12,8 @@ cbuffer Params : register(b5)
     float emission_intensity;
     float metallic;
     float roughness;
+    float env_intensity; // 環境(景色)反射の強さ
+    float ambient_influence; // 環境光の影響度 (1 = そのまま, 0 = 環境光なし)
 };
 
 Texture2D albedo_texture    : register(t4);
@@ -157,20 +159,22 @@ float4 pix(VSOutput input) : SV_TARGET
         return float4(mainColor.rgb, mainColor.a);
     }
 
+    float4 viewPos = mul(View, float4(input.worldpos, 1.0));
+    float depth = abs(viewPos.z);
+    int cascade_index = CalcCascadeIndex(depth);
+    int shadow_map_offset = 0;
+
     float3 view_dir = normalize(camera_pos - input.worldpos);
 
-    // 1. 直接光の累積計算
-    float3 total_direct_light = float3(0.0f, 0.0f, 0.0f);
+    // 直接光: Σ BRDF × N·L × radiance
+    float3 direct_light = float3(0.0f, 0.0f, 0.0f);
     for (int i = 0; i < light_count; ++i)
     {
         float3 light_dir;
-        if (Lights[i].type == 0)
-            light_dir = normalize(-Lights[i].direction);
-        else
-            light_dir = normalize(Lights[i].pos - input.worldpos);
-
-        total_direct_light += CalcLighting(albedo, metallic, roughness, normal, light_dir, view_dir);
+        float3 radiance = CalcLightRadiance(Lights[i], input.worldpos, cascade_index, shadow_map_offset, light_dir);
+        direct_light += CalcLighting(albedo, metallic, roughness, normal, light_dir, view_dir) * radiance;
     }
+    direct_light *= intensity;
 
     // 2. 環境光 (Specular IBL) の計算
     float3 r = reflect(-view_dir, normal);
@@ -180,15 +184,11 @@ float4 pix(VSOutput input) : SV_TARGET
     float n_dot_v = saturate(dot(normal, view_dir));
     float3 f0 = lerp(float3(0.04f, 0.04f, 0.04f), albedo, metallic);
     float3 f = FresnelSchlick(n_dot_v, f0);
-    float3 ibl_specular = env_specular * f * (1.0f - roughness);
+    float3 ibl_specular = env_specular * f * (1.0f - roughness) * env_intensity;
 
-    // 3. 影の適用
-    float4 viewPos = mul(View, float4(input.worldpos, 1.0));
-    float depth = abs(viewPos.z);
-    float3 shadow_brightness = CalcAllShadow(depth, normal, input.worldpos) * intensity;
-
-    // 4. 最終カラーの合成
-    float3 final_color = (total_direct_light + ibl_specular) * shadow_brightness;
+    // 3. 最終カラーの合成
+    float3 final_color = direct_light + ibl_specular;
+    final_color += PbrAmbientLight(albedo, f, metallic) * ambient_influence;
     final_color += emission_color.rgb * emission_intensity;
 
     return float4(final_color, albedo_sample.a);

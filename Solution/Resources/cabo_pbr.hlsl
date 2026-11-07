@@ -15,6 +15,8 @@ cbuffer Params : register (b5)
     float emission_intensity;
     float metallic;
     float roughness;
+    float env_intensity; // 環境(景色)反射の強さ
+    float ambient_influence; // 環境光の影響度 (1 = そのまま, 0 = 環境光なし)
 }
 
 
@@ -103,20 +105,20 @@ float4 pix(VSOutput input) : SV_TARGET
     
     float4 viewPos = mul(View, float4(input.worldpos, 1.0));
     float depth = abs(viewPos.z);
-    float3 brightness = CalcAllShadow(depth, normal, input.worldpos) * intensity;
+    int cascade_index = CalcCascadeIndex(depth);
+    int shadow_map_offset = 0;
 
     float3 view_dir = normalize(camera_pos - input.worldpos);
-    
+
+    // 直接光: Σ BRDF × N·L × radiance
     float3 direct_light = float3(0.0f, 0.0f, 0.0f);
     for (int i = 0; i < light_count; ++i)
     {
         float3 light_dir;
-        if (Lights[i].type == 0)
-            light_dir = normalize(-Lights[i].direction);
-        else
-            light_dir = normalize(Lights[i].pos - input.worldpos);
-        direct_light += CalcLighting(albedo_color.rgb, metallic, roughness, normal, light_dir, view_dir);
+        float3 radiance = CalcLightRadiance(Lights[i], input.worldpos, cascade_index, shadow_map_offset, light_dir);
+        direct_light += CalcLighting(albedo_color.rgb, metallic, roughness, normal, light_dir, view_dir) * radiance;
     }
+    direct_light *= intensity;
 
     float3 r = reflect(-view_dir, normal);
     float3 env_specular = env_texture.Sample(smp, r).rgb;
@@ -124,9 +126,10 @@ float4 pix(VSOutput input) : SV_TARGET
     float n_dot_v = saturate(dot(normal, view_dir));
     float3 f0 = lerp(float3(0.04f, 0.04f, 0.04f), albedo_color.rgb, metallic);
     float3 f = min(FresnelSchlick(n_dot_v, f0), 1.0f);
-    float3 ibl_specular = env_specular * f * (1.0f - roughness);
+    float3 ibl_specular = env_specular * f * (1.0f - roughness) * env_intensity;
 
-    float3 final_color = (direct_light + ibl_specular) * brightness;
+    float3 final_color = direct_light + ibl_specular;
+    final_color += PbrAmbientLight(albedo_color.rgb, f, metallic) * ambient_influence;
     final_color += emission_color.rgb * emission_intensity;
 
     return float4(final_color, albedo_color.a);
