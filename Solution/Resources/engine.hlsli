@@ -38,6 +38,23 @@ cbuffer SceneData : register(b2)
     float deltatime;
     float3 camera_pos;
     float3 camera_dir;
+    float4 ambient_color;
+    float ambient_intensity;
+}
+
+// 環境光 (RenderingSettings で設定)
+float3 AmbientLight()
+{
+    return ambient_color.rgb * ambient_intensity;
+}
+
+// PBRシェーダー用の環境光 (拡散 + 鏡面)
+// Basic系シェーダー(albedo × ambient)と同じ絶対量になるよう、マテリアルの intensity は掛けない
+// 金属は kD が小さいので、鏡面成分(F)で環境光を受ける
+float3 PbrAmbientLight(float3 albedo, float3 f, float metallic)
+{
+    float3 kd = (1.0f - f) * (1.0f - metallic);
+    return (kd * albedo + f) * AmbientLight();
 }
 
 StructuredBuffer<float4x4> BoneMatrices : register (t0);

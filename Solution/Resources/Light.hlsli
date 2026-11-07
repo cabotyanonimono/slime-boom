@@ -117,9 +117,57 @@ float3 CalcSpotShadow(Light light, float3 normal, float3 world_pos, int shadow_m
     return lighting * shadow;
 }
 
+int CalcCascadeIndex(float depth)
+{
+    for (int i = 0; i < SHADOW_CASCADE_COUNT; ++i)
+    {
+        if (depth < cascade_slices[i])
+            return i;
+    }
+    return SHADOW_CASCADE_COUNT - 1;
+}
+
+// 1ライト分の入射光 (色 × 強度 × 減衰 × 影) を返す。N·L は含まない (BRDF側で掛ける)
+// shadow_map_offset はライトを順に処理しながら進めること
+float3 CalcLightRadiance(Light light, float3 world_pos, int cascade_index, inout int shadow_map_offset, out float3 light_dir)
+{
+    float3 radiance = float3(0, 0, 0);
+    int shadow_map_index = 0;
+    light_dir = float3(0, 1, 0);
+
+    switch (light.type)
+    {
+    case 0: // Directional
+        light_dir = normalize(-light.direction);
+        radiance = light.color.rgb * light.intensity;
+        shadow_map_index = shadow_map_offset + cascade_index;
+        shadow_map_offset += SHADOW_CASCADE_COUNT;
+        break;
+    case 1: // Spot
+        {
+            float3 to_light = light.pos - world_pos;
+            float dist = max(length(to_light), 0.0001f);
+            light_dir = to_light / dist;
+            float spot_factor = dot(light_dir, -light.direction);
+            float smooth_edge = saturate((spot_factor - light.outer_cos) / (light.inner_cos - light.outer_cos));
+            float attenuation = saturate(1.0 - dist / light.range);
+            radiance = light.color.rgb * light.intensity * smooth_edge * attenuation;
+            shadow_map_index = shadow_map_offset;
+            shadow_map_offset += 1;
+        }
+        break;
+    default:
+        return radiance;
+    }
+
+    if (light.cast_shadow != 0)
+        radiance *= CalcShadow(world_pos, shadow_map_index);
+    return radiance;
+}
+
 float3 CalcAllShadow(float depth, float3 normal, float3 world_pos)
 {
-    float3 brightness;
+    float3 brightness = float3(0, 0, 0);
     int cascade_index = SHADOW_CASCADE_COUNT - 1;
     for (int i = 0; i < SHADOW_CASCADE_COUNT; ++i)
     {
@@ -136,9 +184,11 @@ float3 CalcAllShadow(float depth, float3 normal, float3 world_pos)
         switch (Lights[i].type)
         {
         case 0:
-            int index = current_shadowmap_count + cascade_index;
-            brightness += CalcDirectionalShadow(Lights[i], normal, world_pos, index);
-            current_shadowmap_count += SHADOW_CASCADE_COUNT;
+            {
+                int index = current_shadowmap_count + cascade_index;
+                brightness += CalcDirectionalShadow(Lights[i], normal, world_pos, index);
+                current_shadowmap_count += SHADOW_CASCADE_COUNT;
+            }
             break;
         case 1:
             brightness += CalcSpotShadow(Lights[i], normal, world_pos, current_shadowmap_count);

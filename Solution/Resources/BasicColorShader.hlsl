@@ -86,5 +86,5 @@ float4 pix(VSOutput input) : SV_TARGET
 
     brightness = CalcAllShadow(depth, normalize(input.normal), input.worldpos);
 
-    return float4(color.rgb * brightness, color.a);
+    return float4(color.rgb * (brightness + AmbientLight()), color.a);
 }
