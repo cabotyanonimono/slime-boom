@@ -33,13 +33,14 @@
                                                 "value0": {
                                                     "cereal_class_version": 1,
                                                     "parameter": {
-                                                        "cereal_class_version": 1,
+                                                        "cereal_class_version": 2,
                                                         "index": 4,
                                                         "name": "albedo_texture",
                                                         "display_name": "albedo_texture",
                                                         "is_unordered_access": false,
                                                         "total_size": 0,
-                                                        "variables": []
+                                                        "variables": [],
+                                                        "buffer_type": 0
                                                     },
                                                     "upload_type": 0
                                                 },
@@ -73,7 +74,8 @@
                                                         "display_name": "Lights",
                                                         "is_unordered_access": false,
                                                         "total_size": 0,
-                                                        "variables": []
+                                                        "variables": [],
+                                                        "buffer_type": 0
                                                     },
                                                     "upload_type": 0
                                                 },
@@ -106,7 +108,8 @@
                                                                 "name": "light_count",
                                                                 "data_type": 0
                                                             }
-                                                        ]
+                                                        ],
+                                                        "buffer_type": 0
                                                     },
                                                     "upload_type": 1450646144
                                                 },
@@ -143,7 +146,8 @@
                                                         "display_name": "normal_texture",
                                                         "is_unordered_access": false,
                                                         "total_size": 0,
-                                                        "variables": []
+                                                        "variables": [],
+                                                        "buffer_type": 0
                                                     },
                                                     "upload_type": 0
                                                 },
@@ -207,7 +211,8 @@
                                                                 "name": "ambient_influence",
                                                                 "data_type": 1
                                                             }
-                                                        ]
+                                                        ],
+                                                        "buffer_type": 0
                                                     },
                                                     "upload_type": 1450646144
                                                 },
@@ -378,7 +383,8 @@
                                                                 "name": "camera_dir",
                                                                 "data_type": 3
                                                             }
-                                                        ]
+                                                        ],
+                                                        "buffer_type": 0
                                                     },
                                                     "upload_type": 1138851852
                                                 },
@@ -511,7 +517,8 @@
                                                                 "name": "cascade_slices",
                                                                 "data_type": 4
                                                             }
-                                                        ]
+                                                        ],
+                                                        "buffer_type": 0
                                                     },
                                                     "upload_type": 1450646144
                                                 },

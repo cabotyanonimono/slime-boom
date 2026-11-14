@@ -1,5 +1,7 @@
 {
-    "data": {},
+    "data": {
+        "compute_shader_meta": "{\n\"value0\": {\n\"polymorphic_id\": 1073741824,\n\"ptr_wrapper\": {\n\"id\": 2147483649,\n\"data\": {\n\"cereal_class_version\": 1,\n\"value0\": {\n\"cereal_class_version\": 1,\n\"m_guid_\": \"1e0039c7-85ce-491c-b254-481716b0b0b1\",\n\"m_name_\": \"slime_physics.compute\"\n}\n}\n}\n}\n}"
+    },
     "guid": "1e0039c7-85ce-491c-b254-481716b0b0b1",
     "type": ".compute",
     "objects": []

@@ -33,7 +33,7 @@
                                                 "value0": {
                                                     "cereal_class_version": 1,
                                                     "parameter": {
-                                                        "cereal_class_version": 1,
+                                                        "cereal_class_version": 2,
                                                         "index": 0,
                                                         "name": "Transform",
                                                         "display_name": "Transform",
@@ -45,7 +45,8 @@
                                                                 "name": "World",
                                                                 "data_type": 5
                                                             }
-                                                        ]
+                                                        ],
+                                                        "buffer_type": 0
                                                     },
                                                     "upload_type": 1663196270
                                                 },

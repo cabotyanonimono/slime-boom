@@ -1,5 +1,7 @@
 {
-    "data": {},
+    "data": {
+        "compute_shader_meta": "{\n\"value0\": {\n\"polymorphic_id\": 1073741824,\n\"ptr_wrapper\": {\n\"id\": 2147483649,\n\"data\": {\n\"cereal_class_version\": 1,\n\"value0\": {\n\"cereal_class_version\": 1,\n\"m_guid_\": \"224454b9-d0d6-4b37-8683-78942c52fc21\",\n\"m_name_\": \"player_attack.compute\"\n}\n}\n}\n}\n}"
+    },
     "guid": "224454b9-d0d6-4b37-8683-78942c52fc21",
     "type": ".compute",
     "objects": []
