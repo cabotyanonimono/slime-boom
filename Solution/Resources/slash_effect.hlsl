@@ -1,12 +1,16 @@
+// 旧エンジンの設定（半透明、両面、深度は書かない）
+// @Cull Off
+// @ZWrite Off
+// @Blend Alpha
 #include "engine.hlsli"
 
-cbuffer Color : register(b2)
+cbuffer Color : register(b0)
 {
     float4 main_color;    
   	float  effect_progress;
 }
 
-Texture2D _MainTex : register (t3);
+Texture2D _MainTex : register(t0);
 
 struct VSOutput
 {
@@ -33,7 +37,7 @@ static const float4x4 identityMatrix = {
     0, 0, 0, 1
 };
 
-VSOutput vrt(VSInput input)
+VSOutput VSMain(VSInput input)
 {
     VSOutput output = (VSOutput)0;
 
@@ -54,7 +58,7 @@ VSOutput vrt(VSInput input)
     return output;
 }
 
-float4 pix(VSOutput input) : SV_TARGET
+float4 PSMain(VSOutput input) : SV_TARGET
 {
     float2 scrolledUV = input.uv;
     scrolledUV.x -= effect_progress * 1.5f - 1.0f; 

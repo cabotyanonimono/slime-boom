@@ -1,6 +1,16 @@
 #ifndef __ENGINE_HLSLI__
 #define __ENGINE_HLSLI__
 
+// 旧エンジン向けに書いたShaderを、CaboRenderingSystem(CRS)で動かすための互換レイヤー。
+// 実体は Shaders/crs_common.hlsli（エンジンの値は space1、マテリアルの値は space0）。
+// 新しく書くShaderは crs_common.hlsli を直接includeすること。
+//
+// - エントリーポイントは VSMain / PSMain（影を描くなら VSShadow）
+// - マテリアルの cbuffer / Texture は register を省略してよい（space0 の b0..b3 / t0..t7 / s0..s3 に自動で割り当てられる）
+
+#include "Shaders/crs_common.hlsli"
+
+// エンジンのVertexと同じ並びの頂点入力（旧エンジンの名前のまま）
 struct VSInput
 {
     float3 pos : POSITION;
@@ -20,32 +30,30 @@ struct VSInput
     float4 bone_weight : BONEWEIGHT;
 };
 
-cbuffer WorldMatrix : register (b0)
-{
-    float4x4 World;
-}
-cbuffer ViewProjMatrix : register (b1)
-{
-    float4x4 View;
-    float4x4 Proj;
-}
+// ---- 旧エンジンの名前 → CRSの名前 ----
+#define World world
+#define View view
+#define Proj projection
+#define BoneMatrices bone_matrices
+#define LightViewProj light_view_projections
+#define ShadowMaps shadow_maps
+#define shadowSampler shadow_sampler
+#define SmpClamp linear_clamp_sampler
 
-cbuffer SceneData : register(b2)
-{
-    float2 screen_size;
-    float2 shadow_map_size;
-    float time;
-    float deltatime;
-    float3 camera_pos;
-    float3 camera_dir;
-    float4 ambient_color;
-    float ambient_intensity;
-}
+// 時間は View の time（x: 起動からの時間, y: 前フレームからの時間）
+static float deltatime = time.y;
+
+// カメラの位置と向き（viewはC++の行列のままなので、3行目がカメラの後ろ向き）
+static float3 camera_pos = camera_position.xyz;
+static float3 camera_dir = normalize(-view[2].xyz);
+
+// マテリアルのサンプラー（既定は線形補間・Wrap。MaterialのInspectorで変えられる）
+SamplerState smp : register(s3);
 
 // 環境光 (RenderingSettings で設定)
 float3 AmbientLight()
 {
-    return ambient_color.rgb * ambient_intensity;
+    return ambient_color.rgb;
 }
 
 // PBRシェーダー用の環境光 (拡散 + 鏡面)
@@ -56,12 +64,5 @@ float3 PbrAmbientLight(float3 albedo, float3 f, float metallic)
     float3 kd = (1.0f - f) * (1.0f - metallic);
     return (kd * albedo + f) * AmbientLight();
 }
-
-StructuredBuffer<float4x4> BoneMatrices : register (t0);
-StructuredBuffer<float4x4> LightViewProj : register(t1);
-Texture2DArray ShadowMaps : register (t2);
-SamplerState smp : register (s0);
-SamplerComparisonState shadowSampler : register (s1);
-SamplerState SmpClamp : register (s2);
 
 #endif

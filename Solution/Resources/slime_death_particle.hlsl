@@ -1,8 +1,12 @@
+// 旧エンジンの設定（加算、両面、深度は書かない）
+// @Cull Off
+// @ZWrite Off
+// @Blend Additive
 #include "engine.hlsli"
 #include "slime.hlsli"
 #include "slime_death_particle.hlsli"
 
-cbuffer DeathParticleLook : register(b2)
+cbuffer DeathParticleLook : register(b0)
 {
     float4 normal_color;
     float4 speed_color;
@@ -11,7 +15,7 @@ cbuffer DeathParticleLook : register(b2)
     float glow;
 }
 
-StructuredBuffer<SlimeDeathParticle> slime_death_particles : register(t3);
+StructuredBuffer<SlimeDeathParticle> slime_death_particles : register(t0);
 
 struct VSOutput
 {
@@ -40,7 +44,7 @@ float4 GetTypeColor(int slime_type)
     return ColorOrDefault(normal_color, float4(0.35f, 0.85f, 1.0f, 1.0f));
 }
 
-VSOutput vrt(uint vertex_id : SV_VertexID)
+VSOutput VSMain(uint vertex_id : SV_VertexID)
 {
     VSOutput output = (VSOutput)0;
 
@@ -70,7 +74,7 @@ VSOutput vrt(uint vertex_id : SV_VertexID)
     return output;
 }
 
-float4 pix(VSOutput input) : SV_Target
+float4 PSMain(VSOutput input) : SV_Target
 {
     float d = length(input.uv);
     if (d > 1.0f)

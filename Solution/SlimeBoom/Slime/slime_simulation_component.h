@@ -4,12 +4,12 @@
 #include "Components/component.h"
 #include "Components/compute_shader_component.h"
 #include "Components/mesh_renderer.h"
-#include "Rendering/CabotEngine/Graphics/ByteAddressBuffer.h"
-#include "Rendering/CabotEngine/Graphics/StructuredBuffer.h"
+#include <CaboRenderingSystem/RHI/gpu_resources.h>
 
 namespace SlimeBoom
 {
-// スライム1体分のGPU用データ(位置・回転・スケール・速度・角速度・HP・被ダメージ色のタイマー)。
+// スライム1体分のGPU用データ(位置・回転・スケール・速度・角速度・HP・被ダメージ色のタイマー・種類)。
+// Resources/slime.hlsli の SlimeData と同じ並び・大きさにすること(StructuredBufferのstrideになる)。
 struct SlimeData
 {
     Vector3 position;
@@ -19,7 +19,9 @@ struct SlimeData
     Vector3 angular_velocity;
     uint32_t hp;
     float damage_color_timer;
+    int32_t slime_type;
 };
+static_assert(sizeof(SlimeData) == 72, "SlimeData must match SlimeData in slime.hlsli");
 
 // 全スライムのシミュレーションを、GPU(ComputeShader)で行うComponent。
 // スライムの生成・物理・最寄りのスライムの検索・プレイヤーの攻撃判定を担当する。
@@ -27,8 +29,7 @@ class SlimeSimulationComponent : public engine::Component
 {
     static constexpr int kMaxSlimesCount = 8096;
     int m_current_slime_count_ = 512;
-    std::shared_ptr<engine::StructuredBuffer> m_slime_buffer_;
-    std::shared_ptr<engine::ConstantBuffer> m_slime_count_buffer_;
+    CRS::Buffer m_slime_buffer_;
     engine::AssetPtr<engine::ComputeShaderComponent> m_slime_generator_compute_;
     engine::AssetPtr<engine::ComputeShaderComponent> m_slime_physics_compute_;
     engine::AssetPtr<engine::ComputeShaderComponent> m_closest_slime_compute_;

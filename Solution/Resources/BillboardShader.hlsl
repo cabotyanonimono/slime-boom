@@ -45,7 +45,7 @@ float3x3 ExtractRotation(float4x4 m)
 }
 
 
-VSOutput vrt(VSInput input)
+VSOutput VSMain(VSInput input)
 {
     VSOutput output = (VSOutput)0; // アウトプット構造体を定義する
     float4 localPos = float4(input.pos, 1.0f); // 頂点座標
@@ -66,10 +66,10 @@ VSOutput vrt(VSInput input)
 }
 
 SamplerState smp : register(s0);
-Texture2DArray ShadowMaps : register (t3);
-Texture2D _MainTex : register(t4);
+Texture2DArray ShadowMaps : register(t0);
+Texture2D _MainTex : register(t1);
 
-float4 pix(VSOutput input) : SV_TARGET
+float4 PSMain(VSOutput input) : SV_TARGET
 {
     float4 mainColor = _MainTex.Sample(smp, input.uv);
 

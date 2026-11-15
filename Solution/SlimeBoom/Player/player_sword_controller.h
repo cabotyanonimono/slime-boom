@@ -3,7 +3,6 @@
 #include "Components/component.h"
 #include "Components/transform.h"
 #include "Coroutine/task.h"
-#include "Rendering/CabotEngine/Graphics/StructuredBuffer.h"
 
 namespace SlimeBoom
 {

@@ -1,28 +1,17 @@
-#include "engine.hlsli"
-#include "Light.hlsli"
+#include "Shaders/crs_ui.hlsli"
 
-Texture2D _MainTex : register (t3);
+// UI(Image)用。_MainTexをそのまま描く
 
-struct VSOutput
+Texture2D _MainTex : register(t0);
+SamplerState smp : register(s0);
+
+UiVSOutput VSMain(UiVertexInput input)
 {
-    float4 svpos : SV_POSITION;
-    float2 uv : TEXCOORD;
-};
-
-VSOutput vrt(VSInput input)
-{
-    VSOutput output;
-    
-    float4 worldPos = mul(World, float4(input.pos, 1.0f));
-    
-    output.svpos = worldPos;
-    output.uv = input.uv;
-
-    return output;
+    return UiTransform(input);
 }
 
-float4 pix(VSOutput input) : SV_TARGET
+float4 PSMain(UiVSOutput input) : SV_TARGET
 {
     float4 mainColor = _MainTex.Sample(smp, input.uv);
-    return mainColor;
+    return mainColor * input.color;
 }

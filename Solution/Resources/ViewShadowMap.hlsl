@@ -1,7 +1,7 @@
 #include "engine.hlsli"
 #include "Light.hlsli"
 
-cbuffer z : register(b2)
+cbuffer z : register(b0)
 {
     float z;
 }
@@ -12,7 +12,7 @@ struct VSOutput
     float2 uv : TEXCOORD;
 };
 
-VSOutput vrt(VSInput input)
+VSOutput VSMain(VSInput input)
 {
     VSOutput output;
     
@@ -24,7 +24,7 @@ VSOutput vrt(VSInput input)
     return output;
 }
 
-float4 pix(VSOutput input) : SV_TARGET
+float4 PSMain(VSOutput input) : SV_TARGET
 {
     float4 mainColor = ShadowMaps.Sample(smp, float3(input.uv, z));
     return mainColor;

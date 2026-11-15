@@ -1,9 +1,13 @@
+// カメラを囲む箱の内側を描くので裏面も描く。奥のものを隠さないよう深度は書かない
+// @Cull Off
+// @ZWrite Off
+// @ZTest LEqual
 #include "engine.hlsli"
 #include "Light.hlsli"
 
-TextureCube texture_cube : register(t3);
+TextureCube texture_cube : register(t0);
 
-cbuffer Params : register (b2)
+cbuffer Params : register(b0)
 {
     float intensity;
 }
@@ -33,7 +37,7 @@ static const float4x4 identityMatrix = {
     0, 0, 0, 1
 };
 
-VSOutput vrt(VSInput input)
+VSOutput VSMain(VSInput input)
 {
     VSOutput output = (VSOutput)0;
 
@@ -55,7 +59,7 @@ VSOutput vrt(VSInput input)
     return output;
 }
 
-float4 pix(VSOutput input) : SV_Target
+float4 PSMain(VSOutput input) : SV_Target
 {
     float3 dir = normalize(input.local_pos);
     

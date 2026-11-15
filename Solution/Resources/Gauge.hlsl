@@ -1,41 +1,31 @@
-#include "engine.hlsli"
+#include "Shaders/crs_ui.hlsli"
 
-struct VSOutput
-{
-    float4 svpos : SV_POSITION;
-    float2 uv    : TEXCOORD0;
-};
+// UI(Image)用のゲージ。rotationの向きに、ratioの割合までtexを描く
 
-cbuffer Ratio : register(b2)
+cbuffer Ratio : register(b0)
 {
     float ratio;
 }
 
-cbuffer Rotation : register(b3)
+cbuffer Rotation : register(b1)
 {
     float rotation;
 }
 
-cbuffer Alpha : register(b4)
+cbuffer Alpha : register(b2)
 {
     float alpha;
 }
 
-Texture2D tex : register(t3);
+Texture2D tex : register(t0);
+SamplerState smp : register(s0);
 
-VSOutput vrt(VSInput input)
+UiVSOutput VSMain(UiVertexInput input)
 {
-    VSOutput output;
-    
-    float4 worldPos = mul(World, float4(input.pos, 1.0f));
-    
-    output.svpos = worldPos;
-    output.uv = input.uv;
-
-    return output;
+    return UiTransform(input);
 }
 
-float4 pix(VSOutput input) : SV_TARGET
+float4 PSMain(UiVSOutput input) : SV_TARGET
 {
     float2 flippedUV = float2(input.uv.x, 1.0 - input.uv.y);
     float4 mainColor = tex.Sample(smp, flippedUV);

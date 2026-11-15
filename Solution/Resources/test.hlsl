@@ -4,7 +4,7 @@
 static const float PI = 3.14159265f;
 static const float MAX_REFLECTION_LOD = 0.0f;
 
-cbuffer Params : register(b5)
+cbuffer Params : register(b0)
 {
     float2 tiling;
     float intensity;
@@ -16,9 +16,9 @@ cbuffer Params : register(b5)
     float ambient_influence; // 環境光の影響度 (1 = そのまま, 0 = 環境光なし)
 };
 
-Texture2D albedo_texture    : register(t4);
-Texture2D normal_texture    : register(t5);
-TextureCube env_texture     : register(t6);
+Texture2D albedo_texture : register(t0);
+Texture2D normal_texture : register(t1);
+TextureCube env_texture : register(t2);
 
 struct VSOutput
 {
@@ -97,7 +97,7 @@ float3 CalcLighting(float3 albedo, float metallic, float roughness, float3 norma
     return (direct_diffuse + direct_specular) * n_dot_l;
 }
 
-VSOutput vrt(VSInput input)
+VSOutput VSMain(VSInput input)
 {
     VSOutput output = (VSOutput)0;
 
@@ -144,7 +144,7 @@ VSOutput vrt(VSInput input)
     return output;
 }
 
-float4 pix(VSOutput input) : SV_TARGET
+float4 PSMain(VSOutput input) : SV_TARGET
 {
     float2 uv = input.uv * tiling;
     float3 normal = CalcNormalWithNormalMap(normal_texture, uv, input.normal, input.tangent, input.tangent_sign);
@@ -171,7 +171,7 @@ float4 pix(VSOutput input) : SV_TARGET
     for (int i = 0; i < light_count; ++i)
     {
         float3 light_dir;
-        float3 radiance = CalcLightRadiance(Lights[i], input.worldpos, cascade_index, shadow_map_offset, light_dir);
+        float3 radiance = CalcLightRadiance(GetLight(i), input.worldpos, cascade_index, shadow_map_offset, light_dir);
         direct_light += CalcLighting(albedo, metallic, roughness, normal, light_dir, view_dir) * radiance;
     }
     direct_light *= intensity;

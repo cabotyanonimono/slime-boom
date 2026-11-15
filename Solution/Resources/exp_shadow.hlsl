@@ -1,14 +1,14 @@
 #include "engine.hlsli"
 #include "exp.hlsli"
 
-StructuredBuffer<Exp> exps : register(t3);
+StructuredBuffer<Exp> exps : register(t0);
 
 struct VSOutput
 {
     float3 world_pos : WORLDPOS;
 };
 
-VSOutput vrt(VSInput input, uint instance_id : SV_InstanceID)
+VSOutput VSMain(VSInput input, uint instance_id : SV_InstanceID)
 {
     VSOutput output = (VSOutput)0;
 

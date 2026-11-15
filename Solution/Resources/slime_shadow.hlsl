@@ -1,14 +1,14 @@
 #include "engine.hlsli"
 #include "slime.hlsli"
 
-StructuredBuffer<SlimeData> slimes : register(t3);
+StructuredBuffer<SlimeData> slimes : register(t0);
 
 struct VSOutput
 {
     float3 world_pos : WORLDPOS;
 };
 
-VSOutput vrt(VSInput input, uint instance_id : SV_InstanceID)
+VSOutput VSMain(VSInput input, uint instance_id : SV_InstanceID)
 {
     VSOutput output = (VSOutput)0;
 

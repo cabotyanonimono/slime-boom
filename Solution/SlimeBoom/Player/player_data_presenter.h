@@ -2,9 +2,8 @@
 #include "player_attack_data.h"
 #include "Components/component.h"
 #include "Components/compute_shader_component.h"
-#include "Rendering/structured_buffer_data.h"
-#include "Rendering/CabotEngine/Graphics/ConstantBuffer.h"
-#include "Components/Transform.h""
+#include "Components/transform.h"
+#include <CaboRenderingSystem/RHI/gpu_resources.h>
 
 namespace SlimeBoom
 {
@@ -16,15 +15,16 @@ class PlayerDataPresenter : public engine::Component
     
     int m_max_attack_data_count_ = 1;
     float m_position_y_offset_ = 0.0f;
-    size_t m_lisner_token_ = -1;
     std::vector<PlayerAttackData> m_attack_data_;
-    std::shared_ptr<engine::StructuredBuffer> m_attack_data_buffer_;
-    std::shared_ptr<engine::ConstantBuffer> m_attack_data_count_buffer_;
+    // CPUから毎フレーム書き込む攻撃データ
+    CRS::Buffer m_attack_data_buffer_;
     engine::AssetPtr<engine::ComputeShaderComponent> m_player_attack_shader_;
     std::unordered_set<size_t> m_attack_frames_;
 
     /// プレイヤーの攻撃用ComputeShaderを実行する。
     void ExecuteAttack();
+    /// 攻撃データのバッファを最大数で作り直し、シェーダーのグローバルなバッファ(player_attacks)として登録する。
+    void CreateAttackDataBuffer();
     
 public:
     void OnInspectorGui() override;

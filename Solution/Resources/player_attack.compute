@@ -1,4 +1,5 @@
-#include "engine.hlsli"
+#include "compute_common.hlsli"
+#include "slime_globals.hlsli"
 #include "exp.hlsli"
 #include "slime.hlsli"
 #include "math.hlsli"
@@ -8,28 +9,18 @@
 #define MAX_EXP_NUM 1024
 #define MAX_ATTACK_COUNT 10
 
-cbuffer PlayerPos : register(b2)
-{
-    float3 player_pos;
-}
-
-cbuffer SlimeCount : register(b3)
-{
-    int slime_count;
-}
-
-cbuffer DamageColorTime : register(b4)
+cbuffer DamageColorTime : register(b2)
 {
     float damage_color_time;
 }
 
-StructuredBuffer<PlayerAttackData> player_attacks : register(t3);
+StructuredBuffer<PlayerAttackData> player_attacks : register(t0);
 
-RWStructuredBuffer<SlimeData> slimes : register(u1);
-RWStructuredBuffer<Exp> exps : register(u2);
-RWByteAddressBuffer result : register(u3);
-RWStructuredBuffer<SlimeDeathParticle> slime_death_particles : register(u4);
-RWStructuredBuffer<uint> slime_death_particle_counter : register(u5);
+RWStructuredBuffer<SlimeData> slimes : register(u0);
+RWStructuredBuffer<Exp> exps : register(u1);
+RWByteAddressBuffer result : register(u2);
+RWStructuredBuffer<SlimeDeathParticle> slime_death_particles : register(u3);
+RWStructuredBuffer<uint> slime_death_particle_counter : register(u4);
 
 bool CheckCollisionToPlayerAttack(float3 to_slime, PlayerAttackData attack_data);
 
@@ -38,7 +29,7 @@ void OnSlimeAttack(inout SlimeData slime_data, PlayerAttackData attack_data, flo
 void SpawnDeathParticles(SlimeData slime_data);
 
 [numthreads(64, 1, 1)]
-void compute(uint3 globalID : SV_DispatchThreadID)
+void CSMain(uint3 globalID : SV_DispatchThreadID)
 {
     int index = globalID.x;
 

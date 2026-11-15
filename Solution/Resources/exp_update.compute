@@ -1,29 +1,25 @@
-#include "engine.hlsli"
+#include "compute_common.hlsli"
+#include "slime_globals.hlsli"
 #include "exp.hlsli"
 #include "slime.hlsli"
 #include "math.hlsli"
 
-cbuffer PlayerPos : register(b3)
-{
-    float3 player_pos;
-}
-
-cbuffer TimeReachPlayer : register(b4)
+cbuffer TimeReachPlayer : register(b2)
 {
     float time_reach_player;
 }
 
-cbuffer AcquisitionRange : register(b5)
+cbuffer AcquisitionRange : register(b3)
 {
     float acquisition_range;
 }
 
-RWStructuredBuffer<Exp> exps : register(u1);
-RWByteAddressBuffer result : register(u2);
-RWStructuredBuffer<int> exp_count : register(u3);
+RWStructuredBuffer<Exp> exps : register(u0);
+RWByteAddressBuffer result : register(u1);
+RWStructuredBuffer<int> exp_count : register(u2);
 
 [numthreads(64, 1, 1)]
-void compute(uint3 globalID : SV_DispatchThreadID)
+void CSMain(uint3 globalID : SV_DispatchThreadID)
 {
     uint index = globalID.x;
     if (exps[index].is_active == true)

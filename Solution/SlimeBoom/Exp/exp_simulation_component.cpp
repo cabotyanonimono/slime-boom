@@ -4,19 +4,17 @@
 #include "exp_data.h"
 #include "gui.h"
 #include "../compute_result.h"
-#include "Rendering/gpu_resource_manager.h"
+#include "../Utils/gpu_buffer.h"
+#include "Rendering/material.h"
 
 void SlimeBoom::ExpSimulationComponent::OnStart()
 {
-    m_exp_buffer_ = std::make_shared<engine::StructuredBuffer>(sizeof(ExpData), kMaxExpBufferSize);
-    m_exp_buffer_->CreateBuffer();
+    m_exp_buffer_ = GpuBuffer::CreateReadWriteStructured(sizeof(ExpData), kMaxExpBufferSize, "exps");
+    m_exp_count_buffer_ = GpuBuffer::CreateReadWriteStructured(sizeof(int), 1, "exp_count");
 
-    m_exp_count_buffer_ = std::make_shared<engine::StructuredBuffer>(sizeof(int), 1);
-    m_exp_count_buffer_->CreateBuffer();
-
-    engine::GpuResourceManager::SetGlobalBuffer("exps", m_exp_buffer_);
-    engine::GpuResourceManager::SetGlobalBuffer("exp_count", m_exp_count_buffer_);
-    engine::GpuResourceManager::SetGlobalFloat("AcquisitionRange", m_acquisition_range_);
+    engine::Material::SetGlobalBuffer("exps", m_exp_buffer_.GetHandle());
+    engine::Material::SetGlobalBuffer("exp_count", m_exp_count_buffer_.GetHandle());
+    engine::Material::SetGlobalFloat("acquisition_range", m_acquisition_range_);
 }
 
 void SlimeBoom::ExpSimulationComponent::OnInspectorGui()
@@ -51,7 +49,7 @@ float SlimeBoom::ExpSimulationComponent::GetAcquisitionRange() const
 void SlimeBoom::ExpSimulationComponent::SetAcquisitionRange(const float range)
 {
     m_acquisition_range_ = range;
-    engine::GpuResourceManager::SetGlobalFloat("AcquisitionRange", m_acquisition_range_);
+    engine::Material::SetGlobalFloat("acquisition_range", m_acquisition_range_);
 }
 
 CEREAL_REGISTER_TYPE(SlimeBoom::ExpSimulationComponent)

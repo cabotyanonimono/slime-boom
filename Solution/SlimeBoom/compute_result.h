@@ -4,24 +4,33 @@
 #include "Components/component.h"
 #include "Components/compute_shader_component.h"
 #include "Components/transform.h"
-#include "Rendering/CabotEngine/Graphics/ByteAddressBuffer.h"
+#include "event_receivers.h"
+#include <CaboRenderingSystem/RHI/gpu_resources.h>
 
 namespace SlimeBoom
 {
 
 // ComputeShaderが書き込んだ結果バッファをGPUからCPUへ読み戻し、項目名で値を取得できるようにするComponent。
-class ComputeResult : public engine::Component
+class ComputeResult : public engine::Component, public ::IRenderReceiver
 {
-    bool m_is_first_frame_ = true;
-    std::shared_ptr<engine::ByteAddressBuffer> m_compute_result_buffer_;
-    size_t m_listener_token_ = -1;
+    CRS::Buffer m_compute_result_buffer_;
+    // 読み戻し中のリクエスト。id == 0 なら読み戻していない
+    CRS::ReadbackTicket m_ticket_;
+    bool m_is_subscribed_ = false;
     std::array<uint32_t, ComputeResultTypes::kOffset> m_result_ = {};
-    
+
+    /// 描画のタイミング(Render)で読み戻しをリクエストするため、UpdateManagerへの登録を切り替える。
+    void SetSubscribed(bool subscribed);
+
 public:
     void OnStart() override;
-    /// 読み戻しが完了していれば結果を取り込み、次の読み戻しをレンダリング時にリクエストする。
+    void OnEnabled() override;
+    void OnDisabled() override;
+    /// 読み戻しが完了していれば結果を取り込む。
     void OnUpdate() override;
     void OnDestroy() override;
+    /// 読み戻し中でなければ、結果バッファの読み戻しをリクエストする(BeginFrameとEndFrameの間で呼ばれる)。
+    void Render() override;
 
     /// 読み戻した結果から、項目の値へのポインタを返す。
     /// GPUからの読み戻しは非同期のため、最新フレームの値とは限らない。

@@ -26,27 +26,15 @@ void BushGenerator::UploadBushPositions()
 {
     if (!m_is_dirty_)
         return;
-    
-    const auto positions_buffer = m_bush_renderer_->shared_materials[0]->shared_material_block->GetStructuredBufferData("positions");
-    const auto shadow_positions_buffer = m_bush_renderer_->GetShadowMaterial()->shared_material_block->GetStructuredBufferData("positions");
 
-    if (positions_buffer == nullptr)
+    const auto material = m_bush_renderer_->shared_materials.empty()
+                              ? nullptr
+                              : m_bush_renderer_->shared_materials[0].CastedLock();
+    if (material == nullptr)
         return;
 
-    if (positions_buffer->Stride() != sizeof(Vector3))
-    {
-        positions_buffer->SetStride(sizeof(Vector3));
-        shadow_positions_buffer->SetStride(sizeof(Vector3));
-    }
-    
-    if (positions_buffer->Count() <= m_bush_positions_.size())
-    {
-        positions_buffer->SetCount(m_bush_positions_.size());
-        shadow_positions_buffer->SetCount(m_bush_positions_.size());
-    }
-        
-    positions_buffer->SetData(m_bush_positions_.data());
-    shadow_positions_buffer->SetData(m_bush_positions_.data());
+    m_bush_renderer_->SetInstanceCount(m_num_bushes_);
+    material->SetBuffer("positions", m_bush_positions_.data(), sizeof(Vector3), m_bush_positions_.size());
     m_is_dirty_ = false;
 }
 
