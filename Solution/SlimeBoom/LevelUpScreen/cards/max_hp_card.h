@@ -14,6 +14,8 @@ public:
     void OnInspectorGui() override;
     /// 最大HPと現在のHPを、同じ量だけ増やす。
     void OnSelect() override;
+    /// 選んだときの変化を「現在値  ->  選択後の値」で返す（能力の習得カードは"NEW!"）。
+    std::string GetEffectText() override;
 
     template <class Archive>
     void serialize(Archive& ar, const uint32_t version)

@@ -19,6 +19,11 @@ void SlashAbilityCard::OnInspectorGui()
     engine::Gui::PropertyField("Effekseer Renderer", m_effekseer_renderer_);
 }
 
+std::string SlashAbilityCard::GetEffectText()
+{
+    return "NEW!";
+}
+
 void SlashAbilityCard::OnSelect()
 {
     const auto aura_ability = std::make_shared<SlashAbility>(m_compute_result_, m_player_data_, m_player_transform_,

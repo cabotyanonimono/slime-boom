@@ -11,6 +11,12 @@ void SlimeBoom::AttackNumCard::OnInspectorGui()
     engine::Gui::PropertyField("Player Data", m_player_data_);
 }
 
+std::string SlimeBoom::AttackNumCard::GetEffectText()
+{
+    const auto value = static_cast<float>(m_player_data_->GetAttackNum());
+    return FormatChange(value, value + static_cast<float>(m_value_));
+}
+
 void SlimeBoom::AttackNumCard::OnSelect()
 {
     auto attack_num = m_player_data_->GetAttackNum();

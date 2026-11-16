@@ -10,6 +10,12 @@ void SlimeBoom::AcquisitionRangeCard::OnInspectorGui()
     engine::Gui::PropertyField("Exp Simulation", m_exp_simulation_);
 }
 
+std::string SlimeBoom::AcquisitionRangeCard::GetEffectText()
+{
+    const float value = m_exp_simulation_->GetAcquisitionRange();
+    return FormatChange(value, value + m_value_);
+}
+
 void SlimeBoom::AcquisitionRangeCard::OnSelect()
 {
     auto acquisition_range = m_exp_simulation_->GetAcquisitionRange();

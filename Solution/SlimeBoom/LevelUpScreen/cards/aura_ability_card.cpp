@@ -16,6 +16,11 @@ void AuraAbilityCard::OnInspectorGui()
     engine::Gui::PropertyField("Effekseer Renderer", m_effekseer_renderer_);
 }
 
+std::string AuraAbilityCard::GetEffectText()
+{
+    return "NEW!";
+}
+
 void AuraAbilityCard::OnSelect()
 {
     const auto aura_ability = std::make_shared<AuraAbility>(m_player_data_, m_aura_renderer_, m_player_data_presenter_, m_effekseer_renderer_);

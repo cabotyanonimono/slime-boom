@@ -10,6 +10,12 @@ void SlimeBoom::SpeedCard::OnInspectorGui()
     engine::Gui::PropertyField("Player Data", m_player_data_);
 }
 
+std::string SlimeBoom::SpeedCard::GetEffectText()
+{
+    const float value = m_player_data_->GetSpeed();
+    return FormatChange(value, value + m_value_);
+}
+
 void SlimeBoom::SpeedCard::OnSelect()
 {
     auto speed = m_player_data_->GetSpeed();

@@ -10,6 +10,12 @@ void SlimeBoom::MaxHpCard::OnInspectorGui()
     m_card_data_.OnInspectorGui();
 }
 
+std::string SlimeBoom::MaxHpCard::GetEffectText()
+{
+    const float value = m_player_data_->GetMaxHp();
+    return FormatChange(value, value + m_value_);
+}
+
 void SlimeBoom::MaxHpCard::OnSelect()
 {
     auto hp = m_player_data_->GetHp();

@@ -12,6 +12,12 @@ void ExpMultiplierCard::OnInspectorGui()
     engine::Gui::PropertyField("Player Data", m_player_data_);
 }
 
+std::string ExpMultiplierCard::GetEffectText()
+{
+    const float value = m_player_data_->GetExpMultiplier();
+    return FormatChange(value, value + m_value_, "x");
+}
+
 void ExpMultiplierCard::OnSelect()
 {
     auto exp_multiplier = m_player_data_->GetExpMultiplier();
