@@ -12,6 +12,12 @@ void AttackPowerCard::OnInspectorGui()
     engine::Gui::PropertyField("Player Data", m_player_data_);
 }
 
+std::string AttackPowerCard::GetEffectText()
+{
+    const float value = m_player_data_->GetAttackPower();
+    return FormatChange(value, value + m_value_);
+}
+
 void AttackPowerCard::OnSelect()
 {
     auto attack_power = m_player_data_->GetAttackPower();

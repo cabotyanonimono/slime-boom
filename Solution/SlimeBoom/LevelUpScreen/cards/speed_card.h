@@ -15,6 +15,8 @@ public:
     void OnInspectorGui() override;
     /// 移動速度を強化する。
     void OnSelect() override;
+    /// 選んだときの変化を「現在値  ->  選択後の値」で返す（能力の習得カードは"NEW!"）。
+    std::string GetEffectText() override;
 
     template <class Archive>
     void serialize(Archive& ar, const uint32_t version)

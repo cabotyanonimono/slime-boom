@@ -11,6 +11,12 @@ void AttackRangeCard::OnInspectorGui()
     engine::Gui::PropertyField("Player Data", m_player_data_);   
 }
 
+std::string AttackRangeCard::GetEffectText()
+{
+    const float value = m_player_data_->GetAttackRange();
+    return FormatChange(value, value + m_value_);
+}
+
 void AttackRangeCard::OnSelect()
 {
     auto attack_range= m_player_data_->GetAttackRange();

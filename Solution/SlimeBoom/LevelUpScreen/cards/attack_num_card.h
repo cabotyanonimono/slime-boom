@@ -14,6 +14,8 @@ class AttackNumCard : public CardBase
 public:
     void OnInspectorGui() override;
     void OnSelect() override;
+    /// 選んだときの変化を「現在値  ->  選択後の値」で返す（能力の習得カードは"NEW!"）。
+    std::string GetEffectText() override;
     /// 攻撃回数が上限以下の間だけ選択可能。
     bool CanSelect() override;
 

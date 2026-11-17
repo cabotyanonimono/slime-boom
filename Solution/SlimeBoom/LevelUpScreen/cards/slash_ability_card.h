@@ -26,6 +26,8 @@ public:
     void OnInspectorGui() override;
     /// SlashAbilityを生成して、AbilityProcesserに追加する。
     void OnSelect() override;
+    /// 選んだときの変化を「現在値  ->  選択後の値」で返す（能力の習得カードは"NEW!"）。
+    std::string GetEffectText() override;
     /// スラッシュアビリティを未習得の場合のみ選択可能。
     bool CanSelect() override;
 

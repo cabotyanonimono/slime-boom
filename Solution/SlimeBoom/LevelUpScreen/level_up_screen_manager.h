@@ -21,9 +21,9 @@ class LevelUpScreenManager final : public engine::Component
     engine::AssetPtr<engine::TextRenderer> m_level_text_;
     std::array<engine::AssetPtr<ui::UIButton>, CardController::kCardCount> m_buttons_;
 
-    /// マウスを解放してカードを抽選し、TimeScaleを0にしてレベルアップのUIを表示する。HUDのテキスト色も画面用に変更する。
+    /// マウスを解放してカードを抽選し、TimeScaleを0にしてレベルアップのUIを表示する。HUDのテキストは透明にして隠す。
     engine::Task ScreenStart() const;
-    /// 1フレーム待ってからマウスをロックし、TimeScaleを戻してUIを閉じる。HUDのテキスト色も元に戻す。
+    /// 1フレーム待ってからマウスをロックし、TimeScaleを戻してUIを閉じる。HUDのテキストも表示に戻す。
     engine::Task ScreenEnd() const;
 
     ///ボタンを指定の時間待ってからEnable状態にする。

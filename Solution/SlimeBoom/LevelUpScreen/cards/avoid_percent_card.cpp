@@ -12,6 +12,12 @@ void AvoidPercentCard::OnInspectorGui()
     engine::Gui::PropertyField("Player Data", m_player_data_);
 }
 
+std::string AvoidPercentCard::GetEffectText()
+{
+    const float value = m_player_data_->GetAvoidPercent();
+    return FormatChange(value, value + m_value_, "", "%");
+}
+
 void AvoidPercentCard::OnSelect()
 {
     auto avoid_percent = m_player_data_->GetAvoidPercent();

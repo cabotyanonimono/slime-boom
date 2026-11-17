@@ -10,9 +10,10 @@ engine::Task SlimeBoom::LevelUpScreenManager::ScreenStart() const
     engine::Input::SetMouseMode(engine::kMouseMode::kNormal);
     m_card_controller_->GenerateRandomCards();
     m_level_up_ui_object_->SetActive(true);
-    m_timer_text_->color = Color(0.1f, 0.1f, 0.1f, 1.0f);
-    m_hp_text_->color = Color(0.1f, 0.1f, 0.1f, 1.0f);
-    m_level_text_->color = Color(0.1f, 0.1f, 0.1f, 1.0f);
+    // 文字はどのImageよりも手前に描かれ、暗くしてもカードの上に透けて見えるので、透明にして隠す
+    m_timer_text_->color.w = 0.0f;
+    m_hp_text_->color.w = 0.0f;
+    m_level_text_->color.w = 0.0f;
 
     engine::Time::Get()->TimeScale(0.0f);
     
@@ -31,9 +32,9 @@ engine::Task SlimeBoom::LevelUpScreenManager::ScreenEnd() const
     engine::Input::SetMouseMode(engine::kMouseMode::kLocked);
     engine::Time::Get()->TimeScale(1.0f);
     m_level_up_ui_object_->SetActive(false);
-    m_timer_text_->color = Color(1.0f, 1.0f, 1.0f, 1.0f);
-    m_hp_text_->color = Color(1.0f, 1.0f, 1.0f, 1.0f);
-    m_level_text_->color = Color(1.0f, 1.0f, 1.0f, 1.0f);
+    m_timer_text_->color.w = 1.0f;
+    m_hp_text_->color.w = 1.0f;
+    m_level_text_->color.w = 1.0f;
 
     co_return;
 }

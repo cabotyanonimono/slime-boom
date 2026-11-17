@@ -12,6 +12,12 @@ void AttackSpeedCard::OnInspectorGui()
     engine::Gui::PropertyField("Player Data", m_player_data_);
 }
 
+std::string AttackSpeedCard::GetEffectText()
+{
+    const float value = m_player_data_->GetAttackSpeed();
+    return FormatChange(value, value + m_value_, "x");
+}
+
 void AttackSpeedCard::OnSelect()
 {
     auto attack_speed = m_player_data_->GetAttackSpeed();
