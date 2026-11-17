@@ -18,6 +18,8 @@ void SlimeBoom::PlayerDataPresenter::CreateAttackDataBuffer()
         sizeof(PlayerAttackData), static_cast<uint32_t>(m_max_attack_data_count_), "player_attacks");
 
     engine::Material::SetGlobalBuffer("player_attacks", m_attack_data_buffer_.GetHandle());
+    // 作り直したバッファには攻撃データが入っていないので、シェーダーが範囲外を読まないよう数を0にする
+    engine::Material::SetGlobalInt("attack_data_count", 0);
 }
 
 void SlimeBoom::PlayerDataPresenter::OnInspectorGui()
@@ -31,7 +33,6 @@ void SlimeBoom::PlayerDataPresenter::OnInspectorGui()
 
 void SlimeBoom::PlayerDataPresenter::OnStart()
 {
-    engine::Material::SetGlobalInt("attack_data_count", 0);
     CreateAttackDataBuffer();
 }
 
@@ -43,13 +44,15 @@ void SlimeBoom::PlayerDataPresenter::OnUpdate()
     const auto attack_data_count = std::min(static_cast<int>(m_attack_data_.size()), m_max_attack_data_count_);
     if (attack_data_count > 0 && m_attack_data_buffer_.IsValid())
     {
-        // シェーダーは最大数までの攻撃を判定するので、使わない分は0(範囲0 = 当たらない)で埋めて送る。
-        // 攻撃がないフレームは書き込まず、次の攻撃用ComputeShaderの実行までこのデータを残す
-        m_attack_data_.resize(m_max_attack_data_count_);
+        // シェーダーはattack_data_count個までの攻撃を判定する。
+        // 攻撃の判定は次のフレーム以降に実行されるので、攻撃がないフレームはデータも数も書き換えず、
+        // 次の攻撃用ComputeShaderの実行までこのデータを残す
+        // (Uploadバッファはフレームごとのコピーを持つので、GPUが読んでいる最中のデータは書き換わらない)
+        m_attack_data_.resize(attack_data_count);
         m_attack_data_buffer_.Update(m_attack_data_.data(), sizeof(PlayerAttackData) * m_attack_data_.size());
+        engine::Material::SetGlobalInt("attack_data_count", attack_data_count);
     }
 
-    engine::Material::SetGlobalInt("attack_data_count", attack_data_count);
     m_attack_data_.clear();
 
     for (auto it = m_attack_frames_.begin(); it != m_attack_frames_.end();)

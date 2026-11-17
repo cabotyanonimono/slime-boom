@@ -37,6 +37,9 @@ class SlimeSimulationComponent : public engine::Component
     engine::AssetPtr<engine::MeshRenderer> m_slime_renderer_;
     engine::AssetPtr<SlimeTakeDamageEventComponent> m_slime_take_damage_event_component_;
 
+    /// Slime Rendererが設定されていれば、描画するインスタンスの数を今のスライムの数に合わせる。
+    void SyncRendererInstanceCount();
+
 public:
     void OnStart() override;
     void OnInspectorGui() override;

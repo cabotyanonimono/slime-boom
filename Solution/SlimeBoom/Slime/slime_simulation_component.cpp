@@ -26,7 +26,13 @@ void SlimeSimulationComponent::SetCurrentSlimesCount(const int count)
 
     engine::Material::SetGlobalInt("slime_count", m_current_slime_count_);
 
-    m_slime_renderer_->SetInstanceCount(count);
+    SyncRendererInstanceCount();
+}
+
+void SlimeSimulationComponent::SyncRendererInstanceCount()
+{
+    if (m_slime_renderer_ != nullptr)
+        m_slime_renderer_->SetInstanceCount(static_cast<uint32_t>(m_current_slime_count_));
 }
 
 void SlimeSimulationComponent::SetSpawnRate(const std::array<float, SlimeTypes::Count> rates) const
@@ -48,6 +54,7 @@ void SlimeSimulationComponent::OnStart()
 
     engine::Material::SetGlobalBuffer("slimes", m_slime_buffer_.GetHandle());
     engine::Material::SetGlobalInt("slime_count", m_current_slime_count_);
+    SyncRendererInstanceCount();
 }
 
 void SlimeSimulationComponent::OnInspectorGui()
@@ -58,7 +65,8 @@ void SlimeSimulationComponent::OnInspectorGui()
     engine::Gui::PropertyField("Player Attack", m_player_attack_compute_);
     engine::Gui::PropertyField("Slime Take Damage Event", m_slime_take_damage_event_component_);
 
-    engine::Gui::PropertyField("Slime Renderer", m_slime_renderer_);
+    if (engine::Gui::PropertyField("Slime Renderer", m_slime_renderer_))
+        SyncRendererInstanceCount();
 
     if (engine::Gui::PropertyField("Current Slime Count", m_current_slime_count_))
         SetCurrentSlimesCount(m_current_slime_count_);

@@ -1,0 +1,9 @@
+{
+    "data": {
+        "shader_meta": "{\n\"value0\": {\n\"polymorphic_id\": 1073741824,\n\"ptr_wrapper\": {\n\"id\": 2147483649,\n\"data\": {\n\"cereal_class_version\": 1,\n\"value0\": {\n\"cereal_class_version\": 1,\n\"m_guid_\": \"8bc7de48-79f0-4431-88cc-dba8b7b91045\",\n\"m_name_\": \"tonemap.hlsl\"\n},\n\"parameters\": [\n{\n\"cereal_class_version\": 2,\n\"index\": 0,\n\"name\": \"Tonemap\",\n\"display_name\": \"Tonemap\",\n\"is_unordered_access\": false,\n\"total_size\": 16,\n\"variables\": [\n{\n\"cereal_class_version\": 0,\n\"name\": \"exposure\",\n\"data_type\": 1\n}\n],\n\"buffer_type\": 0\n},\n{\n\"index\": 0,\n\"name\": \"scene_color\",\n\"display_name\": \"scene_color\",\n\"is_unordered_access\": false,\n\"total_size\": 0,\n\"variables\": [],\n\"buffer_type\": 2\n}\n],\n\"m_shader_settings_\": {\n\"cereal_class_version\": 6,\n\"z_test\": 0,\n\"z_write\": 0,\n\"cull\": 0,\n\"blend_mode\": 0\n}\n}\n}\n}\n}",
+        "shader_meta_version": 5
+    },
+    "guid": "8bc7de48-79f0-4431-88cc-dba8b7b91045",
+    "type": ".hlsl",
+    "objects": []
+}

@@ -37,7 +37,9 @@ void CSMain(uint3 globalID : SV_DispatchThreadID)
         return;
     
     float3 to_slime = slimes[index].position - player_pos;
-    for (int i = 0; i < MAX_ATTACK_COUNT; ++i)
+    // player_attacksは攻撃データの数(attack_data_count)しか要素がないので、それを超えて読まない
+    const int attack_count = min(attack_data_count, MAX_ATTACK_COUNT);
+    for (int i = 0; i < attack_count; ++i)
     {
         if (CheckCollisionToPlayerAttack(to_slime, player_attacks[i]))
         {

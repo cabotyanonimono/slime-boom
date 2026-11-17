@@ -1,0 +1,9 @@
+{
+    "data": {
+        "shader_meta": "{\n\"value0\": {\n\"polymorphic_id\": 1073741824,\n\"ptr_wrapper\": {\n\"id\": 2147483649,\n\"data\": {\n\"cereal_class_version\": 1,\n\"value0\": {\n\"cereal_class_version\": 1,\n\"m_guid_\": \"addf3c72-3cbf-4945-950e-00abbfabde0e\",\n\"m_name_\": \"ui.hlsl\"\n},\n\"parameters\": [\n{\n\"cereal_class_version\": 2,\n\"index\": 0,\n\"name\": \"ui_sampler\",\n\"display_name\": \"ui_sampler\",\n\"is_unordered_access\": false,\n\"total_size\": 0,\n\"variables\": [],\n\"buffer_type\": 6\n},\n{\n\"index\": 0,\n\"name\": \"_MainTex\",\n\"display_name\": \"_MainTex\",\n\"is_unordered_access\": false,\n\"total_size\": 0,\n\"variables\": [],\n\"buffer_type\": 2\n}\n],\n\"m_shader_settings_\": {\n\"cereal_class_version\": 6,\n\"z_test\": 0,\n\"z_write\": 0,\n\"cull\": 0,\n\"blend_mode\": 0\n}\n}\n}\n}\n}",
+        "shader_meta_version": 5
+    },
+    "guid": "addf3c72-3cbf-4945-950e-00abbfabde0e",
+    "type": ".hlsl",
+    "objects": []
+}

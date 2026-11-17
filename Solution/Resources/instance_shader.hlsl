@@ -54,3 +54,12 @@ float4 PSMain(VSOutput input) : SV_Target
 
     return float4(main_color.rgb * (brightness + AmbientLight()), main_color.a);
 }
+
+// 影用。VSMainと同じ位置(positionsでずらした位置)に置いて深度だけを書く（view_projectionはライトの行列）
+// 影のパスも同じマテリアルのpositionsを読むので、影用のマテリアルに別途書き込む必要はない
+float4 VSShadow(VSInput input, uint instance_id : SV_InstanceID) : SV_POSITION
+{
+    float4 world_pos = mul(World, float4(input.pos, 1.0f));
+    world_pos.xyz += positions[instance_id];
+    return mul(view_projection, world_pos);
+}
