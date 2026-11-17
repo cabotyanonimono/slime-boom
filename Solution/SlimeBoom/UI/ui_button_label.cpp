@@ -20,10 +20,10 @@ void UIButtonLabel::OnUpdate()
         return;
 
     const auto font_data = text_renderer->font_data.CastedLock();
-    if (font_data == nullptr || font_data->SpriteFont() == nullptr)
+    if (font_data == nullptr)
         return;
 
-    const Vector2 text_size = font_data->SpriteFont()->MeasureString(text_renderer->string.c_str());
+    const Vector2 text_size = font_data->MeasureString(text_renderer->string);
     text_renderer->origin = text_size * 0.5f;
     const auto rect = ui_button->GetRect();
     text_renderer->position = rect.pos + rect.size * m_offset_;

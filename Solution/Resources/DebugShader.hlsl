@@ -1,43 +1,14 @@
-cbuffer Transform : register(b0)
-{
-    float4x4 World;
-}
-cbuffer Transform : register(b1)
-{
-    float4x4 View;
-    float4x4 Proj;
-}
+#include "engine.hlsli"
 
-cbuffer DebugType : register(b2)
+cbuffer DebugType : register(b0)
 {
     int debug_type;
 }
 
-cbuffer WeightIndex : register(b3)
+cbuffer WeightIndex : register(b1)
 {
     int weight_idx;
 }
-
-StructuredBuffer<float4x4> BoneMatrices : register(t0);
-
-struct VSInput
-{
-    float3 pos : POSITION; // 頂点座標
-    float4 color : COLOR; // 頂点色
-    float3 normal : NORMAL; // 法線
-    float4 tangent : TANGENT; // 接空間
-    float2 uv : TEXCOORD0; // UV
-    float2 uv2 : TEXCOORD1;
-    float2 uv3 : TEXCOORD2;
-    float2 uv4 : TEXCOORD3;
-    float2 uv5 : TEXCOORD4;
-    float2 uv6 : TEXCOORD5;
-    float2 uv7 : TEXCOORD6;
-    float2 uv8 : TEXCOORD7;
-    uint bones_per_vertex : BONESPERVERTEX;
-    uint4 bone_id : BONEINDEX;
-    float4 bone_weight : BONEWEIGHT;
-};
 
 struct VSOutput
 {
@@ -56,7 +27,7 @@ float3x3 ExtractRotation(float4x4 m)
         );
 }
 
-VSOutput vrt(VSInput input)
+VSOutput VSMain(VSInput input)
 {
     VSOutput output = (VSOutput)0; // アウトプット構造体を定義する
     float4 localPos = float4(input.pos, 1.0f); // 頂点座標
@@ -109,9 +80,7 @@ VSOutput vrt(VSInput input)
     return output;
 }
 
-SamplerState smp : register(s0);
-
-float4 pix(VSOutput input) : SV_TARGET
+float4 PSMain(VSOutput input) : SV_TARGET
 {
     float3 light = normalize(float3(0.9, 0.3, -0.8));
     float brightness = (dot(-light, input.normal) + 1) / 2;

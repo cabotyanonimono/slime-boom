@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "../compute_result.h"
 #include "Components/component.h"
-#include "Rendering/CabotEngine/Graphics/StructuredBuffer.h"
+#include <CaboRenderingSystem/RHI/gpu_resources.h>
 
 namespace SlimeBoom
 {
@@ -11,8 +11,8 @@ class ExpSimulationComponent : public engine::Component
     static constexpr size_t kMaxExpBufferSize = 1024;
 
     engine::AssetPtr<ComputeResult> m_compute_result_;
-    std::shared_ptr<engine::StructuredBuffer> m_exp_buffer_;
-    std::shared_ptr<engine::StructuredBuffer> m_exp_count_buffer_;
+    CRS::Buffer m_exp_buffer_;
+    CRS::Buffer m_exp_count_buffer_;
     float m_acquisition_range_ = 10.0f;
 
     int m_exp_count_ = 0;

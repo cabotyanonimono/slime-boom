@@ -6,22 +6,22 @@
 #include "math.hlsli"
 #include "cabo_pbr.hlsli"
 
-cbuffer DamageColor : register(b5)
+cbuffer DamageColor : register(b0)
 {
     float4 damage_color;
 }
 
-cbuffer PlayerPos : register(b6)
+cbuffer PlayerPos : register(b1)
 {
     float3 player_pos;
 }
 
-cbuffer DitheringRadius : register(b7)
+cbuffer DitheringRadius : register(b2)
 {
     float dithering_radius;
 }
 
-cbuffer Intensity : register(b8)
+cbuffer Intensity : register(b3)
 {
     float intensity;
     float metallic;
@@ -30,11 +30,11 @@ cbuffer Intensity : register(b8)
     float ambient_influence; // 環境光の影響度 (1 = そのまま, 0 = 環境光なし)
 }
 
-StructuredBuffer<SlimeData> slimes : register(t4);
-Texture2D base_texture : register (t5);
-Texture2D speed_texture : register (t6);
-Texture2D tank_texture : register (t7);
-TextureCube env_texture : register (t8);
+StructuredBuffer<SlimeData> slimes : register(t0);
+Texture2D base_texture : register(t1);
+Texture2D speed_texture : register(t2);
+Texture2D tank_texture : register(t3);
+TextureCube env_texture : register(t4);
 
 struct VSOutput
 {
@@ -48,12 +48,11 @@ struct VSOutput
     uint instance_id : Instance_ID;
 };
 
-VSOutput vrt(VSInput input, uint instance_id : SV_InstanceID)
+// スライムの頂点をワールド座標に変換する（VSMainとVSShadowで共通）
+// rot: 進行方向への回転（法線の変換に使う）
+float4 SlimeToWorld(float3 pos, uint instance_id, out float3x3 rot)
 {
-    VSOutput output = (VSOutput)0;
-
-    float4 local_pos = float4(input.pos, 1.0f);
-    float3 local_normal = input.normal;
+    float4 local_pos = float4(pos, 1.0f);
 
     local_pos.xyz = mul(EulerToRotationMatrix(slimes[instance_id].rotation), local_pos.xyz);
 
@@ -61,16 +60,24 @@ VSOutput vrt(VSInput input, uint instance_id : SV_InstanceID)
     {
         local_pos.xyz *= 1.5f;
     }
-    
-    float3x3 rot = LookRotation(normalize(float3(slimes[instance_id].velocity.x, 0.0f, slimes[instance_id].velocity.z)), float3(0, 1, 0));
-	local_pos.z += sin(time * 5.0f + local_pos.y * 0.03f + instance_id) * 5.15f;
-	local_pos.y += sin(time * 5.0f + local_pos.z * 0.03f + instance_id) * 5.15f;
-	local_pos.xyz = mul(rot, local_pos.xyz);
 
-    local_normal.xyz = mul(rot, local_normal.xyz);
+    rot = LookRotation(normalize(float3(slimes[instance_id].velocity.x, 0.0f, slimes[instance_id].velocity.z)), float3(0, 1, 0));
+	local_pos.z += sin(time.x * 5.0f + local_pos.y * 0.03f + instance_id) * 5.15f;
+	local_pos.y += sin(time.x * 5.0f + local_pos.z * 0.03f + instance_id) * 5.15f;
+	local_pos.xyz = mul(rot, local_pos.xyz);
 
     float4 world_pos = mul(World, local_pos);
     world_pos.xyz += slimes[instance_id].position;
+    return world_pos;
+}
+
+VSOutput VSMain(VSInput input, uint instance_id : SV_InstanceID)
+{
+    VSOutput output = (VSOutput)0;
+
+    float3x3 rot;
+    float4 world_pos = SlimeToWorld(input.pos, instance_id, rot);
+    float3 local_normal = mul(rot, input.normal);
 
     float4 proj_pos = mul(Proj, mul(View, world_pos));
 
@@ -88,7 +95,7 @@ VSOutput vrt(VSInput input, uint instance_id : SV_InstanceID)
     return output;
 }
 
-float4 pix(VSOutput input) : SV_Target
+float4 PSMain(VSOutput input) : SV_Target
 {
     float3 normal = normalize(input.normal);
     Dithering(input.svpos.xy, input.worldpos, camera_pos, player_pos, dithering_radius);
@@ -118,7 +125,7 @@ float4 pix(VSOutput input) : SV_Target
     for (int i = 0; i < light_count; ++i)
     {
         float3 light_dir;
-        float3 radiance = CalcLightRadiance(Lights[i], input.worldpos, cascade_index, shadow_map_offset, light_dir);
+        float3 radiance = CalcLightRadiance(GetLight(i), input.worldpos, cascade_index, shadow_map_offset, light_dir);
         direct_light += CalcLighting(albedo_color.rgb, metallic, roughness, normal, light_dir, view_dir) * radiance;
     }
     direct_light *= intensity;
@@ -134,4 +141,12 @@ float4 pix(VSOutput input) : SV_Target
     float3 final_color = direct_light + ibl_specular;
     final_color += PbrAmbientLight(albedo_color.rgb, f, metallic) * ambient_influence;
     return float4(final_color, albedo_color.a);
+}
+
+// 影用。VSMainと同じ位置に変形して深度だけを書く（view_projectionはライトの行列）
+float4 VSShadow(VSInput input, uint instance_id : SV_InstanceID) : SV_POSITION
+{
+    float3x3 rot;
+    float4 world_pos = SlimeToWorld(input.pos, instance_id, rot);
+    return mul(view_projection, world_pos);
 }

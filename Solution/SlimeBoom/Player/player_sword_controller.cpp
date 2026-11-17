@@ -4,7 +4,6 @@
 #include "engine.h"
 #include "engine_time.h"
 #include "gui.h"
-#include "Rendering/render_pipeline.h"
 
 namespace SlimeBoom
 {

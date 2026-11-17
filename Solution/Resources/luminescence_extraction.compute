@@ -1,4 +1,4 @@
-#include "engine.hlsli"
+#include "compute_common.hlsli"
 
 cbuffer Params : register(b2)
 {
@@ -6,11 +6,11 @@ cbuffer Params : register(b2)
     float threshold;
 }
 
-Texture2D input_texture : register(t3);
-RWTexture2D<float4> output_texture : register(u1);
+Texture2D input_texture : register(t0);
+RWTexture2D<float4> output_texture : register(u0);
 
 [numthreads(16, 16, 1)]
-void compute(uint3 globalID : SV_DispatchThreadID)
+void CSMain(uint3 globalID : SV_DispatchThreadID)
 {
     float2 uv = float2(globalID.xy);
     if (uv.x >= texture_size.x || uv.y >= texture_size.y)

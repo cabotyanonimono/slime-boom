@@ -1,4 +1,4 @@
-cbuffer Transform : register(b1)
+cbuffer Transform : register(b0)
 {
     float4x4 View;
     float4x4 Proj;
@@ -31,7 +31,7 @@ struct VSOutput
     float2 uv : TEXCOORD;
 };
 
-VSOutput vrt(VSInput input)
+VSOutput VSMain(VSInput input)
 {
     float4 localPos = float4(input.pos, 1.0f);
     float4 viewPos = mul(View, localPos);
@@ -46,7 +46,7 @@ VSOutput vrt(VSInput input)
     return output;
 }
 
-float4 pix(VSOutput input) : SV_TARGET
+float4 PSMain(VSOutput input) : SV_TARGET
 {
     return input.color;
 }

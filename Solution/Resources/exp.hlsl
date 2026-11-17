@@ -6,8 +6,8 @@
 
 #include "cabo_pbr.hlsli"
 
-Texture2D MainTex : register (t4);
-StructuredBuffer<Exp> exps : register(t5);
+Texture2D MainTex : register(t0);
+StructuredBuffer<Exp> exps : register(t1);
 
 struct VSOutput
 {
@@ -18,7 +18,7 @@ struct VSOutput
     float3 worldpos : TEXCOORD1;
 };
 
-VSOutput vrt(VSInput input, uint instance_id : SV_InstanceID)
+VSOutput VSMain(VSInput input, uint instance_id : SV_InstanceID)
 {
     VSOutput output = (VSOutput)0;
 
@@ -46,7 +46,7 @@ VSOutput vrt(VSInput input, uint instance_id : SV_InstanceID)
     return output;
 }
 
-float4 pix(VSOutput input) : SV_Target
+float4 PSMain(VSOutput input) : SV_Target
 {
     float3 normal = normalize(input.normal);
     float3 brightness = float3(0, 0, 0);
@@ -68,13 +68,26 @@ float4 pix(VSOutput input) : SV_Target
     for (int i = 0; i < light_count; ++i)
     {
         float3 light_dir;
-        if (Lights[i].type == 0)
-            light_dir = normalize(-Lights[i].direction);
+        if (GetLight(i).type == 0)
+            light_dir = normalize(-GetLight(i).direction);
         else
-            light_dir = normalize(Lights[i].pos - input.worldpos);
+            light_dir = normalize(GetLight(i).pos - input.worldpos);
         lighting_color = CalcLighting(albedo_color.rgb, 0.0f, 0.0f, normal, light_dir, camera_dir);
     }
 
     brightness += 2.0f;
     return float4(lighting_color.rgb * brightness + albedo_color.rgb * AmbientLight(), albedo_color.a);
+}
+
+// 影用。VSMainと同じ位置に置いて深度だけを書く（view_projectionはライトの行列）
+float4 VSShadow(VSInput input, uint instance_id : SV_InstanceID) : SV_POSITION
+{
+    // 非アクティブな経験値は画面外へ飛ばして影を落とさない
+    if (exps[instance_id].is_active == false)
+        return float4(-100000000.0f, 0.0f, 0.0f, 0.0f);
+
+    float4 local_pos = float4(input.pos, 1.0f);
+    local_pos.xyz += exps[instance_id].pos;
+
+    return mul(view_projection, mul(World, local_pos));
 }

@@ -1,4 +1,4 @@
-#include "engine.hlsli"
+#include "compute_common.hlsli"
 #include "exp.hlsli"
 #include "slime.hlsli"
 #include "math.hlsli"
@@ -16,10 +16,10 @@ cbuffer FogParams : register(b3)
 	float fog_max;
 }
 
-Texture2D<float4> depth_texture : register(t3);
-Texture2D<float4> source_texture : register(t4);
+Texture2D<float4> depth_texture : register(t0);
+Texture2D<float4> source_texture : register(t1);
 
-RWTexture2D<float4> result_texture : register(u1);
+RWTexture2D<float4> result_texture : register(u0);
 
 float LinearizeDepth(float depth)
 {
@@ -43,7 +43,7 @@ float3 LinearToGamma(float3 color)
 }
 
 [numthreads(16, 16, 1)]
-void compute(uint3 globalID : SV_DispatchThreadID)
+void CSMain(uint3 globalID : SV_DispatchThreadID)
 {
     uint2 uv = globalID.xy;
 

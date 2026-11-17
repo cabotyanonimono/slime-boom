@@ -1,10 +1,11 @@
-#include "engine.hlsli"
+#include "compute_common.hlsli"
+#include "slime_globals.hlsli"
 #include "exp.hlsli"
 #include "slime.hlsli"
 #include "math.hlsli"
 #include "player_attack_data.hlsli"
 
-cbuffer PhysicsData : register(b3)
+cbuffer PhysicsData : register(b2)
 {
     float3 wall_min;
     float3 wall_max;
@@ -15,27 +16,12 @@ cbuffer PhysicsData : register(b3)
     float slime_max_speed;
 }
 
-cbuffer PlayerPos : register(b4)
-{
-    float3 player_pos;
-}
+StructuredBuffer<PlayerAttackData> player_attacks : register(t0);
 
-cbuffer SlimeCount : register(b5)
-{
-    int slime_count;
-}
-
-cbuffer AttackDataCount : register(b6)
-{
-    int attack_data_count;
-}
-
-StructuredBuffer<PlayerAttackData> player_attacks : register(t3);
-
-RWStructuredBuffer<SlimeData> slimes : register(u1);
-RWByteAddressBuffer result : register(u2);
-RWStructuredBuffer<Exp> exps : register(u3);
-RWStructuredBuffer<int> exp_count : register(u4);
+RWStructuredBuffer<SlimeData> slimes : register(u0);
+RWByteAddressBuffer result : register(u1);
+RWStructuredBuffer<Exp> exps : register(u2);
+RWStructuredBuffer<int> exp_count : register(u3);
 
 bool CheckCollisionToPlayerAttack(float3 to_slime, PlayerAttackData attack_data)
 {
@@ -63,7 +49,7 @@ bool CheckCollisionToPlayerAttack(float3 to_slime, PlayerAttackData attack_data)
 }
 
 [numthreads(64, 1, 1)]
-void compute(uint3 globalID : SV_DispatchThreadID)
+void CSMain(uint3 globalID : SV_DispatchThreadID)
 {
     int index = globalID.x;
     float3 y_zero_player_pos = float3(player_pos.x, 0.0f, player_pos.z);

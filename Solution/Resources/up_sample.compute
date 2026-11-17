@@ -1,7 +1,7 @@
-#include "engine.hlsli"
-Texture2D input_lower_texture : register(t3);
-Texture2D input_same_texture : register(t4);
-RWTexture2D<float4> output_texture : register(u1);
+#include "compute_common.hlsli"
+Texture2D input_lower_texture : register(t0);
+Texture2D input_same_texture : register(t1);
+RWTexture2D<float4> output_texture : register(u0);
 
 cbuffer Params : register(b2)
 {
@@ -10,7 +10,7 @@ cbuffer Params : register(b2)
 }
 
 [numthreads(16, 16, 1)]
-void compute(uint3 globalID : SV_DispatchThreadID)
+void CSMain(uint3 globalID : SV_DispatchThreadID)
 {
     uint2 pos = globalID.xy;
 

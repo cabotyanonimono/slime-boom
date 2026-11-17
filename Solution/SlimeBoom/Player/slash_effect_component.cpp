@@ -3,7 +3,6 @@
 
 #include "engine_time.h"
 #include "gui.h"
-#include "Rendering/gpu_resource_manager.h"
 
 namespace SlimeBoom
 {

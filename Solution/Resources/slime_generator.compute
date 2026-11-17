@@ -1,31 +1,22 @@
-#include "engine.hlsli"
+#include "compute_common.hlsli"
+#include "slime_globals.hlsli"
 #include "slime.hlsli"
 #include "math.hlsli"
 
-cbuffer SpawnDistance : register(b3)
+cbuffer SpawnDistance : register(b2)
 {
     float spawn_distance_min;
     float spawn_distance_max;
 }
 
-cbuffer PlayerPos : register(b4)
-{
-    float3 player_pos;
-}
-
-cbuffer SlimeCount : register(b5)
-{
-    int slime_count;
-}
-
-cbuffer SpawnRate : register(b6)
+cbuffer SpawnRate : register(b3)
 {
     float normal_spawn_rate;
     float speed_spawn_rate;
     float tank_spawn_rate;
 }
 
-RWStructuredBuffer<SlimeData> slimes : register(u1);
+RWStructuredBuffer<SlimeData> slimes : register(u0);
 
 int DecideSpawnSlimeType(float seed)
 {
@@ -46,7 +37,7 @@ int DecideSpawnSlimeType(float seed)
 }
 
 [numthreads(64, 1, 1)]
-void compute(uint3 globalID : SV_DispatchThreadID)
+void CSMain(uint3 globalID : SV_DispatchThreadID)
 {
     uint index = globalID.x;
     

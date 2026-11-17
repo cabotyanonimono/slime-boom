@@ -33,13 +33,14 @@
                                                 "value0": {
                                                     "cereal_class_version": 1,
                                                     "parameter": {
-                                                        "cereal_class_version": 1,
+                                                        "cereal_class_version": 2,
                                                         "index": 4,
                                                         "name": "albedo_texture",
                                                         "display_name": "albedo_texture",
                                                         "is_unordered_access": false,
                                                         "total_size": 0,
-                                                        "variables": []
+                                                        "variables": [],
+                                                        "buffer_type": 0
                                                     },
                                                     "upload_type": 0
                                                 },
@@ -73,7 +74,8 @@
                                                         "display_name": "Lights",
                                                         "is_unordered_access": false,
                                                         "total_size": 0,
-                                                        "variables": []
+                                                        "variables": [],
+                                                        "buffer_type": 0
                                                     },
                                                     "upload_type": 0
                                                 },
@@ -106,7 +108,8 @@
                                                                 "name": "light_count",
                                                                 "data_type": 0
                                                             }
-                                                        ]
+                                                        ],
+                                                        "buffer_type": 0
                                                     },
                                                     "upload_type": 1
                                                 },
@@ -143,7 +146,8 @@
                                                         "display_name": "normal_texture",
                                                         "is_unordered_access": false,
                                                         "total_size": 0,
-                                                        "variables": []
+                                                        "variables": [],
+                                                        "buffer_type": 0
                                                     },
                                                     "upload_type": 0
                                                 },
@@ -168,7 +172,7 @@
                                         "ptr_wrapper": {
                                             "id": 2147483655,
                                             "data": {
-                                                "cereal_class_version": 1,
+                                                "cereal_class_version": 2,
                                                 "value0": {
                                                     "parameter": {
                                                         "index": 6,
@@ -176,63 +180,17 @@
                                                         "display_name": "env_texture",
                                                         "is_unordered_access": false,
                                                         "total_size": 0,
-                                                        "variables": []
+                                                        "variables": [],
+                                                        "buffer_type": 0
                                                     },
                                                     "upload_type": 288343440
                                                 },
-                                                "m_textures_": {
+                                                "m_texture_": {
                                                     "value0": {
-                                                        "value0": {
-                                                            "m_guid_": "170874bb-5724-4fdc-afda-4e406aef1063",
-                                                            "m_type_": 2,
-                                                            "m_stored_reference_": {
-                                                                "polymorphic_id": 0
-                                                            }
-                                                        }
-                                                    },
-                                                    "value1": {
-                                                        "value0": {
-                                                            "m_guid_": "b210f5fa-145f-4be4-a3f8-b54c42a44946",
-                                                            "m_type_": 2,
-                                                            "m_stored_reference_": {
-                                                                "polymorphic_id": 0
-                                                            }
-                                                        }
-                                                    },
-                                                    "value2": {
-                                                        "value0": {
-                                                            "m_guid_": "ef9dfebf-0d14-4cf4-88ba-1521a7effc38",
-                                                            "m_type_": 2,
-                                                            "m_stored_reference_": {
-                                                                "polymorphic_id": 0
-                                                            }
-                                                        }
-                                                    },
-                                                    "value3": {
-                                                        "value0": {
-                                                            "m_guid_": "fe4e95cc-3b15-4830-a29a-f3dcdb321da4",
-                                                            "m_type_": 2,
-                                                            "m_stored_reference_": {
-                                                                "polymorphic_id": 0
-                                                            }
-                                                        }
-                                                    },
-                                                    "value4": {
-                                                        "value0": {
-                                                            "m_guid_": "77681101-cf83-43fb-8904-c2f7eacf49b1",
-                                                            "m_type_": 2,
-                                                            "m_stored_reference_": {
-                                                                "polymorphic_id": 0
-                                                            }
-                                                        }
-                                                    },
-                                                    "value5": {
-                                                        "value0": {
-                                                            "m_guid_": "951308b1-2523-4a61-b71b-8bcb7d067ce0",
-                                                            "m_type_": 2,
-                                                            "m_stored_reference_": {
-                                                                "polymorphic_id": 0
-                                                            }
+                                                        "m_guid_": "00000000-0000-0000-0000-000000000000",
+                                                        "m_type_": 0,
+                                                        "m_stored_reference_": {
+                                                            "polymorphic_id": 0
                                                         }
                                                     }
                                                 }
@@ -287,7 +245,8 @@
                                                                 "name": "ambient_influence",
                                                                 "data_type": 1
                                                             }
-                                                        ]
+                                                        ],
+                                                        "buffer_type": 0
                                                     },
                                                     "upload_type": 1
                                                 },
@@ -458,7 +417,8 @@
                                                                 "name": "camera_dir",
                                                                 "data_type": 3
                                                             }
-                                                        ]
+                                                        ],
+                                                        "buffer_type": 0
                                                     },
                                                     "upload_type": 1
                                                 },
@@ -591,7 +551,8 @@
                                                                 "name": "cascade_slices",
                                                                 "data_type": 4
                                                             }
-                                                        ]
+                                                        ],
+                                                        "buffer_type": 0
                                                     },
                                                     "upload_type": 0
                                                 },

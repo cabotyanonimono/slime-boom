@@ -33,13 +33,14 @@
                                                 "value0": {
                                                     "cereal_class_version": 1,
                                                     "parameter": {
-                                                        "cereal_class_version": 1,
+                                                        "cereal_class_version": 2,
                                                         "index": 3,
                                                         "name": "tex",
                                                         "display_name": "tex",
                                                         "is_unordered_access": false,
                                                         "total_size": 0,
-                                                        "variables": []
+                                                        "variables": [],
+                                                        "buffer_type": 0
                                                     },
                                                     "upload_type": 0
                                                 },
@@ -79,7 +80,8 @@
                                                                 "name": "ratio",
                                                                 "data_type": 1
                                                             }
-                                                        ]
+                                                        ],
+                                                        "buffer_type": 0
                                                     },
                                                     "upload_type": 0
                                                 },
@@ -121,7 +123,8 @@
                                                                 "name": "rotation",
                                                                 "data_type": 1
                                                             }
-                                                        ]
+                                                        ],
+                                                        "buffer_type": 0
                                                     },
                                                     "upload_type": 0
                                                 },
@@ -163,7 +166,8 @@
                                                                 "name": "alpha",
                                                                 "data_type": 1
                                                             }
-                                                        ]
+                                                        ],
+                                                        "buffer_type": 0
                                                     },
                                                     "upload_type": 0
                                                 },

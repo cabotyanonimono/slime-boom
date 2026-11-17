@@ -33,13 +33,14 @@
                                                 "value0": {
                                                     "cereal_class_version": 1,
                                                     "parameter": {
-                                                        "cereal_class_version": 1,
+                                                        "cereal_class_version": 2,
                                                         "index": 5,
                                                         "name": "exps",
                                                         "display_name": "exps",
                                                         "is_unordered_access": false,
                                                         "total_size": 0,
-                                                        "variables": []
+                                                        "variables": [],
+                                                        "buffer_type": 0
                                                     },
                                                     "upload_type": -842150451
                                                 },
@@ -66,7 +67,8 @@
                                                         "display_name": "MainTex",
                                                         "is_unordered_access": false,
                                                         "total_size": 0,
-                                                        "variables": []
+                                                        "variables": [],
+                                                        "buffer_type": 0
                                                     },
                                                     "upload_type": -842150451
                                                 },
@@ -98,7 +100,8 @@
                                                         "display_name": "Lights",
                                                         "is_unordered_access": false,
                                                         "total_size": 0,
-                                                        "variables": []
+                                                        "variables": [],
+                                                        "buffer_type": 0
                                                     },
                                                     "upload_type": -842150451
                                                 },
@@ -143,7 +146,8 @@
                                                                 "name": "deltatime",
                                                                 "data_type": 1
                                                             }
-                                                        ]
+                                                        ],
+                                                        "buffer_type": 0
                                                     },
                                                     "upload_type": -842150451
                                                 },
@@ -226,7 +230,8 @@
                                                                 "name": "cascade_slices",
                                                                 "data_type": 1
                                                             }
-                                                        ]
+                                                        ],
+                                                        "buffer_type": 0
                                                     },
                                                     "upload_type": -842150451
                                                 },
@@ -268,7 +273,8 @@
                                                                 "name": "light_count",
                                                                 "data_type": 0
                                                             }
-                                                        ]
+                                                        ],
+                                                        "buffer_type": 0
                                                     },
                                                     "upload_type": -842150451
                                                 },

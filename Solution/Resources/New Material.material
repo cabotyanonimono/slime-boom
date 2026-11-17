@@ -33,13 +33,14 @@
                                                 "value0": {
                                                     "cereal_class_version": 1,
                                                     "parameter": {
-                                                        "cereal_class_version": 1,
+                                                        "cereal_class_version": 2,
                                                         "index": 3,
                                                         "name": "slime_death_particles",
                                                         "display_name": "slime_death_particles",
                                                         "is_unordered_access": false,
                                                         "total_size": 0,
-                                                        "variables": []
+                                                        "variables": [],
+                                                        "buffer_type": 0
                                                     },
                                                     "upload_type": 0
                                                 },
@@ -88,7 +89,8 @@
                                                                 "name": "glow",
                                                                 "data_type": 1
                                                             }
-                                                        ]
+                                                        ],
+                                                        "buffer_type": 0
                                                     },
                                                     "upload_type": 0
                                                 },

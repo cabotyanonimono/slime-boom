@@ -1,7 +1,7 @@
-#include "engine.hlsli"
+#include "compute_common.hlsli"
 #include "slime_death_particle.hlsli"
 
-cbuffer DeathParticleParams : register(b3)
+cbuffer DeathParticleParams : register(b2)
 {
     float life_time;
     float speed_min;
@@ -11,7 +11,7 @@ cbuffer DeathParticleParams : register(b3)
     float bounce;
 }
 
-RWStructuredBuffer<SlimeDeathParticle> slime_death_particles : register(u1);
+RWStructuredBuffer<SlimeDeathParticle> slime_death_particles : register(u0);
 
 float OrDefault(float value, float default_value)
 {
@@ -19,7 +19,7 @@ float OrDefault(float value, float default_value)
 }
 
 [numthreads(64, 1, 1)]
-void compute(uint3 globalID : SV_DispatchThreadID)
+void CSMain(uint3 globalID : SV_DispatchThreadID)
 {
     uint index = globalID.x;
     if (index >= DEATH_PARTICLE_MAX)

@@ -2,20 +2,20 @@
 #include "slime_death_effect_component.h"
 
 #include "gui.h"
-#include "Rendering/gpu_resource_manager.h"
+#include "Rendering/material.h"
+#include "../Utils/gpu_buffer.h"
 
 namespace SlimeBoom
 {
 void SlimeDeathEffectComponent::OnStart()
 {
-    m_particle_buffer_ = std::make_shared<engine::StructuredBuffer>(sizeof(SlimeDeathParticleData), kMaxParticleCount);
-    m_particle_buffer_->CreateBuffer();
+    m_particle_buffer_ = GpuBuffer::CreateReadWriteStructured(sizeof(SlimeDeathParticleData), kMaxParticleCount,
+                                                              "slime_death_particles");
+    m_particle_counter_buffer_ = GpuBuffer::CreateReadWriteStructured(sizeof(uint32_t), 1,
+                                                                      "slime_death_particle_counter");
 
-    m_particle_counter_buffer_ = std::make_shared<engine::StructuredBuffer>(sizeof(uint32_t), 1);
-    m_particle_counter_buffer_->CreateBuffer();
-
-    engine::GpuResourceManager::SetGlobalBuffer("slime_death_particles", m_particle_buffer_);
-    engine::GpuResourceManager::SetGlobalBuffer("slime_death_particle_counter", m_particle_counter_buffer_);
+    engine::Material::SetGlobalBuffer("slime_death_particles", m_particle_buffer_.GetHandle());
+    engine::Material::SetGlobalBuffer("slime_death_particle_counter", m_particle_counter_buffer_.GetHandle());
 }
 
 void SlimeDeathEffectComponent::OnInspectorGui()

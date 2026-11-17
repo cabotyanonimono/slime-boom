@@ -1,26 +1,17 @@
-#include "engine.hlsli"
+#include "compute_common.hlsli"
+#include "slime_globals.hlsli"
 #include "slime.hlsli"
 #include "math.hlsli"
 #include "player_attack_data.hlsli"
 
-cbuffer PlayerPos : register(b2)
-{
-    float3 player_pos;
-}
-
-cbuffer SlimeCount : register(b3)
-{
-    int slime_count;
-}
-
-StructuredBuffer<SlimeData> slimes : register(t3);
-RWByteAddressBuffer result : register(u1);
+StructuredBuffer<SlimeData> slimes : register(t0);
+RWByteAddressBuffer result : register(u0);
 
 groupshared float shared_min_dist[64];
 groupshared float3 shared_closest_pos[64];
 
 [numthreads(64, 1, 1)]
-void compute(uint3 globalID : SV_DispatchThreadID, uint groupIndex : SV_GroupIndex)
+void CSMain(uint3 globalID : SV_DispatchThreadID, uint groupIndex : SV_GroupIndex)
 {
     int index = globalID.x;
 

@@ -1,17 +1,17 @@
 #define SHADOW_CASCADE_COUNT 3
 
-cbuffer Transform : register (b0)
+cbuffer Transform : register(b0)
 {
     float4x4 World;
 }
-cbuffer LightCount : register (b4)
+cbuffer LightCount : register(b1)
 {
     int light_count;
 }
 
-StructuredBuffer<float4x4> LightViewProj : register(t1);
+StructuredBuffer<float4x4> LightViewProj : register(t0);
 
-StructuredBuffer<float4x4> BoneMatrices : register (t0);
+StructuredBuffer<float4x4> BoneMatrices : register(t1);
 
 struct VSInput
 {
@@ -38,7 +38,7 @@ struct VSOutput
     uint instance_id : SV_InstanceID;
 };
 
-VSOutput vrt(VSInput input, uint instance_id : SV_InstanceID)
+VSOutput VSMain(VSInput input, uint instance_id : SV_InstanceID)
 {
     VSOutput output = (VSOutput)0;
 

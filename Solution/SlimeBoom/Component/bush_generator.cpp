@@ -1,5 +1,6 @@
 ﻿#include "pch.h"
 #include "bush_generator.h"
+#include <cfloat>
 #include <utility>
 
 #include "gui.h"
@@ -10,8 +11,14 @@ namespace SlimeBoom
 {
 void BushGenerator::UpdateBushPositions()
 {
-    m_bush_positions_.reserve(m_num_bushes_);
-    for (int i = 0; std::cmp_less(i, m_num_bushes_); ++i)
+    // Num Bushesが実行中に変わったら、位置の数を合わせる(増えた分は次のループで配置し直される)
+    if (m_bush_positions_.size() != m_num_bushes_)
+    {
+        m_bush_positions_.resize(m_num_bushes_, Vector3(FLT_MAX, 0.0f, FLT_MAX));
+        m_is_dirty_ = true;
+    }
+
+    for (int i = 0; std::cmp_less(i, m_bush_positions_.size()); ++i)
     {
         if ((m_player_transform_->Position() - m_bush_positions_[i]).Length() > m_max_distance_)
         {
@@ -26,27 +33,16 @@ void BushGenerator::UploadBushPositions()
 {
     if (!m_is_dirty_)
         return;
-    
-    const auto positions_buffer = m_bush_renderer_->shared_materials[0]->shared_material_block->GetStructuredBufferData("positions");
-    const auto shadow_positions_buffer = m_bush_renderer_->GetShadowMaterial()->shared_material_block->GetStructuredBufferData("positions");
 
-    if (positions_buffer == nullptr)
+    const auto material = m_bush_renderer_->shared_materials.empty()
+                              ? nullptr
+                              : m_bush_renderer_->shared_materials[0].CastedLock();
+    if (material == nullptr || m_bush_positions_.empty())
         return;
 
-    if (positions_buffer->Stride() != sizeof(Vector3))
-    {
-        positions_buffer->SetStride(sizeof(Vector3));
-        shadow_positions_buffer->SetStride(sizeof(Vector3));
-    }
-    
-    if (positions_buffer->Count() <= m_bush_positions_.size())
-    {
-        positions_buffer->SetCount(m_bush_positions_.size());
-        shadow_positions_buffer->SetCount(m_bush_positions_.size());
-    }
-        
-    positions_buffer->SetData(m_bush_positions_.data());
-    shadow_positions_buffer->SetData(m_bush_positions_.data());
+    // シェーダーは送った位置の数だけインスタンスを描くので、実際に送る数に合わせる
+    m_bush_renderer_->SetInstanceCount(static_cast<uint32_t>(m_bush_positions_.size()));
+    material->SetBuffer("positions", m_bush_positions_.data(), sizeof(Vector3), m_bush_positions_.size());
     m_is_dirty_ = false;
 }
 

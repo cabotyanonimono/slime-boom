@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include "Asset/asset_ptr.h"
-#include "Rendering/CabotEngine/Graphics/Texture2D.h"
+#include "Rendering/texture2d.h"
 
 namespace SlimeBoom
 {

@@ -5,7 +5,7 @@
 #include "Asset/asset_ptr.h"
 #include "Components/component.h"
 #include "Components/image.h"
-#include "Rendering/CabotEngine/Graphics/Texture2D.h"
+#include "Rendering/texture2d.h"
 
 namespace ui
 {

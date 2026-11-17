@@ -1,8 +1,8 @@
 #include "Light.hlsli"
 #include "engine.hlsli"
 
-Texture2D MainTex : register (t4);
-StructuredBuffer<float3> positions : register(t5);
+Texture2D MainTex : register(t0);
+StructuredBuffer<float3> positions : register(t1);
 
 struct VSOutput
 {
@@ -13,7 +13,7 @@ struct VSOutput
     float3 worldpos : TEXCOORD1;
 };
 
-VSOutput vrt(VSInput input, uint instance_id : SV_InstanceID)
+VSOutput VSMain(VSInput input, uint instance_id : SV_InstanceID)
 {
     VSOutput output = (VSOutput)0;
 
@@ -34,7 +34,7 @@ VSOutput vrt(VSInput input, uint instance_id : SV_InstanceID)
     return output;
 }
 
-float4 pix(VSOutput input) : SV_Target
+float4 PSMain(VSOutput input) : SV_Target
 {
     float3 N = normalize(input.normal);
     float3 brightness = float3(0, 0, 0);
@@ -53,4 +53,13 @@ float4 pix(VSOutput input) : SV_Target
     float4 main_color = MainTex.Sample(smp, input.uv);
 
     return float4(main_color.rgb * (brightness + AmbientLight()), main_color.a);
+}
+
+// 影用。VSMainと同じ位置(positionsでずらした位置)に置いて深度だけを書く（view_projectionはライトの行列）
+// 影のパスも同じマテリアルのpositionsを読むので、影用のマテリアルに別途書き込む必要はない
+float4 VSShadow(VSInput input, uint instance_id : SV_InstanceID) : SV_POSITION
+{
+    float4 world_pos = mul(World, float4(input.pos, 1.0f));
+    world_pos.xyz += positions[instance_id];
+    return mul(view_projection, world_pos);
 }

@@ -3,10 +3,9 @@
 
 #include "gui.h"
 #include "../Sound/sound_manager_component.h"
-#include "Rendering/gpu_resource_manager.h"
+#include "../Utils/gpu_buffer.h"
 #include "../Utils/random.h"
-#include "Rendering/render_pipeline.h"
-#include "Rendering/CabotEngine/Graphics/ConstantBuffer.h"
+#include "Rendering/material.h"
 
 namespace SlimeBoom
 {
@@ -24,38 +23,38 @@ void SlimeSimulationComponent::SetCurrentSlimesCount(const int count)
         m_closest_slime_compute_->SetGroupCountX(group_count);
     if (m_player_attack_compute_ != nullptr)
         m_player_attack_compute_->SetGroupCountX(group_count);
-    
-    if (m_slime_count_buffer_ != nullptr)
-        m_slime_count_buffer_->UpdateBuffer(&m_current_slime_count_);
 
+    engine::Material::SetGlobalInt("slime_count", m_current_slime_count_);
+
+    SyncRendererInstanceCount();
+}
+
+void SlimeSimulationComponent::SyncRendererInstanceCount()
+{
     if (m_slime_renderer_ != nullptr)
-        m_slime_renderer_->instance_count = m_current_slime_count_;
+        m_slime_renderer_->SetInstanceCount(static_cast<uint32_t>(m_current_slime_count_));
 }
 
 void SlimeSimulationComponent::SetSpawnRate(const std::array<float, SlimeTypes::Count> rates) const
 {
-    auto spawn_rate_buffer = m_slime_generator_compute_->GetMaterialBlock()->GetConstantBufferData("SpawnRate");
-    if (spawn_rate_buffer == nullptr)
+    if (m_slime_generator_compute_.CastedLock() == nullptr)
         return;
 
-    spawn_rate_buffer->SetFloatData("normal_spawn_rate", rates[0]);
-    spawn_rate_buffer->SetFloatData("speed_spawn_rate", rates[1]);
-    spawn_rate_buffer->SetFloatData("tank_spawn_rate", rates[2]);
+    auto &material = m_slime_generator_compute_->GetMaterial();
+    material.SetFloat("normal_spawn_rate", rates[0]);
+    material.SetFloat("speed_spawn_rate", rates[1]);
+    material.SetFloat("tank_spawn_rate", rates[2]);
 }
 
 void SlimeSimulationComponent::OnStart()
 {
     m_slime_take_damage_event_component_->AddOnDamageEventListener([this](int damage_count){SoundManagerComponent::Play(kSoundTypes::kSlimeTakeDamage);});
     
-    m_slime_buffer_ = std::make_shared<engine::StructuredBuffer>(sizeof(SlimeData), kMaxSlimesCount);
-    m_slime_buffer_->CreateBuffer();
+    m_slime_buffer_ = GpuBuffer::CreateReadWriteStructured(sizeof(SlimeData), kMaxSlimesCount, "slimes");
 
-    m_slime_count_buffer_ = std::make_shared<engine::ConstantBuffer>(sizeof(uint32_t));
-    m_slime_count_buffer_->CreateBuffer();
-    m_slime_count_buffer_->UpdateBuffer(&m_current_slime_count_);
-
-    engine::GpuResourceManager::SetGlobalBuffer("slimes", m_slime_buffer_);
-    engine::GpuResourceManager::SetGlobalBuffer("SlimeCount", m_slime_count_buffer_);
+    engine::Material::SetGlobalBuffer("slimes", m_slime_buffer_.GetHandle());
+    engine::Material::SetGlobalInt("slime_count", m_current_slime_count_);
+    SyncRendererInstanceCount();
 }
 
 void SlimeSimulationComponent::OnInspectorGui()
@@ -67,17 +66,15 @@ void SlimeSimulationComponent::OnInspectorGui()
     engine::Gui::PropertyField("Slime Take Damage Event", m_slime_take_damage_event_component_);
 
     if (engine::Gui::PropertyField("Slime Renderer", m_slime_renderer_))
-    {
-        m_slime_renderer_->instance_count = m_current_slime_count_;
-    }
-    
+        SyncRendererInstanceCount();
+
     if (engine::Gui::PropertyField("Current Slime Count", m_current_slime_count_))
         SetCurrentSlimesCount(m_current_slime_count_);
 }
 
 void SlimeSimulationComponent::OnUpdate()
 {
-    m_slime_count_buffer_->UpdateBuffer(&m_current_slime_count_);
+    engine::Material::SetGlobalInt("slime_count", m_current_slime_count_);
 }
 
 int SlimeSimulationComponent::GetMaxSlimeCount()
