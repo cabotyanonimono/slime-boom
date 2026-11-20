@@ -12466,6 +12466,31 @@
                                                 }
                                             }
                                         }
+                                    },
+                                    {
+                                        "polymorphic_id": 2147483734,
+                                        "polymorphic_name": "SlimeBoom::CharacterMotor",
+                                        "ptr_wrapper": {
+                                            "id": 2147484432,
+                                            "data": {
+                                                "cereal_class_version": 1,
+                                                "value0": {
+                                                    "value0": {
+                                                        "m_guid_": "19cf9e69-3e97-43c3-861a-71ce066e51bc",
+                                                        "m_name_": "CharacterMotor"
+                                                    },
+                                                    "value1": {
+                                                        "locked_ptr": {
+                                                            "polymorphic_id": 1073741824,
+                                                            "ptr_wrapper": {
+                                                                "id": 2
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "m_jump_speed_": 17.0
+                                            }
+                                        }
                                     }
                                 ]
                             }

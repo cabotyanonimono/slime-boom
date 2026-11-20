@@ -3,6 +3,7 @@
 
 #include "engine_time.h"
 #include "gui.h"
+#include "Physics/physics.h"
 
 namespace SlimeBoom
 {
@@ -44,6 +45,9 @@ void GameManager::OnInspectorGui()
 
 void GameManager::OnStart()
 {
+    engine::Physics::SetGravity(Vector3(0.0f, -18.0f, 0.0f));
+    //回避(速度79)でも1サブステップの移動量(79 * 0.02 / 4 ≒ 0.4)がプレイヤーのカプセル半径(1.0)を超えないようにし、壁のすり抜けを防ぐ
+    engine::Physics::SetSubSteps(kPhysicsSubSteps);
     engine::Input::SetMouseMode(engine::kMouseMode::kLocked);
 }
 

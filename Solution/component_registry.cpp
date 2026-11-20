@@ -6,6 +6,7 @@
 #include "SlimeBoom/Component/delay_follower.h"
 #include "SlimeBoom/Component/mesh_renderer_generator_test.h"
 #include "SlimeBoom/Component/root_motion_controller.h"
+#include "SlimeBoom/Component/character_motor.h"
 #include "SlimeBoom/Player/player_position_presenter.h"
 #include "SlimeBoom/Player/player_component.h"
 #include "SlimeBoom/compute_result.h"
@@ -16,6 +17,7 @@
 #include "SlimeBoom/Component/result_rank.h"
 #include "SlimeBoom/Component/scene_transition_controller.h"
 #include "SlimeBoom/Component/set_null_render_texture_component.h"
+#include "SlimeBoom/Component/terrain_grid_component.h"
 #include "SlimeBoom/Component/texture_cube_recreator.h"
 #include "SlimeBoom/Component/title_scene_controller.h"
 #include "SlimeBoom/Exp/exp_simulation_component.h"
@@ -64,6 +66,7 @@ void ComponentRegistry::RegisterComponents()
     ADD_COMPONENT(PlayerDataComponent, "Player");
     ADD_COMPONENT(PlayerPositionPresenter, "Player");
     ADD_COMPONENT(RootMotionController, "Animation");
+    ADD_COMPONENT(CharacterMotor, "Player");
     ADD_COMPONENT(Animator, "Animation");
     ADD_COMPONENT(MeshRendererGenerator, "Renderer");
     ADD_COMPONENT(ComputeResult, "Debug");
@@ -108,6 +111,7 @@ void ComponentRegistry::RegisterComponents()
     ADD_COMPONENT(PlayerStatusUi, "UI");
     ADD_COMPONENT(SceneTransitionExecutor, "Scene");
     ADD_COMPONENT(MapSizeComponent, "Map");
+    ADD_COMPONENT(TerrainGridComponent, "Map");
     ADD_COMPONENT(AvoidCooldownGauge, "UI");
     ADD_COMPONENT(SlimeEliminateChecker, "Slime");
     ADD_COMPONENT(SlimeEliminateSe, "Slime");

@@ -10,6 +10,9 @@ namespace SlimeBoom
 // 経過時間の計測、クリア/ゲームオーバーの判定、終了時のクリア画面の表示を行う。
 class GameManager : public engine::Component
 {
+    //1回のFixedUpdateで物理を何回に分けて進めるか
+    static constexpr int kPhysicsSubSteps = 4;
+
     float m_clear_time_;
     float m_time_since_game_start_sec_ = 0.0f;
     engine::AssetPtr<ClearSceneController> m_clear_scene_controller_;

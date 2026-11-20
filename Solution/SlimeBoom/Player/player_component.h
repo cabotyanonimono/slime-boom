@@ -6,6 +6,7 @@
 #include "player_sword_controller.h"
 #include "../compute_result.h"
 #include "../Component/animator.h"
+#include "../Component/character_motor.h"
 #include "../Exp/level_up_controller.h"
 #include "../Slime/slime_simulation_component.h"
 #include "../StateMachine/state_machine.h"
@@ -24,7 +25,10 @@ namespace SlimeBoom
 class PlayerComponent final : public engine::Component
 {
     static constexpr float kIdleBlendSpeed = 5.0f;
-    
+
+    //移動(速度・接地・ジャンプ・壁の当たり判定)を担当する。Rigidbodyと同じGameObjectに付いている
+    std::weak_ptr<CharacterMotor> m_motor_;
+
     std::shared_ptr<StateMachine> m_state_machine_;
 
     bool m_is_immune_ = false;
@@ -163,8 +167,15 @@ public:
                 CEREAL_NVP(m_dead_delay_time_)
             );
         }
+
+        //version 14ではジャンプ速度を持っていた。今はCharacterMotorが持つので読み捨てる
+        if (version == 14)
+        {
+            float jump_speed = 0.0f;
+            ar(cereal::make_nvp("m_jump_speed_", jump_speed));
+        }
     }
 };
 }
 
-CEREAL_CLASS_VERSION(SlimeBoom::PlayerComponent, 13)
+CEREAL_CLASS_VERSION(SlimeBoom::PlayerComponent, 15)

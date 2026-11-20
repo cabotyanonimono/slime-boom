@@ -39,7 +39,13 @@ void PlayerComponent::UpdateParameter()
         m_state_machine_->SetParameter("Avoid",true);
     }
     
-    if (engine::Input::GetKeyDown(DirectX::Keyboard::Space) && m_avoid_cooldown_timer_ <= 0.0f)
+    if (engine::Input::GetKeyDown(DirectX::Keyboard::Space) && !IsDead())
+    {
+        if (const auto motor = m_motor_.lock())
+            motor->Jump();
+    }
+
+    if (engine::Input::GetKeyDown(DirectX::Keyboard::LeftShift) && m_avoid_cooldown_timer_ <= 0.0f)
     {
         m_is_immune_ = true;
         m_avoid_timer_ = m_player_data_->GetAvoidTime();
@@ -100,11 +106,30 @@ void PlayerComponent::OnInspectorGui()
 void PlayerComponent::OnStart()
 {
     m_dead_delay_timer_ = m_dead_delay_time_;
+    const auto rigidbody = GameObject()->GetComponentInParent<engine::RigidbodyComponent>();
+    if (rigidbody != nullptr)
+    {
+        auto motor = rigidbody->GameObject()->GetComponent<CharacterMotor>();
+        if (motor == nullptr)
+        {
+            //CharacterMotorがないとRigidbodyが動かないので、付け忘れていたら追加する
+            engine::Logger::Warn<PlayerComponent>("CharacterMotor is not found on '%s'. Added it at runtime.", rigidbody->GameObject()->Name().c_str());
+            motor = rigidbody->GameObject()->AddComponent<CharacterMotor>();
+        }
+        m_motor_ = motor;
+    }
     m_state_machine_ = std::make_shared<StateMachine>();
 
     const auto idle_state = std::make_shared<PlayAnimState>(m_animator_, "Idle", kIdleBlendSpeed);
     const auto dash_state = std::make_shared<DashState>("Dash", m_player_data_, m_animator_, m_camera_transform_, m_rotation_transform_);
-    const auto avoid_state = std::make_shared<AvoidState>("Avoid", m_player_data_, m_animator_, m_camera_transform_, m_rotation_transform_, m_player_transform_, &m_on_avoid_);
+    const auto avoid_state = std::make_shared<AvoidState>("Avoid", m_player_data_, m_animator_, m_camera_transform_, m_rotation_transform_,
+                                                         [this](const Vector3& move)
+                                                         {
+                                                             if (const auto motor = m_motor_.lock())
+                                                                 motor->AddMove(move);
+                                                         },
+                                                         rigidbody,
+                                                         &m_on_avoid_);
     const auto dead_state = std::make_shared<PlayAnimState>(m_animator_, "Dead");
 
     const auto dash_condition = std::make_shared<ComparisonCondition<bool>>("Move", true, kOpType::kEqual);
