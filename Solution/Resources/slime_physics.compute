@@ -127,10 +127,11 @@ void CSMain(uint3 globalID : SV_DispatchThreadID)
 
             //床との当たり判定
             float floor_pos = GetTerrainHeight(next_pos.x, next_pos.z);
-            float floor_to_next_dist = length(floor_pos - next_pos.y);
-            if (next_pos.y < floor_pos)
+            if (next_pos.y <= floor_pos)
             {
                 next_pos.y = floor_pos;
+                //床に着いたら下向きの速度を消す(残すと重力で際限なく増える)
+                slimes[index].velocity.y = max(slimes[index].velocity.y, 0.0f);
             }
 
             slimes[index].position = next_pos;

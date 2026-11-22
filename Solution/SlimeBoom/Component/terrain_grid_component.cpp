@@ -18,6 +18,9 @@ namespace
 //面の表裏をFBXから読み込んだMeshと同じ(法線側から見て反時計回り)にする。逆になっていたらtrueにする
 constexpr bool kFlipWinding = false;
 
+//今シェーダーへ高さマップを登録しているComponent。シーン切り替えで新しい地形が先に登録した場合に、古い地形の破棄で外さないようにする
+const void* g_registered_terrain = nullptr;
+
 //シード値付きの2D Perlinノイズ
 class PerlinNoise
 {
@@ -332,6 +335,7 @@ void TerrainGridComponent::UploadGpuData()
     engine::Material::SetGlobalFloat("terrain_cell_size", m_cell_size_);
     engine::Material::SetGlobalFloat("terrain_level_height", m_level_height_);
     engine::Material::SetGlobalVector3("terrain_origin", origin);
+    g_registered_terrain = this;
 }
 
 void TerrainGridComponent::OnInspectorGui()
@@ -354,6 +358,18 @@ void TerrainGridComponent::OnStart()
     BuildMesh();
     CreateTerrainObject();
     UploadGpuData();
+}
+
+void TerrainGridComponent::OnDestroy()
+{
+    if (g_registered_terrain == this)
+    {
+        g_registered_terrain = nullptr;
+        //grid_sizeを0にするとGetTerrainHeightはバッファを読まずにOriginの高さを返す
+        engine::Material::SetGlobalInt("terrain_grid_size", 0);
+        engine::Material::SetGlobalBuffer("terrain_heights", CRS::BufferHandle{});
+    }
+    m_heights_buffer_.Reset();
 }
 
 float TerrainGridComponent::GetHeight(const uint32_t x, const uint32_t y) const

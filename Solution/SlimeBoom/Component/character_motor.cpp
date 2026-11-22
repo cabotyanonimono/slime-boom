@@ -77,8 +77,17 @@ void CharacterMotor::ApplyMovement()
         m_is_jumping_ = false;
     m_was_grounded_ = is_grounded;
 
-    const bool jump = is_grounded && m_jump_requested_;
-    m_jump_requested_ = false;
+    const bool jump = is_grounded && m_jump_request_timer_ > 0.0f;
+    if (jump)
+    {
+        m_jump_request_timer_ = 0.0f;
+    }
+    else if (m_jump_request_timer_ > 0.0f)
+    {
+        m_jump_request_timer_ -= dt;
+        if (m_jump_request_timer_ <= 0.0f)
+            m_is_jump_canceled_ = true;
+    }
 
     auto planar_velocity = SlideMove(move_velocity * dt) / dt;
     planar_velocity.y = 0.0f;
@@ -203,7 +212,15 @@ void CharacterMotor::AddMove(const Vector3& move)
 
 void CharacterMotor::Jump()
 {
-    m_jump_requested_ = true;
+    m_jump_request_timer_ = kJumpBufferTime;
+    m_is_jump_canceled_ = false;
+}
+
+bool CharacterMotor::ConsumeJumpCanceled()
+{
+    const bool canceled = m_is_jump_canceled_;
+    m_is_jump_canceled_ = false;
+    return canceled;
 }
 
 bool CharacterMotor::IsGrounded() const

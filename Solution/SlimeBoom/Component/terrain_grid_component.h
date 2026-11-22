@@ -70,6 +70,8 @@ public:
     void OnInspectorGui() override;
     //Gridの生成を行い、それに対応したCell(Mesh,Collider)の生成、GPUDataの生成を行う
     void OnStart() override;
+    //シェーダーへ登録した高さマップを外す(破棄後に解放済みのバッファを参照しないようにする)
+    void OnDestroy() override;
 
     //セル(x, y)の基準面のワールド高さ(Transformからの相対)。範囲外は0
     float GetHeight(uint32_t x, uint32_t y) const;

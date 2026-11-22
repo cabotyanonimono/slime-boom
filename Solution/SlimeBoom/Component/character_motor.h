@@ -14,6 +14,8 @@ class CharacterMotor final : public engine::Component
 {
     static constexpr float kGroundNormalMinY = 0.5f;
     static constexpr float kJumpGroundIgnoreTime = 0.1f;
+    //Jump()を呼んでから接地を待つ時間。接触が数ステップ途切れてもジャンプ入力を捨てないようにする
+    static constexpr float kJumpBufferTime = 0.15f;
     static constexpr float kSweepSkin = 0.05f;
     static constexpr float kStepHeight = 0.3f;
     static constexpr int kMaxSlideIterations = 3;
@@ -34,7 +36,9 @@ class CharacterMotor final : public engine::Component
     Vector3 m_intended_planar_velocity_ = Vector3::Zero;
     //ジャンプの初速
     float m_jump_speed_ = 17.0f;
-    bool m_jump_requested_ = false;
+    float m_jump_request_timer_ = 0.0f;
+    //ジャンプ要求が接地しないまま期限切れになったか
+    bool m_is_jump_canceled_ = false;
     bool m_is_jumping_ = false;
     float m_jump_ground_ignore_timer_ = 0.0f;
 
@@ -59,8 +63,10 @@ public:
 
     /// 次の物理ステップで動かす移動量(World空間)を足す。Y成分は無視する。
     void AddMove(const Vector3& move);
-    /// 次の物理ステップで接地していればジャンプする。空中で呼んだ場合は無視される。
+    /// 接地していればジャンプする。kJumpBufferTimeの間に接地しなかった場合は取り消される。
     void Jump();
+    /// Jump()の要求が接地しないまま取り消されていればtrueを返し、フラグを戻す。
+    bool ConsumeJumpCanceled();
     /// 直前の物理ステップで接地していたかを返す。
     bool IsGrounded() const;
     /// Rigidbodyの現在の速度(World空間)を返す。

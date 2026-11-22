@@ -56,6 +56,16 @@ void PlayerComponent::UpdateParameter()
 void PlayerComponent::UpdateJump()
 {
     const auto motor = m_motor_.lock();
+    if (motor != nullptr && m_is_jumping_)
+    {
+        //ジャンプ入力が接地しないまま取り消された(飛んでいない)
+        if (motor->ConsumeJumpCanceled())
+            FinishJump();
+        //空中で回避して回避中に着地した場合は、回避後にジャンプ状態へ戻らないようにする
+        else if (m_avoid_timer_ > 0.0f && motor->IsGrounded())
+            FinishJump();
+    }
+
     if (motor == nullptr || m_is_jumping_ || IsDead() || m_avoid_timer_ > 0.0f)
     {
         m_air_timer_ = 0.0f;
