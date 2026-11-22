@@ -4,6 +4,7 @@
 #include "slime.hlsli"
 #include "math.hlsli"
 #include "player_attack_data.hlsli"
+#include "grid.hlsli"
 
 cbuffer PhysicsData : register(b2)
 {
@@ -59,12 +60,13 @@ void CSMain(uint3 globalID : SV_DispatchThreadID)
         slimes[index].damage_color_timer -= deltatime;
         slimes[index].velocity.y += gravity;
 
-        float3 to_player = y_zero_player_pos - slimes[index].position;
+        float3 y_zero_slime_pos = float3(slimes[index].position.x, 0.0f, slimes[index].position.z);
+        float3 to_player = y_zero_player_pos - y_zero_slime_pos;
 
         float speed = slimes[index].slime_type == SLIME_TYPE::SPEED ? slime_speed * 1.5f : slime_speed;
         slimes[index].velocity += normalize(to_player) * speed;
 
-        if (length(slimes[index].position - y_zero_player_pos) <= slime_radius * 2.0f)
+        if (length(slimes[index].position - player_pos) <= slime_radius * 2.0f)
         {
             result.InterlockedAdd(12, 1);
         }
@@ -109,17 +111,27 @@ void CSMain(uint3 globalID : SV_DispatchThreadID)
 
             slimes[index].velocity.xz *= 0.95f;
 
-            float current_speed = length(slimes[index].velocity);
+            float3 y_zero_vel = float3(slimes[index].velocity.x, 0.0f, slimes[index].velocity.z);
+            float current_speed = length(y_zero_vel);
             if (current_speed > slime_max_speed)
             {
-                slimes[index].velocity = normalize(slimes[index].velocity) * slime_max_speed;
+                y_zero_vel = normalize(y_zero_vel) * slime_max_speed;
+                slimes[index].velocity = float3(y_zero_vel.x, slimes[index].velocity.y, y_zero_vel.z);
             }
 
-            //壁とのあたり判定
             float3 next_pos = slimes[index].position + slimes[index].velocity * deltatime;
 
+            //壁とのあたり判定
             next_pos = max(next_pos, wall_min);
             next_pos = min(next_pos, wall_max);
+
+            //床との当たり判定
+            float floor_pos = GetTerrainHeight(next_pos.x, next_pos.z);
+            float floor_to_next_dist = length(floor_pos - next_pos.y);
+            if (next_pos.y < floor_pos)
+            {
+                next_pos.y = floor_pos;
+            }
 
             slimes[index].position = next_pos;
         }

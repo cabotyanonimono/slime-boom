@@ -9,6 +9,7 @@
 #include "Components/mesh_renderer.h"
 #include "Components/transform.h"
 #include "Physics/mesh_collider.h"
+#include "../Utils/gpu_buffer.h"
 
 namespace SlimeBoom
 {
@@ -306,20 +307,27 @@ void TerrainGridComponent::CreateTerrainObject() const
     collider->SetMesh(mesh);
 }
 
-void TerrainGridComponent::UploadGpuData() const
+void TerrainGridComponent::UploadGpuData()
 {
     const int size = static_cast<int>(m_grid_size_);
-    std::vector<float> heights;
+    std::vector<Vector4> heights;
     heights.reserve(static_cast<size_t>(size) * size);
-    for (const auto& row : m_grid_)
-        for (const auto& cell : row)
-            heights.emplace_back(cell.height * m_level_height_);
+    for (int z = 0; z < size; ++z)
+    {
+        for (int x = 0; x < size; ++x)
+        {
+            const auto& corners = GetCornerLevels(x, z);
+            heights.emplace_back(corners[0], corners[1], corners[2], corners[3]);
+        }
+    }
 
     const float half = static_cast<float>(size) * m_cell_size_ * 0.5f;
     const Vector3 origin = GameObject()->Transform()->Position() + Vector3(-half, 0.0f, -half);
 
-    //terrain_heights[z * terrain_grid_size + x] がセル(x, z)の基準面の高さ
-    engine::Material::SetGlobalBuffer("terrain_heights", std::span<const float>(heights));
+    m_heights_buffer_ = GpuBuffer::CreateUploadStructured(
+        sizeof(Vector4), static_cast<uint32_t>(heights.size()), "terrain_heights");
+    m_heights_buffer_.Update(heights.data(), sizeof(Vector4) * heights.size());
+    engine::Material::SetGlobalBuffer("terrain_heights", m_heights_buffer_.GetHandle());
     engine::Material::SetGlobalInt("terrain_grid_size", size);
     engine::Material::SetGlobalFloat("terrain_cell_size", m_cell_size_);
     engine::Material::SetGlobalFloat("terrain_level_height", m_level_height_);

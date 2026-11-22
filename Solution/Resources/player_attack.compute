@@ -5,6 +5,7 @@
 #include "math.hlsli"
 #include "player_attack_data.hlsli"
 #include "slime_death_particle.hlsli"
+#include "grid.hlsli"
 
 #define MAX_EXP_NUM 1024
 #define MAX_ATTACK_COUNT 10
@@ -91,7 +92,7 @@ void OnSlimeAttack(inout SlimeData slime_data, PlayerAttackData attack_data, flo
 
             if (original_value == 0)
             {
-                exps[j].pos = float3(slime_data.position.x, 0.0f, slime_data.position.z);
+                exps[j].pos = float3(slime_data.position.x, GetTerrainHeight(slime_data.position.x, slime_data.position.z), slime_data.position.z);
                 break;
             }
         }

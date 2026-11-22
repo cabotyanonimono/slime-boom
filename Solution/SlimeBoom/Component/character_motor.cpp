@@ -23,9 +23,7 @@ void CharacterMotor::SetUp()
         return;
     }
 
-    //LockAxisはシリアライズされないので、ここで回転を固定する
     rigidbody->SetLockAxis(engine::kAxisAll);
-    //速度は毎ステップこちらで決めるので摩擦は使わない。壁に押し付けたときに摩擦で落下が止まるのを防ぐ
     rigidbody->SetFriction(0.0f);
 }
 
@@ -45,11 +43,6 @@ void CharacterMotor::UpdateGround(const engine::Collision& collision)
 
 void CharacterMotor::ApplyMovement()
 {
-    auto move = m_pending_move_;
-    m_pending_move_ = Vector3::Zero;
-    if (const auto root_motion = m_root_motion_.lock())
-        move += root_motion->ConsumePendingDelta();
-
     const auto rigidbody = m_rigidbody_.lock();
     if (rigidbody == nullptr || !rigidbody->IsDynamic())
         return;
@@ -58,8 +51,18 @@ void CharacterMotor::ApplyMovement()
     if (dt <= 0.0f)
         return;
 
-    move.y = 0.0f;
-    const auto move_velocity = move / dt;
+    if (m_pending_frame_time_ > 0.0f)
+    {
+        auto move = m_pending_move_;
+        if (const auto root_motion = m_root_motion_.lock())
+            move += root_motion->ConsumePendingDelta();
+        move.y = 0.0f;
+        m_move_velocity_ = move / m_pending_frame_time_;
+
+        m_pending_move_ = Vector3::Zero;
+        m_pending_frame_time_ = 0.0f;
+    }
+    const auto move_velocity = m_move_velocity_;
 
     const auto velocity = rigidbody->Velocity();
     const auto gravity = engine::Physics::Gravity();
@@ -75,14 +78,11 @@ void CharacterMotor::ApplyMovement()
     m_was_grounded_ = is_grounded;
 
     const bool jump = is_grounded && m_jump_requested_;
-    //空中で押されたジャンプは持ち越さない
     m_jump_requested_ = false;
 
-    //水平方向の移動は、動かす前に当たりを調べて壁の手前で止める(壁はY成分を持たないので空中では縦方向を足さない)
     auto planar_velocity = SlideMove(move_velocity * dt) / dt;
     planar_velocity.y = 0.0f;
 
-    //SetVelocityするとそのステップのBulletの重力が消えるので、重力はこちらで足す
     Vector3 next_velocity;
     if (jump)
     {
@@ -96,22 +96,19 @@ void CharacterMotor::ApplyMovement()
         auto normal = m_ground_normal_;
         normal.Normalize();
 
-        //地面から離れる向きの速度は残さない(ぶつかった反動で浮かないように)
         next_velocity = normal * std::min(velocity.Dot(normal), 0.0f);
-        //重力は地面に垂直な分だけ足す(坂に沿う分を足さないので滑り落ちない)
         next_velocity += normal * gravity.Dot(normal) * dt;
-        //接地中は坂の面に沿わせてから当たりを調べる
         const auto slope_velocity = move_velocity - normal * move_velocity.Dot(normal);
         next_velocity += SlideMove(slope_velocity * dt) / dt;
     }
     else
     {
-        //ジャンプ以外の上向きの速度(坂を登っていた勢いなど)は、地面から離れたら消す
         const float vertical = m_is_jumping_ ? velocity.y : std::min(velocity.y, 0.0f);
         next_velocity = Vector3(planar_velocity.x, vertical, planar_velocity.z);
         next_velocity += gravity * dt;
     }
 
+    m_intended_planar_velocity_ = Vector3(next_velocity.x, 0.0f, next_velocity.z);
     rigidbody->SetVelocity(next_velocity);
     rigidbody->SetAngularVelocity(Vector3::Zero);
 }
@@ -123,10 +120,8 @@ Vector3 CharacterMotor::SlideMove(const Vector3& displacement) const
         return displacement;
 
     const float radius = capsule->Radius();
-    //CapsuleColliderは高さ0.5の円柱をHeight倍している
     const float cylinder_height = capsule->Height() * 0.5f;
 
-    //下側をkStepHeightだけ削り、足元の地面や小さな段差に引っかからないようにする
     const float lift = std::min(kStepHeight, cylinder_height);
     auto position = GameObject()->Transform()->Position() + capsule->Offset() + Vector3(0.0f, lift * 0.5f, 0.0f);
     const float sweep_cylinder_height = cylinder_height - lift;
@@ -151,7 +146,6 @@ Vector3 CharacterMotor::SlideMove(const Vector3& displacement) const
         result += step;
         position += step;
 
-        //急な面は壁として扱い、法線を水平にする(壁を登らないように)
         auto normal = hit.normal;
         if (normal.y < kGroundNormalMinY)
         {
@@ -179,14 +173,17 @@ void CharacterMotor::OnStart()
 
 void CharacterMotor::OnFixedUpdate()
 {
-    //実行中に追加されてOnStartより先にFixedUpdateが来た場合に備える
     if (!m_is_set_up_)
         SetUp();
 
     ApplyMovement();
 
-    //接地状態は物理ステップごとの衝突通知で立て直す
     m_is_grounded_ = false;
+}
+
+void CharacterMotor::OnUpdate()
+{
+    m_pending_frame_time_ += engine::Time::GetDeltaTime();
 }
 
 void CharacterMotor::OnCollisionEnter(const engine::Collision& collision)
@@ -212,6 +209,38 @@ void CharacterMotor::Jump()
 bool CharacterMotor::IsGrounded() const
 {
     return m_was_grounded_;
+}
+
+Vector3 CharacterMotor::Velocity() const
+{
+    const auto rigidbody = m_rigidbody_.lock();
+    return rigidbody != nullptr ? rigidbody->Velocity() : Vector3::Zero;
+}
+
+Vector3 CharacterMotor::IntendedPlanarVelocity() const
+{
+    return m_intended_planar_velocity_;
+}
+
+float CharacterMotor::EstimateTimeToGround() const
+{
+    if (m_was_grounded_)
+        return 0.0f;
+
+    const auto capsule = m_capsule_.lock();
+    const float gravity = -engine::Physics::Gravity().y;
+    if (capsule == nullptr || gravity <= 0.0f)
+        return std::numeric_limits<float>::max();
+
+    const auto from = GameObject()->Transform()->Position() + capsule->Offset();
+    const auto to = from - Vector3(0.0f, kGroundProbeDistance, 0.0f);
+    engine::SweepHit hit;
+    if (!engine::Physics::CapsuleSweep(from, to, capsule->Radius(), capsule->Height() * 0.5f, hit))
+        return std::numeric_limits<float>::max();
+
+    const float distance = hit.fraction * kGroundProbeDistance;
+    const float velocity = Velocity().y;
+    return (velocity + std::sqrt(velocity * velocity + 2.0f * gravity * distance)) / gravity;
 }
 }
 

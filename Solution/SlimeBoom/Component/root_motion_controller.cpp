@@ -16,6 +16,8 @@ void RootMotionController::OnUpdate()
     const auto model_transform = animation_component->GameObject()->Transform();
 
     auto delta_pos = animation_component->GetDeltaPosition() * model_transform->Scale();
+    if (!m_is_motion_enabled_)
+        return;
 
     const auto rigidbody = GameObject()->GetComponent<engine::RigidbodyComponent>();
     if (rigidbody != nullptr && rigidbody->IsDynamic())
@@ -33,6 +35,13 @@ Vector3 RootMotionController::ConsumePendingDelta()
     const auto delta = m_pending_delta_;
     m_pending_delta_ = Vector3::Zero;
     return delta;
+}
+
+void RootMotionController::SetEnabledMotion(const bool enabled)
+{
+    m_is_motion_enabled_ = enabled;
+    if (!enabled)
+        m_pending_delta_ = Vector3::Zero;
 }
 
 CEREAL_REGISTER_TYPE(RootMotionController);

@@ -1,0 +1,341 @@
+{
+    "value0": {
+        "polymorphic_id": 1073741824,
+        "ptr_wrapper": {
+            "id": 2147483649,
+            "data": {
+                "cereal_class_version": 3,
+                "value0": {
+                    "cereal_class_version": 1,
+                    "m_guid_": "316a03d8-b6ad-4268-8151-c9bac083a3aa",
+                    "m_name_": "terrain_grass_rock.material"
+                },
+                "shared_material_block": {
+                    "polymorphic_id": 1073741824,
+                    "ptr_wrapper": {
+                        "id": 2147483650,
+                        "data": {
+                            "cereal_class_version": 2,
+                            "value0": {
+                                "m_guid_": "170e9eff-f414-4909-b2ef-38b940ceb11b",
+                                "m_name_": "Material Block of terrain_grass_rock.material"
+                            },
+                            "m_buffer_data_": [
+                                {
+                                    "key": "grass_albedo",
+                                    "value": {
+                                        "polymorphic_id": 2147483649,
+                                        "polymorphic_name": "engine::TextureBufferData",
+                                        "ptr_wrapper": {
+                                            "id": 2147483651,
+                                            "data": {
+                                                "cereal_class_version": 1,
+                                                "value0": {
+                                                    "cereal_class_version": 1,
+                                                    "parameter": {
+                                                        "cereal_class_version": 2,
+                                                        "index": 0,
+                                                        "name": "grass_albedo",
+                                                        "display_name": "grass_albedo",
+                                                        "is_unordered_access": false,
+                                                        "total_size": 0,
+                                                        "variables": [],
+                                                        "buffer_type": 0
+                                                    },
+                                                    "upload_type": 0
+                                                },
+                                                "m_texture_": {
+                                                    "value0": {
+                                                        "cereal_class_version": 1,
+                                                        "m_guid_": "12c49865-6231-4e6e-af41-81dd339680ab",
+                                                        "m_type_": 2,
+                                                        "m_stored_reference_": {
+                                                            "polymorphic_id": 0
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    "key": "grass_normal",
+                                    "value": {
+                                        "polymorphic_id": 1,
+                                        "ptr_wrapper": {
+                                            "id": 2147483652,
+                                            "data": {
+                                                "value0": {
+                                                    "parameter": {
+                                                        "index": 1,
+                                                        "name": "grass_normal",
+                                                        "display_name": "grass_normal",
+                                                        "is_unordered_access": false,
+                                                        "total_size": 0,
+                                                        "variables": [],
+                                                        "buffer_type": 0
+                                                    },
+                                                    "upload_type": 0
+                                                },
+                                                "m_texture_": {
+                                                    "value0": {
+                                                        "m_guid_": "b38b11f9-be40-41e1-af4a-1afe6017a51e",
+                                                        "m_type_": 2,
+                                                        "m_stored_reference_": {
+                                                            "polymorphic_id": 0
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    "key": "rock_albedo",
+                                    "value": {
+                                        "polymorphic_id": 1,
+                                        "ptr_wrapper": {
+                                            "id": 2147483653,
+                                            "data": {
+                                                "value0": {
+                                                    "parameter": {
+                                                        "index": 2,
+                                                        "name": "rock_albedo",
+                                                        "display_name": "rock_albedo",
+                                                        "is_unordered_access": false,
+                                                        "total_size": 0,
+                                                        "variables": [],
+                                                        "buffer_type": 0
+                                                    },
+                                                    "upload_type": 0
+                                                },
+                                                "m_texture_": {
+                                                    "value0": {
+                                                        "m_guid_": "6c6c93ea-3285-41fd-a4a7-05d60c223611",
+                                                        "m_type_": 2,
+                                                        "m_stored_reference_": {
+                                                            "polymorphic_id": 0
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    "key": "rock_normal",
+                                    "value": {
+                                        "polymorphic_id": 1,
+                                        "ptr_wrapper": {
+                                            "id": 2147483654,
+                                            "data": {
+                                                "value0": {
+                                                    "parameter": {
+                                                        "index": 3,
+                                                        "name": "rock_normal",
+                                                        "display_name": "rock_normal",
+                                                        "is_unordered_access": false,
+                                                        "total_size": 0,
+                                                        "variables": [],
+                                                        "buffer_type": 0
+                                                    },
+                                                    "upload_type": 0
+                                                },
+                                                "m_texture_": {
+                                                    "value0": {
+                                                        "m_guid_": "10a7e4c5-ce35-4b2b-bdc7-813041dc1198",
+                                                        "m_type_": 2,
+                                                        "m_stored_reference_": {
+                                                            "polymorphic_id": 0
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    "key": "Params",
+                                    "value": {
+                                        "polymorphic_id": 2147483650,
+                                        "polymorphic_name": "engine::ConstantBufferData",
+                                        "ptr_wrapper": {
+                                            "id": 2147483655,
+                                            "data": {
+                                                "cereal_class_version": 1,
+                                                "value0": {
+                                                    "parameter": {
+                                                        "index": 0,
+                                                        "name": "Params",
+                                                        "display_name": "Params",
+                                                        "is_unordered_access": false,
+                                                        "total_size": 48,
+                                                        "variables": [
+                                                            {
+                                                                "cereal_class_version": 0,
+                                                                "name": "grass_tiling",
+                                                                "data_type": 2
+                                                            },
+                                                            {
+                                                                "name": "rock_tiling",
+                                                                "data_type": 2
+                                                            },
+                                                            {
+                                                                "name": "grass_threshold",
+                                                                "data_type": 1
+                                                            },
+                                                            {
+                                                                "name": "blend_width",
+                                                                "data_type": 1
+                                                            },
+                                                            {
+                                                                "name": "grass_roughness",
+                                                                "data_type": 1
+                                                            },
+                                                            {
+                                                                "name": "rock_roughness",
+                                                                "data_type": 1
+                                                            },
+                                                            {
+                                                                "name": "intensity",
+                                                                "data_type": 1
+                                                            },
+                                                            {
+                                                                "name": "ambient_influence",
+                                                                "data_type": 1
+                                                            }
+                                                        ],
+                                                        "buffer_type": 0
+                                                    },
+                                                    "upload_type": 0
+                                                },
+                                                "m_data_type_offset_pairs_": [
+                                                    {
+                                                        "key": "grass_tiling",
+                                                        "value": {
+                                                            "first": 2,
+                                                            "second": 0
+                                                        }
+                                                    },
+                                                    {
+                                                        "key": "rock_tiling",
+                                                        "value": {
+                                                            "first": 2,
+                                                            "second": 8
+                                                        }
+                                                    },
+                                                    {
+                                                        "key": "grass_threshold",
+                                                        "value": {
+                                                            "first": 1,
+                                                            "second": 16
+                                                        }
+                                                    },
+                                                    {
+                                                        "key": "rock_roughness",
+                                                        "value": {
+                                                            "first": 1,
+                                                            "second": 28
+                                                        }
+                                                    },
+                                                    {
+                                                        "key": "blend_width",
+                                                        "value": {
+                                                            "first": 1,
+                                                            "second": 20
+                                                        }
+                                                    },
+                                                    {
+                                                        "key": "grass_roughness",
+                                                        "value": {
+                                                            "first": 1,
+                                                            "second": 24
+                                                        }
+                                                    },
+                                                    {
+                                                        "key": "intensity",
+                                                        "value": {
+                                                            "first": 1,
+                                                            "second": 32
+                                                        }
+                                                    },
+                                                    {
+                                                        "key": "ambient_influence",
+                                                        "value": {
+                                                            "first": 1,
+                                                            "second": 36
+                                                        }
+                                                    }
+                                                ],
+                                                "m_data_": [
+                                                    0,
+                                                    0,
+                                                    128,
+                                                    63,
+                                                    0,
+                                                    0,
+                                                    128,
+                                                    63,
+                                                    0,
+                                                    0,
+                                                    128,
+                                                    63,
+                                                    0,
+                                                    0,
+                                                    128,
+                                                    63,
+                                                    154,
+                                                    153,
+                                                    25,
+                                                    63,
+                                                    154,
+                                                    153,
+                                                    25,
+                                                    62,
+                                                    51,
+                                                    51,
+                                                    115,
+                                                    63,
+                                                    0,
+                                                    0,
+                                                    64,
+                                                    63,
+                                                    0,
+                                                    0,
+                                                    128,
+                                                    63,
+                                                    0,
+                                                    0,
+                                                    128,
+                                                    63,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0,
+                                                    0
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                "render_queue": 5000,
+                "m_shader_": {
+                    "value0": {
+                        "m_guid_": "92b78e28-0eb0-4aff-919f-0a9f8250928b",
+                        "m_type_": 2,
+                        "m_stored_reference_": {
+                            "polymorphic_id": 0
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

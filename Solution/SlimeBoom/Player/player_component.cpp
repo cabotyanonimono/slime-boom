@@ -10,6 +10,7 @@
 #include "ability/slash_ability.h"
 #include "States/avoid_state.h"
 #include "States/dash_state.h"
+#include "States/jump_state.h"
 #include "States/play_anim_state.h"
 
 namespace SlimeBoom
@@ -39,11 +40,7 @@ void PlayerComponent::UpdateParameter()
         m_state_machine_->SetParameter("Avoid",true);
     }
     
-    if (engine::Input::GetKeyDown(DirectX::Keyboard::Space) && !IsDead())
-    {
-        if (const auto motor = m_motor_.lock())
-            motor->Jump();
-    }
+    UpdateJump();
 
     if (engine::Input::GetKeyDown(DirectX::Keyboard::LeftShift) && m_avoid_cooldown_timer_ <= 0.0f)
     {
@@ -52,7 +49,39 @@ void PlayerComponent::UpdateParameter()
         m_state_machine_->SetParameter("Avoid",true);
     }
 
+    m_state_machine_->SetParameter("Jump", m_is_jumping_);
     m_state_machine_->SetParameter("Dead",IsDead());
+}
+
+void PlayerComponent::UpdateJump()
+{
+    const auto motor = m_motor_.lock();
+    if (motor == nullptr || m_is_jumping_ || IsDead() || m_avoid_timer_ > 0.0f)
+    {
+        m_air_timer_ = 0.0f;
+        return;
+    }
+
+    if (motor->IsGrounded())
+    {
+        m_air_timer_ = 0.0f;
+        if (engine::Input::GetKeyDown(DirectX::Keyboard::Space))
+        {
+            motor->Jump();
+            m_is_jumping_ = true;
+        }
+        return;
+    }
+
+    m_air_timer_ += engine::Time::GetDeltaTime();
+    if (m_air_timer_ >= kFallStartTime)
+        m_is_jumping_ = true;
+}
+
+void PlayerComponent::FinishJump()
+{
+    m_is_jumping_ = false;
+    m_air_timer_ = 0.0f;
 }
 
 bool PlayerComponent::IsDead() const
@@ -131,6 +160,9 @@ void PlayerComponent::OnStart()
                                                          rigidbody,
                                                          &m_on_avoid_);
     const auto dead_state = std::make_shared<PlayAnimState>(m_animator_, "Dead");
+    const auto jump_state = std::make_shared<JumpState>("Jump", m_animator_, m_camera_transform_, m_rotation_transform_,
+                                                        [this] { return m_motor_.lock(); },
+                                                        [this] { FinishJump(); });
 
     const auto dash_condition = std::make_shared<ComparisonCondition<bool>>("Move", true, kOpType::kEqual);
     const auto dash_to_idle = std::make_shared<ComparisonCondition<bool>>("Move", true, kOpType::kNotEqual);
@@ -140,6 +172,9 @@ void PlayerComponent::OnStart()
 
     const auto dead_condition = std::make_shared<ComparisonCondition<bool>>("Dead", true, kOpType::kEqual);
 
+    const auto jump_condition = std::make_shared<ComparisonCondition<bool>>("Jump", true, kOpType::kEqual);
+    const auto jump_to_idle = std::make_shared<ComparisonCondition<bool>>("Jump", true, kOpType::kNotEqual);
+
     m_state_machine_->SetDefaultState(idle_state);
     m_state_machine_->CreateTransition(idle_state, dash_condition, dash_state);
     m_state_machine_->CreateTransition(idle_state, avoid_condition, avoid_state);
@@ -147,8 +182,21 @@ void PlayerComponent::OnStart()
     m_state_machine_->CreateTransition(dash_state, dash_to_idle, idle_state);
     m_state_machine_->CreateTransition(dash_state, avoid_condition, avoid_state);
     m_state_machine_->CreateTransition(dash_state, dead_condition, dead_state);
-    m_state_machine_->CreateTransition(avoid_state, avoid_to_idle, idle_state);
+
+    Transition avoid_to_idle_transition;
+    avoid_to_idle_transition.AddCondition(avoid_to_idle);
+    avoid_to_idle_transition.AddCondition(jump_to_idle);
+    m_state_machine_->CreateTransition(avoid_state, avoid_to_idle_transition, idle_state);
+    Transition avoid_to_jump_transition;
+    avoid_to_jump_transition.AddCondition(avoid_to_idle);
+    avoid_to_jump_transition.AddCondition(jump_condition);
+    m_state_machine_->CreateTransition(avoid_state, avoid_to_jump_transition, jump_state);
     m_state_machine_->CreateTransition(avoid_state, dead_condition, dead_state);
+    m_state_machine_->CreateTransition(idle_state, jump_condition, jump_state);
+    m_state_machine_->CreateTransition(dash_state, jump_condition, jump_state);
+    m_state_machine_->CreateTransition(jump_state, jump_to_idle, idle_state);
+    m_state_machine_->CreateTransition(jump_state, dead_condition, dead_state);
+    m_state_machine_->CreateTransition(jump_state, avoid_condition, avoid_state);
 
     m_player_damage_dispatcher_->AddOnTakeDamageListener([this](const float damage){TakeDamage(damage);});
     m_level_up_controller_->AddOnLevelUpListener([this](const int level){m_player_data_->SetLevel(level);});

@@ -10,6 +10,7 @@ class RootMotionController : public engine::Component
 {
     engine::AssetPtr<engine::AnimationComponent> m_animation_;
     Vector3 m_pending_delta_ = Vector3::Zero;
+    bool m_is_motion_enabled_ = true;
 
 public:
 
@@ -20,6 +21,8 @@ public:
 
     /// 溜まっている移動量(World空間)を取り出し、0に戻す。
     Vector3 ConsumePendingDelta();
+    /// ルートモーションを反映するかを切り替える。無効の間のアニメーションの移動量は捨てる。
+    void SetEnabledMotion(bool enabled);
 
     template <class Archive>
     void serialize(Archive &ar, const uint32_t version)

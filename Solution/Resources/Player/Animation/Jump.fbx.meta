@@ -1,0 +1,12 @@
+{
+    "data": {},
+    "guid": "41f1b714-6d61-46ab-8f89-520887236079",
+    "type": ".fbx",
+    "objects": [
+        {
+            "guid": "2b5fe3e8-588f-4a61-81ec-3e173f8263d4",
+            "name": "mixamo.com",
+            "type_hint": "class engine::AnimationClip"
+        }
+    ]
+}

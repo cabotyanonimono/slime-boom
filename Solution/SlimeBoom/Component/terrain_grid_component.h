@@ -3,6 +3,7 @@
 #include "Components/component.h"
 #include "Rendering/material.h"
 #include "Rendering/mesh.h"
+#include <CaboRenderingSystem/RHI/gpu_resources.h>
 
 namespace SlimeBoom
 {
@@ -25,7 +26,6 @@ enum class kSlopeDirection
 struct CellData
 {
     kCellType type = kCellType::kFlat;
-    //段数(0,1,2,...)。ワールドの高さは段数 * level_height
     float height = 0.0f;
     kSlopeDirection direction = kSlopeDirection::kNone;
 
@@ -43,9 +43,7 @@ class TerrainGridComponent : public engine::Component
     std::vector<std::vector<CellData>> m_grid_;
 
     uint32_t m_grid_size_ = 100;
-    //セルの水平方向(X, Z)の大きさ
     float m_cell_size_ = 50.0f;
-    //1段あたりの高さ
     float m_level_height_ = 1.0f;
     uint32_t m_seed_ = 0;
     float m_noise_scale_ = 0.05f;
@@ -53,6 +51,7 @@ class TerrainGridComponent : public engine::Component
     engine::AssetPtr<engine::Material> m_material_;
 
     std::shared_ptr<engine::Mesh> m_mesh_;
+    CRS::Buffer m_heights_buffer_;
 
     //Gridの生成を行う
     //上下左右の高さの差が1マスだった場合坂になる
@@ -62,7 +61,7 @@ class TerrainGridComponent : public engine::Component
     //子GameObjectを作りMeshRendererとMeshColliderを付ける
     void CreateTerrainObject() const;
     //シェーダーから参照する高さマップバッファを登録する
-    void UploadGpuData() const;
+    void UploadGpuData();
 
     //セルの4隅の段数(x0z0, x1z0, x0z1, x1z1)を取得する。範囲外は0
     std::array<float, 4> GetCornerLevels(int x, int z) const;

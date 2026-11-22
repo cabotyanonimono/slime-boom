@@ -25,8 +25,8 @@ namespace SlimeBoom
 class PlayerComponent final : public engine::Component
 {
     static constexpr float kIdleBlendSpeed = 5.0f;
+    static constexpr float kFallStartTime = 0.2f;
 
-    //移動(速度・接地・ジャンプ・壁の当たり判定)を担当する。Rigidbodyと同じGameObjectに付いている
     std::weak_ptr<CharacterMotor> m_motor_;
 
     std::shared_ptr<StateMachine> m_state_machine_;
@@ -37,6 +37,8 @@ class PlayerComponent final : public engine::Component
     float m_avoid_timer_ = 0.0f;
     float m_dead_delay_timer_ = 0.0f;
     float m_dead_delay_time_ = 0.0f;
+    bool m_is_jumping_ = false;
+    float m_air_timer_ = 0.0f;
     engine::AssetPtr<ComputeResult> m_compute_result_;
     engine::AssetPtr<PlayerDataPresenter> m_player_data_presenter_;
     engine::AssetPtr<PlayerSwordController> m_player_sword_controller_;
@@ -58,6 +60,10 @@ class PlayerComponent final : public engine::Component
     void Dead();
     /// ダメージを受ける。無敵中、または回避率による判定で回避した場合は無効になる。HPが0になったら死亡する。
     void TakeDamage(float damage);
+    /// ジャンプの入力と、段差から落ちたときの判定を行い、ジャンプ状態にする。
+    void UpdateJump();
+    /// 着地したときに呼ばれ、ジャンプ状態を終える。
+    void FinishJump();
 
 public:
     void OnInspectorGui() override;
