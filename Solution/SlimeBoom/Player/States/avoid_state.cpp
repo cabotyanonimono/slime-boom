@@ -50,22 +50,26 @@ void SlimeBoom::AvoidState::Update()
     m_rotation_transform_->SetRotation(MathUtils::LookRotationSmooth(converted_target_dir, Vector3::Up,
                                                                      m_rotation_transform_->LocalRotation(),
                                                                      kRotationSpeed, engine::Time::GetDeltaTime()));
-    auto position = m_player_transform_->Position();
-    auto velocity = (-target_dir * m_player_data_->GetAvoidSpeed()) * engine::Time::GetDeltaTime();
-    m_player_transform_->SetPosition(position + velocity);
+    m_add_move_((-target_dir * m_player_data_->GetAvoidSpeed()) * engine::Time::GetDeltaTime());
+
+    //回避中はYの移動量を0にする
+    auto current_velocity = m_rigidbody_->Velocity();
+    m_rigidbody_->SetVelocity(Vector3(current_velocity.x, 0.0f, current_velocity.z));
 }
 
 SlimeBoom::AvoidState::AvoidState(std::string animation_name, const std::shared_ptr<PlayerDataComponent>& player_data,
                                   const std::shared_ptr<Animator>& animator,
                                   const std::shared_ptr<engine::Transform>& camera_transform,
                                   const std::shared_ptr<engine::Transform>& rotation_transform,
-                                  const std::shared_ptr<engine::Transform>& player_transform, engine::Event<>* on_avoid)
+                                  std::function<void(const Vector3&)> add_move,
+                                  const std::shared_ptr<engine::RigidbodyComponent>& rigidbody, engine::Event<>* on_avoid)
     : m_anim_name_(std::move(animation_name)),
       m_animator_(animator),
       m_player_data_(player_data),
       m_camera_transform_(camera_transform),
       m_rotation_transform_(rotation_transform),
-      m_player_transform_(player_transform), m_animation_name_(std::move(animation_name)),
+      m_add_move_(std::move(add_move)), m_animation_name_(std::move(animation_name)),
+      m_rigidbody_(rigidbody),
       m_on_avoid_(on_avoid)
 {
 }

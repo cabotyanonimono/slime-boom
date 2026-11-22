@@ -6,6 +6,7 @@
 #include "player_sword_controller.h"
 #include "../compute_result.h"
 #include "../Component/animator.h"
+#include "../Component/character_motor.h"
 #include "../Exp/level_up_controller.h"
 #include "../Slime/slime_simulation_component.h"
 #include "../StateMachine/state_machine.h"
@@ -24,7 +25,10 @@ namespace SlimeBoom
 class PlayerComponent final : public engine::Component
 {
     static constexpr float kIdleBlendSpeed = 5.0f;
-    
+    static constexpr float kFallStartTime = 0.2f;
+
+    std::weak_ptr<CharacterMotor> m_motor_;
+
     std::shared_ptr<StateMachine> m_state_machine_;
 
     bool m_is_immune_ = false;
@@ -33,6 +37,8 @@ class PlayerComponent final : public engine::Component
     float m_avoid_timer_ = 0.0f;
     float m_dead_delay_timer_ = 0.0f;
     float m_dead_delay_time_ = 0.0f;
+    bool m_is_jumping_ = false;
+    float m_air_timer_ = 0.0f;
     engine::AssetPtr<ComputeResult> m_compute_result_;
     engine::AssetPtr<PlayerDataPresenter> m_player_data_presenter_;
     engine::AssetPtr<PlayerSwordController> m_player_sword_controller_;
@@ -54,6 +60,10 @@ class PlayerComponent final : public engine::Component
     void Dead();
     /// ダメージを受ける。無敵中、または回避率による判定で回避した場合は無効になる。HPが0になったら死亡する。
     void TakeDamage(float damage);
+    /// ジャンプの入力と、段差から落ちたときの判定を行い、ジャンプ状態にする。
+    void UpdateJump();
+    /// 着地したときに呼ばれ、ジャンプ状態を終える。
+    void FinishJump();
 
 public:
     void OnInspectorGui() override;
@@ -163,8 +173,15 @@ public:
                 CEREAL_NVP(m_dead_delay_time_)
             );
         }
+
+        //version 14ではジャンプ速度を持っていた。今はCharacterMotorが持つので読み捨てる
+        if (version == 14)
+        {
+            float jump_speed = 0.0f;
+            ar(cereal::make_nvp("m_jump_speed_", jump_speed));
+        }
     }
 };
 }
 
-CEREAL_CLASS_VERSION(SlimeBoom::PlayerComponent, 13)
+CEREAL_CLASS_VERSION(SlimeBoom::PlayerComponent, 15)

@@ -174,6 +174,7 @@
   <ItemGroup>
     <ClCompile Include="component_registry.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="SlimeBoom\Component\terrain_grid_component.cpp" />
     <ClCompile Include="SlimeBoom\Utils\gpu_buffer.cpp" />
     <ClCompile Include="External\GenericEngine\Engine\Asset\Importer\depth_texture_importer.cpp" />
     <ClCompile Include="External\GenericEngine\Engine\effekseer_util.cpp" />
@@ -348,6 +349,7 @@
     <ClCompile Include="SlimeBoom\Component\object_disabler.cpp" />
     <ClCompile Include="SlimeBoom\Component\result_rank.cpp" />
     <ClCompile Include="SlimeBoom\Component\root_motion_controller.cpp" />
+    <ClCompile Include="SlimeBoom\Component\character_motor.cpp" />
     <ClCompile Include="SlimeBoom\Component\scene_changer.cpp" />
     <ClCompile Include="SlimeBoom\Component\scene_transition_controller.cpp" />
     <ClCompile Include="SlimeBoom\Component\scene_transition_executor.cpp" />
@@ -404,6 +406,7 @@
     <ClCompile Include="SlimeBoom\Player\slash_effect_component.cpp" />
     <ClCompile Include="SlimeBoom\Player\States\avoid_state.cpp" />
     <ClCompile Include="SlimeBoom\Player\States\dash_state.cpp" />
+    <ClCompile Include="SlimeBoom\Player\States\jump_state.cpp" />
     <ClCompile Include="SlimeBoom\Player\States\play_anim_state.cpp" />
     <ClCompile Include="SlimeBoom\Settings\settings_model.cpp" />
     <ClCompile Include="SlimeBoom\Settings\settings_presenter.cpp" />
@@ -506,6 +509,8 @@
     <Content Include="SlimeBoom.exe.manifest" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Resources\grid.hlsli" />
+    <ClInclude Include="SlimeBoom\Component\terrain_grid_component.h" />
     <ClInclude Include="SlimeBoom\Utils\gpu_buffer.h" />
     <ClInclude Include="External\GenericEngine\Engine\Asset\Importer\depth_texture_importer.h" />
     <ClInclude Include="External\GenericEngine\Engine\effekseer_util.h" />
@@ -699,6 +704,7 @@
     <ClInclude Include="SlimeBoom\Component\object_disabler.h" />
     <ClInclude Include="SlimeBoom\Component\result_rank.h" />
     <ClInclude Include="SlimeBoom\Component\root_motion_controller.h" />
+    <ClInclude Include="SlimeBoom\Component\character_motor.h" />
     <ClInclude Include="SlimeBoom\Component\scene_changer.h" />
     <ClInclude Include="SlimeBoom\Component\scene_transition_controller.h" />
     <ClInclude Include="SlimeBoom\Component\scene_transition_executor.h" />
@@ -755,6 +761,7 @@
     <ClInclude Include="SlimeBoom\Player\slash_effect_component.h" />
     <ClInclude Include="SlimeBoom\Player\States\avoid_state.h" />
     <ClInclude Include="SlimeBoom\Player\States\dash_state.h" />
+    <ClInclude Include="SlimeBoom\Player\States\jump_state.h" />
     <ClInclude Include="SlimeBoom\Player\States\play_anim_state.h" />
     <ClInclude Include="SlimeBoom\Settings\settings_model.h" />
     <ClInclude Include="SlimeBoom\Settings\settings_presenter.h" />
