@@ -37,8 +37,19 @@ class SlimeSimulationComponent : public engine::Component
     engine::AssetPtr<engine::MeshRenderer> m_slime_renderer_;
     engine::AssetPtr<SlimeTakeDamageEventComponent> m_slime_take_damage_event_component_;
 
+    std::vector<SlimeTypeDefinition> m_slime_types_ = SlimeTypes::CreateDefaultDefinitions();
+    CRS::Buffer m_slime_type_params_buffer_;
+    CRS::Buffer m_slime_spawn_rates_buffer_;
+    std::array<float, SlimeTypes::kMaxCount> m_spawn_rates_{};
+
     /// Slime Rendererが設定されていれば、描画するインスタンスの数を今のスライムの数に合わせる。
     void SyncRendererInstanceCount();
+    /// 種類の表をGPUのバッファに送り、全シェーダーから slime_type_params として読めるようにする。
+    void UploadSlimeTypes();
+    /// 出現率をGPUのバッファに送る。
+    void UploadSpawnRates();
+    /// 種類の表をインスペクターに表示する。変更があればtrueを返す。
+    bool DrawSlimeTypesGui();
 
 public:
     void OnStart() override;
@@ -50,9 +61,14 @@ public:
     int GetCurrentSlimesCount() const;
     /// スライムの数を設定する。最大数を超える場合は最大数に制限され、ComputeShaderのスレッドグループ数と描画のインスタンス数にも反映される。
     void SetCurrentSlimesCount(int count);
-    /// スライムの種類ごとの出現率を設定する。
-    /// @param rates SlimeTypesの種類ごとの出現率
-    void SetSpawnRate(std::array<float, SlimeTypes::Count> rates) const;
+    /// スライムの種類ごとの出現率を設定する。種類の数より多い分は無視し、足りない分は0にする。
+    /// @param rates 種類の表の並び順ごとの出現率
+    void SetSpawnRate(const std::vector<float> &rates);
+
+    /// 種類の数を返す。
+    [[nodiscard]] int GetSlimeTypeCount() const;
+    /// 種類の名前を返す。範囲外なら空文字を返す。
+    [[nodiscard]] std::string GetSlimeTypeName(int type) const;
 
     template <class Archive>
     void serialize(Archive& ar, const uint32_t version)
@@ -84,8 +100,15 @@ public:
                 CEREAL_NVP(m_slime_take_damage_event_component_)
             );
         }
+
+        if (version >= 6)
+        {
+            ar(
+                CEREAL_NVP(m_slime_types_)
+            );
+        }
     }
 };
 }
 
-CEREAL_CLASS_VERSION(SlimeBoom::SlimeSimulationComponent, 5)
+CEREAL_CLASS_VERSION(SlimeBoom::SlimeSimulationComponent, 6)

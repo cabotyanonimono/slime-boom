@@ -4,20 +4,16 @@
 #include "engine_time.h"
 #include "gui.h"
 #include "slime_simulation_component.h"
-#include "Rendering/gpu_resource_manager.h"
+#include "../Utils/gpu_buffer.h"
+#include "Rendering/material.h"
 
 namespace SlimeBoom
 {
 void SlimeExplosionComponent::OnStart()
 {
-    m_explosion_buffer_ = std::make_shared<engine::StructuredBuffer>(sizeof(SlimeExplosionData), kMaxExplosionCount);
-    m_explosion_buffer_->CreateBuffer();
-
-    m_params_buffer_ = std::make_shared<engine::ConstantBuffer>(sizeof(SlimeExplosionParams));
-    m_params_buffer_->CreateBuffer();
-
-    engine::GpuResourceManager::SetGlobalBuffer("slime_explosions", m_explosion_buffer_);
-    engine::GpuResourceManager::SetGlobalBuffer("ExplosionParams", m_params_buffer_);
+    m_explosion_buffer_ = GpuBuffer::CreateReadWriteStructured(sizeof(SlimeExplosionData), kMaxExplosionCount,
+                                                               "slime_explosions");
+    engine::Material::SetGlobalBuffer("slime_explosions", m_explosion_buffer_.GetHandle());
 }
 
 void SlimeExplosionComponent::OnInspectorGui()
@@ -34,7 +30,17 @@ void SlimeExplosionComponent::OnUpdate()
     m_params_.frame = engine::Time::Get()->Frames() + 2;
     m_params_.chain_decay = m_chain_decay_;
     m_params_.damage_color_time = m_damage_color_time_;
-    m_params_buffer_->UpdateBuffer(&m_params_);
+
+    // cbuffer ExplosionParamsの各変数へ、名前で書き込む
+    engine::Material::SetGlobalFloat("explosion_chance", m_params_.chance);
+    engine::Material::SetGlobalFloat("explosion_radius", m_params_.radius);
+    engine::Material::SetGlobalFloat("explosion_damage", m_params_.damage);
+    engine::Material::SetGlobalFloat("explosion_knockback", m_params_.knockback);
+    engine::Material::SetGlobalFloat("explosion_chain_decay", m_params_.chain_decay);
+    engine::Material::SetGlobalInt("explosion_max_generation", static_cast<int>(m_params_.max_generation));
+    engine::Material::SetGlobalInt("explosion_frame", static_cast<int>(m_params_.frame));
+    engine::Material::SetGlobalInt("explosion_enabled", static_cast<int>(m_params_.enabled));
+    engine::Material::SetGlobalFloat("explosion_damage_color_time", m_params_.damage_color_time);
 
     if (m_params_.enabled == 0 || m_explosion_compute_.CastedLock() == nullptr)
         return;
