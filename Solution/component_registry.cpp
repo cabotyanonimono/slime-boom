@@ -51,6 +51,7 @@
 #include "SlimeBoom/UI/text_color_changer.h"
 #include "SlimeBoom/UI/ui_button.h"
 #include "SlimeBoom/UI/ui_button_label.h"
+#include "SlimeBoom/UI/ui_button_sound.h"
 #include "SlimeBoom/UI/ui_data_provider.h"
 #include "SlimeBoom/UI/ui_hover_scale_effect.h"
 #include "SlimeBoom/UI/ui_navigator.h"
@@ -81,6 +82,7 @@ void ComponentRegistry::RegisterComponents()
     ADD_COMPONENT(WaveController, "Slime");
     ADD_COMPONENT(ui::UIButton, "UI");
     ADD_COMPONENT(ui::UINavigator, "UI");
+    ADD_COMPONENT(ui::UIButtonSound, "UI");
     ADD_COMPONENT(SlimeBoom::GameManager, "SlimeBoom");
     ADD_COMPONENT(SurvivalTimer, "UI");
     ADD_COMPONENT(TextColorChanger, "UI");

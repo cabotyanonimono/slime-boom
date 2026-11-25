@@ -54,6 +54,26 @@ void UIButton::RemoveEventListener(const size_t token)
     m_events_.RemoveListener(token);
 }
 
+size_t UIButton::AddAnySelectedEventListener(const std::function<void()>& callback)
+{
+    return m_any_selected_events_.AddListener(callback);
+}
+
+void UIButton::RemoveAnySelectedEventListener(const size_t token)
+{
+    m_any_selected_events_.RemoveListener(token);
+}
+
+size_t UIButton::AddAnyPressedEventListener(const std::function<void()>& callback)
+{
+    return m_any_pressed_events_.AddListener(callback);
+}
+
+void UIButton::RemoveAnyPressedEventListener(const size_t token)
+{
+    m_any_pressed_events_.RemoveListener(token);
+}
+
 void UIButton::UpdateMousePosition(const Vector2 pos)
 {
     const bool is_contains = m_rect_.Contains(pos);
@@ -101,6 +121,7 @@ void UIButton::SetIsSelected(const bool selected)
         m_button_state_ = kButtonState::kSelect;
         auto texture_buffer_data = m_image_->shared_material.CastedLock()->shared_material_block->GetTextureBufferData("_MainTex");
         texture_buffer_data->SetTexture(m_selected_texture_);
+        m_any_selected_events_.Invoke();
     }
     else if (!selected && m_button_state_ == kButtonState::kSelect)
     {
@@ -126,6 +147,7 @@ void UIButton::SetPressed(const bool pressed)
         m_button_state_ = kButtonState::kPress;
         auto texture_buffer_data = m_image_->shared_material.CastedLock()->shared_material_block->GetTextureBufferData("_MainTex");
         texture_buffer_data->SetTexture(m_pressed_texture_);
+        m_any_pressed_events_.Invoke();
     }
     else if (!pressed && m_button_state_ == kButtonState::kPress)
     {
