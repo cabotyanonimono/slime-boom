@@ -15,24 +15,6 @@ void SlimeExplosionEffectComponent::OnStart()
     engine::Material::SetGlobalBuffer("slime_explosion_particles", m_particle_buffer_.GetHandle());
 
     m_particle_mesh_ = ParticleQuadRenderer::Setup(m_particle_renderer_, kMaxParticleCount);
-
-    engine::Material::SetGlobalFloat("explosion_particle_life_time", m_life_time_);
-    engine::Material::SetGlobalFloat("explosion_particle_speed_min", m_speed_min_);
-    engine::Material::SetGlobalFloat("explosion_particle_speed_max", m_speed_max_);
-    engine::Material::SetGlobalFloat("explosion_particle_gravity", m_gravity_);
-    engine::Material::SetGlobalFloat("explosion_particle_drag", m_drag_);
-    engine::Material::SetGlobalFloat("explosion_particle_bounce", m_bounce_);
-    engine::Material::SetGlobalFloat("explosion_particle_up_min", m_up_min_);
-    engine::Material::SetGlobalFloat("explosion_particle_up_max", m_up_max_);
-    engine::Material::SetGlobalFloat("explosion_particle_bounce_friction", m_bounce_friction_);
-    engine::Material::SetGlobalInt("explosion_particle_count", static_cast<int>(m_particle_count_));
-
-    engine::Material::SetGlobalColor("explosion_particle_start_color", m_start_color_);
-    engine::Material::SetGlobalColor("explosion_particle_end_color", m_end_color_);
-    engine::Material::SetGlobalFloat("explosion_particle_size", m_particle_size_);
-    engine::Material::SetGlobalFloat("explosion_particle_glow", m_glow_);
-    engine::Material::SetGlobalFloat("explosion_particle_size_random_min", m_size_random_min_);
-    engine::Material::SetGlobalFloat("explosion_particle_size_random_max", m_size_random_max_);
 }
 
 void SlimeExplosionEffectComponent::OnInspectorGui()
@@ -64,6 +46,25 @@ void SlimeExplosionEffectComponent::OnInspectorGui()
 
 void SlimeExplosionEffectComponent::OnUpdate()
 {
+    // インスペクターでの調整がすぐ反映されるよう、毎フレーム名前で書き込む
+    engine::Material::SetGlobalFloat("explosion_particle_life_time", m_life_time_);
+    engine::Material::SetGlobalFloat("explosion_particle_speed_min", m_speed_min_);
+    engine::Material::SetGlobalFloat("explosion_particle_speed_max", m_speed_max_);
+    engine::Material::SetGlobalFloat("explosion_particle_gravity", m_gravity_);
+    engine::Material::SetGlobalFloat("explosion_particle_drag", m_drag_);
+    engine::Material::SetGlobalFloat("explosion_particle_bounce", m_bounce_);
+    engine::Material::SetGlobalFloat("explosion_particle_up_min", m_up_min_);
+    engine::Material::SetGlobalFloat("explosion_particle_up_max", m_up_max_);
+    engine::Material::SetGlobalFloat("explosion_particle_bounce_friction", m_bounce_friction_);
+    engine::Material::SetGlobalInt("explosion_particle_count", static_cast<int>(m_particle_count_));
+
+    engine::Material::SetGlobalColor("explosion_particle_start_color", m_start_color_);
+    engine::Material::SetGlobalColor("explosion_particle_end_color", m_end_color_);
+    engine::Material::SetGlobalFloat("explosion_particle_size", m_particle_size_);
+    engine::Material::SetGlobalFloat("explosion_particle_glow", m_glow_);
+    engine::Material::SetGlobalFloat("explosion_particle_size_random_min", m_size_random_min_);
+    engine::Material::SetGlobalFloat("explosion_particle_size_random_max", m_size_random_max_);
+
     if (m_update_compute_.CastedLock() == nullptr)
         return;
 
