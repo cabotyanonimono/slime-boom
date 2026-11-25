@@ -2,6 +2,7 @@
 #include "card_controller.h"
 #include "../UI/ui_button.h"
 #include "Asset/asset_ptr.h"
+#include "Audio/audio_source_component.h"
 #include "Components/component.h"
 #include "Components/text_renderer.h"
 
@@ -19,9 +20,10 @@ class LevelUpScreenManager final : public engine::Component
     engine::AssetPtr<engine::TextRenderer> m_timer_text_;
     engine::AssetPtr<engine::TextRenderer> m_hp_text_;
     engine::AssetPtr<engine::TextRenderer> m_level_text_;
+    engine::AssetPtr<engine::AudioSourceComponent> m_level_up_sound_;
     std::array<engine::AssetPtr<ui::UIButton>, CardController::kCardCount> m_buttons_;
 
-    /// マウスを解放してカードを抽選し、TimeScaleを0にしてレベルアップのUIを表示する。HUDのテキストは透明にして隠す。
+    /// レベルアップ音を鳴らし、マウスを解放してカードを抽選し、TimeScaleを0にしてレベルアップのUIを表示する。HUDのテキストは透明にして隠す。
     engine::Task ScreenStart() const;
     /// 1フレーム待ってからマウスをロックし、TimeScaleを戻してUIを閉じる。HUDのテキストも表示に戻す。
     engine::Task ScreenEnd() const;
@@ -66,8 +68,15 @@ public:
                 CEREAL_NVP(m_button_enable_delay_)
             );
         }
+
+        if (version >= 5)
+        {
+            ar(
+                CEREAL_NVP(m_level_up_sound_)
+            );
+        }
     }
 };
 }
 
-CEREAL_CLASS_VERSION(SlimeBoom::LevelUpScreenManager, 3)
+CEREAL_CLASS_VERSION(SlimeBoom::LevelUpScreenManager, 5)

@@ -445,6 +445,7 @@
     <ClCompile Include="SlimeBoom\UI\ui_button_label.cpp" />
     <ClCompile Include="SlimeBoom\UI\ui_data_provider.cpp" />
     <ClCompile Include="SlimeBoom\UI\ui_hover_scale_effect.cpp" />
+    <ClCompile Include="SlimeBoom\UI\ui_button_sound.cpp" />
     <ClCompile Include="SlimeBoom\UI\ui_navigator.cpp" />
     <ClCompile Include="SlimeBoom\Utils\math_util.cpp" />
     <ClCompile Include="SlimeBoom\Utils\random.cpp" />
@@ -800,6 +801,7 @@
     <ClInclude Include="SlimeBoom\UI\ui_button_label.h" />
     <ClInclude Include="SlimeBoom\UI\ui_data_provider.h" />
     <ClInclude Include="SlimeBoom\UI\ui_hover_scale_effect.h" />
+    <ClInclude Include="SlimeBoom\UI\ui_button_sound.h" />
     <ClInclude Include="SlimeBoom\UI\ui_navigator.h" />
     <ClInclude Include="SlimeBoom\Utils\math_util.h" />
     <ClInclude Include="SlimeBoom\Utils\random.h" />

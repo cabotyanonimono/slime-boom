@@ -32,7 +32,10 @@ class UIButton : public engine::Component
     bool m_is_hovering_ = false;
 
     engine::Event<> m_events_;
-    
+
+    inline static engine::Event<> m_any_selected_events_;
+    inline static engine::Event<> m_any_pressed_events_;
+
     /// マウスの位置から、ホバー状態とホバーが切り替わったフレームを更新する。
     void UpdateMousePosition(Vector2 pos);
 
@@ -48,6 +51,17 @@ public:
     /// コールバックを解除する。
     /// @param token AddEventListenerで受け取ったトークン
     void RemoveEventListener(size_t token);
+
+    /// いずれかのボタンが選択状態になったときに呼ばれるコールバックを登録する。
+    /// @return RemoveAnySelectedEventListenerに渡すトークン
+    static size_t AddAnySelectedEventListener(const std::function<void()>& callback);
+    /// AddAnySelectedEventListenerで登録したコールバックを解除する。
+    static void RemoveAnySelectedEventListener(size_t token);
+    /// いずれかのボタンが押し込まれたときに呼ばれるコールバックを登録する。
+    /// @return RemoveAnyPressedEventListenerに渡すトークン
+    static size_t AddAnyPressedEventListener(const std::function<void()>& callback);
+    /// AddAnyPressedEventListenerで登録したコールバックを解除する。
+    static void RemoveAnyPressedEventListener(size_t token);
 
     /// マウスがボタン上にあるかを返す。
     [[nodiscard]] bool IsHovering() const;
