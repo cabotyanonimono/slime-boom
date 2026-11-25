@@ -47,7 +47,6 @@ class SlimeExplosionComponent : public engine::Component
 public:
     void OnStart() override;
     void OnInspectorGui() override;
-    /// パラメーターをGPUに転送し、爆発のダメージ判定用ComputeShaderを実行する。
     void OnUpdate() override;
 
     /// 連鎖爆発の有効・無効を切り替える。

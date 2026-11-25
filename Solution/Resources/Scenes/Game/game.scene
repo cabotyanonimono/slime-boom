@@ -9727,7 +9727,7 @@
                                                                                                             "ptr_wrapper": {
                                                                                                                 "id": 2147483839,
                                                                                                                 "data": {
-                                                                                                                    "cereal_class_version": 3,
+                                                                                                                    "cereal_class_version": 4,
                                                                                                                     "value0": {
                                                                                                                         "value0": {
                                                                                                                             "m_guid_": "30838888-c98a-4aed-b3cb-c91e45978262",
@@ -9762,7 +9762,7 @@
                                                                                                                             "cooldown": 1.0,
                                                                                                                             "knockback": 0.800000011920929
                                                                                                                         }
-                                                                                                                    }
+                                                                                                                    ,"value2": {"value": 15.0,"count": 4.0,"arc": 1.0,"size": 6.0,"duration": 1.0,"cooldown": 1.0,"knockback": 1.0}}
                                                                                                                 }
                                                                                                             }
                                                                                                         }
@@ -24882,7 +24882,7 @@
                                                                                                                 }
                                                                                                             }
                                                                                                         }
-                                                                                                    ]
+                                                                                                    ,{"key": 11,"value": {"polymorphic_id": 2147483739,"polymorphic_name": "SlimeBoom::ExplosionAbilityCard","ptr_wrapper": {"id": 2147484452,"data": {"cereal_class_version": 1,"value0": {"m_card_data_": {"icon": {"value0": {"m_guid_": "00bc97c9-44b3-4900-ab30-0f68c868a20a","m_type_": 2,"m_stored_reference_": {"polymorphic_id": 0}}},"name": {"value0": {"m_guid_": "dcf6dde4-2052-4998-8b96-d018a4b0ea3b","m_type_": 2,"m_stored_reference_": {"polymorphic_id": 0}}},"description": {"value0": {"m_guid_": "5b46dc56-54d7-42af-9228-a9a8124bbe51","m_type_": 2,"m_stored_reference_": {"polymorphic_id": 0}}},"background": {"value0": {"m_guid_": "61d70201-edc1-49e8-b314-c3c2e9c2ce63","m_type_": 2,"m_stored_reference_": {"polymorphic_id": 0}}}}},"m_ability_processer_": {"value0": {"m_guid_": "199a9c3e-24d7-45a7-a22f-1490ee015a56","m_type_": 2,"m_stored_reference_": {"polymorphic_id": 0}}},"m_player_data_": {"value0": {"m_guid_": "90982ef2-db18-495e-920b-b980e577c5a9","m_type_": 2,"m_stored_reference_": {"polymorphic_id": 0}}},"m_explosion_component_": {"value0": {"m_guid_": "4aa0496c-9263-4192-b7c5-b585e70d3560","m_type_": 2,"m_stored_reference_": {"polymorphic_id": 0}}}}}}}]
                                                                                                 }
                                                                                             }
                                                                                         }
@@ -32781,7 +32781,7 @@
                                         "ptr_wrapper": {
                                             "id": 2147484389,
                                             "data": {
-                                                "cereal_class_version": 1,
+                                                "cereal_class_version": 2,
                                                 "value0": {
                                                     "value0": {
                                                         "m_guid_": "915a509b-94e1-4dd9-bf23-f98c8ba0c327",
@@ -32804,11 +32804,11 @@
                                                             "polymorphic_id": 0
                                                         }
                                                     }
-                                                }
+                                                },"m_particle_renderer_": {"value0": {"m_guid_": "96a2739f-180a-4ae2-b90d-50474e215cb5","m_type_": 2,"m_stored_reference_": {"polymorphic_id": 0}}}
                                             }
                                         }
                                     }
-                                ]
+                                ,{"polymorphic_id": 8,"ptr_wrapper": {"id": 2147484445,"data": {"value0": {"value0": {"m_guid_": "f2643e7d-219d-4bce-836a-052d7edfb839","m_name_": "ComputeShaderComponent"},"value1": {"locked_ptr": {"polymorphic_id": 1073741824,"ptr_wrapper": {"id": 733}}}},"m_compute_shader_": {"value0": {"m_guid_": "a44d5c72-4487-4d6f-98d6-69ea5526b1ba","m_type_": 2,"m_stored_reference_": {"polymorphic_id": 0}}},"m_material_block_": {"polymorphic_id": 1073741824,"ptr_wrapper": {"id": 2147484446,"data": {"value0": {"m_guid_": "00000000-0000-0000-0000-000000000000","m_name_": "Unknown Object"},"m_buffer_data_": []}}},"m_group_count_x_": 1,"m_group_count_y_": 1,"m_group_count_z_": 1,"m_enable_update_": false}}},{"polymorphic_id": 2147483737,"polymorphic_name": "SlimeBoom::SlimeExplosionComponent","ptr_wrapper": {"id": 2147484447,"data": {"cereal_class_version": 1,"value0": {"value0": {"m_guid_": "4aa0496c-9263-4192-b7c5-b585e70d3560","m_name_": "SlimeExplosionComponent"},"value1": {"locked_ptr": {"polymorphic_id": 1073741824,"ptr_wrapper": {"id": 733}}}},"m_explosion_compute_": {"value0": {"m_guid_": "f2643e7d-219d-4bce-836a-052d7edfb839","m_type_": 2,"m_stored_reference_": {"polymorphic_id": 0}}},"m_chance_": 0.30000001192092896,"m_chain_decay_": 0.699999988079071,"m_damage_color_time_": 0.20000000298023224}}},{"polymorphic_id": 15,"ptr_wrapper": {"id": 2147484448,"data": {"value0": {"value0": {"value0": {"m_guid_": "7c397ee3-eeef-4851-abb7-f636dfde8ce2","m_name_": "MeshRenderer"},"value1": {"locked_ptr": {"polymorphic_id": 1073741824,"ptr_wrapper": {"id": 733}}}},"shared_materials": [{"value0": {"m_guid_": "1a762db8-c49c-4fe8-882d-70056f955f66","m_type_": 2,"m_stored_reference_": {"polymorphic_id": 0}}}],"m_rendering_layer_": {"m_layer_names_": {"value0": "3D","value1": "UI","value2": "","value3": "","value4": "","value5": "","value6": "","value7": "","value8": "","value9": "","value10": "","value11": "","value12": "","value13": "","value14": "","value15": ""},"m_masks_": 1}},"m_shared_mesh_": {"value0": {"m_guid_": "00000000-0000-0000-0000-000000000000","m_type_": 0,"m_stored_reference_": {"polymorphic_id": 0}}},"m_cast_shadow_": false,"m_instance_count_": 1,"m_enable_calling_": false}}},{"polymorphic_id": 8,"ptr_wrapper": {"id": 2147484449,"data": {"value0": {"value0": {"m_guid_": "6360948d-9c28-494b-a7f1-dd716a6f7fb5","m_name_": "ComputeShaderComponent"},"value1": {"locked_ptr": {"polymorphic_id": 1073741824,"ptr_wrapper": {"id": 733}}}},"m_compute_shader_": {"value0": {"m_guid_": "a3125eaa-1334-4640-969b-63a35261a0f0","m_type_": 2,"m_stored_reference_": {"polymorphic_id": 0}}},"m_material_block_": {"polymorphic_id": 1073741824,"ptr_wrapper": {"id": 2147484450,"data": {"value0": {"m_guid_": "00000000-0000-0000-0000-000000000000","m_name_": "Unknown Object"},"m_buffer_data_": []}}},"m_group_count_x_": 1,"m_group_count_y_": 1,"m_group_count_z_": 1,"m_enable_update_": false}}},{"polymorphic_id": 2147483738,"polymorphic_name": "SlimeBoom::SlimeExplosionEffectComponent","ptr_wrapper": {"id": 2147484451,"data": {"cereal_class_version": 3,"value0": {"value0": {"m_guid_": "16d76bce-4e78-435c-b321-6fe719a1034d","m_name_": "SlimeExplosionEffectComponent"},"value1": {"locked_ptr": {"polymorphic_id": 1073741824,"ptr_wrapper": {"id": 733}}}},"m_update_compute_": {"value0": {"m_guid_": "6360948d-9c28-494b-a7f1-dd716a6f7fb5","m_type_": 2,"m_stored_reference_": {"polymorphic_id": 0}}},"m_life_time_": 0.5,"m_speed_min_": 6.0,"m_speed_max_": 14.0,"m_gravity_": 6.0,"m_drag_": 2.0,"m_bounce_": 0.35,"m_up_min_": 0.1,"m_up_max_": 0.6,"m_bounce_friction_": 0.7,"m_particle_count_": 24,"m_start_color_": {"value0": 1.0,"value1": 0.9,"value2": 0.5,"value3": 1.0},"m_end_color_": {"value0": 0.9,"value1": 0.2,"value2": 0.05,"value3": 1.0},"m_particle_size_": 0.75,"m_glow_": 1.5,"m_size_random_min_": 0.6,"m_size_random_max_": 1.4,"m_particle_renderer_": {"value0": {"m_guid_": "7c397ee3-eeef-4851-abb7-f636dfde8ce2","m_type_": 2,"m_stored_reference_": {"polymorphic_id": 0}}}}}}]
                             }
                         }
                     },
@@ -32867,65 +32867,7 @@
                                             }
                                         }
                                     },
-                                    {
-                                        "polymorphic_id": 2147483732,
-                                        "polymorphic_name": "engine::ProceduralRenderer",
-                                        "ptr_wrapper": {
-                                            "id": 2147484392,
-                                            "data": {
-                                                "cereal_class_version": 1,
-                                                "value0": {
-                                                    "value0": {
-                                                        "value0": {
-                                                            "m_guid_": "96a2739f-180a-4ae2-b90d-50474e215cb5",
-                                                            "m_name_": "ProceduralRenderer"
-                                                        },
-                                                        "value1": {
-                                                            "locked_ptr": {
-                                                                "polymorphic_id": 1073741824,
-                                                                "ptr_wrapper": {
-                                                                    "id": 742
-                                                                }
-                                                            }
-                                                        }
-                                                    },
-                                                    "shared_materials": [
-                                                        {
-                                                            "value0": {
-                                                                "m_guid_": "a6ad06c8-c30d-4e65-becc-79f017b129ef",
-                                                                "m_type_": 2,
-                                                                "m_stored_reference_": {
-                                                                    "polymorphic_id": 0
-                                                                }
-                                                            }
-                                                        }
-                                                    ],
-                                                    "m_rendering_layer_": {
-                                                        "m_layer_names_": {
-                                                            "value0": "3D",
-                                                            "value1": "UI",
-                                                            "value2": "",
-                                                            "value3": "",
-                                                            "value4": "",
-                                                            "value5": "",
-                                                            "value6": "",
-                                                            "value7": "",
-                                                            "value8": "",
-                                                            "value9": "",
-                                                            "value10": "",
-                                                            "value11": "",
-                                                            "value12": "",
-                                                            "value13": "",
-                                                            "value14": "",
-                                                            "value15": ""
-                                                        },
-                                                        "m_masks_": 1
-                                                    }
-                                                },
-                                                "m_vertex_count_": 24576
-                                            }
-                                        }
-                                    }
+                                    {"polymorphic_id": 15,"ptr_wrapper": {"id": 2147484392,"data": {"value0": {"value0": {"value0": {"m_guid_": "96a2739f-180a-4ae2-b90d-50474e215cb5","m_name_": "MeshRenderer"},"value1": {"locked_ptr": {"polymorphic_id": 1073741824,"ptr_wrapper": {"id": 742}}}},"shared_materials": [{"value0": {"m_guid_": "a6ad06c8-c30d-4e65-becc-79f017b129ef","m_type_": 2,"m_stored_reference_": {"polymorphic_id": 0}}}],"m_rendering_layer_": {"m_layer_names_": {"value0": "3D","value1": "UI","value2": "","value3": "","value4": "","value5": "","value6": "","value7": "","value8": "","value9": "","value10": "","value11": "","value12": "","value13": "","value14": "","value15": ""},"m_masks_": 1}},"m_shared_mesh_": {"value0": {"m_guid_": "00000000-0000-0000-0000-000000000000","m_type_": 0,"m_stored_reference_": {"polymorphic_id": 0}}},"m_cast_shadow_": false,"m_instance_count_": 1,"m_enable_calling_": false}}}
                                 ]
                             }
                         }

@@ -14,6 +14,16 @@ void SlimeExplosionComponent::OnStart()
     m_explosion_buffer_ = GpuBuffer::CreateReadWriteStructured(sizeof(SlimeExplosionData), kMaxExplosionCount,
                                                                "slime_explosions");
     engine::Material::SetGlobalBuffer("slime_explosions", m_explosion_buffer_.GetHandle());
+
+    engine::Material::SetGlobalFloat("explosion_chance", m_params_.chance);
+    engine::Material::SetGlobalFloat("explosion_radius", m_params_.radius);
+    engine::Material::SetGlobalFloat("explosion_damage", m_params_.damage);
+    engine::Material::SetGlobalFloat("explosion_knockback", m_params_.knockback);
+    engine::Material::SetGlobalFloat("explosion_chain_decay", m_params_.chain_decay);
+    engine::Material::SetGlobalInt("explosion_max_generation", static_cast<int>(m_params_.max_generation));
+    engine::Material::SetGlobalInt("explosion_frame", static_cast<int>(m_params_.frame));
+    engine::Material::SetGlobalInt("explosion_enabled", static_cast<int>(m_params_.enabled));
+    engine::Material::SetGlobalFloat("explosion_damage_color_time", m_params_.damage_color_time);
 }
 
 void SlimeExplosionComponent::OnInspectorGui()
@@ -26,21 +36,9 @@ void SlimeExplosionComponent::OnInspectorGui()
 
 void SlimeExplosionComponent::OnUpdate()
 {
-    // バッファの初期値(frame = 0)が爆発として扱われないように、2以上から数える
     m_params_.frame = engine::Time::Get()->Frames() + 2;
     m_params_.chain_decay = m_chain_decay_;
     m_params_.damage_color_time = m_damage_color_time_;
-
-    // cbuffer ExplosionParamsの各変数へ、名前で書き込む
-    engine::Material::SetGlobalFloat("explosion_chance", m_params_.chance);
-    engine::Material::SetGlobalFloat("explosion_radius", m_params_.radius);
-    engine::Material::SetGlobalFloat("explosion_damage", m_params_.damage);
-    engine::Material::SetGlobalFloat("explosion_knockback", m_params_.knockback);
-    engine::Material::SetGlobalFloat("explosion_chain_decay", m_params_.chain_decay);
-    engine::Material::SetGlobalInt("explosion_max_generation", static_cast<int>(m_params_.max_generation));
-    engine::Material::SetGlobalInt("explosion_frame", static_cast<int>(m_params_.frame));
-    engine::Material::SetGlobalInt("explosion_enabled", static_cast<int>(m_params_.enabled));
-    engine::Material::SetGlobalFloat("explosion_damage_color_time", m_params_.damage_color_time);
 
     if (m_params_.enabled == 0 || m_explosion_compute_.CastedLock() == nullptr)
         return;

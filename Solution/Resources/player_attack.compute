@@ -6,6 +6,7 @@
 #include "player_attack_data.hlsli"
 #include "slime_death_particle.hlsli"
 #include "grid.hlsli"
+#include "slime_explosion.hlsli"
 
 #define MAX_EXP_NUM 1024
 #define MAX_ATTACK_COUNT 10
@@ -13,6 +14,12 @@
 cbuffer DamageColorTime : register(b2)
 {
     float damage_color_time;
+
+    float explosion_chance;
+    float explosion_chain_decay;
+    uint explosion_max_generation;
+    uint explosion_frame;
+    uint explosion_enabled;
 }
 
 StructuredBuffer<PlayerAttackData> player_attacks : register(t0);
@@ -22,12 +29,15 @@ RWStructuredBuffer<Exp> exps : register(u1);
 RWByteAddressBuffer result : register(u2);
 RWStructuredBuffer<SlimeDeathParticle> slime_death_particles : register(u3);
 RWStructuredBuffer<uint> slime_death_particle_counter : register(u4);
+RWStructuredBuffer<SlimeExplosion> slime_explosions : register(u5);
 
 bool CheckCollisionToPlayerAttack(float3 to_slime, PlayerAttackData attack_data);
 
 void OnSlimeAttack(inout SlimeData slime_data, PlayerAttackData attack_data, float3 player_to_slime);
 
 void SpawnDeathParticles(SlimeData slime_data);
+
+void TrySpawnExplosion(float3 position, uint generation);
 
 [numthreads(64, 1, 1)]
 void CSMain(uint3 globalID : SV_DispatchThreadID)
@@ -87,6 +97,7 @@ void OnSlimeAttack(inout SlimeData slime_data, PlayerAttackData attack_data, flo
     {
         result.InterlockedAdd(20, 1);
         SpawnDeathParticles(slime_data);
+        TrySpawnExplosion(slime_data.position, 0);
         for (int j = 0; j < MAX_EXP_NUM; ++j)
         {
             uint original_value;
@@ -124,4 +135,26 @@ void SpawnDeathParticles(SlimeData slime_data)
 
         slime_death_particles[seed % DEATH_PARTICLE_MAX] = particle;
     }
+}
+
+// 連鎖爆発アビリティの習得中、倒したスライムが確率で爆発を登録する（1段目）。
+// 2段目以降はslime_explosion.computeが登録する。
+void TrySpawnExplosion(float3 position, uint generation)
+{
+    if (explosion_enabled == 0 || generation >= explosion_max_generation)
+        return;
+
+    float chance = explosion_chance * pow(explosion_chain_decay, generation);
+    if (rand(float2(position.x + explosion_frame * 0.13f, position.z + generation)) >= chance)
+        return;
+
+    uint index;
+    InterlockedAdd(slime_explosions[SLIME_EXPLOSION_HEADER].generation, 1, index);
+
+    SlimeExplosion explosion;
+    explosion.position = position;
+    explosion.generation = generation;
+    explosion.frame = explosion_frame;
+    explosion.padding = float3(0.0f, 0.0f, 0.0f);
+    slime_explosions[1 + index % (SLIME_EXPLOSION_MAX - 1)] = explosion;
 }

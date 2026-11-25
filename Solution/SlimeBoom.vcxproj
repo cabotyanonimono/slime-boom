@@ -176,6 +176,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SlimeBoom\Component\terrain_grid_component.cpp" />
     <ClCompile Include="SlimeBoom\Utils\gpu_buffer.cpp" />
+    <ClCompile Include="SlimeBoom\Utils\particle_quad_renderer.cpp" />
     <ClCompile Include="External\GenericEngine\Engine\Asset\Importer\depth_texture_importer.cpp" />
     <ClCompile Include="External\GenericEngine\Engine\effekseer_util.cpp" />
     <ClCompile Include="External\GenericEngine\Engine\Rendering\compute_material.cpp" />
@@ -513,6 +514,7 @@
     <ClInclude Include="Resources\grid.hlsli" />
     <ClInclude Include="SlimeBoom\Component\terrain_grid_component.h" />
     <ClInclude Include="SlimeBoom\Utils\gpu_buffer.h" />
+    <ClInclude Include="SlimeBoom\Utils\particle_quad_renderer.h" />
     <ClInclude Include="External\GenericEngine\Engine\Asset\Importer\depth_texture_importer.h" />
     <ClInclude Include="External\GenericEngine\Engine\effekseer_util.h" />
     <ClInclude Include="External\GenericEngine\Engine\Rendering\compute_material.h" />

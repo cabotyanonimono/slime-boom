@@ -52,7 +52,7 @@
                                     }
                                 },
                                 {
-                                    "key": "DeathParticleLook",
+                                    "key": "DeathParticleStyle",
                                     "value": {
                                         "polymorphic_id": 2147483650,
                                         "polymorphic_name": "engine::ConstantBufferData",
@@ -62,26 +62,14 @@
                                                 "cereal_class_version": 1,
                                                 "value0": {
                                                     "parameter": {
-                                                        "index": 3,
-                                                        "name": "DeathParticleLook",
-                                                        "display_name": "DeathParticleLook",
+                                                        "index": 0,
+                                                        "name": "DeathParticleStyle",
+                                                        "display_name": "DeathParticleStyle",
                                                         "is_unordered_access": false,
-                                                        "total_size": 64,
+                                                        "total_size": 16,
                                                         "variables": [
                                                             {
                                                                 "cereal_class_version": 0,
-                                                                "name": "normal_color",
-                                                                "data_type": 4
-                                                            },
-                                                            {
-                                                                "name": "speed_color",
-                                                                "data_type": 4
-                                                            },
-                                                            {
-                                                                "name": "tank_color",
-                                                                "data_type": 4
-                                                            },
-                                                            {
                                                                 "name": "particle_size",
                                                                 "data_type": 1
                                                             },
@@ -96,52 +84,23 @@
                                                 },
                                                 "m_data_type_offset_pairs_": [
                                                     {
-                                                        "key": "normal_color",
-                                                        "value": {
-                                                            "first": 4,
-                                                            "second": 0
-                                                        }
-                                                    },
-                                                    {
-                                                        "key": "speed_color",
-                                                        "value": {
-                                                            "first": 4,
-                                                            "second": 16
-                                                        }
-                                                    },
-                                                    {
-                                                        "key": "tank_color",
-                                                        "value": {
-                                                            "first": 4,
-                                                            "second": 32
-                                                        }
-                                                    },
-                                                    {
                                                         "key": "particle_size",
                                                         "value": {
                                                             "first": 1,
-                                                            "second": 48
+                                                            "second": 0
                                                         }
                                                     },
                                                     {
                                                         "key": "glow",
                                                         "value": {
                                                             "first": 1,
-                                                            "second": 52
+                                                            "second": 4
                                                         }
                                                     }
                                                 ],
                                                 "m_data_": [
                                                     0,
                                                     0,
-                                                    0,
-                                                    0,
-                                                    232,
-                                                    226,
-                                                    180,
-                                                    62,
-                                                    0,
-                                                    0,
                                                     128,
                                                     63,
                                                     0,
@@ -150,44 +109,12 @@
                                                     63,
                                                     0,
                                                     0,
-                                                    128,
-                                                    63,
-                                                    0,
-                                                    0,
-                                                    128,
-                                                    63,
-                                                    0,
-                                                    0,
-                                                    128,
-                                                    63,
-                                                    0,
-                                                    0,
-                                                    128,
-                                                    63,
-                                                    133,
-                                                    132,
-                                                    132,
-                                                    62,
                                                     0,
                                                     0,
                                                     0,
                                                     0,
-                                                    221,
-                                                    220,
-                                                    220,
-                                                    62,
                                                     0,
-                                                    0,
-                                                    128,
-                                                    63,
-                                                    0,
-                                                    0,
-                                                    128,
-                                                    63,
-                                                    0,
-                                                    0,
-                                                    128,
-                                                    63
+                                                    0
                                                 ]
                                             }
                                         }
@@ -197,7 +124,7 @@
                         }
                     }
                 },
-                "render_queue": 5000,
+                "render_queue": 6500,
                 "m_shader_": {
                     "value0": {
                         "cereal_class_version": 1,
