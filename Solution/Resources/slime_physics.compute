@@ -1,3 +1,4 @@
+#define SLIME_TYPE_PARAMS_REGISTER t2
 #include "compute_common.hlsli"
 #include "slime_globals.hlsli"
 #include "exp.hlsli"
@@ -63,7 +64,7 @@ void CSMain(uint3 globalID : SV_DispatchThreadID)
         float3 y_zero_slime_pos = float3(slimes[index].position.x, 0.0f, slimes[index].position.z);
         float3 to_player = y_zero_player_pos - y_zero_slime_pos;
 
-        float speed = slimes[index].slime_type == SLIME_TYPE::SPEED ? slime_speed * 1.5f : slime_speed;
+        float speed = slime_speed * GetSlimeTypeParams(slimes[index].slime_type).speed_scale;
         slimes[index].velocity += normalize(to_player) * speed;
 
         if (length(slimes[index].position - player_pos) <= slime_radius * 2.0f)

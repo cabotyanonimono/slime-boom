@@ -1,3 +1,4 @@
+#define SLIME_TYPE_PARAMS_REGISTER t5
 #include "Light.hlsli"
 #include "engine.hlsli"
 #include "slime.hlsli"
@@ -36,6 +37,16 @@ Texture2D speed_texture : register(t2);
 Texture2D tank_texture : register(t3);
 TextureCube env_texture : register(t4);
 
+// 種類の表の texture_index で、使うテクスチャを選ぶ。テクスチャを足すときはここに追加する。
+float4 SampleSlimeTexture(uint texture_index, float2 uv)
+{
+    if (texture_index == 1)
+        return speed_texture.Sample(smp, uv);
+    if (texture_index == 2)
+        return tank_texture.Sample(smp, uv);
+    return base_texture.Sample(smp, uv);
+}
+
 struct VSOutput
 {
     float4 svpos : SV_POSITION;
@@ -56,10 +67,7 @@ float4 SlimeToWorld(float3 pos, uint instance_id, out float3x3 rot)
 
     local_pos.xyz = mul(EulerToRotationMatrix(slimes[instance_id].rotation), local_pos.xyz);
 
-    if(slimes[instance_id].slime_type == SLIME_TYPE::TANK)
-    {
-        local_pos.xyz *= 1.5f;
-    }
+    local_pos.xyz *= GetSlimeTypeParams(slimes[instance_id].slime_type).size_scale;
 
     rot = LookRotation(normalize(float3(slimes[instance_id].velocity.x, 0.0f, slimes[instance_id].velocity.z)), float3(0, 1, 0));
 	local_pos.z += sin(time.x * 5.0f + local_pos.y * 0.03f + instance_id) * 5.15f;
@@ -104,20 +112,10 @@ float4 PSMain(VSOutput input) : SV_Target
     int cascade_index = CalcCascadeIndex(depth);
     int shadow_map_offset = 0;
 
-    float4 albedo_color;
-
-    if (slimes[input.instance_id].slime_type == SLIME_TYPE::NORMAL)
-        albedo_color = slimes[input.instance_id].damage_color_timer <= 0.0f
-                         ? base_texture.Sample(smp, input.uv)
-                         : damage_color;
-    else if(slimes[input.instance_id].slime_type == SLIME_TYPE::SPEED)
-        albedo_color = slimes[input.instance_id].damage_color_timer <= 0.0f
-                         ? speed_texture.Sample(smp, input.uv)
-                         : damage_color;
-    else if(slimes[input.instance_id].slime_type == SLIME_TYPE::TANK)
-        albedo_color = slimes[input.instance_id].damage_color_timer <= 0.0f
-                                 ? tank_texture.Sample(smp, input.uv)
-                                 : damage_color;
+    SlimeTypeParams type_params = GetSlimeTypeParams(slimes[input.instance_id].slime_type);
+    float4 albedo_color = slimes[input.instance_id].damage_color_timer <= 0.0f
+                              ? SampleSlimeTexture(type_params.texture_index, input.uv) * type_params.albedo_tint
+                              : damage_color;
 
     // 直接光: Σ BRDF × N·L × radiance
     float3 direct_light = float3(0.0f, 0.0f, 0.0f);

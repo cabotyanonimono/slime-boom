@@ -2,8 +2,7 @@
 #include "Asset/asset_ptr.h"
 #include "Components/component.h"
 #include "Components/compute_shader_component.h"
-#include "Rendering/CabotEngine/Graphics/ConstantBuffer.h"
-#include "Rendering/CabotEngine/Graphics/StructuredBuffer.h"
+#include <CaboRenderingSystem/RHI/gpu_resources.h>
 
 namespace SlimeBoom
 {
@@ -37,8 +36,7 @@ class SlimeExplosionComponent : public engine::Component
     static constexpr uint32_t kMaxExplosionCount = 128;
     static constexpr uint32_t kThreadGroupSize = 64;
 
-    std::shared_ptr<engine::StructuredBuffer> m_explosion_buffer_;
-    std::shared_ptr<engine::ConstantBuffer> m_params_buffer_;
+    CRS::Buffer m_explosion_buffer_;
     engine::AssetPtr<engine::ComputeShaderComponent> m_explosion_compute_;
 
     SlimeExplosionParams m_params_ = {};

@@ -20,12 +20,18 @@ void SlimeBoom::WaveController::OnInspectorGui()
             if (engine::Gui::PropertyField("NumSlimes", num_slimes_int))
                 m_wave_data_[i].num_slimes = num_slimes_int;
 
-            if (ImGui::CollapsingHeader("Spawn Rate"))
+            if (ImGui::CollapsingHeader("Spawn Rate") && m_slime_simulation_component_.CastedLock() != nullptr)
             {
-                for (int j = 0; j < SlimeTypes::Count; ++j)
+                auto &spawn_rates = m_wave_data_[i].spawn_rates;
+                const int type_count = m_slime_simulation_component_->GetSlimeTypeCount();
+                if (spawn_rates.size() < static_cast<size_t>(type_count))
+                    spawn_rates.resize(type_count, 0.0f);
+
+                for (int j = 0; j < type_count; ++j)
                 {
                     ImGui::PushID(j);
-                    engine::Gui::PropertyField(SlimeTypes::ToString(j).c_str(), m_wave_data_[i].spawn_rates[j]);
+                    const auto name = m_slime_simulation_component_->GetSlimeTypeName(j);
+                    engine::Gui::PropertyField(name.c_str(), spawn_rates[j]);
                     ImGui::PopID();
                 }
             }

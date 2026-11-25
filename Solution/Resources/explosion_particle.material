@@ -33,7 +33,7 @@
                                                 "value0": {
                                                     "cereal_class_version": 1,
                                                     "parameter": {
-                                                        "cereal_class_version": 1,
+                                                        "cereal_class_version": 2,
                                                         "index": 2,
                                                         "name": "ExplosionParticleLook",
                                                         "display_name": "ExplosionParticleLook",
@@ -65,7 +65,8 @@
                                                                 "name": "size_random_max",
                                                                 "data_type": 1
                                                             }
-                                                        ]
+                                                        ],
+                                                        "buffer_type": 0
                                                     },
                                                     "upload_type": 0
                                                 },
@@ -183,7 +184,8 @@
                                                         "display_name": "slime_explosion_particles",
                                                         "is_unordered_access": false,
                                                         "total_size": 0,
-                                                        "variables": []
+                                                        "variables": [],
+                                                        "buffer_type": 0
                                                     },
                                                     "upload_type": 0
                                                 },

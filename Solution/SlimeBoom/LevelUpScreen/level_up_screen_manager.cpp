@@ -7,6 +7,9 @@
 
 engine::Task SlimeBoom::LevelUpScreenManager::ScreenStart() const
 {
+    if (const auto sound = m_level_up_sound_.CastedLock())
+        sound->Play();
+
     engine::Input::SetMouseMode(engine::kMouseMode::kNormal);
     m_card_controller_->GenerateRandomCards();
     m_level_up_ui_object_->SetActive(true);
@@ -57,6 +60,7 @@ void SlimeBoom::LevelUpScreenManager::OnInspectorGui()
     engine::Gui::PropertyField("Timer Text", m_timer_text_);
     engine::Gui::PropertyField("Hp Text", m_hp_text_);
     engine::Gui::PropertyField("Level Text", m_level_text_);
+    engine::Gui::PropertyField("Level Up Sound", m_level_up_sound_);
 
     if (ImGui::CollapsingHeader("Level Card Button"))
     {
