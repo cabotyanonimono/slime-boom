@@ -81,6 +81,8 @@ class SlimeExplosionEffectComponent : public engine::Component
     float m_size_random_min_ = 0.6f;
     float m_size_random_max_ = 1.4f;
 
+    void SetEffectParams() const;
+    
 public:
     void OnStart() override;
     void OnInspectorGui() override;

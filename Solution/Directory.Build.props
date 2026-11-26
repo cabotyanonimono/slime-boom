@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  このフォルダ以下のすべてのプロジェクトに、MSBuild が自動で読み込む共通設定。
+  ・値だけのマクロ（ON/OFF スイッチなど）はここの PreprocessorDefinitions に追加する
+  ・中身のあるマクロは SlimeBoom/Utils/macros.h に書く（強制インクルードされる）
+  ※ 編集したら Visual Studio でソリューションを開き直すこと
+-->
+<Project>
+
+  <!-- 全構成共通 -->
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <!-- すべての .cpp の先頭で macros.h を自動 include する（/FI） -->
+      <ForcedIncludeFiles>$(MSBuildThisFileDirectory)SlimeBoom\Utils\macros.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+    </ClCompile>
+  </ItemDefinitionGroup>
+
+  <!-- Debug のみ -->
+  <ItemDefinitionGroup Condition="'$(Configuration)'=='Debug'">
+    <ClCompile>
+      <PreprocessorDefinitions>SB_DEBUG=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+
+  <!-- Release のみ -->
+  <ItemDefinitionGroup Condition="'$(Configuration)'=='Release'">
+    <ClCompile>
+      <PreprocessorDefinitions>SB_RELEASE=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+
+</Project>

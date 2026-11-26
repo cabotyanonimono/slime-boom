@@ -30,32 +30,49 @@ void SlimeExplosionComponent::OnUpdate()
     m_params_.chain_decay = m_chain_decay_;
     m_params_.damage_color_time = m_damage_color_time_;
 
-    // SetEnabled / SetExplosionで変わる値と毎フレーム変わるframeを、cbuffer ExplosionParamsへ名前で書き込む
-    engine::Material::SetGlobalFloat("explosion_chance", m_params_.chance);
-    engine::Material::SetGlobalFloat("explosion_radius", m_params_.radius);
-    engine::Material::SetGlobalFloat("explosion_damage", m_params_.damage);
-    engine::Material::SetGlobalFloat("explosion_knockback", m_params_.knockback);
-    engine::Material::SetGlobalFloat("explosion_chain_decay", m_params_.chain_decay);
-    engine::Material::SetGlobalInt("explosion_max_generation", static_cast<int>(m_params_.max_generation));
-    engine::Material::SetGlobalInt("explosion_frame", static_cast<int>(m_params_.frame));
-    engine::Material::SetGlobalInt("explosion_enabled", static_cast<int>(m_params_.enabled));
-    engine::Material::SetGlobalFloat("explosion_damage_color_time", m_params_.damage_color_time);
+    if (m_params_changed_)
+    {
+        m_params_changed_ = false;
+        engine::Material::SetGlobalFloat("explosion_chance", m_params_.chance);
+        engine::Material::SetGlobalFloat("explosion_radius", m_params_.radius);
+        engine::Material::SetGlobalFloat("explosion_damage", m_params_.damage);
+        engine::Material::SetGlobalFloat("explosion_knockback", m_params_.knockback);
+        engine::Material::SetGlobalFloat("explosion_chain_decay", m_params_.chain_decay);
+        engine::Material::SetGlobalInt("explosion_max_generation", static_cast<int>(m_params_.max_generation));
+        engine::Material::SetGlobalInt("explosion_frame", static_cast<int>(m_params_.frame));
+        engine::Material::SetGlobalInt("explosion_enabled", static_cast<int>(m_params_.enabled));
+        engine::Material::SetGlobalFloat("explosion_damage_color_time", m_params_.damage_color_time);
+    }
 
-    if (m_params_.enabled == 0 || m_explosion_compute_.CastedLock() == nullptr)
+    if (m_params_.enabled == 0 || m_explosion_compute_ == nullptr)
         return;
 
-    m_explosion_compute_->SetGroupCount((SlimeSimulationComponent::GetMaxSlimeCount() + kThreadGroupSize - 1) / kThreadGroupSize, 1, 1);
+    m_explosion_compute_->SetGroupCount(
+        (SlimeSimulationComponent::GetMaxSlimeCount() + kThreadGroupSize - 1) / kThreadGroupSize, 1, 1);
     m_explosion_compute_->Execute();
 }
 
 void SlimeExplosionComponent::SetEnabled(const bool enabled)
 {
+    m_params_changed_ = true;
+
     m_params_.enabled = enabled ? 1 : 0;
 }
 
 void SlimeExplosionComponent::SetExplosion(const float radius, const float damage, const float knockback,
                                            const uint32_t max_generation, const float chance_multiplier)
 {
+    if (m_params_.radius == radius &&
+        m_params_.damage == damage &&
+        m_params_.knockback == knockback &&
+        m_params_.max_generation == max_generation &&
+        m_params_.chance == m_chance_ * chance_multiplier)
+    {
+        return;
+    }
+
+    m_params_changed_ = true;
+
     m_params_.radius = radius;
     m_params_.damage = damage;
     m_params_.knockback = knockback;

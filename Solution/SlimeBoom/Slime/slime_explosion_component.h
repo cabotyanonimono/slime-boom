@@ -43,6 +43,7 @@ class SlimeExplosionComponent : public engine::Component
     float m_chance_ = 0.3f;
     float m_chain_decay_ = 0.7f;
     float m_damage_color_time_ = 0.2f;
+    bool m_params_changed_ = true;
 
 public:
     void OnStart() override;

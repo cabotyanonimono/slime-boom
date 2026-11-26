@@ -79,10 +79,10 @@
                                                         }
                                                     },
                                                     {
-                                                        "key": "explosion_particle_end_color",
+                                                        "key": "explosion_particle_glow",
                                                         "value": {
-                                                            "first": 4,
-                                                            "second": 16
+                                                            "first": 1,
+                                                            "second": 36
                                                         }
                                                     },
                                                     {
@@ -93,10 +93,10 @@
                                                         }
                                                     },
                                                     {
-                                                        "key": "explosion_particle_glow",
+                                                        "key": "explosion_particle_end_color",
                                                         "value": {
-                                                            "first": 1,
-                                                            "second": 36
+                                                            "first": 4,
+                                                            "second": 16
                                                         }
                                                     },
                                                     {

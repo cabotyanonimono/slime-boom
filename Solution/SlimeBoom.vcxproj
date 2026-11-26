@@ -514,6 +514,7 @@
     <ClInclude Include="Resources\grid.hlsli" />
     <ClInclude Include="SlimeBoom\Component\terrain_grid_component.h" />
     <ClInclude Include="SlimeBoom\Utils\gpu_buffer.h" />
+    <ClInclude Include="SlimeBoom\Utils\macros.h" />
     <ClInclude Include="SlimeBoom\Utils\particle_quad_renderer.h" />
     <ClInclude Include="External\GenericEngine\Engine\Asset\Importer\depth_texture_importer.h" />
     <ClInclude Include="External\GenericEngine\Engine\effekseer_util.h" />
