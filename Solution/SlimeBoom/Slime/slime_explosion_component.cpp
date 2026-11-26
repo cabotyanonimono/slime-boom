@@ -30,7 +30,6 @@ void SlimeExplosionComponent::OnUpdate()
     m_params_.chain_decay = m_chain_decay_;
     m_params_.damage_color_time = m_damage_color_time_;
 
-    // frameは毎フレーム変わるので、変更フラグに関係なく送る
     engine::Material::SetGlobalInt("explosion_frame", static_cast<int>(m_params_.frame));
 
     if (m_params_changed_)
