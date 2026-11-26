@@ -1,18 +1,15 @@
-#include "engine.hlsli"
+#include "compute_common.hlsli"
+#include "slime_globals.hlsli"
 #include "exp.hlsli"
 #include "slime.hlsli"
 #include "math.hlsli"
 #include "slime_death_particle.hlsli"
 #include "slime_explosion.hlsli"
+#include "grid.hlsli"
 
 #define MAX_EXP_NUM 1024
 
-cbuffer SlimeCount : register(b2)
-{
-    int slime_count;
-}
-
-cbuffer ExplosionParams : register(b3)
+cbuffer ExplosionParams : register(b2)
 {
     float explosion_chance;
     float explosion_radius;
@@ -25,12 +22,12 @@ cbuffer ExplosionParams : register(b3)
     float explosion_damage_color_time;
 }
 
-RWStructuredBuffer<SlimeData> slimes : register(u1);
-RWStructuredBuffer<Exp> exps : register(u2);
-RWByteAddressBuffer result : register(u3);
-RWStructuredBuffer<SlimeDeathParticle> slime_death_particles : register(u4);
-RWStructuredBuffer<uint> slime_death_particle_counter : register(u5);
-RWStructuredBuffer<SlimeExplosion> slime_explosions : register(u6);
+RWStructuredBuffer<SlimeData> slimes : register(u0);
+RWStructuredBuffer<Exp> exps : register(u1);
+RWByteAddressBuffer result : register(u2);
+RWStructuredBuffer<SlimeDeathParticle> slime_death_particles : register(u3);
+RWStructuredBuffer<uint> slime_death_particle_counter : register(u4);
+RWStructuredBuffer<SlimeExplosion> slime_explosions : register(u5);
 
 void OnSlimeEliminated(SlimeData slime_data, uint generation);
 
@@ -41,7 +38,7 @@ void TrySpawnExplosion(float3 position, uint generation);
 // 前のフレームに登録された爆発の範囲内にいるスライムへ、ダメージとノックバックを与える。
 // 爆発で倒れたスライムは、確率で次の段の爆発を登録する。
 [numthreads(64, 1, 1)]
-void compute(uint3 globalID : SV_DispatchThreadID)
+void CSMain(uint3 globalID : SV_DispatchThreadID)
 {
     int index = globalID.x;
 
@@ -104,7 +101,7 @@ void OnSlimeEliminated(SlimeData slime_data, uint generation)
 
         if (original_value == 0)
         {
-            exps[j].pos = float3(slime_data.position.x, 0.0f, slime_data.position.z);
+            exps[j].pos = float3(slime_data.position.x, GetTerrainHeight(slime_data.position.x, slime_data.position.z), slime_data.position.z);
             break;
         }
     }

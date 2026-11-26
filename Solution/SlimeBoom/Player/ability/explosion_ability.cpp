@@ -23,7 +23,6 @@ void ExplosionAbility::OnDetach()
 
 void ExplosionAbility::Update(float delta_time)
 {
-    // value: ダメージ倍率, size: 爆発半径, knockback: ノックバック, count: 最大連鎖数, arc: 発動確率の倍率
     const auto explosion_data = AbilityDataStore::GetAbilityData(kAbilityTypesExplosion);
     m_explosion_component_->SetExplosion(
         explosion_data.size + m_player_data_->GetAttackRange(),

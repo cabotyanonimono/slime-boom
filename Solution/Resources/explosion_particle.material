@@ -34,7 +34,7 @@
                                                     "cereal_class_version": 1,
                                                     "parameter": {
                                                         "cereal_class_version": 2,
-                                                        "index": 2,
+                                                        "index": 0,
                                                         "name": "ExplosionParticleLook",
                                                         "display_name": "ExplosionParticleLook",
                                                         "is_unordered_access": false,
@@ -42,27 +42,27 @@
                                                         "variables": [
                                                             {
                                                                 "cereal_class_version": 0,
-                                                                "name": "start_color",
+                                                                "name": "explosion_particle_start_color",
                                                                 "data_type": 4
                                                             },
                                                             {
-                                                                "name": "end_color",
+                                                                "name": "explosion_particle_end_color",
                                                                 "data_type": 4
                                                             },
                                                             {
-                                                                "name": "particle_size",
+                                                                "name": "explosion_particle_size",
                                                                 "data_type": 1
                                                             },
                                                             {
-                                                                "name": "glow",
+                                                                "name": "explosion_particle_glow",
                                                                 "data_type": 1
                                                             },
                                                             {
-                                                                "name": "size_random_min",
+                                                                "name": "explosion_particle_size_random_min",
                                                                 "data_type": 1
                                                             },
                                                             {
-                                                                "name": "size_random_max",
+                                                                "name": "explosion_particle_size_random_max",
                                                                 "data_type": 1
                                                             }
                                                         ],
@@ -72,42 +72,42 @@
                                                 },
                                                 "m_data_type_offset_pairs_": [
                                                     {
-                                                        "key": "start_color",
+                                                        "key": "explosion_particle_start_color",
                                                         "value": {
                                                             "first": 4,
                                                             "second": 0
                                                         }
                                                     },
                                                     {
-                                                        "key": "end_color",
-                                                        "value": {
-                                                            "first": 4,
-                                                            "second": 16
-                                                        }
-                                                    },
-                                                    {
-                                                        "key": "particle_size",
-                                                        "value": {
-                                                            "first": 1,
-                                                            "second": 32
-                                                        }
-                                                    },
-                                                    {
-                                                        "key": "glow",
+                                                        "key": "explosion_particle_glow",
                                                         "value": {
                                                             "first": 1,
                                                             "second": 36
                                                         }
                                                     },
                                                     {
-                                                        "key": "size_random_min",
+                                                        "key": "explosion_particle_size",
+                                                        "value": {
+                                                            "first": 1,
+                                                            "second": 32
+                                                        }
+                                                    },
+                                                    {
+                                                        "key": "explosion_particle_end_color",
+                                                        "value": {
+                                                            "first": 4,
+                                                            "second": 16
+                                                        }
+                                                    },
+                                                    {
+                                                        "key": "explosion_particle_size_random_min",
                                                         "value": {
                                                             "first": 1,
                                                             "second": 40
                                                         }
                                                     },
                                                     {
-                                                        "key": "size_random_max",
+                                                        "key": "explosion_particle_size_random_max",
                                                         "value": {
                                                             "first": 1,
                                                             "second": 44
@@ -200,7 +200,7 @@
                         }
                     }
                 },
-                "render_queue": 5000,
+                "render_queue": 6500,
                 "m_shader_": {
                     "value0": {
                         "cereal_class_version": 1,

@@ -24,17 +24,13 @@ struct VSOutput
     float4 color : COLOR;
 };
 
-static const float2 kCorners[6] =
-{
-    float2(-1.0f, -1.0f), float2(-1.0f, 1.0f), float2(1.0f, 1.0f),
-    float2(-1.0f, -1.0f), float2(1.0f, 1.0f), float2(1.0f, -1.0f)
-};
-
-VSOutput VSMain(uint vertex_id : SV_VertexID)
+// 四角形1枚(ParticleQuadRenderer)をパーティクル数ぶんインスタンス描画する。
+// instance_idがパーティクルの番号、頂点の位置(xy: -1..1)が四角形の角
+VSOutput VSMain(VSInput input, uint instance_id : SV_InstanceID)
 {
     VSOutput output = (VSOutput)0;
 
-    uint index = vertex_id / 6;
+    uint index = instance_id;
     SlimeDeathParticle p = slime_death_particles[index];
 
     if (p.state != DEATH_PARTICLE_STATE_ALIVE)
@@ -43,7 +39,7 @@ VSOutput VSMain(uint vertex_id : SV_VertexID)
         return output;
     }
 
-    float2 corner = kCorners[vertex_id % 6];
+    float2 corner = input.pos.xy;
     float t = saturate(p.life_ratio);
 
     SlimeTypeParams type_params = GetSlimeTypeParams(p.slime_type);

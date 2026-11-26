@@ -2,6 +2,7 @@
 #include "Asset/asset_ptr.h"
 #include "Components/component.h"
 #include "Components/compute_shader_component.h"
+#include "Components/mesh_renderer.h"
 #include <CaboRenderingSystem/RHI/gpu_resources.h>
 
 namespace SlimeBoom
@@ -28,6 +29,8 @@ class SlimeDeathEffectComponent : public engine::Component
     CRS::Buffer m_particle_buffer_;
     CRS::Buffer m_particle_counter_buffer_;
     engine::AssetPtr<engine::ComputeShaderComponent> m_update_compute_;
+   engine::AssetPtr<engine::MeshRenderer> m_particle_renderer_;
+    std::shared_ptr<engine::Mesh> m_particle_mesh_;
 
 public:
     void OnStart() override;
@@ -41,8 +44,15 @@ public:
             cereal::base_class<Component>(this),
             CEREAL_NVP(m_update_compute_)
         );
+
+        if (version >= 2)
+        {
+            ar(
+                CEREAL_NVP(m_particle_renderer_)
+            );
+        }
     }
 };
 }
 
-CEREAL_CLASS_VERSION(SlimeBoom::SlimeDeathEffectComponent, 1)
+CEREAL_CLASS_VERSION(SlimeBoom::SlimeDeathEffectComponent, 2)

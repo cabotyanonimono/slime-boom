@@ -2,6 +2,7 @@
 #include "Asset/asset_ptr.h"
 #include "Components/component.h"
 #include "Components/compute_shader_component.h"
+#include "Components/mesh_renderer.h"
 #include <CaboRenderingSystem/RHI/gpu_resources.h>
 
 namespace SlimeBoom
@@ -57,6 +58,8 @@ class SlimeExplosionEffectComponent : public engine::Component
 
     CRS::Buffer m_particle_buffer_;
     engine::AssetPtr<engine::ComputeShaderComponent> m_update_compute_;
+    engine::AssetPtr<engine::MeshRenderer> m_particle_renderer_;
+    std::shared_ptr<engine::Mesh> m_particle_mesh_;
 
     // 動き
     float m_life_time_ = 0.5f;
@@ -78,10 +81,11 @@ class SlimeExplosionEffectComponent : public engine::Component
     float m_size_random_min_ = 0.6f;
     float m_size_random_max_ = 1.4f;
 
+    void SetEffectParams() const;
+    
 public:
     void OnStart() override;
     void OnInspectorGui() override;
-    /// パラメーターをGPUに転送し、パーティクル更新用のComputeShaderを実行する。
     void OnUpdate() override;
 
     template <class Archive>
@@ -113,8 +117,15 @@ public:
                 CEREAL_NVP(m_size_random_max_)
             );
         }
+
+        if (version >= 3)
+        {
+            ar(
+                CEREAL_NVP(m_particle_renderer_)
+            );
+        }
     }
 };
 }
 
-CEREAL_CLASS_VERSION(SlimeBoom::SlimeExplosionEffectComponent, 2)
+CEREAL_CLASS_VERSION(SlimeBoom::SlimeExplosionEffectComponent, 3)

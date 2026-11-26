@@ -4,6 +4,7 @@
 #include "gui.h"
 #include "Rendering/material.h"
 #include "../Utils/gpu_buffer.h"
+#include "../Utils/particle_quad_renderer.h"
 
 namespace SlimeBoom
 {
@@ -16,11 +17,14 @@ void SlimeDeathEffectComponent::OnStart()
 
     engine::Material::SetGlobalBuffer("slime_death_particles", m_particle_buffer_.GetHandle());
     engine::Material::SetGlobalBuffer("slime_death_particle_counter", m_particle_counter_buffer_.GetHandle());
+
+    m_particle_mesh_ = ParticleQuadRenderer::Setup(m_particle_renderer_, kMaxParticleCount);
 }
 
 void SlimeDeathEffectComponent::OnInspectorGui()
 {
     engine::Gui::PropertyField("Update Compute", m_update_compute_);
+    engine::Gui::PropertyField("Particle Renderer", m_particle_renderer_);
 }
 
 void SlimeDeathEffectComponent::OnUpdate()
