@@ -20,8 +20,8 @@ void SlimeExplosionComponent::OnInspectorGui()
 {
     engine::Gui::PropertyField("Explosion Compute", m_explosion_compute_);
     engine::Gui::PropertyField("Chance", m_chance_);
-    engine::Gui::PropertyField("Chain Decay", m_chain_decay_);
-    engine::Gui::PropertyField("Damage Color Time", m_damage_color_time_);
+    m_params_changed_ |= engine::Gui::PropertyField("Chain Decay", m_chain_decay_);
+    m_params_changed_ |= engine::Gui::PropertyField("Damage Color Time", m_damage_color_time_);
 }
 
 void SlimeExplosionComponent::OnUpdate()
@@ -29,6 +29,9 @@ void SlimeExplosionComponent::OnUpdate()
     m_params_.frame = engine::Time::Get()->Frames() + 2;
     m_params_.chain_decay = m_chain_decay_;
     m_params_.damage_color_time = m_damage_color_time_;
+
+    // frameは毎フレーム変わるので、変更フラグに関係なく送る
+    engine::Material::SetGlobalInt("explosion_frame", static_cast<int>(m_params_.frame));
 
     if (m_params_changed_)
     {
@@ -39,7 +42,6 @@ void SlimeExplosionComponent::OnUpdate()
         engine::Material::SetGlobalFloat("explosion_knockback", m_params_.knockback);
         engine::Material::SetGlobalFloat("explosion_chain_decay", m_params_.chain_decay);
         engine::Material::SetGlobalInt("explosion_max_generation", static_cast<int>(m_params_.max_generation));
-        engine::Material::SetGlobalInt("explosion_frame", static_cast<int>(m_params_.frame));
         engine::Material::SetGlobalInt("explosion_enabled", static_cast<int>(m_params_.enabled));
         engine::Material::SetGlobalFloat("explosion_damage_color_time", m_params_.damage_color_time);
     }
