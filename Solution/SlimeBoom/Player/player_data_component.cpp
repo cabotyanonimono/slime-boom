@@ -42,6 +42,19 @@ void PlayerDataComponent::OnInspectorGui()
 
     if (engine::Gui::PropertyField("Avoid Percent", m_player_data_.avoid_percent))
         SetAvoidPercent(m_player_data_.avoid_percent);
+
+    for (int s = 0; s < kAbilityStatusCount; ++s)
+    {
+        const auto status = static_cast<kAbilityStatus>(s);
+        for (int i = 0; i < kAbilityTypesCount; ++i)
+        {
+            const auto ability_type = static_cast<kAbilityTypes>(i);
+            const std::string label = std::string(ToString(status)) + " " + ToString(ability_type);
+            auto value = GetAbilityStatus(status, ability_type);
+            if (engine::Gui::PropertyField(label.c_str(), value))
+                SetAbilityStatus(status, ability_type, value);
+        }
+    }
 }
 
 void PlayerDataComponent::SetMaxHp(const float max_hp)
@@ -162,6 +175,28 @@ float PlayerDataComponent::GetAvoidPercent() const
 uint32_t PlayerDataComponent::GetLevel() const
 {
     return m_player_data_.level;
+}
+
+std::array<float, kAbilityTypesCount>& PlayerDataComponent::GetAbilityStatusArray(const kAbilityStatus status)
+{
+    switch (status)
+    {
+    case kAbilityStatusAttackRange: return m_player_data_.ability_attack_range;
+    case kAbilityStatusAttackSpeed: return m_player_data_.ability_attack_speed;
+    case kAbilityStatusAttackPower:
+    default: return m_player_data_.ability_attack_power;
+    }
+}
+
+void PlayerDataComponent::SetAbilityStatus(const kAbilityStatus status, const kAbilityTypes ability_type,
+                                           const float value)
+{
+    GetAbilityStatusArray(status)[ability_type] = value;
+}
+
+float PlayerDataComponent::GetAbilityStatus(const kAbilityStatus status, const kAbilityTypes ability_type) const
+{
+    return const_cast<PlayerDataComponent*>(this)->GetAbilityStatusArray(status)[ability_type];
 }
 
 const PlayerData& PlayerDataComponent::GetPlayerData() const

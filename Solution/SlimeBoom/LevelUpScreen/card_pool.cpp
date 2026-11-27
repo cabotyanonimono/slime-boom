@@ -6,12 +6,20 @@
 #include "cards/attack_power_card.h"
 #include "cards/attack_range_card.h"
 #include "cards/attack_speed_card.h"
+#include "cards/slash_attack_range_card.h"
+#include "cards/aura_attack_range_card.h"
+#include "cards/explosion_attack_range_card.h"
+#include "cards/slash_attack_speed_card.h"
+#include "cards/aura_attack_speed_card.h"
 #include "cards/aura_ability_card.h"
+#include "cards/aura_attack_power_card.h"
 #include "cards/avoid_percent_card.h"
 #include "cards/explosion_ability_card.h"
+#include "cards/explosion_attack_power_card.h"
 #include "cards/exp_multiplier_card.h"
 #include "cards/max_hp_card.h"
 #include "cards/slash_ability_card.h"
+#include "cards/slash_attack_power_card.h"
 #include "cards/speed_card.h"
 
 namespace SlimeBoom
@@ -30,6 +38,14 @@ void CardPool::RegisterCards()
     RegisterCard<AvoidPercentCard>(kCardType_AvoidPercent);
     RegisterCard<AcquisitionRangeCard>(kCardType_AcquisitionRange);
     RegisterCard<ExplosionAbilityCard>(kCardType_ExplosionAbility);
+    RegisterCard<SlashAttackPowerCard>(kCardType_SlashAttackPower);
+    RegisterCard<AuraAttackPowerCard>(kCardType_AuraAttackPower);
+    RegisterCard<ExplosionAttackPowerCard>(kCardType_ExplosionAttackPower);
+    RegisterCard<SlashAttackRangeCard>(kCardType_SlashAttackRange);
+    RegisterCard<AuraAttackRangeCard>(kCardType_AuraAttackRange);
+    RegisterCard<ExplosionAttackRangeCard>(kCardType_ExplosionAttackRange);
+    RegisterCard<SlashAttackSpeedCard>(kCardType_SlashAttackSpeed);
+    RegisterCard<AuraAttackSpeedCard>(kCardType_AuraAttackSpeed);
 }
 
 void CardPool::OnInspectorGui()

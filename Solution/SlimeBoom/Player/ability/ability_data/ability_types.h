@@ -21,3 +21,23 @@ inline const char* ToString(const kAbilityTypes e)
     default: return "unknown";
     }
 }
+
+enum kAbilityStatus
+{
+    kAbilityStatusAttackPower,
+    kAbilityStatusAttackRange,
+    kAbilityStatusAttackSpeed,
+
+    kAbilityStatusCount
+};
+
+inline const char* ToString(const kAbilityStatus e)
+{
+    switch (e)
+    {
+    case kAbilityStatusAttackPower: return "Attack Power";
+    case kAbilityStatusAttackRange: return "Attack Range";
+    case kAbilityStatusAttackSpeed: return "Attack Speed";
+    default: return "unknown";
+    }
+}

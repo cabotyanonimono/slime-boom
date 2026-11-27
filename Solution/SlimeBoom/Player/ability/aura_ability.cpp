@@ -10,11 +10,14 @@ void AuraAbility::Execute(float delta_time)
 {
     PlayerAttackData attack_data;
     const auto aura_data = AbilityDataStore::GetAbilityData(kAbilityTypesAura);
-    m_cooldown_ = aura_data.cooldown / m_player_data_->GetAttackSpeed();
+    m_cooldown_ = aura_data.cooldown / (m_player_data_->GetAttackSpeed() *
+        m_player_data_->GetAbilityStatus(kAbilityStatusAttackSpeed, kAbilityTypesAura));
 
     //PlayerDataを参照する値の計算
-    const auto aura_size = aura_data.size + m_player_data_->GetAttackRange();
-    const auto aura_damage = aura_data.value * m_player_data_->GetAttackPower();
+    const auto aura_size = (aura_data.size + m_player_data_->GetAttackRange()) *
+        m_player_data_->GetAbilityStatus(kAbilityStatusAttackRange, kAbilityTypesAura);
+    const auto aura_damage = aura_data.value * m_player_data_->GetAttackPower() *
+        m_player_data_->GetAbilityStatus(kAbilityStatusAttackPower, kAbilityTypesAura);
     
     attack_data.arc = DirectX::XM_2PI;
     attack_data.angle = Vector3(0.0f, 0.0f, -1.0f);

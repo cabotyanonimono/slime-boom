@@ -15,6 +15,14 @@ enum kCardType
     kCardType_AvoidPercent,
     kCardType_AcquisitionRange,
     kCardType_ExplosionAbility,
+    kCardType_SlashAttackPower,
+    kCardType_AuraAttackPower,
+    kCardType_ExplosionAttackPower,
+    kCardType_SlashAttackRange,
+    kCardType_AuraAttackRange,
+    kCardType_ExplosionAttackRange,
+    kCardType_SlashAttackSpeed,
+    kCardType_AuraAttackSpeed,
 
     kCardType_Count
 };
@@ -36,6 +44,14 @@ inline const char* ToString(const kCardType e)
     case kCardType_AvoidPercent: return "kCardType_AvoidPercent";
     case kCardType_AcquisitionRange: return "kCardType_AcquisitionRange";
     case kCardType_ExplosionAbility: return "kCardType_ExplosionAbility";
+    case kCardType_SlashAttackPower: return "kCardType_SlashAttackPower";
+    case kCardType_AuraAttackPower: return "kCardType_AuraAttackPower";
+    case kCardType_ExplosionAttackPower: return "kCardType_ExplosionAttackPower";
+    case kCardType_SlashAttackRange: return "kCardType_SlashAttackRange";
+    case kCardType_AuraAttackRange: return "kCardType_AuraAttackRange";
+    case kCardType_ExplosionAttackRange: return "kCardType_ExplosionAttackRange";
+    case kCardType_SlashAttackSpeed: return "kCardType_SlashAttackSpeed";
+    case kCardType_AuraAttackSpeed: return "kCardType_AuraAttackSpeed";
 
     default: return "unknown";
     }

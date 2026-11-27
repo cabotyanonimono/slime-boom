@@ -25,8 +25,10 @@ void ExplosionAbility::Update(float delta_time)
 {
     const auto explosion_data = AbilityDataStore::GetAbilityData(kAbilityTypesExplosion);
     m_explosion_component_->SetExplosion(
-        explosion_data.size + m_player_data_->GetAttackRange(),
-        m_player_data_->GetAttackPower() * explosion_data.value,
+        (explosion_data.size + m_player_data_->GetAttackRange()) *
+        m_player_data_->GetAbilityStatus(kAbilityStatusAttackRange, kAbilityTypesExplosion),
+        m_player_data_->GetAttackPower() * explosion_data.value *
+        m_player_data_->GetAbilityStatus(kAbilityStatusAttackPower, kAbilityTypesExplosion),
         explosion_data.knockback,
         static_cast<uint32_t>(std::max(explosion_data.count, 1.0f)),
         explosion_data.arc);

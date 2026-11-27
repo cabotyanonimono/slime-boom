@@ -11,12 +11,15 @@ engine::Task SlashAbility::DelaySetAttackDataTask()
 {
     PlayerAttackData *attack_data = new PlayerAttackData;
     const auto slash_data = AbilityDataStore::GetAbilityData(kAbilityTypesSlash);
-    m_cooldown_ = slash_data.cooldown / m_player_data_->GetAttackSpeed();
+    m_cooldown_ = slash_data.cooldown / (m_player_data_->GetAttackSpeed() *
+        m_player_data_->GetAbilityStatus(kAbilityStatusAttackSpeed, kAbilityTypesSlash));
 
     //PlayerDataを参照する値の計算
     const auto slash_angle = m_closest_slime_pos_ - m_player_transform_->Position();
-    const auto slash_size = slash_data.size + m_player_data_->GetAttackRange();
-    const auto slash_damage = slash_data.value * m_player_data_->GetAttackPower();
+    const auto slash_size = (slash_data.size + m_player_data_->GetAttackRange()) *
+        m_player_data_->GetAbilityStatus(kAbilityStatusAttackRange, kAbilityTypesSlash);
+    const auto slash_damage = slash_data.value * m_player_data_->GetAttackPower() *
+        m_player_data_->GetAbilityStatus(kAbilityStatusAttackPower, kAbilityTypesSlash);
 
     attack_data->arc = slash_data.arc;
     attack_data->angle = slash_angle;
@@ -56,7 +59,9 @@ SlashAbility::SlashAbility(const std::shared_ptr<ComputeResult>& compute_result,
                            const std::shared_ptr<PlayerSwordController>& swc_controller,
                            const std::shared_ptr<engine::EffekseerRenderer>& effekseer_renderer,
                            float attack_delay_time)
-    : CooldownAbility(AbilityDataStore::GetAbilityData(kAbilityTypesSlash).cooldown / player_data->GetAttackSpeed(), player_data),
+    : CooldownAbility(AbilityDataStore::GetAbilityData(kAbilityTypesSlash).cooldown /
+                      (player_data->GetAttackSpeed() *
+                       player_data->GetAbilityStatus(kAbilityStatusAttackSpeed, kAbilityTypesSlash)), player_data),
       m_compute_result_(compute_result), m_player_data_(player_data),
       m_player_transform_(player_transform), m_player_data_presenter_(player_data_presenter),
       m_sword_controller_(swc_controller),

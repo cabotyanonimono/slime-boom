@@ -9,6 +9,8 @@ class PlayerDataComponent : public engine::Component
 {
     PlayerData m_player_data_;
 
+    std::array<float, kAbilityTypesCount>& GetAbilityStatusArray(kAbilityStatus status);
+
 public:
     void OnInspectorGui() override;
 
@@ -25,6 +27,7 @@ public:
     void SetAttackRange(float attack_range);
     void SetAttackNum(uint32_t attack_num);
     void SetAvoidPercent(float avoid_percent);
+    void SetAbilityStatus(kAbilityStatus status, kAbilityTypes ability_type, float value);
 
     /// 各ステータスのゲッター。
     [[nodiscard]] float GetMaxHp() const;
@@ -39,6 +42,7 @@ public:
     [[nodiscard]] uint32_t GetAttackNum() const;
     [[nodiscard]] float GetAvoidPercent() const;
     [[nodiscard]] uint32_t GetLevel() const;
+    [[nodiscard]] float GetAbilityStatus(kAbilityStatus status, kAbilityTypes ability_type) const;
     
     /// ステータス全体を返す。
     [[nodiscard]] const PlayerData &GetPlayerData() const;
