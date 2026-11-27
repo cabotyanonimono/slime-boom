@@ -1,9 +1,9 @@
 ﻿#pragma once
 #include "Components/component.h"
+#include "ability/ability_data/ability_types.h"
 
 namespace SlimeBoom
 {
-// プレイヤーのステータス(HP・速度・攻撃・回避・経験値倍率・レベルなど)。
 struct PlayerData
 {
     float max_hp;
@@ -18,6 +18,16 @@ struct PlayerData
     float exp_multiplier;
     float avoid_percent;
     uint32_t level;
+    std::array<float, kAbilityTypesCount> ability_attack_power = MakeDefaultAbilityMultiplier();
+    std::array<float, kAbilityTypesCount> ability_attack_range = MakeDefaultAbilityMultiplier();
+    std::array<float, kAbilityTypesCount> ability_attack_speed = MakeDefaultAbilityMultiplier();
+
+    static constexpr std::array<float, kAbilityTypesCount> MakeDefaultAbilityMultiplier()
+    {
+        std::array<float, kAbilityTypesCount> result{};
+        result.fill(1.0f);
+        return result;
+    }
 
     template <class Archive>
     void serialize(Archive& ar, const uint32_t version)
@@ -72,8 +82,17 @@ struct PlayerData
                 CEREAL_NVP(avoid_percent)
             );
         }
+
+        if (version >= 8)
+        {
+            ar(
+                CEREAL_NVP(ability_attack_power),
+                CEREAL_NVP(ability_attack_range),
+                CEREAL_NVP(ability_attack_speed)
+            );
+        }
     }
 };
 }
 
-CEREAL_CLASS_VERSION(SlimeBoom::PlayerData, 7)
+CEREAL_CLASS_VERSION(SlimeBoom::PlayerData, 8)

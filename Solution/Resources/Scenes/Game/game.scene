@@ -24813,6 +24813,582 @@
                                                                                                                     }
                                                                                                                 }
                                                                                                             }
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "key": 12,
+                                                                                                            "value": {
+                                                                                                                "polymorphic_id": 2147483738,
+                                                                                                                "polymorphic_name": "SlimeBoom::SlashAttackPowerCard",
+                                                                                                                "ptr_wrapper": {
+                                                                                                                    "id": 2147484448,
+                                                                                                                    "data": {
+                                                                                                                        "cereal_class_version": 1,
+                                                                                                                        "value0": {
+                                                                                                                            "m_card_data_": {
+                                                                                                                                "icon": {
+                                                                                                                                    "value0": {
+                                                                                                                                        "m_guid_": "2437a5ad-4937-4f2b-9bfd-493821704d4d",
+                                                                                                                                        "m_type_": 2,
+                                                                                                                                        "m_stored_reference_": {
+                                                                                                                                            "polymorphic_id": 0
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                },
+                                                                                                                                "name": {
+                                                                                                                                    "value0": {
+                                                                                                                                        "m_guid_": "4ec929af-f93c-4d39-87db-df1383aa7235",
+                                                                                                                                        "m_type_": 2,
+                                                                                                                                        "m_stored_reference_": {
+                                                                                                                                            "polymorphic_id": 0
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                },
+                                                                                                                                "description": {
+                                                                                                                                    "value0": {
+                                                                                                                                        "m_guid_": "25b3292c-88de-43fd-85e8-7788d32dbda7",
+                                                                                                                                        "m_type_": 2,
+                                                                                                                                        "m_stored_reference_": {
+                                                                                                                                            "polymorphic_id": 0
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                },
+                                                                                                                                "background": {
+                                                                                                                                    "value0": {
+                                                                                                                                        "m_guid_": "61d70201-edc1-49e8-b314-c3c2e9c2ce63",
+                                                                                                                                        "m_type_": 2,
+                                                                                                                                        "m_stored_reference_": {
+                                                                                                                                            "polymorphic_id": 0
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        },
+                                                                                                                        "m_ability_processer_": {
+                                                                                                                            "value0": {
+                                                                                                                                "m_guid_": "199a9c3e-24d7-45a7-a22f-1490ee015a56",
+                                                                                                                                "m_type_": 2,
+                                                                                                                                "m_stored_reference_": {
+                                                                                                                                    "polymorphic_id": 0
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        },
+                                                                                                                        "m_player_data_": {
+                                                                                                                            "value0": {
+                                                                                                                                "m_guid_": "90982ef2-db18-495e-920b-b980e577c5a9",
+                                                                                                                                "m_type_": 2,
+                                                                                                                                "m_stored_reference_": {
+                                                                                                                                    "polymorphic_id": 0
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        },
+                                                                                                                        "m_value_": 0.20000000298023225
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "key": 13,
+                                                                                                            "value": {
+                                                                                                                "polymorphic_id": 2147483739,
+                                                                                                                "polymorphic_name": "SlimeBoom::AuraAttackPowerCard",
+                                                                                                                "ptr_wrapper": {
+                                                                                                                    "id": 2147484449,
+                                                                                                                    "data": {
+                                                                                                                        "cereal_class_version": 1,
+                                                                                                                        "value0": {
+                                                                                                                            "m_card_data_": {
+                                                                                                                                "icon": {
+                                                                                                                                    "value0": {
+                                                                                                                                        "m_guid_": "85bd7039-6a07-4178-b827-7afce50a0550",
+                                                                                                                                        "m_type_": 2,
+                                                                                                                                        "m_stored_reference_": {
+                                                                                                                                            "polymorphic_id": 0
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                },
+                                                                                                                                "name": {
+                                                                                                                                    "value0": {
+                                                                                                                                        "m_guid_": "f001c6bb-86fc-466d-852a-ca771ba43dee",
+                                                                                                                                        "m_type_": 2,
+                                                                                                                                        "m_stored_reference_": {
+                                                                                                                                            "polymorphic_id": 0
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                },
+                                                                                                                                "description": {
+                                                                                                                                    "value0": {
+                                                                                                                                        "m_guid_": "042a836e-ca8a-481d-a4e6-856fe95487c7",
+                                                                                                                                        "m_type_": 2,
+                                                                                                                                        "m_stored_reference_": {
+                                                                                                                                            "polymorphic_id": 0
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                },
+                                                                                                                                "background": {
+                                                                                                                                    "value0": {
+                                                                                                                                        "m_guid_": "61d70201-edc1-49e8-b314-c3c2e9c2ce63",
+                                                                                                                                        "m_type_": 2,
+                                                                                                                                        "m_stored_reference_": {
+                                                                                                                                            "polymorphic_id": 0
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        },
+                                                                                                                        "m_ability_processer_": {
+                                                                                                                            "value0": {
+                                                                                                                                "m_guid_": "199a9c3e-24d7-45a7-a22f-1490ee015a56",
+                                                                                                                                "m_type_": 2,
+                                                                                                                                "m_stored_reference_": {
+                                                                                                                                    "polymorphic_id": 0
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        },
+                                                                                                                        "m_player_data_": {
+                                                                                                                            "value0": {
+                                                                                                                                "m_guid_": "90982ef2-db18-495e-920b-b980e577c5a9",
+                                                                                                                                "m_type_": 2,
+                                                                                                                                "m_stored_reference_": {
+                                                                                                                                    "polymorphic_id": 0
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        },
+                                                                                                                        "m_value_": 0.20000000298023225
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "key": 14,
+                                                                                                            "value": {
+                                                                                                                "polymorphic_id": 2147483740,
+                                                                                                                "polymorphic_name": "SlimeBoom::ExplosionAttackPowerCard",
+                                                                                                                "ptr_wrapper": {
+                                                                                                                    "id": 2147484450,
+                                                                                                                    "data": {
+                                                                                                                        "cereal_class_version": 1,
+                                                                                                                        "value0": {
+                                                                                                                            "m_card_data_": {
+                                                                                                                                "icon": {
+                                                                                                                                    "value0": {
+                                                                                                                                        "m_guid_": "e0c02388-5261-41c7-9eb7-18509d3217dc",
+                                                                                                                                        "m_type_": 2,
+                                                                                                                                        "m_stored_reference_": {
+                                                                                                                                            "polymorphic_id": 0
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                },
+                                                                                                                                "name": {
+                                                                                                                                    "value0": {
+                                                                                                                                        "m_guid_": "cd51b9dc-7521-4128-962c-39555f372fd8",
+                                                                                                                                        "m_type_": 2,
+                                                                                                                                        "m_stored_reference_": {
+                                                                                                                                            "polymorphic_id": 0
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                },
+                                                                                                                                "description": {
+                                                                                                                                    "value0": {
+                                                                                                                                        "m_guid_": "0ba1c318-3bff-46b0-8673-0897e7934165",
+                                                                                                                                        "m_type_": 2,
+                                                                                                                                        "m_stored_reference_": {
+                                                                                                                                            "polymorphic_id": 0
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                },
+                                                                                                                                "background": {
+                                                                                                                                    "value0": {
+                                                                                                                                        "m_guid_": "61d70201-edc1-49e8-b314-c3c2e9c2ce63",
+                                                                                                                                        "m_type_": 2,
+                                                                                                                                        "m_stored_reference_": {
+                                                                                                                                            "polymorphic_id": 0
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        },
+                                                                                                                        "m_ability_processer_": {
+                                                                                                                            "value0": {
+                                                                                                                                "m_guid_": "199a9c3e-24d7-45a7-a22f-1490ee015a56",
+                                                                                                                                "m_type_": 2,
+                                                                                                                                "m_stored_reference_": {
+                                                                                                                                    "polymorphic_id": 0
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        },
+                                                                                                                        "m_player_data_": {
+                                                                                                                            "value0": {
+                                                                                                                                "m_guid_": "90982ef2-db18-495e-920b-b980e577c5a9",
+                                                                                                                                "m_type_": 2,
+                                                                                                                                "m_stored_reference_": {
+                                                                                                                                    "polymorphic_id": 0
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        },
+                                                                                                                        "m_value_": 0.20000000298023225
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "key": 15,
+                                                                                                            "value": {
+                                                                                                                "polymorphic_id": 2147483741,
+                                                                                                                "polymorphic_name": "SlimeBoom::SlashAttackRangeCard",
+                                                                                                                "ptr_wrapper": {
+                                                                                                                    "id": 2147484451,
+                                                                                                                    "data": {
+                                                                                                                        "cereal_class_version": 1,
+                                                                                                                        "value0": {
+                                                                                                                            "m_card_data_": {
+                                                                                                                                "icon": {
+                                                                                                                                    "value0": {
+                                                                                                                                        "m_guid_": "e514fa01-4ec2-4b14-89b3-a1b166723090",
+                                                                                                                                        "m_type_": 2,
+                                                                                                                                        "m_stored_reference_": {
+                                                                                                                                            "polymorphic_id": 0
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                },
+                                                                                                                                "name": {
+                                                                                                                                    "value0": {
+                                                                                                                                        "m_guid_": "c5306f2d-64be-4054-9c1c-fe2c3fbc4eca",
+                                                                                                                                        "m_type_": 2,
+                                                                                                                                        "m_stored_reference_": {
+                                                                                                                                            "polymorphic_id": 0
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                },
+                                                                                                                                "description": {
+                                                                                                                                    "value0": {
+                                                                                                                                        "m_guid_": "be7bb8f0-e919-4ded-8e6c-f3e85554cba6",
+                                                                                                                                        "m_type_": 2,
+                                                                                                                                        "m_stored_reference_": {
+                                                                                                                                            "polymorphic_id": 0
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                },
+                                                                                                                                "background": {
+                                                                                                                                    "value0": {
+                                                                                                                                        "m_guid_": "61d70201-edc1-49e8-b314-c3c2e9c2ce63",
+                                                                                                                                        "m_type_": 2,
+                                                                                                                                        "m_stored_reference_": {
+                                                                                                                                            "polymorphic_id": 0
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        },
+                                                                                                                        "m_ability_processer_": {
+                                                                                                                            "value0": {
+                                                                                                                                "m_guid_": "199a9c3e-24d7-45a7-a22f-1490ee015a56",
+                                                                                                                                "m_type_": 2,
+                                                                                                                                "m_stored_reference_": {
+                                                                                                                                    "polymorphic_id": 0
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        },
+                                                                                                                        "m_player_data_": {
+                                                                                                                            "value0": {
+                                                                                                                                "m_guid_": "90982ef2-db18-495e-920b-b980e577c5a9",
+                                                                                                                                "m_type_": 2,
+                                                                                                                                "m_stored_reference_": {
+                                                                                                                                    "polymorphic_id": 0
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        },
+                                                                                                                        "m_value_": 0.10000000149011612
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "key": 16,
+                                                                                                            "value": {
+                                                                                                                "polymorphic_id": 2147483742,
+                                                                                                                "polymorphic_name": "SlimeBoom::AuraAttackRangeCard",
+                                                                                                                "ptr_wrapper": {
+                                                                                                                    "id": 2147484452,
+                                                                                                                    "data": {
+                                                                                                                        "cereal_class_version": 1,
+                                                                                                                        "value0": {
+                                                                                                                            "m_card_data_": {
+                                                                                                                                "icon": {
+                                                                                                                                    "value0": {
+                                                                                                                                        "m_guid_": "ff4dd6c4-51bb-48c2-af09-b729c25aee2e",
+                                                                                                                                        "m_type_": 2,
+                                                                                                                                        "m_stored_reference_": {
+                                                                                                                                            "polymorphic_id": 0
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                },
+                                                                                                                                "name": {
+                                                                                                                                    "value0": {
+                                                                                                                                        "m_guid_": "d4f5021f-3da1-47c7-8dfa-3a0c1274ff71",
+                                                                                                                                        "m_type_": 2,
+                                                                                                                                        "m_stored_reference_": {
+                                                                                                                                            "polymorphic_id": 0
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                },
+                                                                                                                                "description": {
+                                                                                                                                    "value0": {
+                                                                                                                                        "m_guid_": "642825fb-b8c5-498b-86e3-892a0f567a4b",
+                                                                                                                                        "m_type_": 2,
+                                                                                                                                        "m_stored_reference_": {
+                                                                                                                                            "polymorphic_id": 0
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                },
+                                                                                                                                "background": {
+                                                                                                                                    "value0": {
+                                                                                                                                        "m_guid_": "61d70201-edc1-49e8-b314-c3c2e9c2ce63",
+                                                                                                                                        "m_type_": 2,
+                                                                                                                                        "m_stored_reference_": {
+                                                                                                                                            "polymorphic_id": 0
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        },
+                                                                                                                        "m_ability_processer_": {
+                                                                                                                            "value0": {
+                                                                                                                                "m_guid_": "199a9c3e-24d7-45a7-a22f-1490ee015a56",
+                                                                                                                                "m_type_": 2,
+                                                                                                                                "m_stored_reference_": {
+                                                                                                                                    "polymorphic_id": 0
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        },
+                                                                                                                        "m_player_data_": {
+                                                                                                                            "value0": {
+                                                                                                                                "m_guid_": "90982ef2-db18-495e-920b-b980e577c5a9",
+                                                                                                                                "m_type_": 2,
+                                                                                                                                "m_stored_reference_": {
+                                                                                                                                    "polymorphic_id": 0
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        },
+                                                                                                                        "m_value_": 0.10000000149011612
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "key": 17,
+                                                                                                            "value": {
+                                                                                                                "polymorphic_id": 2147483743,
+                                                                                                                "polymorphic_name": "SlimeBoom::ExplosionAttackRangeCard",
+                                                                                                                "ptr_wrapper": {
+                                                                                                                    "id": 2147484453,
+                                                                                                                    "data": {
+                                                                                                                        "cereal_class_version": 1,
+                                                                                                                        "value0": {
+                                                                                                                            "m_card_data_": {
+                                                                                                                                "icon": {
+                                                                                                                                    "value0": {
+                                                                                                                                        "m_guid_": "32d2a99e-a7c4-4ca5-8161-ba5651fe1258",
+                                                                                                                                        "m_type_": 2,
+                                                                                                                                        "m_stored_reference_": {
+                                                                                                                                            "polymorphic_id": 0
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                },
+                                                                                                                                "name": {
+                                                                                                                                    "value0": {
+                                                                                                                                        "m_guid_": "598eb42e-afeb-4905-83b9-c0d2d7574316",
+                                                                                                                                        "m_type_": 2,
+                                                                                                                                        "m_stored_reference_": {
+                                                                                                                                            "polymorphic_id": 0
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                },
+                                                                                                                                "description": {
+                                                                                                                                    "value0": {
+                                                                                                                                        "m_guid_": "c4d06474-5646-4a2b-9504-7495286d5e07",
+                                                                                                                                        "m_type_": 2,
+                                                                                                                                        "m_stored_reference_": {
+                                                                                                                                            "polymorphic_id": 0
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                },
+                                                                                                                                "background": {
+                                                                                                                                    "value0": {
+                                                                                                                                        "m_guid_": "61d70201-edc1-49e8-b314-c3c2e9c2ce63",
+                                                                                                                                        "m_type_": 2,
+                                                                                                                                        "m_stored_reference_": {
+                                                                                                                                            "polymorphic_id": 0
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        },
+                                                                                                                        "m_ability_processer_": {
+                                                                                                                            "value0": {
+                                                                                                                                "m_guid_": "199a9c3e-24d7-45a7-a22f-1490ee015a56",
+                                                                                                                                "m_type_": 2,
+                                                                                                                                "m_stored_reference_": {
+                                                                                                                                    "polymorphic_id": 0
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        },
+                                                                                                                        "m_player_data_": {
+                                                                                                                            "value0": {
+                                                                                                                                "m_guid_": "90982ef2-db18-495e-920b-b980e577c5a9",
+                                                                                                                                "m_type_": 2,
+                                                                                                                                "m_stored_reference_": {
+                                                                                                                                    "polymorphic_id": 0
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        },
+                                                                                                                        "m_value_": 0.10000000149011612
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "key": 18,
+                                                                                                            "value": {
+                                                                                                                "polymorphic_id": 2147483744,
+                                                                                                                "polymorphic_name": "SlimeBoom::SlashAttackSpeedCard",
+                                                                                                                "ptr_wrapper": {
+                                                                                                                    "id": 2147484454,
+                                                                                                                    "data": {
+                                                                                                                        "cereal_class_version": 1,
+                                                                                                                        "value0": {
+                                                                                                                            "m_card_data_": {
+                                                                                                                                "icon": {
+                                                                                                                                    "value0": {
+                                                                                                                                        "m_guid_": "71cd09d4-04a9-4106-8970-5153bc5821d1",
+                                                                                                                                        "m_type_": 2,
+                                                                                                                                        "m_stored_reference_": {
+                                                                                                                                            "polymorphic_id": 0
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                },
+                                                                                                                                "name": {
+                                                                                                                                    "value0": {
+                                                                                                                                        "m_guid_": "757529e6-f71d-45b0-b74f-bf92442f00f0",
+                                                                                                                                        "m_type_": 2,
+                                                                                                                                        "m_stored_reference_": {
+                                                                                                                                            "polymorphic_id": 0
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                },
+                                                                                                                                "description": {
+                                                                                                                                    "value0": {
+                                                                                                                                        "m_guid_": "d6412ce7-d69e-4640-b151-81b49899f1e5",
+                                                                                                                                        "m_type_": 2,
+                                                                                                                                        "m_stored_reference_": {
+                                                                                                                                            "polymorphic_id": 0
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                },
+                                                                                                                                "background": {
+                                                                                                                                    "value0": {
+                                                                                                                                        "m_guid_": "61d70201-edc1-49e8-b314-c3c2e9c2ce63",
+                                                                                                                                        "m_type_": 2,
+                                                                                                                                        "m_stored_reference_": {
+                                                                                                                                            "polymorphic_id": 0
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        },
+                                                                                                                        "m_ability_processer_": {
+                                                                                                                            "value0": {
+                                                                                                                                "m_guid_": "199a9c3e-24d7-45a7-a22f-1490ee015a56",
+                                                                                                                                "m_type_": 2,
+                                                                                                                                "m_stored_reference_": {
+                                                                                                                                    "polymorphic_id": 0
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        },
+                                                                                                                        "m_player_data_": {
+                                                                                                                            "value0": {
+                                                                                                                                "m_guid_": "90982ef2-db18-495e-920b-b980e577c5a9",
+                                                                                                                                "m_type_": 2,
+                                                                                                                                "m_stored_reference_": {
+                                                                                                                                    "polymorphic_id": 0
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        },
+                                                                                                                        "m_value_": 0.20000000298023225
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "key": 19,
+                                                                                                            "value": {
+                                                                                                                "polymorphic_id": 2147483745,
+                                                                                                                "polymorphic_name": "SlimeBoom::AuraAttackSpeedCard",
+                                                                                                                "ptr_wrapper": {
+                                                                                                                    "id": 2147484455,
+                                                                                                                    "data": {
+                                                                                                                        "cereal_class_version": 1,
+                                                                                                                        "value0": {
+                                                                                                                            "m_card_data_": {
+                                                                                                                                "icon": {
+                                                                                                                                    "value0": {
+                                                                                                                                        "m_guid_": "8df989da-0dc6-4eef-acc2-6cb1efbdd73f",
+                                                                                                                                        "m_type_": 2,
+                                                                                                                                        "m_stored_reference_": {
+                                                                                                                                            "polymorphic_id": 0
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                },
+                                                                                                                                "name": {
+                                                                                                                                    "value0": {
+                                                                                                                                        "m_guid_": "d1e66471-df90-4f77-8a98-2de8e50c5307",
+                                                                                                                                        "m_type_": 2,
+                                                                                                                                        "m_stored_reference_": {
+                                                                                                                                            "polymorphic_id": 0
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                },
+                                                                                                                                "description": {
+                                                                                                                                    "value0": {
+                                                                                                                                        "m_guid_": "29cfaf88-6675-4569-b654-ab5a722fc294",
+                                                                                                                                        "m_type_": 2,
+                                                                                                                                        "m_stored_reference_": {
+                                                                                                                                            "polymorphic_id": 0
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                },
+                                                                                                                                "background": {
+                                                                                                                                    "value0": {
+                                                                                                                                        "m_guid_": "61d70201-edc1-49e8-b314-c3c2e9c2ce63",
+                                                                                                                                        "m_type_": 2,
+                                                                                                                                        "m_stored_reference_": {
+                                                                                                                                            "polymorphic_id": 0
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        },
+                                                                                                                        "m_ability_processer_": {
+                                                                                                                            "value0": {
+                                                                                                                                "m_guid_": "199a9c3e-24d7-45a7-a22f-1490ee015a56",
+                                                                                                                                "m_type_": 2,
+                                                                                                                                "m_stored_reference_": {
+                                                                                                                                    "polymorphic_id": 0
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        },
+                                                                                                                        "m_player_data_": {
+                                                                                                                            "value0": {
+                                                                                                                                "m_guid_": "90982ef2-db18-495e-920b-b980e577c5a9",
+                                                                                                                                "m_type_": 2,
+                                                                                                                                "m_stored_reference_": {
+                                                                                                                                    "polymorphic_id": 0
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        },
+                                                                                                                        "m_value_": 0.20000000298023225
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
                                                                                                         }
                                                                                                     ]
                                                                                                 }
