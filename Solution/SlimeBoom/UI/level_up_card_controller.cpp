@@ -34,7 +34,7 @@ engine::Task LevelUpCardController::AddStatusView()
         co_return;
 
     self->m_status_view_ = game_object->AddComponent<LevelUpStatusView>();
-    self->m_status_view_->Setup(self->m_ui_data_provider_);
+    self->m_status_view_->Setup(self->m_ui_data_provider_.CastedLock());
 }
 
 void LevelUpCardController::OnStart()
