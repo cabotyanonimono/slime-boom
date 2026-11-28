@@ -31,7 +31,7 @@ int UiDataProvider::GetRequiredExp() const
 
 std::array<std::shared_ptr<CardBase>, CardController::kCardCount> UiDataProvider::GetCards() const
 {
-    const auto card_controller = m_card_controller_;
+    const auto card_controller = m_card_controller_.CastedLock();
     return card_controller ? card_controller->GetCards() : std::array<std::shared_ptr<CardBase>, CardController::kCardCount>{};
 }
 
@@ -42,13 +42,13 @@ float UiDataProvider::GetAvoidCooldownRatio() const
 
 std::shared_ptr<CardPool> UiDataProvider::GetCardPool() const
 {
-    const auto card_controller = m_card_controller_;
+    const auto card_controller = m_card_controller_.CastedLock();
     return card_controller ? card_controller->GetPool() : nullptr;
 }
 
 std::shared_ptr<AbilityProcesser> UiDataProvider::GetAbilityProcesser() const
 {
-    const auto card_controller = m_card_controller_;
+    const auto card_controller = m_card_controller_.CastedLock();
     return card_controller ? card_controller->GetAbilityProcesser() : nullptr;
 }
 
