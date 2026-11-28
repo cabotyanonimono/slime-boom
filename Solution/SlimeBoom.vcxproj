@@ -447,6 +447,7 @@
     <ClCompile Include="SlimeBoom\UI\level_text.cpp" />
     <ClCompile Include="SlimeBoom\UI\level_up_card.cpp" />
     <ClCompile Include="SlimeBoom\UI\level_up_card_controller.cpp" />
+    <ClCompile Include="SlimeBoom\UI\level_up_status_view.cpp" />
     <ClCompile Include="SlimeBoom\UI\player_hp_gauge.cpp" />
     <ClCompile Include="SlimeBoom\UI\player_status.cpp" />
     <ClCompile Include="SlimeBoom\UI\survival_timer.cpp" />
@@ -814,6 +815,7 @@
     <ClInclude Include="SlimeBoom\UI\level_text.h" />
     <ClInclude Include="SlimeBoom\UI\level_up_card.h" />
     <ClInclude Include="SlimeBoom\UI\level_up_card_controller.h" />
+    <ClInclude Include="SlimeBoom\UI\level_up_status_view.h" />
     <ClInclude Include="SlimeBoom\UI\player_hp_gauge.h" />
     <ClInclude Include="SlimeBoom\UI\player_status_ui.h" />
     <ClInclude Include="SlimeBoom\UI\survival_timer.h" />

@@ -38,6 +38,10 @@ public:
 
     /// 現在提示しているカードを返す。
     std::array<std::shared_ptr<CardBase>, kCardCount> GetCards();
+    /// すべての種類のカードを持つCardPoolを返す。
+    std::shared_ptr<CardPool> GetPool() const;
+    /// プレイヤーのアビリティを持つAbilityProcesserを返す。
+    std::shared_ptr<AbilityProcesser> GetAbilityProcesser() const;
 
     template <class Archive>
     void serialize(Archive& ar, const uint32_t version)
@@ -59,6 +63,16 @@ public:
 inline std::array<std::shared_ptr<CardBase>, CardController::kCardCount> CardController::GetCards()
 {
     return m_cards_;
+}
+
+inline std::shared_ptr<CardPool> CardController::GetPool() const
+{
+    return m_pool_.CastedLock();
+}
+
+inline std::shared_ptr<AbilityProcesser> CardController::GetAbilityProcesser() const
+{
+    return m_ability_processer_.CastedLock();
 }
 }
 

@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "level_up_card.h"
+#include "level_up_status_view.h"
 #include "ui_data_provider.h"
 #include "Asset/asset_ptr.h"
 #include "Components/component.h"
@@ -11,9 +12,14 @@ class LevelUpCardController : public engine::Component
 {
     engine::AssetPtr<UiDataProvider> m_ui_data_provider_;
     std::array<engine::AssetPtr<LevelUpCard>, CardController::kCardCount> m_level_up_card_;
+    std::shared_ptr<LevelUpStatusView> m_status_view_;
+
+    engine::Task AddStatusView();
     
 public:
     void OnInspectorGui() override;
+    /// スキルとステータスの一覧を出すRendererの追加を始める。
+    void OnStart() override;
     /// 有効化されたときに、提示しているカードを各カードUIに設定する。
     void OnEnabled() override;
     
