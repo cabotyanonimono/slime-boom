@@ -19183,7 +19183,7 @@
                                                                                             "ptr_wrapper": {
                                                                                                 "id": 2147484059,
                                                                                                 "data": {
-                                                                                                    "cereal_class_version": 5,
+                                                                                                    "cereal_class_version": 6,
                                                                                                     "value0": {
                                                                                                         "value0": {
                                                                                                             "m_guid_": "411e7623-3dd7-4e93-8985-c80e97d8ab1b",
@@ -19228,6 +19228,15 @@
                                                                                                     "m_player_": {
                                                                                                         "value0": {
                                                                                                             "m_guid_": "2a605e9e-18a7-493c-8096-07c3486469c0",
+                                                                                                            "m_type_": 2,
+                                                                                                            "m_stored_reference_": {
+                                                                                                                "polymorphic_id": 0
+                                                                                                            }
+                                                                                                        }
+                                                                                                    },
+                                                                                                    "m_exp_simulation_": {
+                                                                                                        "value0": {
+                                                                                                            "m_guid_": "cdadf5f3-72e7-4e9e-97a6-999ea2ecbe90",
                                                                                                             "m_type_": 2,
                                                                                                             "m_stored_reference_": {
                                                                                                                 "polymorphic_id": 0

@@ -1,6 +1,7 @@
 ﻿#include "pch.h"
 #include "level_up_card_controller.h"
 
+#include "engine.h"
 #include "gui.h"
 
 namespace SlimeBoom
@@ -15,6 +16,21 @@ void LevelUpCardController::OnInspectorGui()
         engine::Gui::PropertyField("Level Up Card", m_level_up_card_[i]);
         ImGui::PopID();
     }
+}
+
+engine::Task LevelUpCardController::AddStatusView()
+{
+    // OnStartはGameObjectがComponentの一覧を回している途中で呼ばれるので、そこでAddComponentすると一覧が壊れる。
+    // 1フレーム待って、一覧を回していないときに追加する
+    co_await engine::WaitForNextFrame();
+
+    m_status_view_ = GameObject()->AddComponent<LevelUpStatusView>();
+    m_status_view_->Setup(m_ui_data_provider_.CastedLock());
+}
+
+void LevelUpCardController::OnStart()
+{
+    engine::Engine::coroutine.Start(AddStatusView());
 }
 
 void LevelUpCardController::OnEnabled()
