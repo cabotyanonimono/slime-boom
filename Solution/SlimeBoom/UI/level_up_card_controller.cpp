@@ -22,10 +22,19 @@ engine::Task LevelUpCardController::AddStatusView()
 {
     // OnStartはGameObjectがComponentの一覧を回している途中で呼ばれるので、そこでAddComponentすると一覧が壊れる。
     // 1フレーム待って、一覧を回していないときに追加する
+    // 待っている間に破棄されることがあるので、thisではなく弱参照で持っておき、再開後に生きているか確かめる
+    const std::weak_ptr weak_self = shared_from_base<LevelUpCardController>();
     co_await engine::WaitForNextFrame();
 
-    m_status_view_ = GameObject()->AddComponent<LevelUpStatusView>();
-    m_status_view_->Setup(m_ui_data_provider_.CastedLock());
+    const auto self = weak_self.lock();
+    if (self == nullptr || self->IsDestroying())
+        co_return;
+    const auto game_object = self->GameObject();
+    if (game_object == nullptr || game_object->IsDestroying())
+        co_return;
+
+    self->m_status_view_ = game_object->AddComponent<LevelUpStatusView>();
+    self->m_status_view_->Setup(self->m_ui_data_provider_);
 }
 
 void LevelUpCardController::OnStart()

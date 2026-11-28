@@ -56,6 +56,18 @@ void LevelUpStatusView::Setup(const std::shared_ptr<UiDataProvider>& ui_data_pro
         GetIconMaterial(card_type);
 }
 
+void LevelUpStatusView::OnDestroy()
+{
+    Renderer::OnDestroy();
+
+    for (const auto& material : m_icon_materials_ | std::views::values)
+    {
+        if (material != nullptr)
+            Destroy(material);
+    }
+    m_icon_materials_.clear();
+}
+
 Matrix LevelUpStatusView::BoundsOrigin()
 {
     const auto camera = engine::CameraComponent::Main();

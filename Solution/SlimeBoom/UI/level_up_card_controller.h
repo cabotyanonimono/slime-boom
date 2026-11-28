@@ -12,10 +12,8 @@ class LevelUpCardController : public engine::Component
 {
     engine::AssetPtr<UiDataProvider> m_ui_data_provider_;
     std::array<engine::AssetPtr<LevelUpCard>, CardController::kCardCount> m_level_up_card_;
-    // カードの左右に、持っているスキルとプレイヤーのステータスを出すRenderer。シーンに置かず、OnStartで追加する
     std::shared_ptr<LevelUpStatusView> m_status_view_;
 
-    /// 1フレーム待ってから、スキルとステータスの一覧を出すRendererを自分のGameObjectに追加する。
     engine::Task AddStatusView();
     
 public:

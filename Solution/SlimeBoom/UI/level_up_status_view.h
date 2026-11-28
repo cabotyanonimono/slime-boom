@@ -43,6 +43,8 @@ public:
 
     /// スキルとステータスの一覧を描く。
     void Render() override;
+    /// 作ったアイコンのMaterialを破棄する(Objectの一覧に残り続けるので、明示的に破棄する)。
+    void OnDestroy() override;
     /// 画面に出すUIなので、boundsの基準はMain CameraのWorldMatrixにする(TextRendererと同じ)。
     Matrix BoundsOrigin() override;
 };
